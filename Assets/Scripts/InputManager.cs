@@ -12,9 +12,11 @@ namespace GameScene
     {
         public static InputManager Instance { get; private set; }
         public event Action<float, float> OnInputAxisRaw;
+        public event Action OnInputAxisRawExit;
         public event Action OnFirstInputJump;
         public event Action OnInputJump;
         bool m_firstInputJump;
+        bool m_firstInputAxisRaw;
         private void Awake()
         {
             Instance = this;
@@ -37,12 +39,21 @@ namespace GameScene
             }
             if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
             {
+                if (!m_firstInputAxisRaw)
+                {
+                    m_firstInputAxisRaw = true;
+                }
                 float h = Input.GetAxisRaw("Horizontal");
                 float v = Input.GetAxisRaw("Vertical");
                 if (new Vector2(h, v).sqrMagnitude > 0.1f)
                 {
                     OnInputAxisRaw?.Invoke(h, v);                    
                 }
+            }
+            else if (m_firstInputAxisRaw)
+            {
+                m_firstInputAxisRaw = false;
+                OnInputAxisRawExit?.Invoke();
             }
         }
     }
