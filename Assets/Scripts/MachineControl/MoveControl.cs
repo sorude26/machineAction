@@ -10,7 +10,7 @@ public class MoveControl : MonoBehaviour
     {
         if (rb.velocity.sqrMagnitude < maxSpeed)
         {
-            rb.AddForce(dir * power);
+            rb.AddForce(dir * power,ForceMode.Impulse);
         }
     }
     public void MoveFloat(Rigidbody rb, Vector3 dir, float speed, float maxSpeed)
@@ -20,5 +20,9 @@ public class MoveControl : MonoBehaviour
         {
             rb.velocity = dir * speed;
         }
+    }
+    public void Jump(Rigidbody rb, Vector3 dir, float power)
+    {
+        rb.AddForce(dir * power, ForceMode.Impulse);
     }
 }
