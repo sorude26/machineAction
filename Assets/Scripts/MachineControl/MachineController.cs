@@ -16,11 +16,14 @@ public class MachineController : MonoBehaviour
     [SerializeField]
     LegControl m_leg = default;
     Rigidbody m_rb = default;
+    [SerializeField]
+    bool m_fly = default;
     private void Start()
     {
         GameScene.InputManager.Instance.OnInputAxisRaw += Move;
         GameScene.InputManager.Instance.OnInputAxisRawExit += MoveEnd;
         GameScene.InputManager.Instance.OnInputJump += Jump;
+        GameScene.InputManager.Instance.OnFirstInputBooster += ChangeFloat;
         m_rb = GetComponent<Rigidbody>();
         m_leg.OnWalk += Walk;
         m_leg.OnTurnLeft += TurnLeft;
@@ -31,24 +34,54 @@ public class MachineController : MonoBehaviour
 
     private void Move(float horizonal, float vertical)
     {
-        if (m_groundCheck.IsGrounded())
+        if (!m_fly)
         {
-            if (vertical > 0)
+            if (m_groundCheck.IsGrounded())
             {
-                m_leg.WalkStart(1);
+                if (vertical > 0)
+                {
+                    m_leg.WalkStart(1);
+                }
+                else if (vertical < 0)
+                {
+                    m_leg.WalkStart(-1);
+                }
+            }
+            if (horizonal > 0)
+            {
+                m_leg.TurnStartRight();
+            }
+            else if (horizonal < 0)
+            {
+                m_leg.TurnStartLeft();
+            }
+        }
+        else
+        {
+            int h = 0;
+            int v = 0;
+            if (horizonal > 0)
+            {
+                h = 1;
+                TurnRight();
+            }
+            else if(horizonal < 0)
+            {
+                h = -1; 
+                TurnLeft();
+            }
+            if(vertical > 0)
+            {
+                v = 1;
+                Stop();
             }
             else if (vertical < 0)
             {
-                m_leg.WalkStart(-1);
+                v = -1;
+                Stop();
             }
-        }
-        if (horizonal > 0)
-        {
-            m_leg.TurnStartRight();
-        }
-        else if (horizonal < 0)
-        {
-            m_leg.TurnStartLeft();
+            Vector3 dir = transform.right * h + transform.forward * v;
+            m_moveControl.MoveFloat(m_rb, dir, m_parameter.FloatSpeed, m_parameter.MaxFloatSpeed);
         }
     }
     private void MoveEnd()
@@ -65,12 +98,18 @@ public class MachineController : MonoBehaviour
         if (m_groundCheck.IsGrounded())
         {
             m_rb.angularVelocity = Vector3.zero;
-            m_leg.ChangeSpeed(m_parameter.WalkSpeed);
+            m_leg.ChangeSpeed(m_parameter.ActionSpeed);
             m_moveControl.MoveWalk(m_rb, transform.forward * angle, m_parameter.WalkPower, m_parameter.MaxWalkSpeed);
         }
     }
     public void Jump()
     {
+        if (m_fly)
+        {
+            Stop();
+            m_moveControl.Jet(m_rb, transform.forward + Vector3.up * 0.5f, m_parameter.JetPower);
+            return;
+        }
         Stop();
         m_leg.StartJump();
     }
@@ -89,5 +128,17 @@ public class MachineController : MonoBehaviour
     void Stop()
     {
         m_rb.angularVelocity = Vector3.zero;
+    }
+    void ChangeFloat()
+    {
+        if (m_fly)
+        {
+            m_fly = false;            
+        }
+        else
+        {
+            m_fly = true;
+        }
+        m_leg.ChangeMode();
     }
 }

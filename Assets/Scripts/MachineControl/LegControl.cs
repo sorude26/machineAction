@@ -19,6 +19,7 @@ public class LegControl : MonoBehaviour
     bool m_jump = default;
     bool m_isGround = false;
     bool m_landing = default;
+    bool m_float = default;
     float m_landingTime = 0.5f;
     float m_landingTimer = 0;
     public void ChangeSpeed(float speed)
@@ -100,9 +101,25 @@ public class LegControl : MonoBehaviour
         }
         ChangeAnimation("TurnRight");
     }
+    public void ChangeMode()
+    {
+        if (m_float)
+        {
+            m_float = false;
+        }
+        else
+        {
+            m_float = true;
+        }
+        m_jump = false;
+        m_walk = 0;
+        m_turn = 0;
+        m_landing = false;
+        m_animator.SetBool("Float", m_float);
+    }
     public void StartJump()
     {
-        if (m_jump)
+        if (m_jump || m_float)
         {
             return;
         }
@@ -158,12 +175,12 @@ public class LegControl : MonoBehaviour
     }
     void Jump()
     {
-        Vector3 dir = transform.forward * m_walk;        
-        OnJump?.Invoke(Vector3.up + dir);
+        Vector3 dir = transform.forward * m_walk + transform.right * m_turn;      
+        OnJump?.Invoke((Vector3.up + dir).normalized);
     }
     void Landing()
     {
-        if (m_landing)
+        if (m_landing || m_float)
         {
             return;
         }

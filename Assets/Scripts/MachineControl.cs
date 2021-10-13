@@ -24,6 +24,7 @@ public class MachineControl : MonoBehaviour
     /// <summary> 着地硬直時間計 </summary>
     float waitTimer = 0;
     float turnTimer = 0;
+    [SerializeField] Transform ground;
     private void Awake()
     {
     }
@@ -37,7 +38,7 @@ public class MachineControl : MonoBehaviour
         inputDirection.x = Input.GetAxisRaw("Horizontal");
         inputDirection.y = Input.GetAxisRaw("Vertical");
         Vector3 dir = Vector3.forward * inputDirection.y + Vector3.right * inputDirection.x;
-        if (dir == Vector3.zero && IsGrounded())
+        if (dir == Vector3.zero && IsGrounded2())
         {
             if (!dash)
             {
@@ -53,7 +54,7 @@ public class MachineControl : MonoBehaviour
                 turnTimer = 0;
             }
         }
-        else if (IsGrounded())
+        else if (IsGrounded2())
         {
             if (!dash)
             {
@@ -161,7 +162,7 @@ public class MachineControl : MonoBehaviour
     private void LateUpdate()
     {
         Vector3 dir = Vector3.forward * inputDirection.y + Vector3.right * inputDirection.x;
-        if (Input.GetButton("Jump") && !IsGrounded())
+        if (Input.GetButton("Jump") && !IsGrounded2())
         {
             if (dir != Vector3.zero)
             {
@@ -183,7 +184,7 @@ public class MachineControl : MonoBehaviour
             }
             waitTimer = 0.5f;
         }
-        else if (!IsGrounded())
+        else if (!IsGrounded2())
         {
             if (dir == Vector3.zero)
             {
@@ -208,6 +209,15 @@ public class MachineControl : MonoBehaviour
         Vector3 end = start + Vector3.down * m_isGroundedLength;  // end: start から真下の地点
         Debug.DrawLine(start, end); // 動作確認用に Scene ウィンドウ上で線を表示する
         bool isGrounded = Physics.Linecast(start, end); // 引いたラインに何かがぶつかっていたら true とする
+        return isGrounded;
+    }
+    bool IsGrounded2()
+    {
+        bool isGrounded = Physics.BoxCast(ground.position, new Vector3(1, 0.1f, 1), Vector3.down);
+        if (isGrounded)
+        {
+            Debug.Log("On");
+        }
         return isGrounded;
     }
 }

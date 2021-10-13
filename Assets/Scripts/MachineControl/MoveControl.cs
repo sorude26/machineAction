@@ -25,4 +25,8 @@ public class MoveControl : MonoBehaviour
     {
         rb.AddForce(dir * power, ForceMode.Impulse);
     }
+    public void Jet(Rigidbody rb, Vector3 dir, float power)
+    {
+        rb.AddForce(dir * power);
+    }
 }

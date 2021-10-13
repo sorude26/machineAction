@@ -15,6 +15,7 @@ namespace GameScene
         public event Action OnInputAxisRawExit;
         public event Action OnFirstInputJump;
         public event Action OnInputJump;
+        public event Action OnFirstInputBooster;
         bool m_firstInputJump;
         bool m_firstInputAxisRaw;
         private void Awake()
@@ -54,6 +55,10 @@ namespace GameScene
             {
                 m_firstInputAxisRaw = false;
                 OnInputAxisRawExit?.Invoke();
+            }
+            if (Input.GetButtonDown("Fire3"))
+            {
+                OnFirstInputBooster?.Invoke();
             }
         }
     }
