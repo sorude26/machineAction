@@ -22,6 +22,10 @@ public class LegControl : MonoBehaviour
     bool m_float = default;
     float m_landingTime = 0.5f;
     float m_landingTimer = 0;
+    public void SetLandingTime(float time)
+    {
+        m_landingTime = time;
+    }
     public void ChangeSpeed(float speed)
     {
         if (m_animator)
@@ -138,14 +142,13 @@ public class LegControl : MonoBehaviour
     }
     IEnumerator LandingWait()
     {
-        m_landing = true;
         m_landingTimer = 0;
         while (m_landingTimer < m_landingTime)
         {
             m_landingTimer += Time.deltaTime;
             yield return null;
         }
-        ChangeAnimation("LandingEnd");
+        m_animator.Play("LandingEnd");
         m_jump = false;
         m_walk = 0;
         m_turn = 0;
@@ -184,6 +187,7 @@ public class LegControl : MonoBehaviour
         {
             return;
         }
+        m_landing = true;
         StartCoroutine(LandingWait());
     }
     void Stop()
