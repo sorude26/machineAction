@@ -30,8 +30,14 @@ public class MachineController : MonoBehaviour
         m_leg.OnTurnRight += TurnRight;
         m_leg.OnJump += StartJump;
         m_leg.OnStop += Stop;
+        m_leg.SetLandingTime(m_parameter.LandingTime);
     }
 
+    private void OnValidate()
+    {
+        m_leg.ChangeSpeed(m_parameter.ActionSpeed);
+        m_leg.SetLandingTime(m_parameter.LandingTime);
+    }
     private void Move(float horizonal, float vertical)
     {
         if (!m_fly)
@@ -63,12 +69,10 @@ public class MachineController : MonoBehaviour
             if (horizonal > 0)
             {
                 h = 1;
-                TurnRight();
             }
             else if(horizonal < 0)
             {
                 h = -1; 
-                TurnLeft();
             }
             if(vertical > 0)
             {
@@ -86,11 +90,14 @@ public class MachineController : MonoBehaviour
     }
     private void MoveEnd()
     {
-        m_leg.WalkStop();
-        if (m_groundCheck.IsGrounded())
+        if (!m_fly)
         {
-            Stop();
-            m_rb.velocity = Vector3.zero;
+            m_leg.WalkStop();
+            if (m_groundCheck.IsGrounded())
+            {
+                Stop();
+                m_rb.velocity = Vector3.zero;
+            }
         }
     }
     public void Walk(int angle)
@@ -98,7 +105,6 @@ public class MachineController : MonoBehaviour
         if (m_groundCheck.IsGrounded())
         {
             m_rb.angularVelocity = Vector3.zero;
-            m_leg.ChangeSpeed(m_parameter.ActionSpeed);
             m_moveControl.MoveWalk(m_rb, transform.forward * angle, m_parameter.WalkPower, m_parameter.MaxWalkSpeed);
         }
     }
@@ -115,6 +121,7 @@ public class MachineController : MonoBehaviour
     }
     public void StartJump(Vector3 dir)
     {
+        m_rb.angularVelocity = Vector3.zero;
         m_moveControl.Jump(m_rb, dir, m_parameter.JumpPower);
     }
     void TurnLeft()

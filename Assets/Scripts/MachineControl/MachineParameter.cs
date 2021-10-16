@@ -7,11 +7,11 @@ public class MachineParameter : MonoBehaviour
 
     [Tooltip("行動速度")]
     [SerializeField]
-    float m_actionSpeed = 0.5f;
+    float m_actionSpeed = 0.8f;
     public float ActionSpeed { get => m_actionSpeed; }
     [Tooltip("歩行移動力")]
     [SerializeField]
-    float m_walkPower = 1.4f;
+    float m_walkPower = 1.1f;
     public float WalkPower { get => m_walkPower; }
     [Tooltip("歩行最高速度")]
     [SerializeField]
@@ -29,16 +29,20 @@ public class MachineParameter : MonoBehaviour
     [SerializeField]
     float m_jumpPower = 9f;
     public float JumpPower { get => m_jumpPower; }
+    [Tooltip("着地硬直")]
+    [SerializeField]
+    float m_landingTime = 0.5f;
+    public float LandingTime { get => m_landingTime; }
     [Tooltip("ジェット力")]
     [SerializeField]
-    float m_jetPower = 1f;
+    float m_jetPower = 8f;
     public float JetPower { get => m_jetPower; }
     [Tooltip("ホバー移動力")]
     [SerializeField]
-    float m_floatSpeed = 5f;
+    float m_floatSpeed = 20f;
     public float FloatSpeed { get => m_floatSpeed; }
     [Tooltip("ホバー最高速度")]
     [SerializeField]
-    float m_maxFloatSpeed = 20f;
+    float m_maxFloatSpeed = 500f;
     public float MaxFloatSpeed { get => m_maxFloatSpeed; }
 }
