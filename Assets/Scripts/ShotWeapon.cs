@@ -70,15 +70,19 @@ public class ShotWeapon : MonoBehaviour
         {
             return;
         }
-        m_shotCount = m_triggerShotCount;
         if (m_triggerInterval > 0)
         {
             if (!m_trigger)
             {
                 m_trigger = true;
                 m_triggerTimer = m_triggerInterval;
+                m_shotCount = m_triggerShotCount;
                 StartCoroutine(TriggerTimer());
             }
+        }
+        else
+        {
+            m_shotCount = m_triggerShotCount;
         }
         if (!ShotNow)
         {

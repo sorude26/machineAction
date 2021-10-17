@@ -15,6 +15,8 @@ public class MachineController : MonoBehaviour
     GroundCheck m_groundCheck = default;
     [SerializeField]
     LegControl m_leg = default;
+    [SerializeField]
+    BodyControl m_body = default;
     Rigidbody m_rb = default;
     [SerializeField]
     bool m_fly = default;
@@ -24,6 +26,7 @@ public class MachineController : MonoBehaviour
         GameScene.InputManager.Instance.OnInputAxisRawExit += MoveEnd;
         GameScene.InputManager.Instance.OnInputJump += Jump;
         GameScene.InputManager.Instance.OnFirstInputBooster += ChangeFloat;
+        GameScene.InputManager.Instance.OnInputCameraRaw += BodyTurn;
         m_rb = GetComponent<Rigidbody>();
         m_leg.OnWalk += Walk;
         m_leg.OnTurnLeft += TurnLeft;
@@ -147,5 +150,9 @@ public class MachineController : MonoBehaviour
             m_fly = true;
         }
         m_leg.ChangeMode();
+    }
+    void BodyTurn(Vector2 dir)
+    {
+        m_body.LookMove(dir);
     }
 }

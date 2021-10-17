@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/ControlAction.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/ControlAction.inputactions'
 
 using System;
 using System.Collections;
@@ -63,6 +63,22 @@ public class @ControlAction : IInputActionCollection, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""3e3b0e00-2e00-45da-b83d-81fe13e6a4f1"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Jet"",
+                    ""type"": ""Button"",
+                    ""id"": ""f2f3f5fa-c393-4965-b07b-68217c7d9e45"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""CameraMove"",
+                    ""type"": ""Value"",
+                    ""id"": ""a13c1dff-7005-4cda-beef-80fb9c74ef19"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -287,6 +303,28 @@ public class @ControlAction : IInputActionCollection, IDisposable
                     ""action"": ""Attack1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec5f9452-0660-48ad-841a-e2741ddbf98e"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jet"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e06a005-f308-4557-acb9-600ca9337984"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -301,6 +339,8 @@ public class @ControlAction : IInputActionCollection, IDisposable
         m_PlayerController_ShotL = m_PlayerController.FindAction("ShotL", throwIfNotFound: true);
         m_PlayerController_ShotR = m_PlayerController.FindAction("ShotR", throwIfNotFound: true);
         m_PlayerController_Attack1 = m_PlayerController.FindAction("Attack1", throwIfNotFound: true);
+        m_PlayerController_Jet = m_PlayerController.FindAction("Jet", throwIfNotFound: true);
+        m_PlayerController_CameraMove = m_PlayerController.FindAction("CameraMove", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -356,6 +396,8 @@ public class @ControlAction : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerController_ShotL;
     private readonly InputAction m_PlayerController_ShotR;
     private readonly InputAction m_PlayerController_Attack1;
+    private readonly InputAction m_PlayerController_Jet;
+    private readonly InputAction m_PlayerController_CameraMove;
     public struct PlayerControllerActions
     {
         private @ControlAction m_Wrapper;
@@ -366,6 +408,8 @@ public class @ControlAction : IInputActionCollection, IDisposable
         public InputAction @ShotL => m_Wrapper.m_PlayerController_ShotL;
         public InputAction @ShotR => m_Wrapper.m_PlayerController_ShotR;
         public InputAction @Attack1 => m_Wrapper.m_PlayerController_Attack1;
+        public InputAction @Jet => m_Wrapper.m_PlayerController_Jet;
+        public InputAction @CameraMove => m_Wrapper.m_PlayerController_CameraMove;
         public InputActionMap Get() { return m_Wrapper.m_PlayerController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -393,6 +437,12 @@ public class @ControlAction : IInputActionCollection, IDisposable
                 @Attack1.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnAttack1;
                 @Attack1.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnAttack1;
                 @Attack1.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnAttack1;
+                @Jet.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnJet;
+                @Jet.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnJet;
+                @Jet.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnJet;
+                @CameraMove.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnCameraMove;
+                @CameraMove.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnCameraMove;
+                @CameraMove.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnCameraMove;
             }
             m_Wrapper.m_PlayerControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -415,6 +465,12 @@ public class @ControlAction : IInputActionCollection, IDisposable
                 @Attack1.started += instance.OnAttack1;
                 @Attack1.performed += instance.OnAttack1;
                 @Attack1.canceled += instance.OnAttack1;
+                @Jet.started += instance.OnJet;
+                @Jet.performed += instance.OnJet;
+                @Jet.canceled += instance.OnJet;
+                @CameraMove.started += instance.OnCameraMove;
+                @CameraMove.performed += instance.OnCameraMove;
+                @CameraMove.canceled += instance.OnCameraMove;
             }
         }
     }
@@ -427,5 +483,7 @@ public class @ControlAction : IInputActionCollection, IDisposable
         void OnShotL(InputAction.CallbackContext context);
         void OnShotR(InputAction.CallbackContext context);
         void OnAttack1(InputAction.CallbackContext context);
+        void OnJet(InputAction.CallbackContext context);
+        void OnCameraMove(InputAction.CallbackContext context);
     }
 }
