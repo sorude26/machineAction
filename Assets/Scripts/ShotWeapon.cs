@@ -23,6 +23,8 @@ public class ShotWeapon : MonoBehaviour
     [SerializeField]
     float m_shotInterval = 0.2f;
     int m_shotCount = 0;
+    [SerializeField]
+    protected float m_diffusivity = 0.01f;
     public bool ShotNow { get; private set; }
     enum AttackPos
     {
@@ -60,9 +62,37 @@ public class ShotWeapon : MonoBehaviour
                 particle.Play();
             }
         }
+        if (m_diffusivity > 0.09f)
+        {
+            DiffusionShot();
+        }
+        Vector3 moveDir = transform.forward;
+        moveDir.x += Random.Range(0, m_diffusivity);
+        moveDir.y += Random.Range(0, m_diffusivity);
+        moveDir.z += Random.Range(0, m_diffusivity);
+        moveDir.x -= Random.Range(0, m_diffusivity);
+        moveDir.y -= Random.Range(0, m_diffusivity);
+        moveDir.z -= Random.Range(0, m_diffusivity);
         var shot = Instantiate(m_bullet);
         shot.transform.position = m_muzzle.position;
-        shot.ShotRb.AddForce(transform.forward * m_power, ForceMode.Impulse);
+        shot.ShotRb.AddForce(moveDir * m_power, ForceMode.Impulse);
+    }
+    void DiffusionShot()
+    {
+        for (int i = 1; i < m_shotCount; i++)
+        {
+            Vector3 moveDir = transform.forward;
+            moveDir.x += Random.Range(0, m_diffusivity);
+            moveDir.y += Random.Range(0, m_diffusivity);
+            moveDir.z += Random.Range(0, m_diffusivity);
+            moveDir.x -= Random.Range(0, m_diffusivity);
+            moveDir.y -= Random.Range(0, m_diffusivity);
+            moveDir.z -= Random.Range(0, m_diffusivity);
+            var shot = Instantiate(m_bullet);
+            shot.transform.position = m_muzzle.position;
+            shot.ShotRb.AddForce(moveDir * m_power, ForceMode.Impulse);
+        }
+        m_shotCount = 0;
     }
     public void StartShot()
     {

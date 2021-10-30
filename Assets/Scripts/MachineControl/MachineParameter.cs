@@ -25,6 +25,10 @@ public class MachineParameter : MonoBehaviour
     [SerializeField]
     float m_turnSpeed = 2f;
     public float TurnSpeed { get => m_turnSpeed; }
+    [Tooltip("胴体旋回速度")]
+    [SerializeField]
+    float m_bodyTurnSpeed = 0.1f;
+    public float BodyTurnSpeed { get => m_bodyTurnSpeed; }
     [Tooltip("ジャンプ力")]
     [SerializeField]
     float m_jumpPower = 9f;

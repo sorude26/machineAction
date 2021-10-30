@@ -153,6 +153,6 @@ public class MachineController : MonoBehaviour
     }
     void BodyTurn(Vector2 dir)
     {
-        m_body.LookMove(dir);
+        m_body.LookMove(dir,m_parameter.BodyTurnSpeed);
     }
 }

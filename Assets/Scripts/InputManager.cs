@@ -55,6 +55,7 @@ namespace GameScene
             m_inputActions.PlayerController.ShotR.canceled += context => { EndShotR(); };
             m_inputActions.PlayerController.Attack1.canceled += context => { EndAttack(); };
             m_inputActions.PlayerController.Jet.canceled += context => { OnJet(); };
+            StartCoroutine(AttackUpdate());
         }
         void OnMove(Vector2 dir)
         {
@@ -148,7 +149,7 @@ namespace GameScene
             if (!m_shot1)
             {
                 m_shot1 = true;
-                StartCoroutine(Shot());
+                //StartCoroutine(Shot());
             }
         }        
         void OnShotL()
@@ -156,7 +157,7 @@ namespace GameScene
             if (!m_shotL)
             {
                 m_shotL = true;
-                StartCoroutine(ShotL());
+                //StartCoroutine(ShotL());
             }
         }
         void OnShotR()
@@ -164,7 +165,7 @@ namespace GameScene
             if (!m_shotR)
             {
                 m_shotR = true;
-                StartCoroutine(ShotR());
+                //StartCoroutine(ShotR());
             }
         }
         void OnAttack()
@@ -172,7 +173,7 @@ namespace GameScene
             if (!m_attack)
             {
                 m_attack = true;
-                StartCoroutine(Attack());
+                //StartCoroutine(Attack());
             }
         }
         void OnJet()
@@ -194,6 +195,29 @@ namespace GameScene
         void EndAttack()
         {
             m_attack = false;
+        }
+        IEnumerator AttackUpdate()
+        {
+            while (true)
+            {
+                if (m_shot1)
+                {
+                    OnFirstInputShot?.Invoke();
+                }
+                if (m_shotL)
+                {
+                    OnFirstInputShotL?.Invoke();
+                }
+                if (m_shotR)
+                {
+                    OnFirstInputShotR?.Invoke();
+                }
+                if (m_attack)
+                {
+                    OnFirstInputAttack?.Invoke();
+                }
+                yield return null;
+            }
         }
         IEnumerator Shot()
         {
