@@ -21,7 +21,10 @@ public class LegControl : MonoBehaviour
     bool m_landing = default;
     bool m_float = default;
     float m_landingTime = 0.5f;
-    float m_landingTimer = 0;
+    float m_landingTimer = 0; 
+    private void Start()
+    {
+    }
     public void SetLandingTime(float time)
     {
         m_landingTime = time;
@@ -193,6 +196,8 @@ public class LegControl : MonoBehaviour
     void Stop()
     {
         OnStop?.Invoke();
+        attackCount = 0;
+        attack = false;
     }
     void GroundCheck()
     {
@@ -201,5 +206,41 @@ public class LegControl : MonoBehaviour
     void ChangeAnimation(string changeTarget,float changeTime = 0.2f)
     {
         m_animator.CrossFadeInFixedTime(changeTarget, changeTime);
+    }
+    int attackCount = 0;
+    bool attack = false;
+    public void HandAttackRight()
+    {
+        if (!m_isGround)
+        {
+            return;
+        }
+        if (attackCount == 0)
+        {
+            attackCount++;
+            ChangeAnimation("AttackR");
+            return;
+        }
+        attack = true;
+    }
+    void Attack()
+    {
+        if (!m_isGround)
+        {
+            return;
+        }
+        if (attack)
+        {
+            if (attackCount == 1)
+            {
+                ChangeAnimation("AttackL");
+            }
+            else if (attackCount == 2)
+            {
+                ChangeAnimation("AttackR");
+            }
+            attackCount++;
+            attack = false;
+        }
     }
 }

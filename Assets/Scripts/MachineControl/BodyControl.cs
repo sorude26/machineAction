@@ -5,12 +5,70 @@ using UnityEngine;
 public class BodyControl : MonoBehaviour
 {
     [SerializeField]
+    Animator m_animator = default;
+    [SerializeField]
+    GroundCheck m_groundCheck = default;
+    [SerializeField]
     float m_maxUpAngle = 20f;
     [SerializeField]
     float m_maxDownAngle = -10f;
     float m_turn = 0;
     float m_upTurn = 0;
     public bool TurnNow { get; private set; }
+    private void Start()
+    {
+        GameScene.InputManager.Instance.OnFirstInputAttack += HandAttackRight;
+    }
+    public void ChangeSpeed(float speed)
+    {
+        if (m_animator)
+        {
+            m_animator.SetFloat("Speed", speed);
+        }
+    }
+    public void HandAttackLeft()
+    {
+    }
+    int attackCount = 0;
+    bool attack = false;
+    public void HandAttackRight()
+    {
+        if (attackCount == 0)
+        {
+            attackCount++;
+            if (m_groundCheck.IsGrounded())
+            {
+                ChangeAnimation("attackSwingRArm");
+            }
+            else
+            {
+                ChangeAnimation("attackSwingRArm3");
+            }
+            return;
+        }
+        attack = true;
+    }
+    void Attack()
+    {
+        if (attack)
+        {
+            if (attackCount == 1)
+            {
+                ChangeAnimation("attackSwingRArm2");
+            }
+            else if (attackCount == 2)
+            {
+                ChangeAnimation("attackSwingRArm3");
+            }
+            attackCount++;
+            attack = false;
+        }
+    }
+    void AttackEnd()
+    {
+        attackCount = 0;
+        attack = false;
+    }
     public void LookMove(Vector2 dir,float turnSpeed)
     {
         if (TurnNow)
@@ -102,5 +160,9 @@ public class BodyControl : MonoBehaviour
             yield return null;
         }
         TurnNow = false;
+    }
+    void ChangeAnimation(string changeTarget, float changeTime = 0.2f)
+    {
+        m_animator.CrossFadeInFixedTime(changeTarget, changeTime);
     }
 }

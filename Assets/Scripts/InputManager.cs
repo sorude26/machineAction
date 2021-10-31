@@ -173,7 +173,7 @@ namespace GameScene
             if (!m_attack)
             {
                 m_attack = true;
-                //StartCoroutine(Attack());
+                OnFirstInputAttack?.Invoke();
             }
         }
         void OnJet()
@@ -214,7 +214,7 @@ namespace GameScene
                 }
                 if (m_attack)
                 {
-                    OnFirstInputAttack?.Invoke();
+                    //OnFirstInputAttack?.Invoke();
                 }
                 yield return null;
             }
