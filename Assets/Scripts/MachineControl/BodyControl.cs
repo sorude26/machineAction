@@ -9,6 +9,8 @@ public class BodyControl : MonoBehaviour
     [SerializeField]
     GroundCheck m_groundCheck = default;
     [SerializeField]
+    LegControl m_leg = default;
+    [SerializeField]
     float m_maxUpAngle = 20f;
     [SerializeField]
     float m_maxDownAngle = -10f;
@@ -39,6 +41,7 @@ public class BodyControl : MonoBehaviour
             if (m_groundCheck.IsGrounded())
             {
                 ChangeAnimation("attackSwingRArm");
+                m_leg?.AttackMoveR();
             }
             else
             {
@@ -55,10 +58,12 @@ public class BodyControl : MonoBehaviour
             if (attackCount == 1)
             {
                 ChangeAnimation("attackSwingRArm2");
+                m_leg?.AttackMoveL();
             }
             else if (attackCount == 2)
             {
                 ChangeAnimation("attackSwingRArm3");
+                m_leg?.AttackMoveR();
             }
             attackCount++;
             attack = false;

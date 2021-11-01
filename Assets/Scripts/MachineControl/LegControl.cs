@@ -171,6 +171,14 @@ public class LegControl : MonoBehaviour
         }
         m_turn = 0;
     }
+    void AttackMove()
+    {
+        OnWalk?.Invoke(1);
+    }
+    void AttackMoveStrong()
+    {
+        OnWalk?.Invoke(2);
+    }
     void TurnLeft()
     {
         OnTurnLeft?.Invoke();
@@ -196,8 +204,6 @@ public class LegControl : MonoBehaviour
     void Stop()
     {
         OnStop?.Invoke();
-        attackCount = 0;
-        attack = false;
     }
     void GroundCheck()
     {
@@ -207,40 +213,21 @@ public class LegControl : MonoBehaviour
     {
         m_animator.CrossFadeInFixedTime(changeTarget, changeTime);
     }
-    int attackCount = 0;
-    bool attack = false;
-    public void HandAttackRight()
+    
+    public void AttackMoveR()
     {
-        if (!m_isGround)
+        if (m_jump || m_float || m_landing)
         {
             return;
         }
-        if (attackCount == 0)
-        {
-            attackCount++;
-            ChangeAnimation("AttackR");
-            return;
-        }
-        attack = true;
+        ChangeAnimation("AttackR1");
     }
-    void Attack()
+    public void AttackMoveL()
     {
-        if (!m_isGround)
+        if (m_jump || m_float || m_landing)
         {
             return;
         }
-        if (attack)
-        {
-            if (attackCount == 1)
-            {
-                ChangeAnimation("AttackL");
-            }
-            else if (attackCount == 2)
-            {
-                ChangeAnimation("AttackR");
-            }
-            attackCount++;
-            attack = false;
-        }
+        ChangeAnimation("AttackL1");
     }
 }
