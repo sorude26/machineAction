@@ -284,6 +284,17 @@ public class @ControlAction : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""256931a1-ffc0-4d75-9aba-9146c96e0444"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShotL"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""d73836a0-40e4-4112-8a43-c485924f3aee"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
@@ -295,8 +306,30 @@ public class @ControlAction : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""bcc69ddc-a543-46df-acb4-cba952c5e3ba"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShotR"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""e51cadd9-12fe-43b9-8723-3529759987c8"",
                     ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""107f13ca-9ec1-4f86-a2da-8dde5c3a438e"",
+                    ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
