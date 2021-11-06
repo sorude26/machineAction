@@ -9,6 +9,8 @@ public class BodyControl : MonoBehaviour
     [SerializeField]
     GroundCheck m_groundCheck = default;
     [SerializeField]
+    Transform m_camera = default;
+    [SerializeField]
     LegControl m_leg = default;
     [SerializeField]
     float m_maxUpAngle = 20f;
@@ -40,12 +42,12 @@ public class BodyControl : MonoBehaviour
             attackCount++;
             if (m_groundCheck.IsGrounded())
             {
-                ChangeAnimation("attackSwingRArm");
+                ChangeAnimation("attackSwingLArm");
                 m_leg?.AttackMoveR();
             }
             else
             {
-                ChangeAnimation("attackSwingRArm3");
+                ChangeAnimation("attackSwingLArm3");
             }
             return;
         }
@@ -57,12 +59,12 @@ public class BodyControl : MonoBehaviour
         {
             if (attackCount == 1)
             {
-                ChangeAnimation("attackSwingRArm2");
+                ChangeAnimation("attackSwingLArm2");
                 m_leg?.AttackMoveL();
             }
             else if (attackCount == 2)
             {
-                ChangeAnimation("attackSwingRArm3");
+                ChangeAnimation("attackSwingLArm3");
                 m_leg?.AttackMoveR();
             }
             attackCount++;
@@ -117,7 +119,7 @@ public class BodyControl : MonoBehaviour
         }
         Vector3 dir = Quaternion.Euler(m_upTurn, m_turn, 0) * Vector3.forward;
         TurnNow = true;
-        StartCoroutine(Turn(transform, 1f, dir));
+        StartCoroutine(Turn(m_camera, 1f, dir));
     }
     void UpTurn(float q)
     {
@@ -149,7 +151,7 @@ public class BodyControl : MonoBehaviour
         }
         Vector3 dir = Quaternion.Euler(m_upTurn, m_turn, 0) * Vector3.forward;
         TurnNow = true;
-        StartCoroutine(Turn(transform, 0.8f, dir));
+        StartCoroutine(Turn(m_camera, 0.8f, dir));
     }
     IEnumerator Turn(Transform tragetTransform, float turnSpeed, Vector3 targetDir)
     {
