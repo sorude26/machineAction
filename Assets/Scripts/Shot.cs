@@ -6,7 +6,7 @@ using UnityEngine;
 public class Shot : MonoBehaviour
 {
     [SerializeField]
-    GameObject m_effect = default;
+    EffectType m_effect = default;
     [SerializeField]
     Rigidbody m_rb = default;
     public Rigidbody ShotRb { get => m_rb; }
@@ -14,8 +14,13 @@ public class Shot : MonoBehaviour
     {
         if (other.tag == "Ground")
         {
-            Instantiate(m_effect).transform.position = transform.position;
-            Destroy(gameObject);
+            var effect = EffectPool.Get(m_effect, transform.position);
+            if (effect)
+            {
+                effect.Particle.Play();
+            }
+            m_rb.velocity = Vector3.zero;
+            gameObject.SetActive(false);
         }
     }
 }

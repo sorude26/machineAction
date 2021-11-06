@@ -7,7 +7,7 @@ public class ShotWeapon : MonoBehaviour
     [SerializeField]
     AttackPos m_attackPos = AttackPos.Shot;
     [SerializeField]
-    Shot m_bullet = default;
+    BulletType m_bullet = default;
     [SerializeField]
     Transform m_muzzle = default;
     [SerializeField]
@@ -73,9 +73,11 @@ public class ShotWeapon : MonoBehaviour
         moveDir.x -= Random.Range(0, m_diffusivity);
         moveDir.y -= Random.Range(0, m_diffusivity);
         moveDir.z -= Random.Range(0, m_diffusivity);
-        var shot = Instantiate(m_bullet);
-        shot.transform.position = m_muzzle.position;
-        shot.ShotRb.AddForce(moveDir * m_power, ForceMode.Impulse);
+        var shot = BulletPool.Get(m_bullet, m_muzzle.position);
+        if (shot)
+        {
+            shot.ShotRb.AddForce(moveDir * m_power, ForceMode.Impulse);
+        }
     }
     void DiffusionShot()
     {
@@ -87,10 +89,12 @@ public class ShotWeapon : MonoBehaviour
             moveDir.z += Random.Range(0, m_diffusivity);
             moveDir.x -= Random.Range(0, m_diffusivity);
             moveDir.y -= Random.Range(0, m_diffusivity);
-            moveDir.z -= Random.Range(0, m_diffusivity);
-            var shot = Instantiate(m_bullet);
-            shot.transform.position = m_muzzle.position;
-            shot.ShotRb.AddForce(moveDir * m_power, ForceMode.Impulse);
+            moveDir.z -= Random.Range(0, m_diffusivity); 
+            var shot = BulletPool.Get(m_bullet, m_muzzle.position);
+            if (shot)
+            {
+                shot.ShotRb.AddForce(moveDir * m_power, ForceMode.Impulse);
+            }
         }
         m_shotCount = 0;
     }
