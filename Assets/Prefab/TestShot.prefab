@@ -9734,7 +9734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb51dc29e88c75c499782565b4948935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_effect: {fileID: 554949552377040616, guid: 6bb32e3a55c0a434fb0c0c07276a0f79, type: 3}
+  m_effect: 1
   m_rb: {fileID: 7941519406880972311}
 --- !u!54 &7941519406880972311
 Rigidbody:
