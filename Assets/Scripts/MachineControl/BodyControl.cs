@@ -42,12 +42,12 @@ public class BodyControl : MonoBehaviour
             attackCount++;
             if (m_groundCheck.IsGrounded())
             {
-                ChangeAnimation("attackSwingLArm");
+                ChangeAnimation("attackSwingDArm");
                 m_leg?.AttackMoveR();
             }
             else
             {
-                ChangeAnimation("attackSwingLArm3");
+                ChangeAnimation("attackSwingDArm3");
             }
             return;
         }
@@ -59,12 +59,12 @@ public class BodyControl : MonoBehaviour
         {
             if (attackCount == 1)
             {
-                ChangeAnimation("attackSwingLArm2");
+                ChangeAnimation("attackSwingDArm2");
                 m_leg?.AttackMoveL();
             }
             else if (attackCount == 2)
             {
-                ChangeAnimation("attackSwingLArm3");
+                ChangeAnimation("attackSwingDArm3");
                 m_leg?.AttackMoveR();
             }
             attackCount++;

@@ -34,11 +34,14 @@ public class MachineController : MonoBehaviour
         m_leg.OnJump += StartJump;
         m_leg.OnStop += Stop;
         m_leg.SetLandingTime(m_parameter.LandingTime);
+        m_leg.ChangeSpeed(m_parameter.ActionSpeed);
+        m_body.ChangeSpeed(m_parameter.ActionSpeed);
     }
 
     private void OnValidate()
     {
         m_leg.ChangeSpeed(m_parameter.ActionSpeed);
+        m_body.ChangeSpeed(m_parameter.ActionSpeed);
         m_leg.SetLandingTime(m_parameter.LandingTime);
     }
     private void Move(float horizonal, float vertical)
