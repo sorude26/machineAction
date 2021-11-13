@@ -14,6 +14,9 @@ public class LegControl : MonoBehaviour
     public event Action OnTurnRight;
     public event Action<Vector3> OnJump;
     public event Action OnStop;
+    public event Action OnLanding;
+    public event Action OnJet;
+    public event Action OnBrake;
     int m_walk = default;
     int m_turn = default;
     bool m_jump = default;
@@ -21,10 +24,12 @@ public class LegControl : MonoBehaviour
     bool m_landing = default;
     bool m_float = default;
     float m_landingTime = 0.5f;
-    float m_landingTimer = 0; 
-    private void Start()
+    float m_landingTimer = 0;
+    MachineController m_machine = default;
+    public void Set(MachineController controller)
     {
-    }
+        m_machine = controller;
+    } 
     public void SetLandingTime(float time)
     {
         m_landingTime = time;
@@ -133,7 +138,90 @@ public class LegControl : MonoBehaviour
         m_jump = true;
         m_isGround = false;
         StartCoroutine(JumpFall());
-        ChangeAnimation("JunpStart");
+        if (m_walk != 0)
+        {
+            ChangeAnimation("JunpStart");
+            return;
+        }
+        if (m_turn > 0)
+        {
+            ChangeAnimation("JunpStartR");
+        }
+        else if (m_turn < 0)
+        {
+
+            ChangeAnimation("JunpStartL");
+        }
+        else
+        {
+            ChangeAnimation("JunpStart");
+        }
+    }
+    public void StartJet()
+    {
+        if (m_landing)
+        {
+            return;
+        }
+        if (m_jump)
+        {
+            if (m_isGround)
+            {
+                return;
+            }
+            if (m_machine.InputAxis.y < 0)
+            {
+                if (m_machine.InputAxis.x > 0)
+                {
+                    ChangeAnimation("JetMoveFlyR", 0.01f);
+                }
+                else if (m_machine.InputAxis.x < 0)
+                {
+                    ChangeAnimation("JetMoveFlyL", 0.01f);
+                }
+                else
+                {
+                    ChangeAnimation("JetMoveFlyB", 0.01f);
+                }
+            }
+            else
+            {
+                if (m_machine.InputAxis.x > 0)
+                {
+                    ChangeAnimation("JetMoveFlyR", 0.01f);
+                }
+                else if (m_machine.InputAxis.x < 0)
+                {
+                    ChangeAnimation("JetMoveFlyL", 0.01f);
+                }
+                else
+                {
+                    ChangeAnimation("JetMoveFly", 0.01f);
+                }
+            }
+        }
+        else
+        {
+            if (m_machine.InputAxis.y < 0)
+            {
+                ChangeAnimation("JetMoveB", 0.01f);
+            }
+            else
+            {
+                if (m_machine.InputAxis.x > 0)
+                {
+                    ChangeAnimation("JetMoveR", 0.01f);
+                }
+                else if (m_machine.InputAxis.x < 0)
+                {
+                    ChangeAnimation("JetMoveL", 0.01f);
+                }
+                else
+                {
+                    ChangeAnimation("JetMove", 0.01f);
+                }
+            }
+        }
     }
     IEnumerator JumpFall()
     {
@@ -141,7 +229,9 @@ public class LegControl : MonoBehaviour
         {
             yield return null;
         }
-        ChangeAnimation("JunpEnd");        
+        OnLanding?.Invoke();
+        CameraController.Shake();
+        ChangeAnimation("JunpEnd");
     }
     IEnumerator LandingWait()
     {
@@ -179,6 +269,10 @@ public class LegControl : MonoBehaviour
     {
         OnWalk?.Invoke(2);
     }
+    void Shake()
+    {
+        CameraController.LightShake();
+    }
     void TurnLeft()
     {
         OnTurnLeft?.Invoke();
@@ -201,9 +295,17 @@ public class LegControl : MonoBehaviour
         m_landing = true;
         StartCoroutine(LandingWait());
     }
+    void Jet()
+    {
+        OnJet?.Invoke();
+    }
     void Stop()
     {
         OnStop?.Invoke();
+    }
+    void Brake()
+    {
+        OnBrake?.Invoke();
     }
     void GroundCheck()
     {

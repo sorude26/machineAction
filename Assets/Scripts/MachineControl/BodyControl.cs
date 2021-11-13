@@ -18,6 +18,7 @@ public class BodyControl : MonoBehaviour
     float m_maxDownAngle = -10f;
     float m_turn = 0;
     float m_upTurn = 0;
+    string m_currentAnimation = default;
     public bool TurnNow { get; private set; }
     private void Start()
     {
@@ -74,7 +75,8 @@ public class BodyControl : MonoBehaviour
     void AttackEnd()
     {
         attackCount = 0;
-        attack = false;
+        attack = false; 
+        m_currentAnimation = default;
     }
     public void LookMove(Vector2 dir,float turnSpeed)
     {
@@ -170,6 +172,10 @@ public class BodyControl : MonoBehaviour
     }
     void ChangeAnimation(string changeTarget, float changeTime = 0.2f)
     {
-        m_animator.CrossFadeInFixedTime(changeTarget, changeTime);
+        if (m_currentAnimation != changeTarget)
+        {
+            m_currentAnimation = changeTarget;
+            m_animator.CrossFadeInFixedTime(changeTarget, changeTime);
+        }
     }
 }

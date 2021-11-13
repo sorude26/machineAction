@@ -340,7 +340,18 @@ public class @ControlAction : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ec5f9452-0660-48ad-841a-e2741ddbf98e"",
-                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jet"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d1442c91-3854-411a-9d60-d9239fe133b4"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

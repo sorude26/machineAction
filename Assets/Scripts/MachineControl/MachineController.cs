@@ -17,22 +17,35 @@ public class MachineController : MonoBehaviour
     LegControl m_leg = default;
     [SerializeField]
     BodyControl m_body = default;
+    [SerializeField]
+    BoosterControl m_booster = default;
     Rigidbody m_rb = default;
     [SerializeField]
     bool m_fly = default;
+    bool m_jump = false;
+    bool m_landing = false;
+    [SerializeField]
+    float m_boosterTime = 2;
+    float m_boosterTimer = -1;
+    Vector3 m_inputAxis = Vector3.zero;
+    public Vector3 InputAxis { get => m_inputAxis; }
     private void Start()
     {
         GameScene.InputManager.Instance.OnInputAxisRaw += Move;
         GameScene.InputManager.Instance.OnInputAxisRawExit += MoveEnd;
-        GameScene.InputManager.Instance.OnInputJump += Jump;
-        GameScene.InputManager.Instance.OnFirstInputBooster += ChangeFloat;
-        GameScene.InputManager.Instance.OnInputCameraRaw += BodyTurn;
+        GameScene.InputManager.Instance.OnFirstInputJump += Jump;
+        GameScene.InputManager.Instance.OnInputJump += Boost;
+        GameScene.InputManager.Instance.OnFirstInputBooster += JetStart;
         m_rb = GetComponent<Rigidbody>();
         m_leg.OnWalk += Walk;
         m_leg.OnTurnLeft += TurnLeft;
         m_leg.OnTurnRight += TurnRight;
         m_leg.OnJump += StartJump;
         m_leg.OnStop += Stop;
+        m_leg.OnLanding += Landing;
+        m_leg.OnJet += Jet;
+        m_leg.OnBrake += Brake;
+        m_leg.Set(this);
         m_leg.SetLandingTime(m_parameter.LandingTime);
         m_leg.ChangeSpeed(m_parameter.ActionSpeed);
         m_body.ChangeSpeed(m_parameter.ActionSpeed);
@@ -46,6 +59,7 @@ public class MachineController : MonoBehaviour
     }
     private void Move(float horizonal, float vertical)
     {
+        m_inputAxis = new Vector3(horizonal, 0, vertical);
         if (!m_fly)
         {
             if (m_groundCheck.IsGrounded())
@@ -58,15 +72,27 @@ public class MachineController : MonoBehaviour
                 {
                     m_leg.WalkStart(-1);
                 }
+                if (horizonal > 0)
+                {
+                    m_leg.TurnStartRight();
+                }
+                else if (horizonal < 0)
+                {
+                    m_leg.TurnStartLeft();
+                }
             }
-            if (horizonal > 0)
+            else if(m_jump)
             {
-                m_leg.TurnStartRight();
+                if (horizonal > 0)
+                {
+                    m_trunControl.Turn(m_rb, 1, m_parameter.TurnPower * 0.1f, m_parameter.TurnSpeed * 0.1f);
+                }
+                else if (horizonal < 0)
+                {
+                    m_trunControl.Turn(m_rb, -1, m_parameter.TurnPower * 0.1f, m_parameter.TurnSpeed * 0.1f);
+                }
             }
-            else if (horizonal < 0)
-            {
-                m_leg.TurnStartLeft();
-            }
+
         }
         else
         {
@@ -92,6 +118,14 @@ public class MachineController : MonoBehaviour
             }
             Vector3 dir = transform.right * h + transform.forward * v;
             m_moveControl.MoveFloat(m_rb, dir, m_parameter.FloatSpeed, m_parameter.MaxFloatSpeed);
+            if (horizonal > 0)
+            {
+                m_trunControl.Turn(m_rb, 1, m_parameter.TurnPower * 0.05f, m_parameter.TurnSpeed * 0.1f);
+            }
+            else if (horizonal < 0)
+            {
+                m_trunControl.Turn(m_rb, -1, m_parameter.TurnPower * 0.05f, m_parameter.TurnSpeed * 0.1f);
+            }
         }
     }
     private void MoveEnd()
@@ -102,7 +136,7 @@ public class MachineController : MonoBehaviour
             if (m_groundCheck.IsGrounded())
             {
                 Stop();
-                m_rb.velocity = Vector3.zero;
+                Brake();
             }
         }
     }
@@ -119,14 +153,52 @@ public class MachineController : MonoBehaviour
         if (m_fly)
         {
             Stop();
-            m_moveControl.Jet(m_rb, transform.forward + Vector3.up * 0.5f, m_parameter.JetPower);
+            m_moveControl.Jet(m_rb,Vector3.up * 0.5f, m_parameter.JetPower);
             return;
+        }
+        if (m_boosterTimer <= -1 || m_boosterTimer > 0)
+        {
+            m_booster.Boost();
         }
         Stop();
         m_leg.StartJump();
     }
+    public void Boost()
+    {
+        if (m_jump && m_boosterTimer > 0)
+        {
+            m_rb.AddForce(Vector3.zero, ForceMode.Acceleration);
+            m_boosterTimer -= Time.deltaTime;
+            Vector3 vector = transform.forward * m_inputAxis.z + transform.right * m_inputAxis.x;
+            m_moveControl.Jet(m_rb, Vector3.up + vector * m_parameter.JetControlPower, m_parameter.JetPower);
+            if (m_boosterTimer <= 0)
+            {
+                m_booster.BoostEnd();
+            }
+        }
+    }
+    public void JetStart()
+    {
+        m_leg.StartJet();
+        m_booster.Boost();
+    }
+    void Jet()
+    {
+        Vector3 vector = transform.forward * m_inputAxis.z + transform.right * m_inputAxis.x;
+        m_rb.AddForce(vector * m_parameter.FloatSpeed + Vector3.up * 0.7f, ForceMode.Impulse);
+    }
+    void Landing()
+    {
+        m_jump = false;
+        m_booster.BoostEnd();
+        m_boosterTimer = -1;
+        Brake();
+        Stop();
+    }
     public void StartJump(Vector3 dir)
     {
+        m_boosterTimer = m_parameter.JetTime;
+        m_jump = true;
         m_rb.angularVelocity = Vector3.zero;
         m_moveControl.Jump(m_rb, dir, m_parameter.JumpPower);
     }
@@ -141,6 +213,13 @@ public class MachineController : MonoBehaviour
     void Stop()
     {
         m_rb.angularVelocity = Vector3.zero;
+        m_inputAxis = Vector3.zero;
+    }
+    void Brake()
+    {
+        var v = m_rb.velocity;
+        m_rb.velocity = v * 0.3f; 
+        m_booster.BoostEnd();
     }
     void ChangeFloat()
     {

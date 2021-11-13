@@ -7,6 +7,8 @@ public class MachineBuildControl : MonoBehaviour
     [SerializeField]
     UnitBuildData m_test = default;
     [SerializeField]
+    Transform m_camera = default;
+    [SerializeField]
     Transform[] m_bodyBase = new Transform[2];
     [SerializeField]
     Transform[] m_rightArm = new Transform[4];
@@ -53,6 +55,7 @@ public class MachineBuildControl : MonoBehaviour
         m_body = Instantiate(GameManager.Instanse.PartsList.GetBody(data.BodyID));
         m_body.transform.position = m_bodyBase[0].position;
         m_bodyBase[1].position = m_body.HeadPos.position;
+        m_camera.transform.position = m_body.HeadPos.position;
         m_body.transform.SetParent(m_bodyBase[0]);
         m_rightArm[0].position = m_body.RArmPos.position;
         m_leftArm[0].position = m_body.LArmPos.position;
