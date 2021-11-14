@@ -241,7 +241,7 @@ public class @ControlAction : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a029cf68-843a-4cd8-8846-f06d64587f7d"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -274,7 +274,7 @@ public class @ControlAction : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c5aa6eee-b333-43b0-832f-a5c2e141d234"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -296,7 +296,7 @@ public class @ControlAction : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d73836a0-40e4-4112-8a43-c485924f3aee"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

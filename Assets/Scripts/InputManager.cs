@@ -17,6 +17,7 @@ namespace GameScene
         public event Action OnInputAxisRawExit;
         public event Action OnFirstInputJump;
         public event Action OnInputJump;
+        public event Action OnInputJumpEnd;
         public event Action OnFirstInputBooster;
         public event Action OnFirstInputShot;
         public event Action OnFirstInputShotL;
@@ -54,8 +55,8 @@ namespace GameScene
             m_inputActions.PlayerController.ShotL.canceled += context => { EndShotL(); };
             m_inputActions.PlayerController.ShotR.canceled += context => { EndShotR(); };
             m_inputActions.PlayerController.Attack1.canceled += context => { EndAttack(); };
-            m_inputActions.PlayerController.Jet.canceled += context => { OnJet(); };
-            StartCoroutine(AttackUpdate());
+            m_inputActions.PlayerController.Jet.started += context => { OnJet(); };
+            StartCoroutine(ActionUpdate());
         }
         void OnMove(Vector2 dir)
         {
@@ -63,11 +64,11 @@ namespace GameScene
             float v = dir.y;
             if (new Vector2(h, v) != Vector2.zero)
             {
-                if (Math.Abs(v) < 0.02f)
+                if (Math.Abs(v) < 0.2f)
                 {
                     v = 0;
                 }
-                if (Math.Abs(h) < 0.02f)
+                if (Math.Abs(h) < 0.2f)
                 {
                     h = 0;
                 }
@@ -138,11 +139,12 @@ namespace GameScene
                 m_firstInputJump = true;
                 OnFirstInputJump?.Invoke();
             }
-            OnInputJump?.Invoke();
+           
         }
         void EndJump()
         {
             m_firstInputJump = false;
+            OnInputJumpEnd?.Invoke();
         }
         void OnShot()
         {
@@ -196,7 +198,7 @@ namespace GameScene
         {
             m_attack = false;
         }
-        IEnumerator AttackUpdate()
+        IEnumerator ActionUpdate()
         {
             while (true)
             {
@@ -216,40 +218,13 @@ namespace GameScene
                 {
                     //OnFirstInputAttack?.Invoke();
                 }
+                if (m_firstInputJump)
+                {
+                    OnInputJump?.Invoke();
+                }
                 yield return null;
             }
         }
-        IEnumerator Shot()
-        {
-            while (m_shot1)
-            {
-                OnFirstInputShot?.Invoke();
-                yield return new WaitForSeconds(0.05f);
-            }
-        }
-        IEnumerator ShotL()
-        {
-            while (m_shotL)
-            {
-                OnFirstInputShotL?.Invoke();
-                yield return new WaitForSeconds(0.05f);
-            }
-        }
-        IEnumerator ShotR()
-        {
-            while (m_shotR)
-            {
-                OnFirstInputShotR?.Invoke();
-                yield return new WaitForSeconds(0.05f);
-            }
-        }
-        IEnumerator Attack()
-        {
-            while (m_attack)
-            {
-                OnFirstInputAttack?.Invoke();
-                yield return new WaitForSeconds(0.05f);
-            }
-        }
+       
     }
 }
