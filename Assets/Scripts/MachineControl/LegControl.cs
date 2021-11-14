@@ -9,14 +9,6 @@ public class LegControl : MonoBehaviour
     Animator m_animator = default;
     [SerializeField]
     GroundCheck m_groundCheck = default;
-    public event Action<int> OnWalk;
-    public event Action OnTurnLeft;
-    public event Action OnTurnRight;
-    public event Action<Vector3> OnJump;
-    public event Action OnStop;
-    public event Action OnLanding;
-    public event Action OnJet;
-    public event Action OnBrake;
     int m_walk = default;
     int m_turn = default;
     bool m_jump = default;
@@ -163,13 +155,17 @@ public class LegControl : MonoBehaviour
         {
             return;
         }
+        if (m_machine.InputAxis == Vector3.zero)
+        {
+            return;
+        }
         if (m_jump)
         {
             if (m_isGround)
             {
                 return;
             }
-            if (m_machine.InputAxis.y < 0)
+            if (m_machine.InputAxis.y <= 0)
             {
                 if (m_machine.InputAxis.x > 0)
                 {
@@ -181,7 +177,7 @@ public class LegControl : MonoBehaviour
                 }
                 else
                 {
-                    ChangeAnimation("JetMoveFlyB", 0.01f);
+                    ChangeAnimation("JetMoveFly", 0.01f);
                 }
             }
             else
@@ -196,7 +192,7 @@ public class LegControl : MonoBehaviour
                 }
                 else
                 {
-                    ChangeAnimation("JetMoveFly", 0.01f);
+                    ChangeAnimation("JetMoveFlyB", 0.01f);
                 }
             }
         }
@@ -229,7 +225,7 @@ public class LegControl : MonoBehaviour
         {
             yield return null;
         }
-        OnLanding?.Invoke();
+        m_machine?.Landing();
         CameraController.Shake();
         ChangeAnimation("JunpEnd");
     }
@@ -250,7 +246,7 @@ public class LegControl : MonoBehaviour
 
     void Walk()
     {
-        OnWalk?.Invoke(m_walk);
+        m_machine?.Walk(m_walk);
         if (m_turn > 0)
         {
             TurnRight();
@@ -263,11 +259,11 @@ public class LegControl : MonoBehaviour
     }
     void AttackMove()
     {
-        OnWalk?.Invoke(1);
+        m_machine?.Walk(1);
     }
     void AttackMoveStrong()
     {
-        OnWalk?.Invoke(2);
+        m_machine?.Walk(2);
     }
     void Shake()
     {
@@ -275,16 +271,16 @@ public class LegControl : MonoBehaviour
     }
     void TurnLeft()
     {
-        OnTurnLeft?.Invoke();
+        m_machine?.Turn(-1);
     }
     void TurnRight()
     {
-        OnTurnRight?.Invoke();
+        m_machine?.Turn(1);
     }
     void Jump()
     {
-        Vector3 dir = transform.forward * m_walk + transform.right * m_turn;      
-        OnJump?.Invoke((Vector3.up + dir).normalized);
+        Vector3 dir = transform.forward * m_walk + transform.right * m_turn;
+        m_machine?.StartJump((Vector3.up + dir).normalized);
     }
     void Landing()
     {
@@ -297,22 +293,22 @@ public class LegControl : MonoBehaviour
     }
     void Jet()
     {
-        OnJet?.Invoke();
+        m_machine?.Jet();
     }
     void Stop()
     {
-        OnStop?.Invoke();
+        m_machine?.Stop();
     }
     void Brake()
     {
-        OnBrake?.Invoke();
+        m_machine?.Brake();
     }
     void GroundCheck()
     {
         m_isGround = m_groundCheck.IsGrounded();
     }
-    void ChangeAnimation(string changeTarget,float changeTime = 0.2f)
-    {
+    void ChangeAnimation(string changeTarget,float changeTime = 0.2f) 
+    { 
         m_animator.CrossFadeInFixedTime(changeTarget, changeTime);
     }
     

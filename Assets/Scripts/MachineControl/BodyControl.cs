@@ -18,7 +18,6 @@ public class BodyControl : MonoBehaviour
     float m_maxDownAngle = -10f;
     float m_turn = 0;
     float m_upTurn = 0;
-    string m_currentAnimation = default;
     public bool TurnNow { get; private set; }
     private void Start()
     {
@@ -43,12 +42,12 @@ public class BodyControl : MonoBehaviour
             attackCount++;
             if (m_groundCheck.IsGrounded())
             {
-                ChangeAnimation("attackSwingDArm");
+                ChangeAnimation("attackKnuckleRArm");
                 m_leg?.AttackMoveR();
             }
             else
             {
-                ChangeAnimation("attackSwingDArm3");
+                ChangeAnimation("attackKnuckleRArm");
             }
             return;
         }
@@ -60,13 +59,14 @@ public class BodyControl : MonoBehaviour
         {
             if (attackCount == 1)
             {
-                ChangeAnimation("attackSwingDArm2");
+                ChangeAnimation("attackKnuckleLArm");
                 m_leg?.AttackMoveL();
             }
             else if (attackCount == 2)
             {
-                ChangeAnimation("attackSwingDArm3");
+                ChangeAnimation("attackKnuckleRArm");
                 m_leg?.AttackMoveR();
+                attackCount = 0;
             }
             attackCount++;
             attack = false;
@@ -76,7 +76,6 @@ public class BodyControl : MonoBehaviour
     {
         attackCount = 0;
         attack = false; 
-        m_currentAnimation = default;
     }
     public void LookMove(Vector2 dir,float turnSpeed)
     {
@@ -170,12 +169,8 @@ public class BodyControl : MonoBehaviour
         }
         TurnNow = false;
     }
-    void ChangeAnimation(string changeTarget, float changeTime = 0.2f)
+    void ChangeAnimation(string changeTarget, float changeTime = 0.5f)
     {
-        if (m_currentAnimation != changeTarget)
-        {
-            m_currentAnimation = changeTarget;
-            m_animator.CrossFadeInFixedTime(changeTarget, changeTime);
-        }
+        m_animator.CrossFadeInFixedTime(changeTarget, changeTime);
     }
 }

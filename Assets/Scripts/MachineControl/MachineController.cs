@@ -23,7 +23,7 @@ public class MachineController : MonoBehaviour
     [SerializeField]
     bool m_fly = default;
     bool m_jump = false;
-    bool m_landing = false;
+    bool m_jet = false;
     [SerializeField]
     float m_boosterTime = 2;
     float m_boosterTimer = -1;
@@ -36,15 +36,7 @@ public class MachineController : MonoBehaviour
         GameScene.InputManager.Instance.OnFirstInputJump += Jump;
         GameScene.InputManager.Instance.OnInputJump += Boost;
         GameScene.InputManager.Instance.OnFirstInputBooster += JetStart;
-        m_rb = GetComponent<Rigidbody>();
-        m_leg.OnWalk += Walk;
-        m_leg.OnTurnLeft += TurnLeft;
-        m_leg.OnTurnRight += TurnRight;
-        m_leg.OnJump += StartJump;
-        m_leg.OnStop += Stop;
-        m_leg.OnLanding += Landing;
-        m_leg.OnJet += Jet;
-        m_leg.OnBrake += Brake;
+        m_rb = GetComponent<Rigidbody>();        
         m_leg.Set(this);
         m_leg.SetLandingTime(m_parameter.LandingTime);
         m_leg.ChangeSpeed(m_parameter.ActionSpeed);
@@ -179,15 +171,38 @@ public class MachineController : MonoBehaviour
     }
     public void JetStart()
     {
+        if (m_inputAxis == Vector3.zero)
+        {
+            return;
+        }
+        if (m_inputAxis.x != 0)
+        {
+            if (m_inputAxis.x > 0)
+            {
+                m_booster.BoostL();
+            }
+            else
+            {
+                m_booster.BoostR();
+            }
+        }
+        else
+        {
+            if (m_inputAxis.z > 0)
+            {
+                m_booster.BoostL();
+                m_booster.BoostR();
+            }
+        }
         m_leg.StartJet();
         m_booster.Boost();
     }
-    void Jet()
+    public void Jet()
     {
         Vector3 vector = transform.forward * m_inputAxis.z + transform.right * m_inputAxis.x;
         m_rb.AddForce(vector * m_parameter.FloatSpeed + Vector3.up * 0.7f, ForceMode.Impulse);
     }
-    void Landing()
+    public void Landing()
     {
         m_jump = false;
         m_booster.BoostEnd();
@@ -202,20 +217,24 @@ public class MachineController : MonoBehaviour
         m_rb.angularVelocity = Vector3.zero;
         m_moveControl.Jump(m_rb, dir, m_parameter.JumpPower);
     }
-    void TurnLeft()
+    public void TurnLeft()
     {
         m_trunControl.Turn(m_rb, -1, m_parameter.TurnPower, m_parameter.TurnSpeed);
     }
-    void TurnRight()
+    public void TurnRight()
     {
         m_trunControl.Turn(m_rb, 1, m_parameter.TurnPower, m_parameter.TurnSpeed);
     }
-    void Stop()
+    public void Turn(int angle)
+    {
+        m_trunControl.Turn(m_rb, angle, m_parameter.TurnPower, m_parameter.TurnSpeed);
+    }
+    public void Stop()
     {
         m_rb.angularVelocity = Vector3.zero;
         m_inputAxis = Vector3.zero;
     }
-    void Brake()
+    public void Brake()
     {
         var v = m_rb.velocity;
         m_rb.velocity = v * 0.3f; 
