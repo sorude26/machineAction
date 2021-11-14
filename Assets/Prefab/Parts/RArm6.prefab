@@ -654,7 +654,7 @@ MonoBehaviour:
   m_particle:
   - {fileID: 6666335719844953673}
   m_power: 150
-  m_triggerShotCount: 3
+  m_triggerShotCount: 1
   m_triggerInterval: 0.5
   m_shotInterval: 0.1
   m_diffusivity: 0.01
