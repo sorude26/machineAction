@@ -9769,7 +9769,7 @@ GameObject:
   - component: {fileID: 2387988415105965669}
   m_Layer: 0
   m_Name: TestShot1
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9865,6 +9865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_effect: 2
   m_rb: {fileID: 8608823795222648244}
+  m_power: 30
 --- !u!54 &8608823795222648244
 Rigidbody:
   m_ObjectHideFlags: 0

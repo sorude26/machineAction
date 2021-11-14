@@ -9641,7 +9641,7 @@ GameObject:
   - component: {fileID: 4066337863087445446}
   m_Layer: 0
   m_Name: TestShot
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9736,6 +9736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_effect: 1
   m_rb: {fileID: 7941519406880972311}
+  m_power: 5
 --- !u!54 &7941519406880972311
 Rigidbody:
   m_ObjectHideFlags: 0

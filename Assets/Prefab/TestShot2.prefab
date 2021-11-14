@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3572248089292438901}
   m_Layer: 0
   m_Name: TestShot2
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,9 +109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb51dc29e88c75c499782565b4948935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_effect: {fileID: 4022215221555141431, guid: 03d9a300e7667734f886db3e126e2220,
-    type: 3}
+  m_effect: 0
   m_rb: {fileID: 5615883408008679376}
+  m_power: 2
 --- !u!54 &5615883408008679376
 Rigidbody:
   m_ObjectHideFlags: 0
