@@ -933,7 +933,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2918777977628797108}
-  - component: {fileID: 4638026902309122466}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -960,25 +959,6 @@ Transform:
   m_Father: {fileID: 2918777977644477434}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4638026902309122466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2918777977628797109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf817040b9cb4944f8f57a9475d0eac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_partsID: 2
-  m_partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
-  m_partsObject:
-  - {fileID: 2918777977628797109}
-  m_anime: {fileID: 0}
-  m_muzzle: {fileID: 4638026902131592208}
-  m_muzzleFlash: {fileID: 4638026902131592209}
 --- !u!1 &2918777977644477435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,8 +1374,8 @@ MonoBehaviour:
   m_headParts: {fileID: 2918777977458316951}
   m_lArmParts: {fileID: 2918777978453842797}
   m_rArmParts: {fileID: 2918777978453842797}
-  m_weapon: {fileID: 4638026902309122493}
-  m_weaponShoulder: {fileID: 4638026902309122466}
+  m_weapon: {fileID: 0}
+  m_weaponShoulder: {fileID: 0}
   m_bodyPos: {fileID: 2918777977458316951}
 --- !u!1 &2918777977735479267
 GameObject:
@@ -2908,7 +2888,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2918777978453842797}
-  - component: {fileID: 4638026902309122493}
   m_Layer: 0
   m_Name: Arm
   m_TagString: Untagged
@@ -2933,25 +2912,6 @@ Transform:
   m_Father: {fileID: 2918777977644477434}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
---- !u!114 &4638026902309122493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2918777978453842798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf817040b9cb4944f8f57a9475d0eac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_partsID: 1
-  m_partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
-  m_partsObject:
-  - {fileID: 2918777978453842798}
-  m_anime: {fileID: 0}
-  m_muzzle: {fileID: 4638026901241845123}
-  m_muzzleFlash: {fileID: 4638026901241845120}
 --- !u!1 &2918777978568045565
 GameObject:
   m_ObjectHideFlags: 0

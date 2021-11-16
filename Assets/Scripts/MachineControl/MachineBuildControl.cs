@@ -11,9 +11,15 @@ public class MachineBuildControl : MonoBehaviour
     [SerializeField]
     Transform[] m_bodyBase = new Transform[2];
     [SerializeField]
+    Transform[] m_bodyControlBase = new Transform[2];
+    [SerializeField]
     Transform[] m_rightArm = new Transform[4];
     [SerializeField]
+    Transform[] m_rightControlBase = new Transform[4];
+    [SerializeField]
     Transform[] m_leftArm = new Transform[4];
+    [SerializeField]
+    Transform[] m_leftControlBase = new Transform[4];
     [SerializeField]
     Transform[] m_legBase = new Transform[5];
     [SerializeField]
@@ -56,29 +62,29 @@ public class MachineBuildControl : MonoBehaviour
         m_body.transform.position = m_bodyBase[0].position;
         m_bodyBase[1].position = m_body.HeadPos.position;
         m_camera.transform.position = m_body.HeadPos.position;
-        m_body.transform.SetParent(m_bodyBase[0]);
+        m_body.transform.SetParent(m_bodyControlBase[0]);
         m_rightArm[0].position = m_body.RArmPos.position;
         m_leftArm[0].position = m_body.LArmPos.position;
         m_rArm = Instantiate(GameManager.Instanse.PartsList.GetRArm(data.RArmID));
         m_rArm.transform.position = m_rightArm[0].position;
-        m_rArm.transform.SetParent(m_rightArm[0]);
+        m_rArm.transform.SetParent(m_rightControlBase[0]);
         m_rightArm[1].position = m_rArm.ArmTop.position;
         m_rightArm[2].position = m_rArm.ArmBottom.position;
         m_rightArm[3].position = m_rArm.Grip.position;
-        m_rArm.Grip.SetParent(m_rightArm[3]);
-        m_rArm.ArmBottom.SetParent(m_rightArm[2]);
-        m_rArm.ArmTop.SetParent(m_rightArm[1]);
+        m_rArm.Grip.SetParent(m_rightControlBase[3]);
+        m_rArm.ArmBottom.SetParent(m_rightControlBase[2]);
+        m_rArm.ArmTop.SetParent(m_rightControlBase[1]);
         m_lArm = Instantiate(GameManager.Instanse.PartsList.GetLArm(data.LArmID));
         m_lArm.transform.position = m_leftArm[0].position;
-        m_lArm.transform.SetParent(m_leftArm[0]);
+        m_lArm.transform.SetParent(m_leftControlBase[0]);
         m_leftArm[1].position = m_lArm.ArmTop.position;
         m_leftArm[2].position = m_lArm.ArmBottom.position;
         m_leftArm[3].position = m_lArm.Grip.position;
-        m_lArm.Grip.SetParent(m_leftArm[3]);
-        m_lArm.ArmBottom.SetParent(m_leftArm[2]);
-        m_lArm.ArmTop.SetParent(m_leftArm[1]);
+        m_lArm.Grip.SetParent(m_leftControlBase[3]);
+        m_lArm.ArmBottom.SetParent(m_leftControlBase[2]);
+        m_lArm.ArmTop.SetParent(m_leftControlBase[1]);
         m_head = Instantiate(GameManager.Instanse.PartsList.GetHead(data.HeadID));
         m_head.transform.position = m_bodyBase[1].position;
-        m_head.transform.SetParent(m_bodyBase[1]);
+        m_head.transform.SetParent(m_bodyControlBase[1]);
     }
 }

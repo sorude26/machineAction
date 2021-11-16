@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotWeapon : MonoBehaviour
+public class ShotWeapon : WeaponMaster
 {
     [SerializeField]
     AttackPos m_attackPos = AttackPos.Shot;
@@ -78,6 +78,7 @@ public class ShotWeapon : MonoBehaviour
         {
             shot.ShotRb.AddForce(moveDir * m_power, ForceMode.Impulse);
         }
+        CameraController.HitShake();
     }
     void DiffusionShot()
     {
@@ -149,5 +150,10 @@ public class ShotWeapon : MonoBehaviour
         }
         m_triggerTimer = 0;
         m_trigger = false;
+    }
+
+    public override void AttackAction()
+    {
+        StartShot();
     }
 }

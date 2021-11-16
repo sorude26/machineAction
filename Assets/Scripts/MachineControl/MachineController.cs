@@ -77,11 +77,11 @@ public class MachineController : MonoBehaviour
             {
                 if (horizonal > 0)
                 {
-                    m_trunControl.Turn(m_rb, 1, m_parameter.TurnPower * 0.1f, m_parameter.TurnSpeed * 0.1f);
+                    m_trunControl.Turn(m_rb, 1, m_parameter.TurnPower * 0.5f, m_parameter.TurnSpeed * 0.1f);
                 }
                 else if (horizonal < 0)
                 {
-                    m_trunControl.Turn(m_rb, -1, m_parameter.TurnPower * 0.1f, m_parameter.TurnSpeed * 0.1f);
+                    m_trunControl.Turn(m_rb, -1, m_parameter.TurnPower * 0.5f, m_parameter.TurnSpeed * 0.1f);
                 }
             }
 

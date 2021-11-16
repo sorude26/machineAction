@@ -20,8 +20,6 @@ public abstract class WeaponMaster : PartsMaster<WeaponData>
     public int Range { get => m_partsData.Range[m_partsID]; }
     /// <summary> 最低射程 </summary>
     public int MinRange { get => m_partsData.MinRange[m_partsID]; }
-    /// <summary> 最大対応高低差 </summary>
-    public float VerticalRange { get => m_partsData.VerticalRange[m_partsID]; }
     /// <summary> 武器種 </summary>
     public WeaponType Type { get => m_partsData.Type[m_partsID]; }
     /// <summary> 武装部位 </summary>
@@ -55,5 +53,6 @@ public abstract class WeaponMaster : PartsMaster<WeaponData>
     /// <summary>
     /// 攻撃開始
     /// </summary>
-    public abstract void AttackStart();
+    public abstract void AttackAction();
+    public virtual void AttackEnd() { }
 }
