@@ -8,21 +8,21 @@ using UnityEngine;
 public class GroundCheck : MonoBehaviour
 {
     [SerializeField]
-    Transform[] m_leftCheckPos = default;
+    Transform[] _leftCheckPos = default;
     [SerializeField]
-    Transform[] m_rightCheckPos = default;
+    Transform[] _rightCheckPos = default;
     [SerializeField]
-    Vector3 m_checkDir = Vector3.down;
+    Vector3 _checkDir = Vector3.down;
     [SerializeField]
-    float m_checkRange = 0.2f;
+    float _checkRange = 0.2f;
     public bool IsGrounded()
     {
         int leftCount = default;
         int rightCount = default;
-        foreach (var pos in m_leftCheckPos)
+        foreach (var pos in _leftCheckPos)
         {
             Vector3 start = pos.position;
-            Vector3 end = start + m_checkDir * m_checkRange;
+            Vector3 end = start + _checkDir * _checkRange;
             bool left = Physics.Linecast(start, end);
             if (left)
             {
@@ -33,10 +33,10 @@ public class GroundCheck : MonoBehaviour
                 }
             }
         }
-        foreach (var pos in m_rightCheckPos)
+        foreach (var pos in _rightCheckPos)
         {
             Vector3 start = pos.position;
-            Vector3 end = start + m_checkDir * m_checkRange;
+            Vector3 end = start + _checkDir * _checkRange;
             bool right = Physics.Linecast(start, end);
             if (right)
             {

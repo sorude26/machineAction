@@ -6,29 +6,26 @@ using UnityEngine;
 public class MachineController : MonoBehaviour
 {
     [SerializeField]
-    MachineParameter m_parameter = default;
+    MachineParameter _parameter = default;
     [SerializeField]
-    MoveControl m_moveControl = default;
+    MoveControl _moveControl = default;
     [SerializeField]
-    TurnControl m_trunControl = default;
+    TurnControl _trunControl = default;
     [SerializeField]
-    GroundCheck m_groundCheck = default;
+    GroundCheck _groundCheck = default;
     [SerializeField]
-    LegControl m_leg = default;
+    LegControl _leg = default;
     [SerializeField]
-    BodyControl m_body = default;
+    BodyControl _body = default;
     [SerializeField]
-    BoosterControl m_booster = default;
-    Rigidbody m_rb = default;
+    BoosterControl _booster = default;
+    Rigidbody _rb = default;
     [SerializeField]
-    bool m_fly = default;
-    bool m_jump = false;
-    bool m_jet = false;
-    [SerializeField]
-    float m_boosterTime = 2;
-    float m_boosterTimer = -1;
-    Vector3 m_inputAxis = Vector3.zero;
-    public Vector3 InputAxis { get => m_inputAxis; }
+    bool _fly = default;
+    bool _jump = false;
+    float _boosterTimer = -1;
+    Vector3 _inputAxis = Vector3.zero;
+    public Vector3 InputAxis { get => _inputAxis; }
     private void Start()
     {
         GameScene.InputManager.Instance.OnInputAxisRaw += Move;
@@ -36,52 +33,52 @@ public class MachineController : MonoBehaviour
         GameScene.InputManager.Instance.OnFirstInputJump += Jump;
         GameScene.InputManager.Instance.OnInputJump += Boost;
         GameScene.InputManager.Instance.OnFirstInputBooster += JetStart;
-        m_rb = GetComponent<Rigidbody>();        
-        m_leg.Set(this);
-        m_leg.SetLandingTime(m_parameter.LandingTime);
-        m_leg.ChangeSpeed(m_parameter.ActionSpeed);
-        m_body.ChangeSpeed(m_parameter.ActionSpeed);
+        _rb = GetComponent<Rigidbody>();        
+        _leg.Set(this);
+        _leg.SetLandingTime(_parameter.LandingTime);
+        _leg.ChangeSpeed(_parameter.ActionSpeed);
+        _body.ChangeSpeed(_parameter.ActionSpeed);
     }
 
     private void OnValidate()
     {
-        m_leg.ChangeSpeed(m_parameter.ActionSpeed);
-        m_body.ChangeSpeed(m_parameter.ActionSpeed);
-        m_leg.SetLandingTime(m_parameter.LandingTime);
+        _leg.ChangeSpeed(_parameter.ActionSpeed);
+        _body.ChangeSpeed(_parameter.ActionSpeed);
+        _leg.SetLandingTime(_parameter.LandingTime);
     }
     private void Move(float horizonal, float vertical)
     {
-        m_inputAxis = new Vector3(horizonal, 0, vertical);
-        if (!m_fly)
+        _inputAxis = new Vector3(horizonal, 0, vertical);
+        if (!_fly)
         {
-            if (m_groundCheck.IsGrounded())
+            if (_groundCheck.IsGrounded())
             {
                 if (vertical > 0)
                 {
-                    m_leg.WalkStart(1);
+                    _leg.WalkStart(1);
                 }
                 else if (vertical < 0)
                 {
-                    m_leg.WalkStart(-1);
+                    _leg.WalkStart(-1);
                 }
                 if (horizonal > 0)
                 {
-                    m_leg.TurnStartRight();
+                    _leg.TurnStartRight();
                 }
                 else if (horizonal < 0)
                 {
-                    m_leg.TurnStartLeft();
+                    _leg.TurnStartLeft();
                 }
             }
-            else if(m_jump)
+            else if(_jump)
             {
                 if (horizonal > 0)
                 {
-                    m_trunControl.Turn(m_rb, 1, m_parameter.TurnPower * 0.5f, m_parameter.TurnSpeed * 0.1f);
+                    _trunControl.Turn(_rb, 1, _parameter.TurnPower * 0.5f, _parameter.TurnSpeed * 0.1f);
                 }
                 else if (horizonal < 0)
                 {
-                    m_trunControl.Turn(m_rb, -1, m_parameter.TurnPower * 0.5f, m_parameter.TurnSpeed * 0.1f);
+                    _trunControl.Turn(_rb, -1, _parameter.TurnPower * 0.5f, _parameter.TurnSpeed * 0.1f);
                 }
             }
 
@@ -109,23 +106,23 @@ public class MachineController : MonoBehaviour
                 Stop();
             }
             Vector3 dir = transform.right * h + transform.forward * v;
-            m_moveControl.MoveFloat(m_rb, dir, m_parameter.FloatSpeed, m_parameter.MaxFloatSpeed);
+            _moveControl.MoveFloat(_rb, dir, _parameter.FloatSpeed, _parameter.MaxFloatSpeed);
             if (horizonal > 0)
             {
-                m_trunControl.Turn(m_rb, 1, m_parameter.TurnPower * 0.05f, m_parameter.TurnSpeed * 0.1f);
+                _trunControl.Turn(_rb, 1, _parameter.TurnPower * 0.05f, _parameter.TurnSpeed * 0.1f);
             }
             else if (horizonal < 0)
             {
-                m_trunControl.Turn(m_rb, -1, m_parameter.TurnPower * 0.05f, m_parameter.TurnSpeed * 0.1f);
+                _trunControl.Turn(_rb, -1, _parameter.TurnPower * 0.05f, _parameter.TurnSpeed * 0.1f);
             }
         }
     }
     private void MoveEnd()
     {
-        if (!m_fly)
+        if (!_fly)
         {
-            m_leg.WalkStop();
-            if (m_groundCheck.IsGrounded())
+            _leg.WalkStop();
+            if (_groundCheck.IsGrounded())
             {
                 Stop();
                 Brake();
@@ -134,122 +131,126 @@ public class MachineController : MonoBehaviour
     }
     public void Walk(int angle)
     {
-        if (m_groundCheck.IsGrounded())
+        if (_groundCheck.IsGrounded())
         {
-            m_rb.angularVelocity = Vector3.zero;
-            m_moveControl.MoveWalk(m_rb, transform.forward * angle, m_parameter.WalkPower, m_parameter.MaxWalkSpeed);
+            _rb.angularVelocity = Vector3.zero;
+            _moveControl.MoveWalk(_rb, transform.forward * angle, _parameter.WalkPower, _parameter.MaxWalkSpeed);
         }
     }
     public void Jump()
     {
-        if (m_fly)
+        if (_fly)
         {
             Stop();
-            m_moveControl.Jet(m_rb,Vector3.up * 0.5f, m_parameter.JetPower);
+            _moveControl.Jet(_rb,Vector3.up * 0.5f, _parameter.JetPower);
             return;
         }
-        if (m_boosterTimer <= -1 || m_boosterTimer > 0)
+        if (_boosterTimer <= -1 || _boosterTimer > 0)
         {
-            m_booster.Boost();
+            _booster.Boost();
         }
         Stop();
-        m_leg.StartJump();
+        _leg.StartJump();
     }
     public void Boost()
     {
-        if (m_jump && m_boosterTimer > 0)
+        if (_jump && _boosterTimer > 0)
         {
-            m_rb.AddForce(Vector3.zero, ForceMode.Acceleration);
-            m_boosterTimer -= Time.deltaTime;
-            Vector3 vector = transform.forward * m_inputAxis.z + transform.right * m_inputAxis.x;
-            m_moveControl.Jet(m_rb, Vector3.up + vector * m_parameter.JetControlPower, m_parameter.JetPower);
-            if (m_boosterTimer <= 0)
+            _rb.AddForce(Vector3.zero, ForceMode.Acceleration);
+            _boosterTimer -= Time.deltaTime;
+            Vector3 vector = transform.forward * _inputAxis.z + transform.right * _inputAxis.x;
+            _moveControl.Jet(_rb, Vector3.up + vector * _parameter.JetControlPower, _parameter.JetPower);
+            if (_boosterTimer <= 0)
             {
-                m_booster.BoostEnd();
+                _booster.BoostEnd();
             }
         }
     }
     public void JetStart()
     {
-        if (m_inputAxis == Vector3.zero)
+        if (_inputAxis == Vector3.zero)
         {
             return;
         }
-        if (m_inputAxis.x != 0)
+        if (_inputAxis.x != 0)
         {
-            if (m_inputAxis.x > 0)
+            if (_inputAxis.x > 0)
             {
-                m_booster.BoostL();
+                _booster.BoostL();
             }
             else
             {
-                m_booster.BoostR();
+                _booster.BoostR();
             }
         }
         else
         {
-            if (m_inputAxis.z > 0)
+            if (_inputAxis.z > 0)
             {
-                m_booster.BoostL();
-                m_booster.BoostR();
+                _booster.BoostL();
+                _booster.BoostR();
             }
         }
-        m_leg.StartJet();
-        m_booster.Boost();
+        _leg.StartJet();
+        _booster.Boost();
     }
     public void Jet()
     {
-        Vector3 vector = transform.forward * m_inputAxis.z + transform.right * m_inputAxis.x;
-        m_rb.AddForce(vector * m_parameter.FloatSpeed + Vector3.up * 0.7f, ForceMode.Impulse);
+        Vector3 vector = transform.forward * _inputAxis.z + transform.right * _inputAxis.x;
+        _rb.AddForce(vector * _parameter.FloatSpeed + Vector3.up * 0.7f, ForceMode.Impulse);
     }
     public void Landing()
     {
-        m_jump = false;
-        m_booster.BoostEnd();
-        m_boosterTimer = -1;
+        _jump = false;
+        _booster.BoostEnd();
+        _boosterTimer = -1;
         Brake();
         Stop();
     }
     public void StartJump(Vector3 dir)
     {
-        m_boosterTimer = m_parameter.JetTime;
-        m_jump = true;
-        m_rb.angularVelocity = Vector3.zero;
-        m_moveControl.Jump(m_rb, dir, m_parameter.JumpPower);
+        _boosterTimer = _parameter.JetTime;
+        _jump = true;
+        _rb.angularVelocity = Vector3.zero;
+        _moveControl.Jump(_rb, dir, _parameter.JumpPower);
     }
     public void TurnLeft()
     {
-        m_trunControl.Turn(m_rb, -1, m_parameter.TurnPower, m_parameter.TurnSpeed);
+        _trunControl.Turn(_rb, -1, _parameter.TurnPower, _parameter.TurnSpeed);
     }
     public void TurnRight()
     {
-        m_trunControl.Turn(m_rb, 1, m_parameter.TurnPower, m_parameter.TurnSpeed);
+        _trunControl.Turn(_rb, 1, _parameter.TurnPower, _parameter.TurnSpeed);
     }
     public void Turn(int angle)
     {
-        m_trunControl.Turn(m_rb, angle, m_parameter.TurnPower, m_parameter.TurnSpeed);
+        _trunControl.Turn(_rb, angle, _parameter.TurnPower, _parameter.TurnSpeed);
     }
     public void Stop()
     {
-        m_rb.angularVelocity = Vector3.zero;
-        m_inputAxis = Vector3.zero;
+        _rb.angularVelocity = Vector3.zero;
+        _inputAxis = Vector3.zero;
     }
     public void Brake()
     {
-        var v = m_rb.velocity;
-        m_rb.velocity = v * 0.3f; 
-        m_booster.BoostEnd();
+        var v = _rb.velocity;
+        _rb.velocity = v * 0.3f; 
+        _booster.BoostEnd();
+    }
+    public bool IsGrounded()
+    {
+        return _groundCheck.IsGrounded();
     }
     void ChangeFloat()
     {
-        if (m_fly)
+        if (_fly)
         {
-            m_fly = false;            
+            _fly = false;            
         }
         else
         {
-            m_fly = true;
+            _fly = true;
         }
-        m_leg.ChangeMode();
+        _leg.ChangeMode();
     }
 }

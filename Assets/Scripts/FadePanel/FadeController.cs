@@ -7,15 +7,15 @@ using UnityEngine.UI;
 public class FadeController : MonoBehaviour
 {
     public static FadeController Instance { get; private set; }
-    [SerializeField] float m_fadeSpeed = 1f;
-    [SerializeField] Image m_fadePanel = default;
-    Color m_fadePanelColor;
+    [SerializeField] float _fadeSpeed = 1f;
+    [SerializeField] Image _fadePanel = default;
+    Color _fadePanelColor;
     public static bool FadeNow { get; private set; }
     private void Awake()
     {
         Instance = this;
-        m_fadePanel.gameObject.SetActive(true);
-        m_fadePanelColor = m_fadePanel.color;
+        _fadePanel.gameObject.SetActive(true);
+        _fadePanelColor = _fadePanel.color;
     }
     public void StartFadeIn()
     {
@@ -90,32 +90,32 @@ public class FadeController : MonoBehaviour
     }
     IEnumerator FadeIn()
     {
-        m_fadePanel.gameObject.SetActive(true);
+        _fadePanel.gameObject.SetActive(true);
         float a = 1;
         while (a > 0)
         {
-            a -= m_fadeSpeed * Time.deltaTime;
+            a -= _fadeSpeed * Time.deltaTime;
             if (a <= 0)
             {
                 a = 0;
             }
-            m_fadePanel.color = m_fadePanelColor * new Color(1, 1, 1, a);
+            _fadePanel.color = _fadePanelColor * new Color(1, 1, 1, a);
             yield return new WaitForEndOfFrame();
         }
-        m_fadePanel.gameObject.SetActive(false);
+        _fadePanel.gameObject.SetActive(false);
     }
     IEnumerator FadeOut()
     {
-        m_fadePanel.gameObject.SetActive(true);
+        _fadePanel.gameObject.SetActive(true);
         float a = 0;
         while (a < 1f)
         {
-            a += m_fadeSpeed * Time.deltaTime;
+            a += _fadeSpeed * Time.deltaTime;
             if (a >= 1f)
             {
                 a = 1f;
             }
-            m_fadePanel.color = m_fadePanelColor * new Color(1, 1, 1, a);
+            _fadePanel.color = _fadePanelColor * new Color(1, 1, 1, a);
             yield return new WaitForEndOfFrame();
         }
     }

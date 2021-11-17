@@ -5,13 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instanse { get; private set; }
-    [SerializeField] UnitPartsList m_partsList;
-    public UnitPartsList PartsList { get => m_partsList; }
-    [SerializeField] ColorData m_colorData;
-    [SerializeField] int[] m_sParts;
-    [SerializeField] GameDataManager m_dataManager;
+    [SerializeField] UnitPartsList _partsList;
+    public UnitPartsList PartsList { get => _partsList; }
+    [SerializeField] ColorData _colorData;
+    [SerializeField] int[] _sParts;
+    [SerializeField] GameDataManager _dataManager;
     public bool AutoMode { get; set; }
-    public Color GetColor(int colorNum) => m_colorData.GetColor(colorNum);
+    public Color GetColor(int colorNum) => _colorData.GetColor(colorNum);
     private void Awake()
     {
         if (Instanse)
@@ -21,9 +21,7 @@ public class GameManager : MonoBehaviour
         }
         Instanse = this;
         DontDestroyOnLoad(gameObject);
-        UnitDataMaster.StartSet(m_partsList);
-        SetSParts();
-        SetAllParts();
+        UnitDataMaster.StartSet(_partsList);
     }
 
     void SetAllParts()
@@ -43,19 +41,19 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
             var parts = (PartsType)i;
-            UnitDataMaster.HavePartsDic[parts][m_sParts[i]]++;
+            UnitDataMaster.HavePartsDic[parts][_sParts[i]]++;
         }
         for (int i = 0; i < UnitDataMaster.MaxUintCount; i++)
         {
-            UnitDataMaster.SetData(i, new UnitBuildData(m_sParts[1], m_sParts[0], m_sParts[2], m_sParts[3], m_sParts[4], m_sParts[5], 0), 22);
+            UnitDataMaster.SetData(i, new UnitBuildData(_sParts[1], _sParts[0], _sParts[2], _sParts[3], _sParts[4], _sParts[5], 0), 22);
         }
     }
     public void Save()
     {
-        m_dataManager.SaveData();
+        _dataManager.SaveData();
     }
     public void Load()
     {
-        m_dataManager.LoadData();
+        _dataManager.LoadData();
     }
 }

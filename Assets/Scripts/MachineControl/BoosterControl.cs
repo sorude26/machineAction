@@ -10,7 +10,6 @@ public class BoosterControl : MonoBehaviour
     ParticleSystem[] m_boostL = default;
     [SerializeField]
     ParticleSystem[] m_boostR = default;
-    bool m_booster = false;
     private void Start()
     {
         foreach (var item in m_boost)

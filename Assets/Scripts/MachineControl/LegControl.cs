@@ -6,44 +6,42 @@ using UnityEngine;
 public class LegControl : MonoBehaviour
 {
     [SerializeField]
-    Animator m_animator = default;
-    [SerializeField]
-    GroundCheck m_groundCheck = default;
-    int m_walk = default;
-    int m_turn = default;
-    bool m_jump = default;
-    bool m_isGround = false;
-    bool m_landing = default;
-    bool m_float = default;
-    float m_landingTime = 0.5f;
-    float m_landingTimer = 0;
-    MachineController m_machine = default;
+    Animator _animator = default;
+    int _walk = default;
+    int _turn = default;
+    bool _jump = default;
+    bool _isGround = false;
+    bool _landing = default;
+    bool _float = default;
+    float _landingTime = 0.5f;
+    float _landingTimer = 0;
+    MachineController _machine = default;
     public void Set(MachineController controller)
     {
-        m_machine = controller;
+        _machine = controller;
     } 
     public void SetLandingTime(float time)
     {
-        m_landingTime = time;
+        _landingTime = time;
     }
     public void ChangeSpeed(float speed)
     {
-        if (m_animator)
+        if (_animator)
         {
-            m_animator.SetFloat("Speed", speed);
+            _animator.SetFloat("Speed", speed);
         }
     }
     public void WalkStart(int angle)
     {
-        if (m_jump)
+        if (_jump)
         {
             return;
         }
-        if (m_walk == angle)
+        if (_walk == angle)
         {
             return;
         }
-        m_walk = angle;
+        _walk = angle;
         if (angle > 0)
         {
             ChangeAnimation("Walk", 0.5f);
@@ -59,30 +57,30 @@ public class LegControl : MonoBehaviour
     }
     public void WalkStop()
     {
-        if (m_jump)
+        if (_jump)
         {
             return;
         }
-        if (m_walk == 0 && m_turn == 0)
+        if (_walk == 0 && _turn == 0)
         {
             return;
         }
-        m_walk = 0;
-        m_turn = 0;
+        _walk = 0;
+        _turn = 0;
         ChangeAnimation("Idle", 0.5f);
     }
     public void TurnStartLeft()
     {
-        if (m_jump)
+        if (_jump)
         {
             return;
         }
-        if (m_turn < 0)
+        if (_turn < 0)
         {
             return;
         }
-        m_turn = -1;
-        if (m_walk != 0)
+        _turn = -1;
+        if (_walk != 0)
         {
             return;
         }
@@ -90,16 +88,16 @@ public class LegControl : MonoBehaviour
     }
     public void TurnStartRight()
     {
-        if (m_jump)
+        if (_jump)
         {
             return;
         }
-        if (m_turn > 0)
+        if (_turn > 0)
         {
             return;
         }
-        m_turn = 1;
-        if (m_walk != 0)
+        _turn = 1;
+        if (_walk != 0)
         {
             return;
         }
@@ -107,39 +105,39 @@ public class LegControl : MonoBehaviour
     }
     public void ChangeMode()
     {
-        if (m_float)
+        if (_float)
         {
-            m_float = false;
+            _float = false;
         }
         else
         {
-            m_float = true;
+            _float = true;
         }
-        m_jump = false;
-        m_walk = 0;
-        m_turn = 0;
-        m_landing = false;
-        m_animator.SetBool("Float", m_float);
+        _jump = false;
+        _walk = 0;
+        _turn = 0;
+        _landing = false;
+        _animator.SetBool("Float", _float);
     }
     public void StartJump()
     {
-        if (m_jump || m_float)
+        if (_jump || _float)
         {
             return;
         }
-        m_jump = true;
-        m_isGround = false;
+        _jump = true;
+        _isGround = false;
         StartCoroutine(JumpFall());
-        if (m_walk != 0)
+        if (_walk != 0)
         {
             ChangeAnimation("JunpStart");
             return;
         }
-        if (m_turn > 0)
+        if (_turn > 0)
         {
             ChangeAnimation("JunpStartR");
         }
-        else if (m_turn < 0)
+        else if (_turn < 0)
         {
 
             ChangeAnimation("JunpStartL");
@@ -151,27 +149,27 @@ public class LegControl : MonoBehaviour
     }
     public void StartJet()
     {
-        if (m_landing)
+        if (_landing)
         {
             return;
         }
-        if (m_machine.InputAxis == Vector3.zero)
+        if (_machine.InputAxis == Vector3.zero)
         {
             return;
         }
-        if (m_jump)
+        if (_jump)
         {
-            if (m_isGround)
+            if (_isGround)
             {
                 return;
             }
-            if (m_machine.InputAxis.y <= 0)
+            if (_machine.InputAxis.y <= 0)
             {
-                if (m_machine.InputAxis.x > 0)
+                if (_machine.InputAxis.x > 0)
                 {
                     ChangeAnimation("JetMoveFlyR", 0.01f);
                 }
-                else if (m_machine.InputAxis.x < 0)
+                else if (_machine.InputAxis.x < 0)
                 {
                     ChangeAnimation("JetMoveFlyL", 0.01f);
                 }
@@ -182,11 +180,11 @@ public class LegControl : MonoBehaviour
             }
             else
             {
-                if (m_machine.InputAxis.x > 0)
+                if (_machine.InputAxis.x > 0)
                 {
                     ChangeAnimation("JetMoveFlyR", 0.01f);
                 }
-                else if (m_machine.InputAxis.x < 0)
+                else if (_machine.InputAxis.x < 0)
                 {
                     ChangeAnimation("JetMoveFlyL", 0.01f);
                 }
@@ -198,17 +196,17 @@ public class LegControl : MonoBehaviour
         }
         else
         {
-            if (m_machine.InputAxis.y < 0)
+            if (_machine.InputAxis.y < 0)
             {
                 ChangeAnimation("JetMoveB", 0.01f);
             }
             else
             {
-                if (m_machine.InputAxis.x > 0)
+                if (_machine.InputAxis.x > 0)
                 {
                     ChangeAnimation("JetMoveR", 0.01f);
                 }
-                else if (m_machine.InputAxis.x < 0)
+                else if (_machine.InputAxis.x < 0)
                 {
                     ChangeAnimation("JetMoveL", 0.01f);
                 }
@@ -221,49 +219,49 @@ public class LegControl : MonoBehaviour
     }
     IEnumerator JumpFall()
     {
-        while (!m_isGround)
+        while (!_isGround)
         {
             yield return null;
         }
-        m_machine?.Landing();
+        _machine?.Landing();
         CameraController.Shake();
         ChangeAnimation("JunpEnd");
     }
     IEnumerator LandingWait()
     {
-        m_landingTimer = 0;
-        while (m_landingTimer < m_landingTime)
+        _landingTimer = 0;
+        while (_landingTimer < _landingTime)
         {
-            m_landingTimer += Time.deltaTime;
+            _landingTimer += Time.deltaTime;
             yield return null;
         }
-        m_animator.Play("LandingEnd");
-        m_jump = false;
-        m_walk = 0;
-        m_turn = 0;
-        m_landing = false;
+        _animator.Play("LandingEnd");
+        _jump = false;
+        _walk = 0;
+        _turn = 0;
+        _landing = false;
     }
 
     void Walk()
     {
-        m_machine?.Walk(m_walk);
-        if (m_turn > 0)
+        _machine?.Walk(_walk);
+        if (_turn > 0)
         {
             TurnRight();
         }
-        else if (m_turn < 0)
+        else if (_turn < 0)
         {
             TurnLeft();
         }
-        m_turn = 0;
+        _turn = 0;
     }
     void AttackMove()
     {
-        m_machine?.Walk(1);
+        _machine?.Walk(1);
     }
     void AttackMoveStrong()
     {
-        m_machine?.Walk(2);
+        _machine?.Walk(2);
     }
     void Shake()
     {
@@ -271,50 +269,50 @@ public class LegControl : MonoBehaviour
     }
     void TurnLeft()
     {
-        m_machine?.Turn(-1);
+        _machine?.Turn(-1);
     }
     void TurnRight()
     {
-        m_machine?.Turn(1);
+        _machine?.Turn(1);
     }
     void Jump()
     {
-        Vector3 dir = transform.forward * m_walk + transform.right * m_turn;
-        m_machine?.StartJump((Vector3.up + dir).normalized);
+        Vector3 dir = transform.forward * _walk + transform.right * _turn;
+        _machine?.StartJump((Vector3.up + dir).normalized);
     }
     void Landing()
     {
-        if (m_landing || m_float)
+        if (_landing || _float)
         {
             return;
         }
-        m_landing = true;
+        _landing = true;
         StartCoroutine(LandingWait());
     }
     void Jet()
     {
-        m_machine?.Jet();
+        _machine?.Jet();
     }
     void Stop()
     {
-        m_machine?.Stop();
+        _machine?.Stop();
     }
     void Brake()
     {
-        m_machine?.Brake();
+        _machine?.Brake();
     }
     void GroundCheck()
     {
-        m_isGround = m_groundCheck.IsGrounded();
+        _isGround = _machine.IsGrounded();
     }
     void ChangeAnimation(string changeTarget,float changeTime = 0.2f) 
     { 
-        m_animator.CrossFadeInFixedTime(changeTarget, changeTime);
+        _animator.CrossFadeInFixedTime(changeTarget, changeTime);
     }
     
     public void AttackMoveR()
     {
-        if (m_jump || m_float || m_landing)
+        if (_jump || _float || _landing)
         {
             return;
         }
@@ -322,7 +320,7 @@ public class LegControl : MonoBehaviour
     }
     public void AttackMoveL()
     {
-        if (m_jump || m_float || m_landing)
+        if (_jump || _float || _landing)
         {
             return;
         }

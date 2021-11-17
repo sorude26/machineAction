@@ -2627,10 +2627,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10be750709b951c42970bcfafcb9d39c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_partsList: {fileID: 11400000, guid: 32824ae8c59a27d4d98a5bd2029196ec, type: 2}
-  m_colorData: {fileID: 0}
-  m_sParts: 
-  m_dataManager: {fileID: 0}
+  _partsList: {fileID: 11400000, guid: 32824ae8c59a27d4d98a5bd2029196ec, type: 2}
+  _colorData: {fileID: 0}
+  _sParts: 
+  _dataManager: {fileID: 0}
 --- !u!4 &427596897
 Transform:
   m_ObjectHideFlags: 0
@@ -6473,18 +6473,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad15116e5219a824a8dbfa3d6e5a4b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_leftCheckPos:
+  _leftCheckPos:
   - {fileID: 586927426}
   - {fileID: 97918779}
   - {fileID: 1174850124}
   - {fileID: 920565926}
-  m_rightCheckPos:
+  _rightCheckPos:
   - {fileID: 1412623783}
   - {fileID: 1483804786}
   - {fileID: 1424626714}
   - {fileID: 653194047}
-  m_checkDir: {x: 0, y: -1, z: 0}
-  m_checkRange: 0.2
+  _checkDir: {x: 0, y: -1, z: 0}
+  _checkRange: 0.2
 --- !u!1 &1376162861
 GameObject:
   m_ObjectHideFlags: 0
@@ -8497,8 +8497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a670b34ed2c87142b9217bcfa9b0fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_animator: {fileID: 1601032653}
-  m_groundCheck: {fileID: 1333700079}
+  _animator: {fileID: 1601032653}
 --- !u!1001 &1666960568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8980,9 +8979,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe9c74c8dbd4324cbc5a11271b4c7fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_cameraTarget: {fileID: 2146080150}
-  m_machineBody: {fileID: 1007097280}
-  m_cameraShakeControl: {fileID: 890590130}
+  _cameraTarget: {fileID: 2146080150}
+  _cameraShakeControl: {fileID: 890590130}
 --- !u!43 &1764778318
 Mesh:
   m_ObjectHideFlags: 0
@@ -10149,7 +10147,6 @@ GameObject:
   - component: {fileID: 1944469878}
   - component: {fileID: 1944469881}
   - component: {fileID: 1944469882}
-  - component: {fileID: 1944469883}
   m_Layer: 0
   m_Name: MachineBase
   m_TagString: Untagged
@@ -10218,15 +10215,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99e383b0c8bd5c4fb4200b320a25318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_parameter: {fileID: 1484996185}
-  m_moveControl: {fileID: 1589087174}
-  m_trunControl: {fileID: 1589087173}
-  m_groundCheck: {fileID: 1333700079}
-  m_leg: {fileID: 1601032654}
-  m_body: {fileID: 1961025150}
-  m_booster: {fileID: 997456894}
-  m_fly: 0
-  m_boosterTime: 2
+  _parameter: {fileID: 1484996185}
+  _moveControl: {fileID: 1589087174}
+  _trunControl: {fileID: 1589087173}
+  _groundCheck: {fileID: 1333700079}
+  _leg: {fileID: 1601032654}
+  _body: {fileID: 1961025150}
+  _booster: {fileID: 997456894}
+  _fly: 0
 --- !u!114 &1944469882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10247,60 +10243,34 @@ MonoBehaviour:
     LegID: 5
     WeaponRArmID: 0
     WeaponLArmID: 0
-  m_camera: {fileID: 2146080150}
-  m_bodyBase:
-  - {fileID: 1284842622}
-  - {fileID: 1688210475}
-  m_bodyControlBase:
+  _camera: {fileID: 2146080150}
+  _bodyBase:
   - {fileID: 1007097280}
   - {fileID: 2031917631}
-  m_rightArm:
-  - {fileID: 1713414175}
-  - {fileID: 1173582615}
-  - {fileID: 1822490776}
-  - {fileID: 215601798}
-  m_rightControlBase:
+  _rightArm:
   - {fileID: 987655234}
   - {fileID: 1238418498}
   - {fileID: 1524149364}
   - {fileID: 1521063912}
-  m_leftArm:
-  - {fileID: 1412617698}
-  - {fileID: 1043561061}
-  - {fileID: 1376162862}
-  - {fileID: 340989803}
-  m_leftControlBase:
+  _leftArm:
   - {fileID: 1942756316}
   - {fileID: 2081498754}
   - {fileID: 763541503}
   - {fileID: 220152344}
-  m_legBase:
+  _legBase:
   - {fileID: 1157575328}
   - {fileID: 703150676}
   - {fileID: 886536342}
   - {fileID: 2075787360}
   - {fileID: 856100791}
-  m_rightLeg:
+  _rightLeg:
   - {fileID: 468874461}
   - {fileID: 257444458}
   - {fileID: 1555117377}
-  m_leftLeg:
+  _leftLeg:
   - {fileID: 1040771245}
   - {fileID: 1423211885}
   - {fileID: 741876495}
---- !u!65 &1944469883
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1944469877}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 3, y: 1, z: 2}
-  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1 &1944831699
 GameObject:
   m_ObjectHideFlags: 0
@@ -10489,27 +10459,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5d25acb0f71ef489ba1e32182279ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_target: {fileID: 958231835}
-  m_animator: {fileID: 1961025151}
-  m_groundCheck: {fileID: 1333700079}
-  m_camera: {fileID: 1742666816}
-  m_leg: {fileID: 1601032654}
-  m_maxUpAngle: 5
-  m_maxDownAngle: -5
-  m_bodyControlBase:
+  _target: {fileID: 0}
+  _animator: {fileID: 1961025151}
+  _groundCheck: {fileID: 1333700079}
+  _camera: {fileID: 0}
+  _leg: {fileID: 1601032654}
+  _maxUpAngle: 20
+  _maxDownAngle: -10
+  _bodyControlBase:
   - {fileID: 1007097280}
   - {fileID: 2031917631}
-  m_rightControlBase:
+  _rightControlBase:
   - {fileID: 987655234}
   - {fileID: 1238418498}
   - {fileID: 1524149364}
   - {fileID: 1521063912}
-  m_leftControlBase:
+  _leftControlBase:
   - {fileID: 1942756316}
   - {fileID: 2081498754}
   - {fileID: 763541503}
   - {fileID: 220152344}
-  m_controlTarget:
+  _controlTarget:
   - {fileID: 821481430}
   - {fileID: 890907152}
   - {fileID: 1569838324}

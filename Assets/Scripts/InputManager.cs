@@ -24,15 +24,15 @@ namespace GameScene
         public event Action OnFirstInputShotR;
         public event Action OnFirstInputAttack;
         public event Action OnShotEnd;
-        bool m_inputMove;
-        bool m_inputCamera;
-        bool m_firstInputJump;
-        bool m_firstInputAxisRaw;
-        bool m_shot1;
-        bool m_shotL;
-        bool m_shotR;
-        bool m_attack;
-        ControlAction m_inputActions;
+        bool _inputMove;
+        bool _inputCamera;
+        bool _firstInputJump;
+        bool _firstInputAxisRaw;
+        bool _shot1;
+        bool _shotL;
+        bool _shotR;
+        bool _attack;
+        ControlAction _inputActions;
         private void Awake()
         {
             Instance = this;
@@ -40,23 +40,23 @@ namespace GameScene
         }
         void InputActionsSet()
         {
-            m_inputActions = new ControlAction();
-            m_inputActions.Enable();
-            m_inputActions.PlayerController.Move.performed += context => { StartMove(context); };
-            m_inputActions.PlayerController.Move.canceled += context => { EndMove(); };
-            m_inputActions.PlayerController.CameraMove.performed += context => { StartCamera(context); };
-            m_inputActions.PlayerController.CameraMove.canceled += context => { EndCamera(); };
-            m_inputActions.PlayerController.Jump.started += context => { OnJump(); };
-            m_inputActions.PlayerController.Jump.canceled += context => { EndJump(); };
-            m_inputActions.PlayerController.Shot1.started += context => { OnShot(); };
-            m_inputActions.PlayerController.ShotL.started += context => { OnShotL(); };
-            m_inputActions.PlayerController.ShotR.started += context => { OnShotR(); };
-            m_inputActions.PlayerController.Attack1.started += context => { OnAttack(); };
-            m_inputActions.PlayerController.Shot1.canceled += context => { EndShot(); };
-            m_inputActions.PlayerController.ShotL.canceled += context => { EndShotL(); };
-            m_inputActions.PlayerController.ShotR.canceled += context => { EndShotR(); };
-            m_inputActions.PlayerController.Attack1.canceled += context => { EndAttack(); };
-            m_inputActions.PlayerController.Jet.started += context => { OnJet(); };
+            _inputActions = new ControlAction();
+            _inputActions.Enable();
+            _inputActions.PlayerController.Move.performed += context => { StartMove(context); };
+            _inputActions.PlayerController.Move.canceled += context => { EndMove(); };
+            _inputActions.PlayerController.CameraMove.performed += context => { StartCamera(context); };
+            _inputActions.PlayerController.CameraMove.canceled += context => { EndCamera(); };
+            _inputActions.PlayerController.Jump.started += context => { OnJump(); };
+            _inputActions.PlayerController.Jump.canceled += context => { EndJump(); };
+            _inputActions.PlayerController.Shot1.started += context => { OnShot(); };
+            _inputActions.PlayerController.ShotL.started += context => { OnShotL(); };
+            _inputActions.PlayerController.ShotR.started += context => { OnShotR(); };
+            _inputActions.PlayerController.Attack1.started += context => { OnAttack(); };
+            _inputActions.PlayerController.Shot1.canceled += context => { EndShot(); };
+            _inputActions.PlayerController.ShotL.canceled += context => { EndShotL(); };
+            _inputActions.PlayerController.ShotR.canceled += context => { EndShotR(); };
+            _inputActions.PlayerController.Attack1.canceled += context => { EndAttack(); };
+            _inputActions.PlayerController.Jet.started += context => { OnJet(); };
             StartCoroutine(ActionUpdate());
         }
         void OnMove(Vector2 dir)
@@ -74,24 +74,24 @@ namespace GameScene
                     h = 0;
                 }
                 OnInputAxisRaw?.Invoke(h, v);
-                if (!m_firstInputAxisRaw)
+                if (!_firstInputAxisRaw)
                 {
-                    m_firstInputAxisRaw = true;
+                    _firstInputAxisRaw = true;
                 }
             }            
         }
         void EndMove()
         {
-            if (m_firstInputAxisRaw)
+            if (_firstInputAxisRaw)
             {
-                m_firstInputAxisRaw = false;
+                _firstInputAxisRaw = false;
                 OnInputAxisRawExit?.Invoke();
             }
-            m_inputMove = false;
+            _inputMove = false;
         }
         void EndCamera()
         {
-            m_inputCamera = false;
+            _inputCamera = false;
         }
         void OnMove(InputAction.CallbackContext context)
         {
@@ -103,23 +103,23 @@ namespace GameScene
         }
         void StartMove(InputAction.CallbackContext context)
         {
-            if (!m_inputMove)
+            if (!_inputMove)
             {
-                m_inputMove = true;
+                _inputMove = true;
                 StartCoroutine(Move(context));
             }
         }
         void StartCamera(InputAction.CallbackContext context)
         {
-            if (!m_inputCamera)
+            if (!_inputCamera)
             {
-                m_inputCamera = true;
+                _inputCamera = true;
                 StartCoroutine(Camera(context));
             }
         }
         IEnumerator Move(InputAction.CallbackContext context)
         {           
-            while (m_inputMove)
+            while (_inputMove)
             {
                 OnMove(context);
                 yield return null;
@@ -127,7 +127,7 @@ namespace GameScene
         }
         IEnumerator Camera(InputAction.CallbackContext context)
         {
-            while (m_inputCamera)
+            while (_inputCamera)
             {
                 OnCamera(context);
                 yield return null;
@@ -135,47 +135,47 @@ namespace GameScene
         }
         void OnJump()
         {
-            if (!m_firstInputJump)
+            if (!_firstInputJump)
             {
-                m_firstInputJump = true;
+                _firstInputJump = true;
                 OnFirstInputJump?.Invoke();
             }
            
         }
         void EndJump()
         {
-            m_firstInputJump = false;
+            _firstInputJump = false;
             OnInputJumpEnd?.Invoke();
         }
         void OnShot()
         {
-            if (!m_shot1)
+            if (!_shot1)
             {
-                m_shot1 = true;
+                _shot1 = true;
                 //StartCoroutine(Shot());
             }
         }        
         void OnShotL()
         {
-            if (!m_shotL)
+            if (!_shotL)
             {
-                m_shotL = true;
+                _shotL = true;
                 //StartCoroutine(ShotL());
             }
         }
         void OnShotR()
         {
-            if (!m_shotR)
+            if (!_shotR)
             {
-                m_shotR = true;
+                _shotR = true;
                 //StartCoroutine(ShotR());
             }
         }
         void OnAttack()
         {
-            if (!m_attack)
+            if (!_attack)
             {
-                m_attack = true;
+                _attack = true;
                 OnFirstInputAttack?.Invoke();
             }
         }
@@ -185,44 +185,44 @@ namespace GameScene
         }
         void EndShot()
         {
-            m_shot1 = false;
+            _shot1 = false;
             OnShotEnd?.Invoke();
         }
         void EndShotL()
         {
-            m_shotL = false;
+            _shotL = false;
             OnShotEnd?.Invoke();
         }
         void EndShotR()
         {
-            m_shotR = false;
+            _shotR = false;
             OnShotEnd?.Invoke();
         }
         void EndAttack()
         {
-            m_attack = false;
+            _attack = false;
         }
         IEnumerator ActionUpdate()
         {
             while (true)
             {
-                if (m_shot1)
+                if (_shot1)
                 {
                     OnFirstInputShot?.Invoke();
                 }
-                if (m_shotL)
+                if (_shotL)
                 {
                     OnFirstInputShotL?.Invoke();
                 }
-                if (m_shotR)
+                if (_shotR)
                 {
                     OnFirstInputShotR?.Invoke();
                 }
-                if (m_attack)
+                if (_attack)
                 {
                     //OnFirstInputAttack?.Invoke();
                 }
-                if (m_firstInputJump)
+                if (_firstInputJump)
                 {
                     OnInputJump?.Invoke();
                 }

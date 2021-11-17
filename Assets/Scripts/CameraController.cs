@@ -6,12 +6,10 @@ public class CameraController : MonoBehaviour
 {
     static CameraController instance = default;
     [SerializeField]
-    Transform m_cameraTarget = default;
+    Transform _cameraTarget = default;
     [SerializeField]
-    Transform m_machineBody = default;
-    [SerializeField]
-    ShakeControl m_cameraShakeControl = default;
-    Quaternion m_cameraRot = default;
+    ShakeControl _cameraShakeControl = default;
+    Quaternion _cameraRot = default;
     float minX = -80f, maxX = 80f;
     private void Awake()
     {
@@ -21,30 +19,27 @@ public class CameraController : MonoBehaviour
     {
         GameScene.InputManager.Instance.OnInputAxisRawExit += ResetLock;
         GameScene.InputManager.Instance.OnInputCameraRaw += FreeLock;
-        m_cameraRot = transform.localRotation;
+        _cameraRot = transform.localRotation;
     }
-    private void FixedUpdate()
-    {
-        m_cameraTarget.localRotation = m_machineBody.localRotation;
-    }
+   
     void DefaultLock()
     {
-        m_cameraRot = m_cameraTarget.rotation;
+        _cameraRot = _cameraTarget.rotation;
     }
     void FreeLock(Vector2 dir)
     {
-        m_cameraRot = transform.localRotation;
+        _cameraRot = transform.localRotation;
         if (dir.x != 0)
         {
-            m_cameraRot *= Quaternion.Euler(0, dir.x, 0);
+            _cameraRot *= Quaternion.Euler(0, dir.x, 0);
         }
-        m_cameraRot = ClampRotation(m_cameraRot);
-        transform.localRotation = m_cameraRot;
+        _cameraRot = ClampRotation(_cameraRot);
+        transform.localRotation = _cameraRot;
     }
     void ResetLock()
     {
-        m_cameraRot = m_cameraTarget.localRotation;
-        transform.localRotation = m_cameraRot;
+        _cameraRot = _cameraTarget.localRotation;
+        transform.localRotation = _cameraRot;
     }
     Quaternion ClampRotation(Quaternion angle)
     {
@@ -60,14 +55,14 @@ public class CameraController : MonoBehaviour
 
     public static void Shake()
     {
-        instance.m_cameraShakeControl?.StartShake(1.2f, 0.8f);
+        instance._cameraShakeControl?.StartShake(1.2f, 0.8f);
     }
     public static void LightShake()
     {
-        instance.m_cameraShakeControl?.StartShake(0.1f, 0.3f);
+        instance._cameraShakeControl?.StartShake(0.1f, 0.3f);
     }
     public static void HitShake()
     {
-        instance.m_cameraShakeControl?.StartShake(0.07f, 0.2f);
+        instance._cameraShakeControl?.StartShake(0.07f, 0.2f);
     }
 }
