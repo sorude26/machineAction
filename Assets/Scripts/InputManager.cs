@@ -23,6 +23,7 @@ namespace GameScene
         public event Action OnFirstInputShotL;
         public event Action OnFirstInputShotR;
         public event Action OnFirstInputAttack;
+        public event Action OnShotEnd;
         bool m_inputMove;
         bool m_inputCamera;
         bool m_firstInputJump;
@@ -185,14 +186,17 @@ namespace GameScene
         void EndShot()
         {
             m_shot1 = false;
+            OnShotEnd?.Invoke();
         }
         void EndShotL()
         {
             m_shotL = false;
+            OnShotEnd?.Invoke();
         }
         void EndShotR()
         {
             m_shotR = false;
+            OnShotEnd?.Invoke();
         }
         void EndAttack()
         {

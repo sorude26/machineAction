@@ -8,6 +8,8 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     Transform m_cameraTarget = default;
     [SerializeField]
+    Transform m_machineBody = default;
+    [SerializeField]
     ShakeControl m_cameraShakeControl = default;
     Quaternion m_cameraRot = default;
     float minX = -80f, maxX = 80f;
@@ -20,6 +22,10 @@ public class CameraController : MonoBehaviour
         GameScene.InputManager.Instance.OnInputAxisRawExit += ResetLock;
         GameScene.InputManager.Instance.OnInputCameraRaw += FreeLock;
         m_cameraRot = transform.localRotation;
+    }
+    private void FixedUpdate()
+    {
+        m_cameraTarget.localRotation = m_machineBody.localRotation;
     }
     void DefaultLock()
     {

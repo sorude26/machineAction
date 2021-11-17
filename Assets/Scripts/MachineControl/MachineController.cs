@@ -252,8 +252,4 @@ public class MachineController : MonoBehaviour
         }
         m_leg.ChangeMode();
     }
-    void BodyTurn(Vector2 dir)
-    {
-        m_body.LookMove(dir,m_parameter.BodyTurnSpeed);
-    }
 }
