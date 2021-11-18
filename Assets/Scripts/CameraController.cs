@@ -8,38 +8,50 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     Transform _cameraTarget = default;
     [SerializeField]
+    BodyControl _body = default;
+    [SerializeField]
     ShakeControl _cameraShakeControl = default;
+    [SerializeField]
+    float _followSpeed = 5f;
+    [SerializeField]
+    float _lockSpeed = 20f;
     Quaternion _cameraRot = default;
-    float minX = -80f, maxX = 80f;
+    float _minX = -50f;
+    float _maxX = 50f;
+    float _minY = -50f;
+    float _maxY = 50f;
     private void Awake()
     {
         instance = this;
     }
     void Start()
     {
-        GameScene.InputManager.Instance.OnInputAxisRawExit += ResetLock;
+        GameScene.InputManager.Instance.OnInputCameraRawExit += ResetLock;
         GameScene.InputManager.Instance.OnInputCameraRaw += FreeLock;
         _cameraRot = transform.localRotation;
     }
-   
+    private void Update()
+    {
+        _cameraRot = _cameraTarget.localRotation;
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, _cameraRot, _followSpeed * Time.deltaTime);
+    }
     void DefaultLock()
     {
         _cameraRot = _cameraTarget.rotation;
     }
     void FreeLock(Vector2 dir)
     {
-        _cameraRot = transform.localRotation;
+        _cameraRot = _cameraTarget.localRotation;
         if (dir.x != 0)
         {
-            _cameraRot *= Quaternion.Euler(0, dir.x, 0);
+            _cameraRot *= Quaternion.Euler(0, dir.x * _lockSpeed, 0);
         }
         _cameraRot = ClampRotation(_cameraRot);
-        transform.localRotation = _cameraRot;
+        _body.SetBodyRotaion(_cameraRot);
     }
     void ResetLock()
     {
         _cameraRot = _cameraTarget.localRotation;
-        transform.localRotation = _cameraRot;
     }
     Quaternion ClampRotation(Quaternion angle)
     {
@@ -47,12 +59,14 @@ public class CameraController : MonoBehaviour
         angle.y /= angle.w;
         angle.z /= angle.w;
         angle.w = 1f;
-        float angleX = Mathf.Atan(angle.y) * Mathf.Rad2Deg * 2f;
-        angleX = Mathf.Clamp(angleX, minX, maxX);
-        angle.y = Mathf.Tan(angleX * Mathf.Deg2Rad * 0.5f);
+        float angleY = Mathf.Atan(angle.y) * Mathf.Rad2Deg * 2f;
+        angleY = Mathf.Clamp(angleY, _minX, _maxX);
+        angle.y = Mathf.Tan(angleY * Mathf.Deg2Rad * 0.5f);
+        float angleX = Mathf.Atan(angle.x) * Mathf.Rad2Deg * 2f;
+        angleX = Mathf.Clamp(angleX, _minY, _maxY);
+        angle.x = Mathf.Tan(angleX * Mathf.Deg2Rad * 0.5f);
         return angle;
     }
-
     public static void Shake()
     {
         instance._cameraShakeControl?.StartShake(1.2f, 0.8f);

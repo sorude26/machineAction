@@ -15,6 +15,7 @@ namespace GameScene
         public event Action<float, float> OnInputAxisRaw;
         public event Action<Vector2> OnInputCameraRaw;
         public event Action OnInputAxisRawExit;
+        public event Action OnInputCameraRawExit;
         public event Action OnFirstInputJump;
         public event Action OnInputJump;
         public event Action OnInputJumpEnd;
@@ -65,11 +66,11 @@ namespace GameScene
             float v = dir.y;
             if (new Vector2(h, v) != Vector2.zero)
             {
-                if (Math.Abs(v) < 0.2f)
+                if (Math.Abs(v) < 0.3f)
                 {
                     v = 0;
                 }
-                if (Math.Abs(h) < 0.2f)
+                if (Math.Abs(h) < 0.3f)
                 {
                     h = 0;
                 }
@@ -92,6 +93,7 @@ namespace GameScene
         void EndCamera()
         {
             _inputCamera = false;
+            OnInputCameraRawExit?.Invoke();
         }
         void OnMove(InputAction.CallbackContext context)
         {

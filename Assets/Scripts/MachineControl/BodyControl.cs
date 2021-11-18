@@ -11,13 +11,7 @@ public class BodyControl : MonoBehaviour
     [SerializeField]
     GroundCheck _groundCheck = default;
     [SerializeField]
-    Transform _camera = default;
-    [SerializeField]
     LegControl _leg = default;
-    [SerializeField]
-    float _maxUpAngle = 20f;
-    [SerializeField]
-    float _maxDownAngle = -10f;
     [SerializeField]
     Transform[] _bodyControlBase = new Transform[2];
     [SerializeField]
@@ -26,8 +20,6 @@ public class BodyControl : MonoBehaviour
     Transform[] _leftControlBase = new Transform[4];
     [SerializeField]
     Transform[] _controlTarget = new Transform[3];
-    protected Quaternion _headRotaion = Quaternion.Euler(0, 0, 0);
-    protected float _headRSpeed = 1.0f;
     protected Quaternion _bodyRotaion = Quaternion.Euler(0, 0, 0);
     protected float _bodyRSpeed = 3.0f;
     protected Quaternion _lArmRotaion = Quaternion.Euler(0, 0, 0);
@@ -41,16 +33,22 @@ public class BodyControl : MonoBehaviour
     bool _action = false;
     int _attackCount = 0;
     bool _attack = false;
-    public Transform BaseTransform { get => _bodyControlBase[0]; }
+    MachineController _machine = default;
+    public Quaternion BodyAngle { get => _bodyControlBase[0].localRotation; }
+    public Transform BodyTransform { get => _bodyControlBase[0]; }
     private void Start()
     {
         GameScene.InputManager.Instance.OnFirstInputAttack += HandAttackRight;
         GameScene.InputManager.Instance.OnFirstInputShotR += HandAttackLeft;
         GameScene.InputManager.Instance.OnShotEnd += ResetAngle;
     }
-    private void LateUpdate()
+    private void Update()
     {
         PartsMotion();
+    }
+    public void Set(MachineController controller)
+    {
+        _machine = controller;
     }
     public void ChangeSpeed(float speed)
     {
@@ -69,23 +67,43 @@ public class BodyControl : MonoBehaviour
         {
             return;
         }
-        _rArmRotaion = Quaternion.Euler(-10, 0, 10);
-        _lArmRotaion = Quaternion.Euler(-10, 0, -10);
-        Vector3 targetPos = _target.position;
-        Vector3 targetDir = targetPos - _bodyControlBase[0].position ;
-        targetDir.y = 0.0f;
+        LockOn(_target.position);
+    }
+    void ShotLeft()
+    {
+
+    }
+    void ShotRight()
+    {
+
+    }
+    void LockOn(Vector3 targetPos)
+    {
+        Vector3 targetDir = targetPos - _bodyControlBase[0].position;
+        targetDir.y = 0.0f; 
+        if (Vector3.Dot(targetDir.normalized, transform.forward.normalized) < 0.4f)
+        {
+            return;
+        }
         _controlTarget[0].forward = targetDir;
-        targetDir = targetPos - _rightControlBase[2].position;
-        _controlTarget[1].forward = targetDir;
-        targetDir = targetPos - _leftControlBase[2].position;
-        _controlTarget[2].forward = targetDir;
         _bodyRotaion = _controlTarget[0].localRotation;
-        _rArmRotaion2 = _controlTarget[1].localRotation * Quaternion.Euler(-90, 0, 0);
-        _lArmRotaion2 = _controlTarget[2].localRotation * Quaternion.Euler(-90, 0, 0);
+        if (false)
+        {
+            _rArmRotaion = Quaternion.Euler(-10, 0, 10);
+            targetDir = targetPos - _rightControlBase[2].position;
+            _controlTarget[1].forward = targetDir;
+            _rArmRotaion2 = _controlTarget[1].localRotation * Quaternion.Euler(-90, 0, 0);
+        }
+        if (true)
+        {
+            _lArmRotaion = Quaternion.Euler(-10, 0, -10);
+            targetDir = targetPos - _leftControlBase[2].position;
+            _controlTarget[2].forward = targetDir;
+            _lArmRotaion2 = _controlTarget[2].localRotation * Quaternion.Euler(-90, 0, 0);
+        }
     }
     void ResetAngle()
     {
-        _headRotaion = Quaternion.Euler(0, 0, 0);
         _bodyRotaion = Quaternion.Euler(0, 0, 0);
         _lArmRotaion = Quaternion.Euler(0, 0, 0);
         _lArmRotaion2 = Quaternion.Euler(0, 0, 0);
@@ -101,14 +119,17 @@ public class BodyControl : MonoBehaviour
             _attackCount++;
             if (_groundCheck.IsGrounded())
             {
+                ChangeAnimation("attackSwingRArm");
                 //ChangeAnimation("attackSwingDArm");
-                ChangeAnimation("attackKnuckleRArm");
+                //ChangeAnimation("attackKnuckleRArm");
                 _leg?.AttackMoveR();
             }
             else
             {
+                _machine?.Turn(BodyAngle.y * 10);
+                ChangeAnimation("attackSwingRArm3");
                 //ChangeAnimation("attackSwingDArm3", 0.5f);
-                ChangeAnimation("attackKnuckleRArm");
+                //ChangeAnimation("attackKnuckleRArm");
             }
             return;
         }
@@ -120,14 +141,16 @@ public class BodyControl : MonoBehaviour
         {
             if (_attackCount == 1)
             {
+                ChangeAnimation("attackSwingRArm2");
                 //ChangeAnimation("attackSwingDArm2");
-                ChangeAnimation("attackKnuckleLArm");
+                //ChangeAnimation("attackKnuckleLArm");
                 _leg?.AttackMoveL();
             }
             else if (_attackCount == 2)
             {
+                ChangeAnimation("attackSwingRArm3",0.1f);
                 //ChangeAnimation("attackSwingDArm3", 0.5f);
-                ChangeAnimation("attackKnuckleRArm");
+                //ChangeAnimation("attackKnuckleRArm");
                 _leg?.AttackMoveR();
                 _attackCount = 0;
             }
@@ -148,11 +171,35 @@ public class BodyControl : MonoBehaviour
 
     protected void PartsMotion()
     {
-        _bodyControlBase[1].localRotation = Quaternion.Lerp(_bodyControlBase[1].localRotation, _headRotaion, _headRSpeed * Time.deltaTime);
         _bodyControlBase[0].localRotation = Quaternion.Lerp(_bodyControlBase[0].localRotation, _bodyRotaion, _bodyRSpeed * Time.deltaTime);
         _leftControlBase[0].localRotation = Quaternion.Lerp(_leftControlBase[0].localRotation, _lArmRotaion, _lArmRSpeed * Time.deltaTime);
         _leftControlBase[2].localRotation = Quaternion.Lerp(_leftControlBase[2].localRotation, _lArmRotaion2, _lArmRSpeed2 * Time.deltaTime);
         _rightControlBase[0].localRotation = Quaternion.Lerp(_rightControlBase[0].localRotation, _rArmRotaion, _rArmRSpeed * Time.deltaTime);
         _rightControlBase[2].localRotation = Quaternion.Lerp(_rightControlBase[2].localRotation, _rArmRotaion2, _rArmRSpeed2 * Time.deltaTime);
+    }
+    public void SetBodyRotaion(Quaternion angle)
+    {
+        if (_action)
+        {
+            return;
+        }
+        _bodyRotaion = angle;
+    }
+    Quaternion ClampRotation(Quaternion angle, float maxX = 80f, float maxY = 80f, float maxZ = 80f, float minX = -80f, float minY = -80f, float minZ = -80f)
+    {
+        angle.x /= angle.w;
+        angle.y /= angle.w;
+        angle.z /= angle.w;
+        angle.w = 1f;
+        float angleX = Mathf.Atan(angle.x) * Mathf.Rad2Deg * 2f;
+        angleX = Mathf.Clamp(angleX, minX, maxX);
+        angle.x = Mathf.Tan(angleX * Mathf.Deg2Rad * 0.5f);
+        float angleY = Mathf.Atan(angle.y) * Mathf.Rad2Deg * 2f;
+        angleY = Mathf.Clamp(angleY, minY, maxY);
+        angle.y = Mathf.Tan(angleY * Mathf.Deg2Rad * 0.5f);
+        float angleZ = Mathf.Atan(angle.z) * Mathf.Rad2Deg * 2f;
+        angleZ = Mathf.Clamp(angleZ, minZ, maxZ);
+        angle.z = Mathf.Tan(angleZ * Mathf.Deg2Rad * 0.5f);
+        return angle;
     }
 }
