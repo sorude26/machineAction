@@ -7,11 +7,18 @@ using UnityEngine;
 /// </summary>
 public class TurnControl : MonoBehaviour
 {
-    public void Turn(Rigidbody rb, int dir, float speed,float maxSpeed)
+    public void Turn(Rigidbody rb, float dir, float speed,float maxSpeed)
     {
         if (rb.angularVelocity.sqrMagnitude < maxSpeed)
         {
             rb.AddTorque(0, dir * speed, 0);
+        }
+    }
+    public void StrongTurn(Rigidbody rb, float dir, float speed, float maxSpeed)
+    {
+        if (rb.angularVelocity.sqrMagnitude < maxSpeed)
+        {
+            rb.AddTorque(0, dir * speed, 0,ForceMode.Impulse);
         }
     }
 }

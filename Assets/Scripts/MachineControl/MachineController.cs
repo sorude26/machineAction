@@ -21,6 +21,8 @@ public class MachineController : MonoBehaviour
     BoosterControl _booster = default;
     Rigidbody _rb = default;
     [SerializeField]
+    Transform _camera = default;
+    [SerializeField]
     bool _fly = default;
     bool _jump = false;
     float _boosterTimer = -1;
@@ -37,6 +39,7 @@ public class MachineController : MonoBehaviour
         _leg.Set(this);
         _leg.SetLandingTime(_parameter.LandingTime);
         _leg.ChangeSpeed(_parameter.ActionSpeed);
+        _body.Set(this);
         _body.ChangeSpeed(_parameter.ActionSpeed);
     }
 
@@ -49,63 +52,42 @@ public class MachineController : MonoBehaviour
     private void Move(float horizonal, float vertical)
     {
         _inputAxis = new Vector3(horizonal, 0, vertical);
+        var dir = _inputAxis;
+        dir.x += _body.BodyAngle.y;
         if (!_fly)
         {
             if (_groundCheck.IsGrounded())
             {
-                if (vertical > 0)
+                if (dir.z > 0.1f)
                 {
                     _leg.WalkStart(1);
                 }
-                else if (vertical < 0)
+                else if (dir.z < -0.1f)
                 {
                     _leg.WalkStart(-1);
                 }
-                if (horizonal > 0)
+                if (dir.x > 0.1f)
                 {
                     _leg.TurnStartRight();
                 }
-                else if (horizonal < 0)
+                else if (dir.x < -0.1f)
                 {
                     _leg.TurnStartLeft();
                 }
             }
             else if(_jump)
             {
-                if (horizonal > 0)
-                {
-                    _trunControl.Turn(_rb, 1, _parameter.TurnPower * 0.5f, _parameter.TurnSpeed * 0.1f);
-                }
-                else if (horizonal < 0)
-                {
-                    _trunControl.Turn(_rb, -1, _parameter.TurnPower * 0.5f, _parameter.TurnSpeed * 0.1f);
-                }
+                _rb.angularVelocity = Vector3.zero;
+                _trunControl.Turn(_rb, dir.x, _parameter.TurnPower, _parameter.TurnSpeed);
             }
 
         }
         else
         {
-            int h = 0;
-            int v = 0;
-            if (horizonal > 0)
+            if(vertical != 0)
             {
-                h = 1;
-            }
-            else if(horizonal < 0)
-            {
-                h = -1; 
-            }
-            if(vertical > 0)
-            {
-                v = 1;
                 Stop();
             }
-            else if (vertical < 0)
-            {
-                v = -1;
-                Stop();
-            }
-            Vector3 dir = transform.right * h + transform.forward * v;
             _moveControl.MoveFloat(_rb, dir, _parameter.FloatSpeed, _parameter.MaxFloatSpeed);
             if (horizonal > 0)
             {
@@ -158,7 +140,7 @@ public class MachineController : MonoBehaviour
         {
             _rb.AddForce(Vector3.zero, ForceMode.Acceleration);
             _boosterTimer -= Time.deltaTime;
-            Vector3 vector = transform.forward * _inputAxis.z + transform.right * _inputAxis.x;
+            Vector3 vector = _body.BodyTransform.forward * _inputAxis.z + _body.BodyTransform.right * _inputAxis.x;
             _moveControl.Jet(_rb, Vector3.up + vector * _parameter.JetControlPower, _parameter.JetPower);
             if (_boosterTimer <= 0)
             {
@@ -174,12 +156,17 @@ public class MachineController : MonoBehaviour
         }
         if (_inputAxis.x != 0)
         {
-            if (_inputAxis.x > 0)
+            if (_inputAxis.x > 0.5f)
             {
                 _booster.BoostL();
             }
+            else if(_inputAxis.x < -0.5f)
+            {
+                _booster.BoostR();
+            }
             else
             {
+                _booster.BoostL();
                 _booster.BoostR();
             }
         }
@@ -214,17 +201,13 @@ public class MachineController : MonoBehaviour
         _rb.angularVelocity = Vector3.zero;
         _moveControl.Jump(_rb, dir, _parameter.JumpPower);
     }
-    public void TurnLeft()
-    {
-        _trunControl.Turn(_rb, -1, _parameter.TurnPower, _parameter.TurnSpeed);
-    }
-    public void TurnRight()
-    {
-        _trunControl.Turn(_rb, 1, _parameter.TurnPower, _parameter.TurnSpeed);
-    }
-    public void Turn(int angle)
+    public void Turn(float angle)
     {
         _trunControl.Turn(_rb, angle, _parameter.TurnPower, _parameter.TurnSpeed);
+    }
+    public void Turn()
+    {
+        _trunControl.StrongTurn(_rb, _body.BodyAngle.y, _parameter.TurnPower, _parameter.TurnSpeed);
     }
     public void Stop()
     {

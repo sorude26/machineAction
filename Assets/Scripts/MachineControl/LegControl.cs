@@ -258,10 +258,12 @@ public class LegControl : MonoBehaviour
     void AttackMove()
     {
         _machine?.Walk(1);
+        _machine?.Turn();
     }
     void AttackMoveStrong()
     {
         _machine?.Walk(2);
+        _machine?.Turn();
     }
     void Shake()
     {
@@ -269,11 +271,11 @@ public class LegControl : MonoBehaviour
     }
     void TurnLeft()
     {
-        _machine?.Turn(-1);
+        _machine?.Turn(-1f);
     }
     void TurnRight()
     {
-        _machine?.Turn(1);
+        _machine?.Turn(1f);
     }
     void Jump()
     {
