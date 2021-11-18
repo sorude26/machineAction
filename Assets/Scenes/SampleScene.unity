@@ -2695,7 +2695,6 @@ GameObject:
   - component: {fileID: 478021447}
   - component: {fileID: 478021446}
   - component: {fileID: 478021445}
-  - component: {fileID: 478021448}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -2778,23 +2777,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &478021448
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478021443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 11400000, guid: a3dacaec0287d7444b4bd276816e1666, type: 2}
-  m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 1
-  m_FrequencyGain: 1
-  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &480214689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3978,7 +3960,7 @@ PrefabInstance:
     - target: {fileID: 1855310726834662664, guid: 3a1d5673fcb2dee4fb6f6df9156a2786,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a1d5673fcb2dee4fb6f6df9156a2786, type: 3}
@@ -4883,7 +4865,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.122183256, y: -0.000000004269366, z: 5.2558286e-10, w: 0.9925076}
+  m_LocalRotation: {x: 0.122183256, y: 0.000000004269366, z: -5.2558286e-10, w: 0.9925076}
   m_LocalPosition: {x: 0, y: 4.5, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4909,8 +4891,8 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
-    m_Style: 1
-    m_Time: 3
+    m_Style: 0
+    m_Time: 1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -6871,7 +6853,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434010852}
-  m_LocalRotation: {x: 0.122183256, y: -0.000000004269366, z: 5.2558286e-10, w: 0.9925076}
+  m_LocalRotation: {x: 0.122183256, y: 0.000000004269366, z: -5.2558286e-10, w: 0.9925076}
   m_LocalPosition: {x: 0, y: 4.5, z: -6}
   m_LocalScale: {x: 1, y: 0.99999994, z: 0.99999994}
   m_Children:
@@ -7573,7 +7555,7 @@ PrefabInstance:
     - target: {fileID: 2860746626610870157, guid: 712e3c9cb17480649bbdd897eba20aad,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3392978160529811481, guid: 712e3c9cb17480649bbdd897eba20aad,
         type: 3}
@@ -8979,8 +8961,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe9c74c8dbd4324cbc5a11271b4c7fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraTarget: {fileID: 2146080150}
+  _cameraTarget: {fileID: 1007097280}
+  _body: {fileID: 1961025150}
   _cameraShakeControl: {fileID: 890590130}
+  _followSpeed: 10
+  _lockSpeed: 20
 --- !u!43 &1764778318
 Mesh:
   m_ObjectHideFlags: 0
@@ -10222,6 +10207,7 @@ MonoBehaviour:
   _leg: {fileID: 1601032654}
   _body: {fileID: 1961025150}
   _booster: {fileID: 997456894}
+  _camera: {fileID: 2146080150}
   _fly: 0
 --- !u!114 &1944469882
 MonoBehaviour:
@@ -10236,11 +10222,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_test:
-    HeadID: 5
-    BodyID: 5
-    RArmID: 5
-    LArmID: 5
-    LegID: 5
+    HeadID: 4
+    BodyID: 4
+    RArmID: 4
+    LArmID: 4
+    LegID: 4
     WeaponRArmID: 0
     WeaponLArmID: 0
   _camera: {fileID: 2146080150}
@@ -10459,13 +10445,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5d25acb0f71ef489ba1e32182279ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
+  _target: {fileID: 958231835}
   _animator: {fileID: 1961025151}
   _groundCheck: {fileID: 1333700079}
-  _camera: {fileID: 0}
   _leg: {fileID: 1601032654}
-  _maxUpAngle: 20
-  _maxDownAngle: -10
   _bodyControlBase:
   - {fileID: 1007097280}
   - {fileID: 2031917631}
