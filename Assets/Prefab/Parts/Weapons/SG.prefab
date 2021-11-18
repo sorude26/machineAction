@@ -152,16 +152,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 6963882160053930852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf817040b9cb4944f8f57a9475d0eac6, type: 3}
+  m_Script: {fileID: 11500000, guid: ead02ec81098f8f4787e91eeccde5f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_partsID: 11
-  m_partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
-  m_partsObject:
-  - {fileID: 87388889617687705}
-  m_anime: {fileID: 0}
-  m_muzzle: {fileID: 8039976409714412771}
-  m_muzzleFlash: {fileID: 5333256745341139181}
+  _partsID: 6
+  _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
+  _partsObject: []
+  _anime: {fileID: 0}
+  _bullet: 0
+  _muzzle: {fileID: 0}
+  _particle: []
+  _power: 20
+  _triggerShotCount: 1
+  _triggerInterval: 0
+  _shotInterval: 0.2
+  _diffusivity: 0.01
 --- !u!1 &7536681244240296914
 GameObject:
   m_ObjectHideFlags: 0

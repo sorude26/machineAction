@@ -440,13 +440,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ae69652fd39a24cb0cf944d2130560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_partsID: 0
-  m_partsData: {fileID: 11400000, guid: 90925bcaf2cb3444193d3c3a6b40a2f1, type: 2}
-  m_partsObject:
-  - {fileID: 6792024479088334632}
-  - {fileID: 8873676910685168916}
-  - {fileID: 4820998831945108148}
-  m_anime: {fileID: 0}
+  _partsID: 0
+  _partsData: {fileID: 11400000, guid: 90925bcaf2cb3444193d3c3a6b40a2f1, type: 2}
+  _partsObject: []
+  _anime: {fileID: 0}
   m_hitPos:
   - {fileID: 2928691793991185223}
   - {fileID: 8773203625200230105}

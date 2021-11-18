@@ -1153,6 +1153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead02ec81098f8f4787e91eeccde5f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _partsID: 0
+  _partsData: {fileID: 0}
+  _partsObject: []
+  _anime: {fileID: 0}
   m_attackPos: 1
   m_bullet: 2
   m_muzzle: {fileID: 171161278816296884}
@@ -1602,11 +1606,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56059ea6a334e94ea82b40b03262e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_partsID: 11
-  m_partsData: {fileID: 11400000, guid: ad2cfe481fba7ba49aea7fc5954d31ac, type: 2}
-  m_partsObject:
-  - {fileID: 0}
-  m_anime: {fileID: 0}
+  _partsID: 7
+  _partsData: {fileID: 0}
+  _partsObject: []
+  _anime: {fileID: 0}
   m_hitPos:
   - {fileID: 1826252973360359856}
   - {fileID: 1590688195702531186}

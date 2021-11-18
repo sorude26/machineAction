@@ -269,13 +269,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ae69652fd39a24cb0cf944d2130560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_partsID: 5
-  m_partsData: {fileID: 11400000, guid: c0525c6946c113d45b7a5e680e703e40, type: 2}
-  m_partsObject:
-  - {fileID: 9128706596503663828}
-  - {fileID: 1043605133188527462}
-  - {fileID: 112263966221800820}
-  m_anime: {fileID: 0}
+  _partsID: 5
+  _partsData: {fileID: 11400000, guid: c0525c6946c113d45b7a5e680e703e40, type: 2}
+  _partsObject: []
+  _anime: {fileID: 0}
   m_hitPos:
   - {fileID: 1084820013950904158}
   - {fileID: 6425825474776562981}
@@ -648,6 +645,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead02ec81098f8f4787e91eeccde5f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _partsID: 0
+  _partsData: {fileID: 0}
+  _partsObject: []
+  _anime: {fileID: 0}
   m_attackPos: 1
   m_bullet: 3
   m_muzzle: {fileID: 108799857853223069}

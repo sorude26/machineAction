@@ -9763,11 +9763,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc1972502fb717439cb50f475bf718b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_partsID: 0
-  m_partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
-  m_partsObject: []
-  m_anime: {fileID: 0}
-  m_blade: {fileID: 0}
+  _partsID: 21
+  _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
+  _partsObject: []
+  _anime: {fileID: 0}
+  _blade: {fileID: 0}
 --- !u!1 &1855310727816323469
 GameObject:
   m_ObjectHideFlags: 0

@@ -620,13 +620,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ae69652fd39a24cb0cf944d2130560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_partsID: 9
-  m_partsData: {fileID: 11400000, guid: 90925bcaf2cb3444193d3c3a6b40a2f1, type: 2}
-  m_partsObject:
-  - {fileID: 1503014086104409203}
-  - {fileID: 7210201737331549633}
-  - {fileID: 7780740668750480851}
-  m_anime: {fileID: 0}
+  _partsID: 9
+  _partsData: {fileID: 11400000, guid: 90925bcaf2cb3444193d3c3a6b40a2f1, type: 2}
+  _partsObject: []
+  _anime: {fileID: 0}
   m_hitPos:
   - {fileID: 7312270330401388537}
   - {fileID: 3700119585987669378}

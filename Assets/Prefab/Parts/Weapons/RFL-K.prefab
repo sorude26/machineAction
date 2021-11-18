@@ -118,7 +118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3856761357566047462}
-  - component: {fileID: 4951352779813132521}
+  - component: {fileID: 6806441359462685576}
   m_Layer: 0
   m_Name: RFL-K
   m_TagString: Untagged
@@ -142,7 +142,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4951352779813132521
+--- !u!114 &6806441359462685576
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,13 +151,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 7337340605086237283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf817040b9cb4944f8f57a9475d0eac6, type: 3}
+  m_Script: {fileID: 11500000, guid: ead02ec81098f8f4787e91eeccde5f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_partsID: 15
-  m_partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
-  m_partsObject:
-  - {fileID: 306704581100613022}
-  m_anime: {fileID: 0}
-  m_muzzle: {fileID: 7702402724419765732}
-  m_muzzleFlash: {fileID: 5725303601514246634}
+  _partsID: 5
+  _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
+  _partsObject: []
+  _anime: {fileID: 0}
+  _bullet: 0
+  _muzzle: {fileID: 0}
+  _particle: []
+  _power: 20
+  _triggerShotCount: 1
+  _triggerInterval: 0
+  _shotInterval: 0.2
+  _diffusivity: 0.01

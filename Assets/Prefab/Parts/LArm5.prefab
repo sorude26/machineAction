@@ -1177,13 +1177,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ae69652fd39a24cb0cf944d2130560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_partsID: 4
-  m_partsData: {fileID: 11400000, guid: 90925bcaf2cb3444193d3c3a6b40a2f1, type: 2}
-  m_partsObject:
-  - {fileID: 7932871416088340933}
-  - {fileID: 7471848754502482483}
-  - {fileID: 3918370006867492916}
-  m_anime: {fileID: 0}
+  _partsID: 4
+  _partsData: {fileID: 11400000, guid: 90925bcaf2cb3444193d3c3a6b40a2f1, type: 2}
+  _partsObject: []
+  _anime: {fileID: 0}
   m_hitPos:
   - {fileID: 5804692209565366386}
   - {fileID: 1214169978837616575}

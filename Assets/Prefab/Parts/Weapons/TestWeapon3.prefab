@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 934213203298392808}
-  - component: {fileID: 9062853159849719527}
+  - component: {fileID: 2754929555092045463}
   m_Layer: 0
   m_Name: TestWeapon3
   m_TagString: Untagged
@@ -112,7 +112,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9062853159849719527
+--- !u!114 &2754929555092045463
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,16 +121,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 6674472739149900909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf817040b9cb4944f8f57a9475d0eac6, type: 3}
+  m_Script: {fileID: 11500000, guid: ead02ec81098f8f4787e91eeccde5f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_partsID: 3
-  m_partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
-  m_partsObject:
-  - {fileID: 4409771433144959888}
-  m_anime: {fileID: 0}
-  m_muzzle: {fileID: 6023401259031292906}
-  m_muzzleFlash: {fileID: 8504863979443363812}
+  _partsID: 10
+  _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
+  _partsObject: []
+  _anime: {fileID: 0}
+  _bullet: 0
+  _muzzle: {fileID: 0}
+  _particle: []
+  _power: 20
+  _triggerShotCount: 1
+  _triggerInterval: 0
+  _shotInterval: 0.2
+  _diffusivity: 0.01
 --- !u!1 &8504863979443363812
 GameObject:
   m_ObjectHideFlags: 0

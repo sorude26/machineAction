@@ -203,11 +203,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28abf3aa8161df84ca1d33fd8b020d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_partsID: 7
-  m_partsData: {fileID: 11400000, guid: aa01aa1e1c1a035489b7e1b65fa289b1, type: 2}
-  m_partsObject:
-  - {fileID: 9111796237160695572}
-  m_anime: {fileID: 0}
+  _partsID: 7
+  _partsData: {fileID: 11400000, guid: aa01aa1e1c1a035489b7e1b65fa289b1, type: 2}
+  _partsObject: []
+  _anime: {fileID: 0}
   m_hitPos:
   - {fileID: 3636532984573155646}
   m_damageSmoke: {fileID: 4162540764379703734}
@@ -626,12 +625,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 457d6bcebb7b09043b52fbddc36153cc, type: 3}
---- !u!1 &9111796237160695572 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2794158235224681674, guid: 457d6bcebb7b09043b52fbddc36153cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 6392088341591419870}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3636532984573155646 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7692936520533127904, guid: 457d6bcebb7b09043b52fbddc36153cc,

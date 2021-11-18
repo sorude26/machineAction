@@ -3960,7 +3960,7 @@ PrefabInstance:
     - target: {fileID: 1855310726834662664, guid: 3a1d5673fcb2dee4fb6f6df9156a2786,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a1d5673fcb2dee4fb6f6df9156a2786, type: 3}
@@ -7555,7 +7555,7 @@ PrefabInstance:
     - target: {fileID: 2860746626610870157, guid: 712e3c9cb17480649bbdd897eba20aad,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3392978160529811481, guid: 712e3c9cb17480649bbdd897eba20aad,
         type: 3}
@@ -10227,8 +10227,12 @@ MonoBehaviour:
     RArmID: 4
     LArmID: 4
     LegID: 4
-    WeaponRArmID: 0
-    WeaponLArmID: 0
+    WeaponRArmID: 5
+    WeaponLArmID: 10
+    ShoulderWeaponID: 0
+    BodyWeaponID: 0
+    BoosterID: 0
+    CoreID: 0
   _camera: {fileID: 2146080150}
   _bodyBase:
   - {fileID: 1007097280}

@@ -65,11 +65,17 @@ PrefabInstance:
     - target: {fileID: 6950886510224734245, guid: d9eb3c742b60db54ca9ec9b0e62599db,
         type: 3}
       propertyPath: m_Name
-      value: RArm11 Variant
+      value: RArm11
       objectReference: {fileID: 0}
     - target: {fileID: 7970904409493532008, guid: d9eb3c742b60db54ca9ec9b0e62599db,
         type: 3}
       propertyPath: m_partsData
+      value: 
+      objectReference: {fileID: 11400000, guid: c0525c6946c113d45b7a5e680e703e40,
+        type: 2}
+    - target: {fileID: 7970904409493532008, guid: d9eb3c742b60db54ca9ec9b0e62599db,
+        type: 3}
+      propertyPath: _partsData
       value: 
       objectReference: {fileID: 11400000, guid: c0525c6946c113d45b7a5e680e703e40,
         type: 2}

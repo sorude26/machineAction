@@ -364,13 +364,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc1972502fb717439cb50f475bf718b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_partsID: 6
-  m_partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
-  m_partsObject:
-  - {fileID: 4663225639633345043}
-  m_anime: {fileID: 0}
-  m_blade: {fileID: 4768648366570643612}
-  m_attackHitTime: 0.3
+  _partsID: 14
+  _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
+  _partsObject: []
+  _anime: {fileID: 0}
+  _blade: {fileID: 0}
 --- !u!1 &7475297387188016274
 GameObject:
   m_ObjectHideFlags: 0

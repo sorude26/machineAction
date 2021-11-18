@@ -398,11 +398,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28abf3aa8161df84ca1d33fd8b020d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_partsID: 8
-  m_partsData: {fileID: 11400000, guid: aa01aa1e1c1a035489b7e1b65fa289b1, type: 2}
-  m_partsObject:
-  - {fileID: 2219321662062280710}
-  m_anime: {fileID: 0}
+  _partsID: 8
+  _partsData: {fileID: 11400000, guid: aa01aa1e1c1a035489b7e1b65fa289b1, type: 2}
+  _partsObject: []
+  _anime: {fileID: 0}
   m_hitPos:
   - {fileID: 7295686022318440473}
   m_damageSmoke: {fileID: 7933526984434855362}

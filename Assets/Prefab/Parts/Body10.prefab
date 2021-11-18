@@ -1104,11 +1104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56059ea6a334e94ea82b40b03262e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_partsID: 13
-  m_partsData: {fileID: 11400000, guid: ad2cfe481fba7ba49aea7fc5954d31ac, type: 2}
-  m_partsObject:
-  - {fileID: 0}
-  m_anime: {fileID: 0}
+  _partsID: 9
+  _partsData: {fileID: 11400000, guid: ad2cfe481fba7ba49aea7fc5954d31ac, type: 2}
+  _partsObject: []
+  _anime: {fileID: 0}
   m_hitPos:
   - {fileID: 6279900079941460221}
   - {fileID: 6371971984649039167}
@@ -1126,8 +1125,8 @@ MonoBehaviour:
   m_headParts: {fileID: 3567532498535637734}
   m_lArmParts: {fileID: 6371971984649039167}
   m_rArmParts: {fileID: 9176285437556750986}
-  m_weapon: {fileID: 9058371864667671517}
-  m_weaponShoulder: {fileID: 9209237499197109261}
+  m_weapon: {fileID: 0}
+  m_weaponShoulder: {fileID: 0}
   m_bodyPos: {fileID: 5292337690134255495}
 --- !u!1 &4532989763945058085
 GameObject:
@@ -1138,7 +1137,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7208447885850541009}
-  - component: {fileID: 9209237499197109261}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -1164,25 +1162,6 @@ Transform:
   m_Father: {fileID: 476286745985816286}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 1.07, y: 0, z: 0}
---- !u!114 &9209237499197109261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4532989763945058085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf817040b9cb4944f8f57a9475d0eac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_partsID: 4
-  m_partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
-  m_partsObject:
-  - {fileID: 4532989763945058085}
-  m_anime: {fileID: 0}
-  m_muzzle: {fileID: 1003855527577753481}
-  m_muzzleFlash: {fileID: 2048668406528961384}
 --- !u!1 &4745218295812960008
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,7 +1853,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2406539600719951581}
-  - component: {fileID: 9058371864667671517}
   m_Layer: 0
   m_Name: Arm
   m_TagString: Untagged
@@ -1899,25 +1877,6 @@ Transform:
   m_Father: {fileID: 476286745985816286}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
---- !u!114 &9058371864667671517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6153001079484089681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf817040b9cb4944f8f57a9475d0eac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_partsID: 5
-  m_partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
-  m_partsObject:
-  - {fileID: 6153001079484089681}
-  m_anime: {fileID: 0}
-  m_muzzle: {fileID: 6337922134167626736}
-  m_muzzleFlash: {fileID: 6595822138288825319}
 --- !u!1 &6154161454600598329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2451,15 +2410,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45a5b0c089bb7a544994d2314af810a7, type: 3}
---- !u!4 &7633706672986718856 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1016132564122419649, guid: 45a5b0c089bb7a544994d2314af810a7,
-    type: 3}
-  m_PrefabInstance: {fileID: 7487895087467086665}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7633706672986718861 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1016132564122419652, guid: 45a5b0c089bb7a544994d2314af810a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7487895087467086665}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7633706672986718856 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1016132564122419649, guid: 45a5b0c089bb7a544994d2314af810a7,
     type: 3}
   m_PrefabInstance: {fileID: 7487895087467086665}
   m_PrefabAsset: {fileID: 0}

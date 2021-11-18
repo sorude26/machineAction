@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1240207881354033163}
-  - component: {fileID: 6919041288393577476}
+  - component: {fileID: 8175182816005340825}
   m_Layer: 0
   m_Name: MG-s
   m_TagString: Untagged
@@ -113,7 +113,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6919041288393577476
+--- !u!114 &8175182816005340825
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,16 +122,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 4710934662806326926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf817040b9cb4944f8f57a9475d0eac6, type: 3}
+  m_Script: {fileID: 11500000, guid: ead02ec81098f8f4787e91eeccde5f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_partsID: 17
-  m_partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
-  m_partsObject:
-  - {fileID: 2374030644678156659}
-  m_anime: {fileID: 0}
-  m_muzzle: {fileID: 5645134598294259977}
-  m_muzzleFlash: {fileID: 8085980606477632539}
+  _partsID: 1
+  _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
+  _partsObject: []
+  _anime: {fileID: 0}
+  _bullet: 0
+  _muzzle: {fileID: 0}
+  _particle: []
+  _power: 20
+  _triggerShotCount: 1
+  _triggerInterval: 0
+  _shotInterval: 0.2
+  _diffusivity: 0.01
 --- !u!1 &7766386298207026439
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,12 +241,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d8446012d74459408fa9d671da6863f, type: 3}
---- !u!1 &8085980606477632539 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7175206901212930009, guid: 9d8446012d74459408fa9d671da6863f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1415353128994626498}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8085980606477632542 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7175206901212930012, guid: 9d8446012d74459408fa9d671da6863f,
