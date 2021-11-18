@@ -5,119 +5,85 @@ using UnityEngine;
 public class ShotWeapon : WeaponMaster
 {
     [SerializeField]
-    AttackPos m_attackPos = AttackPos.Shot;
+    BulletType _bullet = default;
     [SerializeField]
-    BulletType m_bullet = default;
+    Transform _muzzle = default;
     [SerializeField]
-    Transform m_muzzle = default;
+    ParticleSystem[] _particle = default;
     [SerializeField]
-    ParticleSystem[] m_particle = default;
+    float _power = 20f;
     [SerializeField]
-    float m_power = 20f;
+    int _triggerShotCount = 1;
     [SerializeField]
-    int m_triggerShotCount = 1;
+    float _triggerInterval = 0f;
+    float _triggerTimer = 0;
+    bool _trigger = false;
     [SerializeField]
-    float m_triggerInterval = 0f;
-    float m_triggerTimer = 0;
-    bool m_trigger = false;
+    float _shotInterval = 0.2f;
+    int _shotCount = 0;
     [SerializeField]
-    float m_shotInterval = 0.2f;
-    int m_shotCount = 0;
-    [SerializeField]
-    protected float m_diffusivity = 0.01f;
+    protected float _diffusivity = 0.01f;
     public bool ShotNow { get; private set; }
-    enum AttackPos
-    {
-        Shot,
-        ShotL,
-        ShotR,
-        Attack,
-    }
-    private void Start()
-    {
-        switch (m_attackPos)
-        {
-            case AttackPos.Shot:
-                GameScene.InputManager.Instance.OnFirstInputShot += StartShot;
-                break;
-            case AttackPos.ShotL:
-                GameScene.InputManager.Instance.OnFirstInputShotL += StartShot;
-                break;
-            case AttackPos.ShotR:
-                GameScene.InputManager.Instance.OnFirstInputShotR += StartShot;
-                break;
-            case AttackPos.Attack:
-                GameScene.InputManager.Instance.OnFirstInputAttack += StartShot;
-                break;
-            default:
-                break;
-        }
-    }
+
     public void Shot()
     {
-        if (m_particle.Length > 0)
+        if (_particle.Length > 0)
         {
-            foreach (var particle in m_particle)
+            foreach (var particle in _particle)
             {
                 particle.Play();
             }
         }
-        if (m_diffusivity > 0.09f)
+        if (_diffusivity > 0.09f)
         {
             DiffusionShot();
         }
         Vector3 moveDir = transform.forward;
-        moveDir.x += Random.Range(0, m_diffusivity);
-        moveDir.y += Random.Range(0, m_diffusivity);
-        moveDir.z += Random.Range(0, m_diffusivity);
-        moveDir.x -= Random.Range(0, m_diffusivity);
-        moveDir.y -= Random.Range(0, m_diffusivity);
-        moveDir.z -= Random.Range(0, m_diffusivity);
-        var shot = BulletPool.Get(m_bullet, m_muzzle.position);
+        moveDir.x += Random.Range(-_diffusivity, _diffusivity);
+        moveDir.y += Random.Range(-_diffusivity, _diffusivity);
+        moveDir.z += Random.Range(-_diffusivity, _diffusivity);
+        var shot = BulletPool.Get(_bullet, _muzzle.position);
         if (shot)
         {
-            shot.ShotRb.AddForce(moveDir * m_power, ForceMode.Impulse);
+            shot.ShotRb.AddForce(moveDir * _power, ForceMode.Impulse);
         }
         CameraController.HitShake();
     }
     void DiffusionShot()
     {
-        for (int i = 1; i < m_shotCount; i++)
+        for (int i = 1; i < _shotCount; i++)
         {
             Vector3 moveDir = transform.forward;
-            moveDir.x += Random.Range(0, m_diffusivity);
-            moveDir.y += Random.Range(0, m_diffusivity);
-            moveDir.z += Random.Range(0, m_diffusivity);
-            moveDir.x -= Random.Range(0, m_diffusivity);
-            moveDir.y -= Random.Range(0, m_diffusivity);
-            moveDir.z -= Random.Range(0, m_diffusivity); 
-            var shot = BulletPool.Get(m_bullet, m_muzzle.position);
+            moveDir.x += Random.Range(-_diffusivity, _diffusivity);
+            moveDir.y += Random.Range(-_diffusivity, _diffusivity);
+            moveDir.z += Random.Range(-_diffusivity, _diffusivity);
+            var shot = BulletPool.Get(_bullet, _muzzle.position);
             if (shot)
             {
-                shot.ShotRb.AddForce(moveDir * m_power, ForceMode.Impulse);
+                shot.ShotRb.AddForce(moveDir * _power, ForceMode.Impulse);
             }
         }
-        m_shotCount = 0;
+        _shotCount = 0;
     }
     public void StartShot()
     {
-        if (m_triggerTimer > 0)
+        if (_triggerTimer > 0)
         {
             return;
         }
-        if (m_triggerInterval > 0)
+        if (_triggerInterval > 0)
         {
-            if (!m_trigger)
+            if (!_trigger)
             {
-                m_trigger = true;
-                m_triggerTimer = m_triggerInterval;
-                m_shotCount = m_triggerShotCount;
+                _trigger = true;
+                _triggerTimer = _triggerInterval;
+                _shotCount = _triggerShotCount;
                 StartCoroutine(TriggerTimer());
             }
         }
         else
         {
-            m_shotCount = m_triggerShotCount;
+            _shotCount = _triggerShotCount;
         }
         if (!ShotNow)
         {
@@ -127,14 +93,14 @@ public class ShotWeapon : WeaponMaster
     }
     IEnumerator BulletShot()
     {
-        float timer = m_shotInterval;
-        while (m_shotCount > 0)
+        float timer = _shotInterval;
+        while (_shotCount > 0)
         {
             timer += Time.deltaTime;           
-            if (timer >= m_shotInterval)
+            if (timer >= _shotInterval)
             {
                 Shot();
-                m_shotCount--;
+                _shotCount--;
                 timer = 0;
             }
             yield return null;
@@ -143,13 +109,13 @@ public class ShotWeapon : WeaponMaster
     }
     IEnumerator TriggerTimer()
     {
-        while (m_triggerTimer > 0)
+        while (_triggerTimer > 0)
         {
-            m_triggerTimer -= Time.deltaTime;
+            _triggerTimer -= Time.deltaTime;
             yield return null;
         }
-        m_triggerTimer = 0;
-        m_trigger = false;
+        _triggerTimer = 0;
+        _trigger = false;
     }
 
     public override void AttackAction()
