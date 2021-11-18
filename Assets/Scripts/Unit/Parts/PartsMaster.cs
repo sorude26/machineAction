@@ -9,25 +9,25 @@ using UnityEngine;
 public abstract class PartsMaster<T> : MonoBehaviour, IParts where T:PartsData
 {
     [Tooltip("パーツの基礎ID")]
-    [SerializeField] protected int m_partsID;
+    [SerializeField] protected int _partsID;
     [Tooltip("パーツのデータ")]
-    [SerializeField] protected T m_partsData;
+    [SerializeField] protected T _partsData;
     [Tooltip("表示が切り替わるパーツ")]
-    [SerializeField] protected GameObject[] m_partsObject;
+    [SerializeField] protected GameObject[] _partsObject;
     [Tooltip("パーツのアニメーション")]
-    [SerializeField] protected Animator m_anime;
+    [SerializeField] protected Animator _anime;
     /// <summary> パーツID </summary>
-    public int PartsID { get => m_partsID; }
+    public int PartsID { get => _partsID; }
     /// <summary> パーツ名 </summary>
-    public string PartsName { get => m_partsData.PartsName[m_partsID]; }
+    public string PartsName { get => _partsData.PartsName[_partsID]; }
     /// <summary> 重量 </summary>
-    public int Weight { get => m_partsData.Weight[m_partsID]; }
+    public int Weight { get => _partsData.Weight[_partsID]; }
     /// <summary> パーツサイズ </summary>
-    public int PartsSize { get => m_partsData.PartsSize[m_partsID]; }
+    public int PartsSize { get => _partsData.PartsSize[_partsID]; }
     /// <summary> 破壊フラグ </summary>
     public bool Break { get; protected set; }
     /// <summary> パーツの固有アニメーション </summary>
-    public Animator PartsAnime { get => m_anime; }
+    public Animator PartsAnime { get => _anime; }
     public virtual int GetSize() => PartsSize;
     public virtual void DestoryParts() => Destroy(this.gameObject);
 }

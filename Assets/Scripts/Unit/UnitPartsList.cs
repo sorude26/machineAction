@@ -16,6 +16,10 @@ public struct UnitBuildData
     public int LegID;
     public int WeaponRArmID;
     public int WeaponLArmID;
+    public int ShoulderWeaponID;
+    public int BodyWeaponID;
+    public int BoosterID;
+    public int CoreID;
     public UnitBuildData(int head,int body,int rArm,int lArm,int leg,int weaponRA,int weaponLA)
     {
         HeadID = head;
@@ -25,6 +29,24 @@ public struct UnitBuildData
         LegID = leg;
         WeaponRArmID = weaponRA;
         WeaponLArmID = weaponLA;
+        ShoulderWeaponID = 0;
+        BodyWeaponID = 0;
+        BoosterID = 0;
+        CoreID = 0;
+    }
+    public UnitBuildData(int head, int body, int rArm, int lArm, int leg, int weaponRA, int weaponLA,int shoulder,int weaponBody,int booster,int core)
+    {
+        HeadID = head;
+        BodyID = body;
+        RArmID = rArm;
+        LArmID = lArm;
+        LegID = leg;
+        WeaponRArmID = weaponRA;
+        WeaponLArmID = weaponLA;
+        ShoulderWeaponID = shoulder;
+        BodyWeaponID = weaponBody;
+        BoosterID = booster;
+        CoreID = core;
     }
 }
 public enum PartsType

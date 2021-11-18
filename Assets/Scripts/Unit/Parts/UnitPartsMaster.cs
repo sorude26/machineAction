@@ -9,9 +9,9 @@ using UnityEngine;
 public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T :UnitPartsData
 {
     /// <summary> パーツ耐久値 </summary>
-    public int MaxPartsHP { get => m_partsData.MaxPartsHp[m_partsID]; }
+    public int MaxPartsHP { get => _partsData.MaxPartsHp[_partsID]; }
     /// <summary> パーツ装甲値 </summary>
-    public int Defense { get => m_partsData.Defense[m_partsID]; }
+    public int Defense { get => _partsData.Defense[_partsID]; }
     /// <summary> 現在のパーツ耐久値 </summary>
     protected int m_currentPartsHp;
     /// <summary> 現在のパーツ耐久値 </summary>
@@ -128,7 +128,7 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T :U
     /// </summary>
     protected virtual void PartsBreak()
     {
-        foreach (var item in m_partsObject)
+        foreach (var item in _partsObject)
         {
             item.SetActive(false);
         }

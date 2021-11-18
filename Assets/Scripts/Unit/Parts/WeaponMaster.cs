@@ -9,19 +9,19 @@ using UnityEngine;
 public abstract class WeaponMaster : PartsMaster<WeaponData>
 {
     /// <summary> 武器攻撃力 </summary>
-    public int Power { get => m_partsData.Power[m_partsID]; }
+    public int Power { get => _partsData.Power[_partsID]; }
     /// <summary> 総攻撃回数 </summary>
-    public int MaxAttackNumber { get => m_partsData.MaxAttackNumber[m_partsID]; }
+    public int MaxAttackNumber { get => _partsData.MaxAttackNumber[_partsID]; }
     /// <summary> 最大攻撃力 </summary>
-    public int MaxPower { get => m_partsData.Power[m_partsID] * m_partsData.Power[m_partsID] + m_partsData.Power[m_partsID] * m_partsData.MaxAttackNumber[m_partsID]; }
+    public int MaxPower { get => _partsData.Power[_partsID] * _partsData.Power[_partsID] + _partsData.Power[_partsID] * _partsData.MaxAttackNumber[_partsID]; }
     /// <summary> 命中精度 </summary>
-    public int HitAccuracy { get => m_partsData.HitAccuracy[m_partsID]; }
+    public int HitAccuracy { get => _partsData.HitAccuracy[_partsID]; }
     /// <summary> 最大射程 </summary>
-    public int Range { get => m_partsData.Range[m_partsID]; }
+    public int Range { get => _partsData.Range[_partsID]; }
     /// <summary> 最低射程 </summary>
-    public int MinRange { get => m_partsData.MinRange[m_partsID]; }
+    public int MinRange { get => _partsData.MinRange[_partsID]; }
     /// <summary> 武器種 </summary>
-    public WeaponType Type { get => m_partsData.Type[m_partsID]; }
+    public WeaponType Type { get => _partsData.Type[_partsID]; }
     /// <summary> 武装部位 </summary>
     public WeaponPosition WeaponPos { get; private set; }
     /// <summary> 攻撃種類のデリゲート </summary>

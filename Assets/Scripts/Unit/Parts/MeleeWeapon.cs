@@ -7,13 +7,13 @@ using UnityEngine;
 /// </summary>
 public class MeleeWeapon : WeaponMaster
 {
-    [SerializeField] GameObject m_blade;
+    [SerializeField] GameObject _blade;
     public override void AttackAction()
     {
-        m_blade?.SetActive(true);
+        _blade?.SetActive(true);
     }
     public override void AttackEnd()
     {
-        m_blade?.SetActive(false);
+        _blade?.SetActive(false);
     }
 }
