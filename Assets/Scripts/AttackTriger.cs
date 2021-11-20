@@ -5,10 +5,10 @@ using UnityEngine;
 public class AttackTriger : MonoBehaviour
 {
     [SerializeField]
-    EffectType m_effect = default;
+    EffectType _effect = default;
     [SerializeField]
-    int m_power = 1;
-    public int Power { get => m_power; }
+    int _power = 1;
+    public int Power { get => _power; }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Ground")
@@ -27,11 +27,11 @@ public class AttackTriger : MonoBehaviour
     }
     public void AttackHit()
     {
-        var effect = EffectPool.Get(m_effect, transform.position);
+        var effect = EffectPool.Get(_effect, transform.position);
         if (effect)
         {
             effect.Particle.Play();
-            if (m_effect == EffectType.Explosion || m_effect == EffectType.ExplosionMachine)
+            if (_effect == EffectType.Explosion || _effect == EffectType.ExplosionMachine)
             {
                 CameraController.Shake();
             }
