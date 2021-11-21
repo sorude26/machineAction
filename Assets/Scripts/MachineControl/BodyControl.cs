@@ -67,15 +67,23 @@ public class BodyControl : MonoBehaviour
         {
             return;
         }
+        if (_machine?.LAWeapon.Type == WeaponType.Rifle)
+        {
+            ShotLeft();
+        }
+        else if (_machine?.LAWeapon.Type == WeaponType.Blade)
+        {
+
+        }
         LockOn(_target.position);
     }
     void ShotLeft()
     {
-
+        _machine.LAWeapon.AttackAction();
     }
     void ShotRight()
     {
-
+        _machine.RAWeapon.AttackAction();
     }
     void LockOn(Vector3 targetPos)
     {
@@ -87,7 +95,7 @@ public class BodyControl : MonoBehaviour
         }
         _controlTarget[0].forward = targetDir;
         _bodyRotaion = _controlTarget[0].localRotation;
-        if (false)
+        if (true)
         {
             _rArmRotaion = Quaternion.Euler(-10, 0, 10);
             targetDir = targetPos - _rightControlBase[2].position;
@@ -128,7 +136,7 @@ public class BodyControl : MonoBehaviour
             {
                 _machine?.Turn(BodyAngle.y * 10);
                 ChangeAnimation("attackSwingRArm3");
-                //ChangeAnimation("attackSwingDArm3", 0.5f);
+                //ChangeAnimation("attackSwingDArm3");
                 //ChangeAnimation("attackKnuckleRArm");
             }
             return;
@@ -149,7 +157,7 @@ public class BodyControl : MonoBehaviour
             else if (_attackCount == 2)
             {
                 ChangeAnimation("attackSwingRArm3",0.1f);
-                //ChangeAnimation("attackSwingDArm3", 0.5f);
+                //ChangeAnimation("attackSwingDArm3");
                 //ChangeAnimation("attackKnuckleRArm");
                 _leg?.AttackMoveR();
                 _attackCount = 0;

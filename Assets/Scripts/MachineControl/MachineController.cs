@@ -28,6 +28,9 @@ public class MachineController : MonoBehaviour
     float _boosterTimer = -1;
     Vector3 _inputAxis = Vector3.zero;
     public Vector3 InputAxis { get => _inputAxis; }
+
+    public WeaponMaster RAWeapon { get; set; }
+    public WeaponMaster LAWeapon { get; set; }
     private void Start()
     {
         GameScene.InputManager.Instance.OnInputAxisRaw += Move;
