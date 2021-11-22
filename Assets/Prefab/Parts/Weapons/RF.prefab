@@ -50,12 +50,12 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  _bullet: 0
-  _muzzle: {fileID: 0}
+  _bullet: 3
+  _muzzle: {fileID: 792217238915266354}
   _particle: []
-  _power: 20
+  _power: 70
   _triggerShotCount: 1
-  _triggerInterval: 0
+  _triggerInterval: 0.5
   _shotInterval: 0.2
   _diffusivity: 0.01
 --- !u!1 &3417869634885632828

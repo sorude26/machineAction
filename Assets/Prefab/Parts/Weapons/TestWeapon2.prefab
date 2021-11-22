@@ -129,11 +129,11 @@ MonoBehaviour:
   _partsObject: []
   _anime: {fileID: 0}
   _bullet: 0
-  _muzzle: {fileID: 0}
+  _muzzle: {fileID: 6810587328364706802}
   _particle: []
   _power: 20
   _triggerShotCount: 1
-  _triggerInterval: 0
+  _triggerInterval: 0.1
   _shotInterval: 0.2
   _diffusivity: 0.01
 --- !u!1 &8868751112660553724
