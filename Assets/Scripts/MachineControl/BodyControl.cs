@@ -34,12 +34,15 @@ public class BodyControl : MonoBehaviour
     int _attackCount = 0;
     bool _attack = false;
     MachineController _machine = default;
+    AttackControl attackControl = default;
     public Quaternion BodyAngle { get => _bodyControlBase[0].localRotation; }
     public Transform BodyTransform { get => _bodyControlBase[0]; }
+    public FightingType Fighting { get; set; }
     private void Start()
     {
-        GameScene.InputManager.Instance.OnFirstInputAttack += HandAttackRight;
-        GameScene.InputManager.Instance.OnFirstInputShotR += HandAttackLeft;
+        GameScene.InputManager.Instance.OnFirstInputAttack += FightingAttack;
+        GameScene.InputManager.Instance.OnFirstInputShotL += HandAttackLeft;
+        GameScene.InputManager.Instance.OnFirstInputShotR += HandAttackRight;
         GameScene.InputManager.Instance.OnShotEnd += ResetAngle;
     }
     private void Update()
@@ -49,6 +52,8 @@ public class BodyControl : MonoBehaviour
     public void Set(MachineController controller)
     {
         _machine = controller;
+        attackControl = new AttackControl();
+        Fighting = attackControl.GetType(controller);
     }
     public void ChangeSpeed(float speed)
     {
@@ -63,19 +68,37 @@ public class BodyControl : MonoBehaviour
         {
             return;
         }
-        if (_action)
+        var attack = LockOn(_target.position);
+        if (_machine.LAWeapon.Type == WeaponType.Rifle && !_action)
+        {
+            if (attack)
+            {
+                ShotLeft();
+            }
+        }
+        else
+        {
+            FightingAttack();
+        }
+    }
+    public void HandAttackRight()
+    {
+        if (_target == null)
         {
             return;
         }
-        if (_machine?.LAWeapon.Type == WeaponType.Rifle)
+        var attack = LockOn(_target.position);
+        if (_machine.RAWeapon.Type == WeaponType.Rifle && !_action)
         {
-            ShotLeft();
+            if (attack)
+            {
+                ShotRight();
+            }
         }
-        else if (_machine?.LAWeapon.Type == WeaponType.Blade)
+        else
         {
-
+            FightingAttack();
         }
-        LockOn(_target.position);
     }
     void ShotLeft()
     {
@@ -85,30 +108,44 @@ public class BodyControl : MonoBehaviour
     {
         _machine.RAWeapon.AttackAction();
     }
-    void LockOn(Vector3 targetPos)
+    bool LockOn(Vector3 targetPos)
     {
+        bool attack = false;
         Vector3 targetDir = targetPos - _bodyControlBase[0].position;
         targetDir.y = 0.0f; 
         if (Vector3.Dot(targetDir.normalized, transform.forward.normalized) < 0.4f)
         {
-            return;
+            return true;
+        }
+        if (Vector3.Dot(targetDir.normalized, _bodyControlBase[0].forward.normalized) < 0.6f)
+        {
+            return true;
         }
         _controlTarget[0].forward = targetDir;
         _bodyRotaion = _controlTarget[0].localRotation;
-        if (true)
+        if (_machine.RAWeapon.Type == WeaponType.Rifle)
         {
-            _rArmRotaion = Quaternion.Euler(-10, 0, 10);
             targetDir = targetPos - _rightControlBase[2].position;
             _controlTarget[1].forward = targetDir;
             _rArmRotaion2 = _controlTarget[1].localRotation * Quaternion.Euler(-90, 0, 0);
+            var range = Quaternion.Dot(_rArmRotaion2, _rightControlBase[2].localRotation);
+            if (range > 0.999f || range < -0.999f)
+            {
+                attack = true;
+            }
         }
-        if (true)
+        if (_machine.LAWeapon.Type == WeaponType.Rifle)
         {
-            _lArmRotaion = Quaternion.Euler(-10, 0, -10);
             targetDir = targetPos - _leftControlBase[2].position;
             _controlTarget[2].forward = targetDir;
             _lArmRotaion2 = _controlTarget[2].localRotation * Quaternion.Euler(-90, 0, 0);
+            var range = Quaternion.Dot(_lArmRotaion2, _leftControlBase[2].localRotation);
+            if (range > 0.999f || range < -0.999f)
+            {
+                attack = true;
+            }
         }
+        return attack;
     }
     void ResetAngle()
     {
@@ -118,27 +155,23 @@ public class BodyControl : MonoBehaviour
         _rArmRotaion = Quaternion.Euler(0, 0, 0);
         _rArmRotaion2 = Quaternion.Euler(0, 0, 0);
     }
-    public void HandAttackRight()
+    public void FightingAttack()
     {
         ResetAngle();
         _action = true;
         if (_attackCount == 0)
         {
-            _attackCount++;
             if (_groundCheck.IsGrounded())
             {
-                ChangeAnimation("attackSwingRArm");
-                //ChangeAnimation("attackSwingDArm");
-                //ChangeAnimation("attackKnuckleRArm");
+                ChangeAnimation(attackControl.AttackAction(Fighting, _attackCount));
                 _leg?.AttackMoveR();
             }
             else
             {
                 _machine?.Turn(BodyAngle.y * 10);
-                ChangeAnimation("attackSwingRArm3");
-                //ChangeAnimation("attackSwingDArm3");
-                //ChangeAnimation("attackKnuckleRArm");
+                ChangeAnimation(attackControl.AttackAction(Fighting, _attackCount));
             }
+            _attackCount++;
             return;
         }
         _attack = true;
@@ -149,16 +182,12 @@ public class BodyControl : MonoBehaviour
         {
             if (_attackCount == 1)
             {
-                ChangeAnimation("attackSwingRArm2");
-                //ChangeAnimation("attackSwingDArm2");
-                //ChangeAnimation("attackKnuckleLArm");
+                ChangeAnimation(attackControl.AttackAction(Fighting, _attackCount));
                 _leg?.AttackMoveL();
             }
             else if (_attackCount == 2)
             {
-                ChangeAnimation("attackSwingRArm3",0.1f);
-                //ChangeAnimation("attackSwingDArm3");
-                //ChangeAnimation("attackKnuckleRArm");
+                ChangeAnimation(attackControl.AttackAction(Fighting, _attackCount));
                 _leg?.AttackMoveR();
                 _attackCount = 0;
             }
@@ -172,7 +201,7 @@ public class BodyControl : MonoBehaviour
         _attack = false;
         _action = false;
     }
-    void ChangeAnimation(string changeTarget, float changeTime = 0.5f)
+    void ChangeAnimation(string changeTarget, float changeTime = 0.1f)
     {
         _animator.CrossFadeInFixedTime(changeTarget, changeTime);
     }

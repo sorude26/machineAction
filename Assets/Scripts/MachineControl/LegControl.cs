@@ -163,7 +163,7 @@ public class LegControl : MonoBehaviour
             {
                 return;
             }
-            if (_machine.InputAxis.y <= 0)
+            if (_machine.InputAxis.z > 0)
             {
                 if (_machine.InputAxis.x > 0)
                 {
@@ -196,7 +196,7 @@ public class LegControl : MonoBehaviour
         }
         else
         {
-            if (_machine.InputAxis.y < 0)
+            if (_machine.InputAxis.z < 0)
             {
                 ChangeAnimation("JetMoveB", 0.01f);
             }

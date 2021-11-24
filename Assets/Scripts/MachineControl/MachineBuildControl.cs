@@ -26,11 +26,11 @@ public class MachineBuildControl : MonoBehaviour
     PartsArm _rArm = default;
     PartsArm _lArm = default;
     PartsLeg _leg = default;
-    WeaponMaster _rAWeapon = default;
-    WeaponMaster _lAWeapon = default;
+    public WeaponMaster RAWeapon { get; private set; }
+    public WeaponMaster LAWeapon { get; private set; }
     WeaponMaster _bodyWeapon = default;
     WeaponMaster _shoulderWeapon = default;
-    private void Start()
+    public void StartSet()
     {
         Build(m_test);
     }
@@ -80,13 +80,13 @@ public class MachineBuildControl : MonoBehaviour
         _head = Instantiate(GameManager.Instanse.PartsList.GetHead(data.HeadID));
         _head.transform.position = _bodyBase[1].position;
         _head.transform.SetParent(_bodyBase[1]);
-        _rAWeapon = Instantiate(GameManager.Instanse.PartsList.GetWeapon(data.WeaponRArmID));
-        _rAWeapon.transform.position = _rightArm[3].position;
-        _rAWeapon.transform.rotation = Quaternion.Euler(90, 0, 0);
-        _rAWeapon.transform.SetParent(_rightArm[3]);
-        _lAWeapon = Instantiate(GameManager.Instanse.PartsList.GetWeapon(data.WeaponLArmID));
-        _lAWeapon.transform.position = _leftArm[3].position;
-        _lAWeapon.transform.rotation = Quaternion.Euler(90, 0, 0);
-        _lAWeapon.transform.SetParent(_leftArm[3]);
+        RAWeapon = Instantiate(GameManager.Instanse.PartsList.GetWeapon(data.WeaponRArmID));
+        RAWeapon.transform.position = _rightArm[3].position;
+        RAWeapon.transform.rotation = Quaternion.Euler(90, 0, 0);
+        RAWeapon.transform.SetParent(_rightArm[3]);
+        LAWeapon = Instantiate(GameManager.Instanse.PartsList.GetWeapon(data.WeaponLArmID));
+        LAWeapon.transform.position = _leftArm[3].position;
+        LAWeapon.transform.rotation = Quaternion.Euler(90, 0, 0);
+        LAWeapon.transform.SetParent(_leftArm[3]);
     }
 }

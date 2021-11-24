@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody),typeof(MachineBuildControl))]
 public class MachineController : MonoBehaviour
 {
+    [SerializeField]
+    MachineBuildControl _buildControl = default;
     [SerializeField]
     MachineParameter _parameter = default;
     [SerializeField]
@@ -28,11 +30,12 @@ public class MachineController : MonoBehaviour
     float _boosterTimer = -1;
     Vector3 _inputAxis = Vector3.zero;
     public Vector3 InputAxis { get => _inputAxis; }
-
-    public WeaponMaster RAWeapon { get; set; }
-    public WeaponMaster LAWeapon { get; set; }
+   
+    public WeaponMaster RAWeapon { get => _buildControl.RAWeapon; }
+    public WeaponMaster LAWeapon { get => _buildControl.LAWeapon; }
     private void Start()
     {
+        _buildControl.StartSet();
         GameScene.InputManager.Instance.OnInputAxisRaw += Move;
         GameScene.InputManager.Instance.OnInputAxisRawExit += MoveEnd;
         GameScene.InputManager.Instance.OnFirstInputJump += Jump;
