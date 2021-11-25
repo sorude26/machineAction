@@ -8,11 +8,11 @@ public abstract class ObjectPoolBase<T,key> : MonoBehaviour where T : MonoBehavi
     private static ObjectPoolBase<T,key> instance = default;
 
     [SerializeField]
-    protected T[] m_objectPrefab = default;
+    protected T[] _objectPrefab = default;
     [SerializeField]
-    protected int[] m_createCount = default;
+    protected int[] _createCount = default;
 
-    Dictionary<key, T[]> m_objectDic = default;
+    Dictionary<key, T[]> _objectDic = default;
     private void Awake()
     {
         if (!instance)
@@ -24,27 +24,27 @@ public abstract class ObjectPoolBase<T,key> : MonoBehaviour where T : MonoBehavi
         {
             Destroy(gameObject);
         }
-        if (m_objectPrefab.Length > m_createCount.Length)
+        if (_objectPrefab.Length > _createCount.Length)
         {
             return;
         }
-        m_objectDic = new Dictionary<key, T[]>();
-        for (int i = 0; i < m_objectPrefab.Length; i++)
+        _objectDic = new Dictionary<key, T[]>();
+        for (int i = 0; i < _objectPrefab.Length; i++)
         {
-            var bulletData = new T[m_createCount[i]];
-            for (int b = 0; b < m_createCount[i]; b++)
+            var bulletData = new T[_createCount[i]];
+            for (int b = 0; b < _createCount[i]; b++)
             {
-                var bullet = Instantiate(m_objectPrefab[i], transform);
+                var bullet = Instantiate(_objectPrefab[i], transform);
                 bullet.gameObject.SetActive(false);
                 bulletData[b] = bullet;
             }
-            m_objectDic.Add((key)Enum.ToObject(typeof(key), i), bulletData);
+            _objectDic.Add((key)Enum.ToObject(typeof(key), i), bulletData);
         }
     }
 
     public static T Get(key type, Vector3 pos)
     {
-        foreach (var bullet in instance.m_objectDic[type])
+        foreach (var bullet in instance._objectDic[type])
         {
             if (bullet.gameObject.activeInHierarchy)
             {
