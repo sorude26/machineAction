@@ -553,6 +553,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &914948103419653321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 680075670354206722}
+  m_Layer: 0
+  m_Name: Shoulder
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &680075670354206722
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914948103419653321}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.55625, y: 0.7212501, z: -0.14750001}
+  m_LocalScale: {x: 1.25, y: 1.2500001, z: 1.2500001}
+  m_Children: []
+  m_Father: {fileID: 1656059121247997045}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2941451448780551633
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +642,7 @@ MonoBehaviour:
   - {fileID: 487880561170573215}
   - {fileID: 487880561851798137}
   m_grip: {fileID: 487880560931925599}
-  m_shoulder: {fileID: 487880561170573212}
+  m_shoulder: {fileID: 680075670354206722}
   m_armTop: {fileID: 8848303857657367920}
   m_armBottom: {fileID: 7751158742286217770}
 --- !u!1 &3601317143626702576
@@ -679,6 +709,7 @@ Transform:
   - {fileID: 487880561170573212}
   - {fileID: 5085334942766539644}
   - {fileID: 8848303857657367920}
+  - {fileID: 680075670354206722}
   m_Father: {fileID: 8322140336957467853}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -190,6 +190,7 @@ Transform:
   - {fileID: 213114395970192579}
   - {fileID: 7223474370109172401}
   - {fileID: 3358360810943596454}
+  - {fileID: 771713421987216920}
   m_Father: {fileID: 2844926383385825311}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -332,7 +333,7 @@ MonoBehaviour:
   - {fileID: 5926734367704513239}
   - {fileID: 2834242115216054121}
   m_grip: {fileID: 4905841666984514623}
-  m_shoulder: {fileID: 6113128926331150008}
+  m_shoulder: {fileID: 771713421987216920}
   m_armTop: {fileID: 3358360810943596454}
   m_armBottom: {fileID: 7277036905940540925}
 --- !u!1 &4918859356115883948
@@ -638,6 +639,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &6771547995653137924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 771713421987216920}
+  m_Layer: 0
+  m_Name: Shoulder
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &771713421987216920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6771547995653137924}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.46, y: 0.36, z: 0}
+  m_LocalScale: {x: -2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 6379973634196099311}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7188321899186458610
 GameObject:
   m_ObjectHideFlags: 0

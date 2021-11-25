@@ -665,6 +665,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &7365453181701131085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8327785711808119454}
+  m_Layer: 0
+  m_Name: Shoulder
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8327785711808119454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7365453181701131085}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.55625, y: 0.7212501, z: -0.14750001}
+  m_LocalScale: {x: -1.25, y: 1.2500001, z: 1.2500001}
+  m_Children: []
+  m_Father: {fileID: 4674828229288419456}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7485441773709881861
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,6 +759,7 @@ Transform:
   - {fileID: 5827270579092179817}
   - {fileID: 1191604871976390537}
   - {fileID: 3229272268615901573}
+  - {fileID: 8327785711808119454}
   m_Father: {fileID: 2694839182956724280}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -777,7 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ae69652fd39a24cb0cf944d2130560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _partsID: 3
+  _partsID: 2
   _partsData: {fileID: 11400000, guid: c0525c6946c113d45b7a5e680e703e40, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
@@ -791,7 +822,7 @@ MonoBehaviour:
   - {fileID: 5827270580277164370}
   - {fileID: 5827270578410798732}
   m_grip: {fileID: 5827270579389350570}
-  m_shoulder: {fileID: 5827270579092179817}
+  m_shoulder: {fileID: 8327785711808119454}
   m_armTop: {fileID: 3229272268615901573}
   m_armBottom: {fileID: 4434487288870608607}
 --- !u!1001 &3853026674513170809

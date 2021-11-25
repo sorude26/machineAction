@@ -76,12 +76,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead02ec81098f8f4787e91eeccde5f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bullet: {fileID: 7941519406880972304, guid: e49f559722d246640b3fe70be01e9948,
-    type: 3}
-  m_muzzle: {fileID: 4120316086349423610}
-  m_particle:
+  _partsID: 0
+  _partsData: {fileID: 0}
+  _partsObject: []
+  _anime: {fileID: 0}
+  _bullet: 1
+  _muzzle: {fileID: 4120316086349423610}
+  _particle:
   - {fileID: 6433045947133477234}
-  m_power: 20
+  _power: 15
+  _triggerShotCount: 1
+  _triggerInterval: 0.8
+  _shotInterval: 0.5
+  _diffusivity: 0.01
 --- !u!1 &4092927109677148650
 GameObject:
   m_ObjectHideFlags: 0
