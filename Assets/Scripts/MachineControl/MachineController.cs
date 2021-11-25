@@ -33,6 +33,7 @@ public class MachineController : MonoBehaviour
    
     public WeaponMaster RAWeapon { get => _buildControl.RAWeapon; }
     public WeaponMaster LAWeapon { get => _buildControl.LAWeapon; }
+    public ShoulderWeapon SWeapon { get => _buildControl.ShoulderWeapon; }
     private void Start()
     {
         _buildControl.StartSet();

@@ -15,7 +15,7 @@ public class ShotWeapon : WeaponMaster
     [SerializeField]
     int _triggerShotCount = 1;
     [SerializeField]
-    float _triggerInterval = 0f;
+    float _triggerInterval = 0.1f;
     float _triggerTimer = 0;
     bool _trigger = false;
     [SerializeField]

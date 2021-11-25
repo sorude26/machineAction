@@ -43,6 +43,7 @@ public class BodyControl : MonoBehaviour
         GameScene.InputManager.Instance.OnFirstInputAttack += FightingAttack;
         GameScene.InputManager.Instance.OnFirstInputShotL += HandAttackLeft;
         GameScene.InputManager.Instance.OnFirstInputShotR += HandAttackRight;
+        GameScene.InputManager.Instance.OnFirstInputShot += ShoulderShot;
         GameScene.InputManager.Instance.OnShotEnd += ResetAngle;
     }
     private void Update()
@@ -69,7 +70,7 @@ public class BodyControl : MonoBehaviour
             return;
         }
         var attack = LockOn(_target.position);
-        if (_machine.LAWeapon.Type == WeaponType.Rifle && !_action)
+        if (_machine.LAWeapon.Type == WeaponType.Rifle)
         {
             if (attack)
             {
@@ -88,7 +89,7 @@ public class BodyControl : MonoBehaviour
             return;
         }
         var attack = LockOn(_target.position);
-        if (_machine.RAWeapon.Type == WeaponType.Rifle && !_action)
+        if (_machine.RAWeapon.Type == WeaponType.Rifle)
         {
             if (attack)
             {
@@ -100,6 +101,10 @@ public class BodyControl : MonoBehaviour
             FightingAttack();
         }
     }
+    public void ShoulderShot()
+    {
+        _machine.SWeapon.AttackAction();
+    }
     void ShotLeft()
     {
         _machine.LAWeapon.AttackAction();
@@ -110,6 +115,10 @@ public class BodyControl : MonoBehaviour
     }
     bool LockOn(Vector3 targetPos)
     {
+        if (_action)
+        {
+            return false;
+        }
         bool attack = false;
         Vector3 targetDir = targetPos - _bodyControlBase[0].position;
         targetDir.y = 0.0f; 
@@ -220,6 +229,8 @@ public class BodyControl : MonoBehaviour
         {
             return;
         }
+        angle.x = 0;
+        angle.z = 0;
         _bodyRotaion = angle;
     }
     Quaternion ClampRotation(Quaternion angle, float maxX = 80f, float maxY = 80f, float maxZ = 80f, float minX = -80f, float minY = -80f, float minZ = -80f)
