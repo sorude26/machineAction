@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 0
-  _power: 1
+  _power: 3
 --- !u!135 &5071479109963126975
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -57,7 +57,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1855310726427955832
 GameObject:
@@ -14518,7 +14518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 0
-  _power: 1
+  _power: 3
 --- !u!135 &6029926651544558001
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14530,7 +14530,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3271798425611460085
 GameObject:
@@ -14577,7 +14577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 0
-  _power: 1
+  _power: 3
 --- !u!135 &2521915432800852311
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14589,7 +14589,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3741594546335943801
 GameObject:
@@ -14734,7 +14734,7 @@ GameObject:
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6202051753353897924
 Transform:
   m_ObjectHideFlags: 0
@@ -14802,7 +14802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 0
-  _power: 1
+  _power: 3
 --- !u!135 &7855379374554523779
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14814,7 +14814,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4957046715303279338
 GameObject:
@@ -14861,7 +14861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 0
-  _power: 1
+  _power: 3
 --- !u!135 &7718437930092282264
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14873,7 +14873,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5707567703695271580
 GameObject:
@@ -14920,7 +14920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 0
-  _power: 1
+  _power: 3
 --- !u!135 &7424938949236632429
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14932,7 +14932,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6537476269398531882
 GameObject:
@@ -14979,7 +14979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 0
-  _power: 1
+  _power: 3
 --- !u!135 &7212039284658054814
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14991,7 +14991,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8391612373053854692
 GameObject:
@@ -15038,7 +15038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 0
-  _power: 1
+  _power: 3
 --- !u!135 &5867004860037613430
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15050,7 +15050,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3088350424777702075
 PrefabInstance:

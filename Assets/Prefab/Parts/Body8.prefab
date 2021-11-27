@@ -1157,15 +1157,14 @@ MonoBehaviour:
   _partsData: {fileID: 0}
   _partsObject: []
   _anime: {fileID: 0}
-  m_attackPos: 1
-  m_bullet: 2
-  m_muzzle: {fileID: 171161278816296884}
-  m_particle: []
-  m_power: 70
-  m_triggerShotCount: 1
-  m_triggerInterval: 1
-  m_shotInterval: 0.01
-  m_diffusivity: 0.01
+  _bullet: 0
+  _muzzle: {fileID: 0}
+  _particle: []
+  _power: 20
+  _triggerShotCount: 1
+  _triggerInterval: 0.1
+  _shotInterval: 0.2
+  _diffusivity: 0.01
 --- !u!1 &6562526104957612517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,7 +1606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 7
-  _partsData: {fileID: 0}
+  _partsData: {fileID: 11400000, guid: ad2cfe481fba7ba49aea7fc5954d31ac, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
   m_hitPos:

@@ -84,7 +84,7 @@ MonoBehaviour:
   _muzzle: {fileID: 4120316086349423610}
   _particle:
   - {fileID: 6433045947133477234}
-  _power: 15
+  _power: 25
   _triggerShotCount: 1
   _triggerInterval: 0.8
   _shotInterval: 0.5
