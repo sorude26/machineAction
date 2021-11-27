@@ -81,6 +81,14 @@ public class @ControlAction : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""LockOn"",
+                    ""type"": ""Button"",
+                    ""id"": ""85543fe1-b4c8-4d67-8d27-4426e06b3c37"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -369,6 +377,17 @@ public class @ControlAction : IInputActionCollection, IDisposable
                     ""action"": ""CameraMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79c81524-addc-4118-9afa-c301a6c1ece9"",
+                    ""path"": ""<DualShockGamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LockOn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -385,6 +404,7 @@ public class @ControlAction : IInputActionCollection, IDisposable
         m_PlayerController_Attack1 = m_PlayerController.FindAction("Attack1", throwIfNotFound: true);
         m_PlayerController_Jet = m_PlayerController.FindAction("Jet", throwIfNotFound: true);
         m_PlayerController_CameraMove = m_PlayerController.FindAction("CameraMove", throwIfNotFound: true);
+        m_PlayerController_LockOn = m_PlayerController.FindAction("LockOn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -442,6 +462,7 @@ public class @ControlAction : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerController_Attack1;
     private readonly InputAction m_PlayerController_Jet;
     private readonly InputAction m_PlayerController_CameraMove;
+    private readonly InputAction m_PlayerController_LockOn;
     public struct PlayerControllerActions
     {
         private @ControlAction m_Wrapper;
@@ -454,6 +475,7 @@ public class @ControlAction : IInputActionCollection, IDisposable
         public InputAction @Attack1 => m_Wrapper.m_PlayerController_Attack1;
         public InputAction @Jet => m_Wrapper.m_PlayerController_Jet;
         public InputAction @CameraMove => m_Wrapper.m_PlayerController_CameraMove;
+        public InputAction @LockOn => m_Wrapper.m_PlayerController_LockOn;
         public InputActionMap Get() { return m_Wrapper.m_PlayerController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -487,6 +509,9 @@ public class @ControlAction : IInputActionCollection, IDisposable
                 @CameraMove.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnCameraMove;
                 @CameraMove.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnCameraMove;
                 @CameraMove.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnCameraMove;
+                @LockOn.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnLockOn;
+                @LockOn.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnLockOn;
+                @LockOn.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnLockOn;
             }
             m_Wrapper.m_PlayerControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -515,6 +540,9 @@ public class @ControlAction : IInputActionCollection, IDisposable
                 @CameraMove.started += instance.OnCameraMove;
                 @CameraMove.performed += instance.OnCameraMove;
                 @CameraMove.canceled += instance.OnCameraMove;
+                @LockOn.started += instance.OnLockOn;
+                @LockOn.performed += instance.OnLockOn;
+                @LockOn.canceled += instance.OnLockOn;
             }
         }
     }
@@ -529,5 +557,6 @@ public class @ControlAction : IInputActionCollection, IDisposable
         void OnAttack1(InputAction.CallbackContext context);
         void OnJet(InputAction.CallbackContext context);
         void OnCameraMove(InputAction.CallbackContext context);
+        void OnLockOn(InputAction.CallbackContext context);
     }
 }

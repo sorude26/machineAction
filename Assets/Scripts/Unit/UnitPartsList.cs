@@ -64,27 +64,30 @@ public enum PartsType
 [CreateAssetMenu]
 public class UnitPartsList : ScriptableObject
 {
-    [SerializeField] PartsBody[] m_bodys;
-    [SerializeField] PartsHead[] m_heads;
-    [SerializeField] PartsArm[] m_arms;
-    [SerializeField] PartsLeg[] m_legs;
-    [SerializeField] WeaponMaster[] m_weapons;
-    public PartsBody GetBody(int id) => m_bodys.Where(parts => parts.PartsID == id).FirstOrDefault();
-    public PartsHead GetHead(int id) => m_heads.Where(parts => parts.PartsID == id).FirstOrDefault();
-    public PartsArm GetRArm(int id) => m_arms.Where(parts => parts.PartsID == id && parts.Arm == ArmType.Right).FirstOrDefault();
-    public PartsArm GetLArm(int id) => m_arms.Where(parts => parts.PartsID == id && parts.Arm == ArmType.Left).FirstOrDefault();
-    public PartsLeg GetLeg(int id) => m_legs.Where(parts => parts.PartsID == id).FirstOrDefault();
-    public WeaponMaster GetWeapon(int id) => m_weapons.Where(parts => parts.PartsID == id).FirstOrDefault();
-    public PartsBody[] GetAllBodys() => m_bodys;
-    public PartsHead[] GetAllHeads() => m_heads;
-    public PartsArm[] GetAllRArms() => m_arms.Where(parts => parts.Arm == ArmType.Right).ToArray();
-    public PartsArm[] GetAllLArms() => m_arms.Where(parts => parts.Arm == ArmType.Left).ToArray();
-    public PartsLeg[] GetAllLegs() => m_legs;
-    public WeaponMaster[] GetAllWeapons() => m_weapons;
+    [SerializeField] PartsBody[] _bodys;
+    [SerializeField] PartsHead[] _heads;
+    [SerializeField] PartsArm[] _arms;
+    [SerializeField] PartsLeg[] _legs;
+    [SerializeField] WeaponMaster[] _weapons;
+    [SerializeField] ShoulderWeapon[] _shoulderWeapons;
+    public PartsBody GetBody(int id) => _bodys.Where(parts => parts.PartsID == id).FirstOrDefault();
+    public PartsHead GetHead(int id) => _heads.Where(parts => parts.PartsID == id).FirstOrDefault();
+    public PartsArm GetRArm(int id) => _arms.Where(parts => parts.PartsID == id && parts.Arm == ArmType.Right).FirstOrDefault();
+    public PartsArm GetLArm(int id) => _arms.Where(parts => parts.PartsID == id && parts.Arm == ArmType.Left).FirstOrDefault();
+    public PartsLeg GetLeg(int id) => _legs.Where(parts => parts.PartsID == id).FirstOrDefault();
+    public WeaponMaster GetWeapon(int id) => _weapons.Where(parts => parts.PartsID == id).FirstOrDefault();
+    public ShoulderWeapon GetShoulderWeapon(int id) => _shoulderWeapons.Where(parts => parts.PartsID == id).FirstOrDefault();
+    public PartsBody[] GetAllBodys() => _bodys;
+    public PartsHead[] GetAllHeads() => _heads;
+    public PartsArm[] GetAllRArms() => _arms.Where(parts => parts.Arm == ArmType.Right).ToArray();
+    public PartsArm[] GetAllLArms() => _arms.Where(parts => parts.Arm == ArmType.Left).ToArray();
+    public PartsLeg[] GetAllLegs() => _legs;
+    public WeaponMaster[] GetAllWeapons() => _weapons;
+    public ShoulderWeapon[] GetAllShoulderWeapons() => _shoulderWeapons;
     public PartsBody[] GetHaveAllBody()
     {
         List<PartsBody> allParts = new List<PartsBody>();
-        for (int i = 0; i < m_bodys.Length; i++)
+        for (int i = 0; i < _bodys.Length; i++)
         { 
             if (UnitDataMaster.HavePartsDic[PartsType.Body][i] > 0)
             {
@@ -96,7 +99,7 @@ public class UnitPartsList : ScriptableObject
     public PartsHead[] GetHaveAllHead()
     {
         List<PartsHead> allParts = new List<PartsHead>();
-        for (int i = 0; i < m_heads.Length; i++)
+        for (int i = 0; i < _heads.Length; i++)
         {
             if (UnitDataMaster.HavePartsDic[PartsType.Head][i] > 0)
             {
@@ -132,7 +135,7 @@ public class UnitPartsList : ScriptableObject
     public PartsLeg[] GetHaveAllLeg()
     {
         List<PartsLeg> allParts = new List<PartsLeg>();
-        for (int i = 0; i < m_legs.Length; i++)
+        for (int i = 0; i < _legs.Length; i++)
         {
             if (UnitDataMaster.HavePartsDic[PartsType.Leg][i] > 0)
             {
@@ -144,7 +147,7 @@ public class UnitPartsList : ScriptableObject
     public WeaponMaster[] GetHaveAllWeapon()
     {
         List<WeaponMaster> allParts = new List<WeaponMaster>();
-        for (int i = 0; i < m_weapons.Length; i++)
+        for (int i = 0; i < _weapons.Length; i++)
         {
             if (UnitDataMaster.HavePartsDic[PartsType.Weapon][i] > 0)
             {

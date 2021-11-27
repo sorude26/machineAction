@@ -27,6 +27,7 @@ public class MachineController : MonoBehaviour
     [SerializeField]
     bool _fly = default;
     bool _jump = false;
+    bool _jet = false;
     float _boosterTimer = -1;
     Vector3 _inputAxis = Vector3.zero;
     public Vector3 InputAxis { get => _inputAxis; }
@@ -34,6 +35,7 @@ public class MachineController : MonoBehaviour
     public WeaponMaster RAWeapon { get => _buildControl.RAWeapon; }
     public WeaponMaster LAWeapon { get => _buildControl.LAWeapon; }
     public ShoulderWeapon SWeapon { get => _buildControl.ShoulderWeapon; }
+    public Transform LookTarget { get; protected set; }
     private void Start()
     {
         _buildControl.StartSet();
@@ -42,6 +44,7 @@ public class MachineController : MonoBehaviour
         GameScene.InputManager.Instance.OnFirstInputJump += Jump;
         GameScene.InputManager.Instance.OnInputJump += Boost;
         GameScene.InputManager.Instance.OnFirstInputBooster += JetStart;
+        GameScene.InputManager.Instance.OnInputLockOn += SetTarget;
         _rb = GetComponent<Rigidbody>();        
         _leg.Set(this);
         _leg.SetLandingTime(_parameter.LandingTime);
@@ -55,6 +58,19 @@ public class MachineController : MonoBehaviour
         _leg.ChangeSpeed(_parameter.ActionSpeed);
         _body.ChangeSpeed(_parameter.ActionSpeed);
         _leg.SetLandingTime(_parameter.LandingTime);
+    }
+    public void SetTarget()
+    {
+        var target = BattleManager.Instance.GetTarget(_body.BodyTransform);
+        if (target)
+        {
+            LookTarget = target.Center;
+        }
+        else
+        {
+            LookTarget = null;
+        }
+        Debug.Log(LookTarget);
     }
     private void Move(float horizonal, float vertical)
     {
@@ -157,10 +173,11 @@ public class MachineController : MonoBehaviour
     }
     public void JetStart()
     {
-        if (_inputAxis == Vector3.zero)
+        if (_inputAxis == Vector3.zero || _jet)
         {
             return;
         }
+        _jet = true;
         if (_inputAxis.x != 0)
         {
             if (_inputAxis.x > 0.5f)
@@ -192,10 +209,13 @@ public class MachineController : MonoBehaviour
     {
         Vector3 vector = transform.forward * _inputAxis.z + transform.right * _inputAxis.x;
         _rb.AddForce(vector * _parameter.FloatSpeed + Vector3.up * 0.7f, ForceMode.Impulse);
+        _jet = false;
+        _body.QuickTurn();
     }
     public void Landing()
     {
         _jump = false;
+        _jet = false;
         _booster.BoostEnd();
         _boosterTimer = -1;
         Brake();
@@ -220,6 +240,7 @@ public class MachineController : MonoBehaviour
     {
         _rb.angularVelocity = Vector3.zero;
         _inputAxis = Vector3.zero;
+        _jet = false;
     }
     public void Brake()
     {

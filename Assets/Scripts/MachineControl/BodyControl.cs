@@ -5,8 +5,6 @@ using UnityEngine;
 public class BodyControl : MonoBehaviour
 {
     [SerializeField]
-    Transform _target = default;
-    [SerializeField]
     Animator _animator = default;
     [SerializeField]
     GroundCheck _groundCheck = default;
@@ -65,11 +63,20 @@ public class BodyControl : MonoBehaviour
     }
     public void HandAttackLeft()
     {
-        if (_target == null)
+        _machine.SetTarget();
+        if (_machine.LookTarget == null)
         {
+            if (_machine.LAWeapon.Type == WeaponType.Rifle)
+            {                 
+                ShotLeft();
+            }
+            else
+            {
+                FightingAttack();
+            }
             return;
         }
-        var attack = LockOn(_target.position);
+        var attack = LockOn(_machine.LookTarget.position);
         if (_machine.LAWeapon.Type == WeaponType.Rifle)
         {
             if (attack)
@@ -84,11 +91,20 @@ public class BodyControl : MonoBehaviour
     }
     public void HandAttackRight()
     {
-        if (_target == null)
+        _machine.SetTarget();
+        if (_machine.LookTarget == null)
         {
+            if (_machine.RAWeapon.Type == WeaponType.Rifle)
+            {
+                ShotRight();
+            }
+            else
+            {
+                FightingAttack();
+            }
             return;
         }
-        var attack = LockOn(_target.position);
+        var attack = LockOn(_machine.LookTarget.position);
         if (_machine.RAWeapon.Type == WeaponType.Rifle)
         {
             if (attack)
@@ -121,11 +137,11 @@ public class BodyControl : MonoBehaviour
         }
         bool attack = false;
         Vector3 targetDir = targetPos - _bodyControlBase[0].position;
-        targetDir.y = 0.0f; 
         if (Vector3.Dot(targetDir.normalized, transform.forward.normalized) < 0.4f)
         {
             return true;
         }
+        targetDir.y = 0.0f;
         if (Vector3.Dot(targetDir.normalized, _bodyControlBase[0].forward.normalized) < 0.6f)
         {
             return true;
@@ -166,7 +182,8 @@ public class BodyControl : MonoBehaviour
     }
     public void FightingAttack()
     {
-        ResetAngle();
+        _machine.SetTarget();
+        QuickTurn();
         _action = true;
         if (_attackCount == 0)
         {
@@ -177,13 +194,17 @@ public class BodyControl : MonoBehaviour
             }
             else
             {
-                _machine?.Turn(BodyAngle.y * 10);
                 ChangeAnimation(attackControl.AttackAction(Fighting, _attackCount));
             }
             _attackCount++;
             return;
         }
         _attack = true;
+    }
+    public void QuickTurn()
+    {
+        ResetAngle();
+        _machine?.Turn(BodyAngle.y * 10);
     }
     void Attack()
     {
@@ -207,8 +228,25 @@ public class BodyControl : MonoBehaviour
     void AttackEnd()
     {
         _attackCount = 0;
+        if (_action)
+        {
+            EndBlade();
+            _action = false;
+        }
         _attack = false;
-        _action = false;
+    }
+    void OnBladeL()
+    {
+        _machine.LAWeapon.AttackAction();
+    }
+    void OnBladeR()
+    {
+        _machine.RAWeapon.AttackAction();
+    }
+    void EndBlade()
+    {
+        _machine.LAWeapon.AttackEnd();
+        _machine.RAWeapon.AttackEnd();
     }
     void ChangeAnimation(string changeTarget, float changeTime = 0.1f)
     {

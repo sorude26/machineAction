@@ -24,6 +24,7 @@ namespace GameScene
         public event Action OnFirstInputShotL;
         public event Action OnFirstInputShotR;
         public event Action OnFirstInputAttack;
+        public event Action OnInputLockOn;
         public event Action OnShotEnd;
         bool _inputMove;
         bool _inputCamera;
@@ -48,6 +49,7 @@ namespace GameScene
             _inputActions.PlayerController.CameraMove.performed += context => { StartCamera(context); };
             _inputActions.PlayerController.CameraMove.canceled += context => { EndCamera(); };
             _inputActions.PlayerController.Jump.started += context => { OnJump(); };
+            _inputActions.PlayerController.LockOn.started += context => { OnLockOn(); };
             _inputActions.PlayerController.Jump.canceled += context => { EndJump(); };
             _inputActions.PlayerController.Shot1.started += context => { OnShot(); };
             _inputActions.PlayerController.ShotL.started += context => { OnShotL(); };
@@ -185,6 +187,10 @@ namespace GameScene
         {
             OnFirstInputBooster?.Invoke();
         }
+        void OnLockOn()
+        {
+            OnInputLockOn?.Invoke();
+        }
         void EndShot()
         {
             _shot1 = false;
@@ -219,10 +225,6 @@ namespace GameScene
                 if (_shotR)
                 {
                     OnFirstInputShotR?.Invoke();
-                }
-                if (_attack)
-                {
-                    //OnFirstInputAttack?.Invoke();
                 }
                 if (_firstInputJump)
                 {
