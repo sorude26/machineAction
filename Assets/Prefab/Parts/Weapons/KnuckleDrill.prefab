@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_effect: 0
-  m_power: 1
+  _effect: 0
+  _power: 6
 --- !u!135 &2063320550358826629
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -57,7 +57,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1558250030176815376
 GameObject:
@@ -232,8 +232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_effect: 0
-  m_power: 1
+  _effect: 0
+  _power: 6
 --- !u!135 &279866900014619281
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -245,7 +245,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1988812150956476202
 GameObject:
@@ -613,8 +613,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_effect: 0
-  m_power: 1
+  _effect: 0
+  _power: 6
 --- !u!135 &2419781782033460429
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -626,7 +626,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4274907351183515611
 GameObject:
@@ -672,8 +672,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_effect: 0
-  m_power: 1
+  _effect: 0
+  _power: 6
 --- !u!135 &127621789444625958
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -685,7 +685,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4541635067777923737
 GameObject:
@@ -736,7 +736,7 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  _blade: {fileID: 0}
+  _blade: {fileID: 1558250030176815376}
 --- !u!95 &6841880418767533710
 Animator:
   serializedVersion: 3
@@ -879,8 +879,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_effect: 0
-  m_power: 1
+  _effect: 0
+  _power: 6
 --- !u!135 &5144956819759656999
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -892,7 +892,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6505639401131311199
 GameObject:
@@ -976,8 +976,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_effect: 0
-  m_power: 1
+  _effect: 0
+  _power: 6
 --- !u!135 &2683985353658064538
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -989,7 +989,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8429602204517941466
 GameObject:
@@ -1035,8 +1035,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_effect: 0
-  m_power: 1
+  _effect: 0
+  _power: 6
 --- !u!135 &1073562715845594681
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1048,7 +1048,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8430316412716437109
 GameObject:
@@ -1173,8 +1173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_effect: 0
-  m_power: 1
+  _effect: 0
+  _power: 6
 --- !u!135 &5485475702198325632
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1186,5 +1186,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
