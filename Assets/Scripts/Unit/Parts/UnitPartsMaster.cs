@@ -71,26 +71,28 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T :U
         }
     }
 
-    public virtual int Damage(int power)
+    public virtual void AddlyDamage(int power)
     {
         if (m_currentPartsHp <= 0)
         {
-            return 0;
+            return;
         }
         if (power == 0)
         {
-            m_partsDamage.Add(-1);
-            return 0;
+            return;
         }
         int damage = power;
         m_currentPartsHp -= damage;
-        m_partsDamage.Add(damage);        
+        if (m_currentPartsHp < MaxPartsHP / 3)
+        {
+            m_damageSmoke.SetActive(true);
+        }
         if (m_currentPartsHp <= 0)
         {
             m_currentPartsHp = 0;
-            Break = true;
+            Break = true; 
+            PartsBreak();
         }
-        return damage;
     }
     /// <summary>
     /// ダメージの演出を行う

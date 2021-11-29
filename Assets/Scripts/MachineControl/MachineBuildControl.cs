@@ -83,11 +83,11 @@ public class MachineBuildControl : MonoBehaviour
         RAWeapon = Instantiate(GameManager.Instanse.PartsList.GetWeapon(data.WeaponRArmID));
         RAWeapon.transform.position = _rightArm[3].position;
         RAWeapon.transform.rotation = Quaternion.Euler(90, 0, 0);
-        RAWeapon.transform.SetParent(_rightArm[3]);
+        RAWeapon.transform.SetParent(_rArm.Grip);
         LAWeapon = Instantiate(GameManager.Instanse.PartsList.GetWeapon(data.WeaponLArmID));
         LAWeapon.transform.position = _leftArm[3].position;
         LAWeapon.transform.rotation = Quaternion.Euler(90, 0, 0);
-        LAWeapon.transform.SetParent(_leftArm[3]);
+        LAWeapon.transform.SetParent(_lArm.Grip);
         ShoulderWeapon = Instantiate(GameManager.Instanse.PartsList.GetShoulderWeapon(data.ShoulderWeaponID));
         ShoulderWeapon.RShoulder.position = _rArm.Shoulder.position;
         ShoulderWeapon.LShoulder.position = _lArm.Shoulder.position;

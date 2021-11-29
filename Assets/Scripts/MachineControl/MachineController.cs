@@ -25,6 +25,8 @@ public class MachineController : MonoBehaviour
     [SerializeField]
     Transform _camera = default;
     [SerializeField]
+    TargetMark _mark = default;
+    [SerializeField]
     bool _fly = default;
     bool _jump = false;
     bool _jet = false;
@@ -70,9 +72,10 @@ public class MachineController : MonoBehaviour
         {
             LookTarget = null;
         }
-        Debug.Log(LookTarget);
+        _mark.SetTarget(target);
+        //Debug.Log(LookTarget);
     }
-    private void Move(float horizonal, float vertical)
+    public void Move(float horizonal, float vertical)
     {
         _inputAxis = new Vector3(horizonal, 0, vertical);
         var dir = _inputAxis;
@@ -122,7 +125,7 @@ public class MachineController : MonoBehaviour
             }
         }
     }
-    private void MoveEnd()
+    public void MoveEnd()
     {
         if (!_fly)
         {
@@ -130,7 +133,7 @@ public class MachineController : MonoBehaviour
             if (_groundCheck.IsGrounded())
             {
                 Stop();
-                Brake();
+                Brake(); 
             }
         }
     }
@@ -140,6 +143,7 @@ public class MachineController : MonoBehaviour
         {
             _rb.angularVelocity = Vector3.zero;
             _moveControl.MoveWalk(_rb, transform.forward * angle, _parameter.WalkPower, _parameter.MaxWalkSpeed);
+            _body.ResetAngle(0.98f);
         }
     }
     public void Jump()
@@ -165,6 +169,7 @@ public class MachineController : MonoBehaviour
             _boosterTimer -= Time.deltaTime;
             Vector3 vector = _body.BodyTransform.forward * _inputAxis.z + _body.BodyTransform.right * _inputAxis.x;
             _moveControl.Jet(_rb, Vector3.up + vector * _parameter.JetControlPower, _parameter.JetPower);
+            _body.ResetAngle(0.95f);
             if (_boosterTimer <= 0)
             {
                 _booster.BoostEnd();
@@ -220,6 +225,7 @@ public class MachineController : MonoBehaviour
         _boosterTimer = -1;
         Brake();
         Stop();
+        _body.ResetAngle(0.1f);
     }
     public void StartJump(Vector3 dir)
     {
@@ -227,10 +233,11 @@ public class MachineController : MonoBehaviour
         _jump = true;
         _rb.angularVelocity = Vector3.zero;
         _moveControl.Jump(_rb, dir, _parameter.JumpPower);
+        _body.QuickTurn();
     }
     public void Turn(float angle)
     {
-        _trunControl.Turn(_rb, angle, _parameter.TurnPower, _parameter.TurnSpeed);
+        _trunControl.Turn(_rb, angle, _parameter.TurnPower, _parameter.TurnSpeed); 
     }
     public void Turn()
     {
@@ -245,8 +252,11 @@ public class MachineController : MonoBehaviour
     public void Brake()
     {
         var v = _rb.velocity;
-        _rb.velocity = v * 0.3f; 
-        _booster.BoostEnd();
+        _rb.velocity = v * 0.3f;
+        if (_groundCheck.IsGrounded())
+        {
+            _booster.BoostEnd();
+        }
     }
     public bool IsGrounded()
     {

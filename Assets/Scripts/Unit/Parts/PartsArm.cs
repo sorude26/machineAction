@@ -39,20 +39,18 @@ public class PartsArm : UnitPartsMaster<ArmData>
         }
         return size;
     }
-    public override int Damage(int power)
+    public override void AddlyDamage(int power)
     {
         if (m_currentPartsHp <= 0)
         {
-            return 0;
+            return;
         }
         if (power == 0)
         {
-            m_partsDamage.Add(-1);
-            return 0;
+            return;
         }
         int damage = power;
         m_currentPartsHp -= damage;
-        m_partsDamage.Add(damage);
         if (m_currentPartsHp < MaxPartsHP / 3)
         {
             m_damageSmoke.SetActive(true);
@@ -61,9 +59,8 @@ public class PartsArm : UnitPartsMaster<ArmData>
         {
             m_currentPartsHp = 0;
             Break = true;
-            GripWeapon.SetBreak();
+            PartsBreak();
         }
-        return damage;
     }
     public override void DestoryParts()
     {

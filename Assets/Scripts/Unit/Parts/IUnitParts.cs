@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// ユニットパーツが持つ情報を返す為のインターフェース
 /// </summary>
-public interface IUnitParts : IParts, IBattleEffect
+public interface IUnitParts : IParts, IBattleEffect,IDamageApplicable
 {
     /// <summary>
     /// パーツの最大耐久値
@@ -19,11 +19,6 @@ public interface IUnitParts : IParts, IBattleEffect
     /// パーツの防御力
     /// </summary>
     int Defense { get; }
-    /// <summary>
-    /// パーツにダメージを与える
-    /// </summary>
-    /// <param name="damage"></param>
-    int Damage(int damage);
     /// <summary>
     /// パーツの色変更
     /// </summary>

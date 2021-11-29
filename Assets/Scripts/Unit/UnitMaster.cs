@@ -351,7 +351,7 @@ public class UnitMaster : MonoBehaviour
                 prb += parts.GetSize();
                 if (prb > r)
                 {
-                    damage = parts.Damage(power);
+                    //damage = parts.AddlyDamage(power);
                     m_damegePartsList.Add(parts);
                     break;
                 }
