@@ -23,7 +23,10 @@ public class TargetMark : MonoBehaviour
     public void SetTarget(DamageControl target)
     {
         Target = target;
-        _rect.position = RectTransformUtility.WorldToScreenPoint(Camera.main, Target.Center.position);
+        if (Target != null)
+        {
+            _rect.position = RectTransformUtility.WorldToScreenPoint(Camera.main, Target.Center.position);
+        }
         gameObject.SetActive(true);
     }
 }

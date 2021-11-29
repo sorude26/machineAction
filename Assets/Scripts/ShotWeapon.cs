@@ -122,4 +122,8 @@ public class ShotWeapon : WeaponMaster
     {
         StartShot();
     }
+    public override float AttackSpeed()
+    {
+        return _power;
+    }
 }

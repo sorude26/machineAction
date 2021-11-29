@@ -18,8 +18,8 @@ public class CameraController : MonoBehaviour
     Quaternion _cameraRot = default;
     float _minX = -50f;
     float _maxX = 50f;
-    float _minY = -50f;
-    float _maxY = 50f;
+    float _minY = -70f;
+    float _maxY = 20f;
     private void Awake()
     {
         instance = this;
@@ -33,25 +33,31 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         _cameraRot = _cameraTarget.localRotation;
+        //_cameraRot.x = yDir;
+        //yDir *= 0.99f;
         transform.localRotation = Quaternion.Lerp(transform.localRotation, _cameraRot, _followSpeed * Time.deltaTime);
     }
     void DefaultLock()
     {
         _cameraRot = _cameraTarget.rotation;
     }
+    float yDir = 0f;
     void FreeLock(Vector2 dir)
     {
         _cameraRot = _cameraTarget.localRotation;
-        if (dir.x != 0)
+        //_cameraRot.x = yDir;
+        if (Mathf.Abs(dir.x) > 0.1f)
         {
             _cameraRot *= Quaternion.Euler(0, dir.x * _lockSpeed, 0);
-        }
+        }        
         _cameraRot = ClampRotation(_cameraRot);
+        //yDir = _cameraRot.x;
         _body.SetBodyRotaion(_cameraRot);
     }
     void ResetLock()
     {
         _cameraRot = _cameraTarget.localRotation;
+        _body.InputEnd();
     }
     Quaternion ClampRotation(Quaternion angle)
     {

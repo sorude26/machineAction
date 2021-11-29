@@ -235,8 +235,19 @@
                 },
                 {
                     "name": "",
-                    "id": "a029cf68-843a-4cd8-8846-f06d64587f7d",
+                    "id": "4c30e28f-bdfd-4bf6-8e28-ca14c5ae62e0",
                     "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a029cf68-843a-4cd8-8846-f06d64587f7d",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
