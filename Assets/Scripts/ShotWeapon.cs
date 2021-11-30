@@ -67,7 +67,7 @@ public class ShotWeapon : WeaponMaster
     }
     public void StartShot()
     {
-        if (_triggerTimer > 0)
+        if (_triggerTimer > 0 || !gameObject.activeInHierarchy)
         {
             return;
         }

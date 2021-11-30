@@ -10,10 +10,10 @@ public class MeleeWeapon : WeaponMaster
     [SerializeField] GameObject _blade;
     public override void AttackAction()
     {
-        _blade?.SetActive(true);
+        _blade.SetActive(true);
     }
     public override void AttackEnd()
     {
-        _blade?.SetActive(false);
+        _blade.SetActive(false);
     }
 }
