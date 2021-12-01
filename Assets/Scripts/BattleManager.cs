@@ -23,9 +23,16 @@ public class BattleManager : MonoBehaviour
     }
     public DamageControl GetTarget(Transform attacker)
     {
-        return _allAttackTarget.Where(target => Mathf.Abs(target.transform.position.y - attacker.position.y) < 20)
+        return _allAttackTarget
             .Where(target => Vector3.Distance(target.Center.position, attacker.position) > 1f)
             .Where(target => Vector3.Dot((target.Center.position - attacker.position).normalized, attacker.forward.normalized) > 0.4f)
             .OrderBy(target => Vector3.Distance(target.Center.position, attacker.position)).FirstOrDefault();
+    }
+    public DamageControl GetTarget()
+    {
+        return _allAttackTarget
+            .Where(target => Vector3.Distance(target.Center.position, Camera.main.transform.position) > 1f)
+            .Where(target => Vector3.Dot((target.Center.position - Camera.main.transform.position).normalized, Camera.main.transform.forward.normalized) > 0.9f)
+            .OrderBy(target => Vector3.Distance(target.Center.position, Camera.main.transform.position)).FirstOrDefault();
     }
 }

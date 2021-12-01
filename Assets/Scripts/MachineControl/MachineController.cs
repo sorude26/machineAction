@@ -63,7 +63,7 @@ public class MachineController : MonoBehaviour
     }
     public void SetTarget()
     {
-        var target = BattleManager.Instance.GetTarget(_body.BodyTransform);
+        var target = BattleManager.Instance.GetTarget();
         if (target)
         {
             LookTarget = target.Center;
