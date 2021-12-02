@@ -675,12 +675,12 @@ MonoBehaviour:
   m_amors:
   - {fileID: 8390740286309794425}
   - {fileID: 8075190584140974321}
-  m_headParts: {fileID: 8109866299368950031}
-  m_lArmParts: {fileID: 1829492013390857942}
-  m_rArmParts: {fileID: 4492012378061558115}
-  m_weapon: {fileID: 0}
-  m_weaponShoulder: {fileID: 0}
-  m_bodyPos: {fileID: 611445697751923822}
+  _headParts: {fileID: 8109866299368950031}
+  _lArmParts: {fileID: 1829492013390857942}
+  _rArmParts: {fileID: 4492012378061558115}
+  _weapon: {fileID: 0}
+  _weaponShoulder: {fileID: 0}
+  _bodyPos: {fileID: 1596750712945445652}
 --- !u!1001 &2802430157505357984
 PrefabInstance:
   m_ObjectHideFlags: 0

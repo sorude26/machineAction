@@ -218,12 +218,12 @@ MonoBehaviour:
   - {fileID: 7547458208788697482}
   - {fileID: 1255723060075629437}
   - {fileID: 5578170046249672312}
-  m_headParts: {fileID: 1866125967294736459}
-  m_lArmParts: {fileID: 8073386827423410066}
-  m_rArmParts: {fileID: 6286764174478684199}
-  m_weapon: {fileID: 0}
-  m_weaponShoulder: {fileID: 0}
-  m_bodyPos: {fileID: 6995653036064496938}
+  _headParts: {fileID: 1866125967294736459}
+  _lArmParts: {fileID: 8073386827423410066}
+  _rArmParts: {fileID: 6286764174478684199}
+  _weapon: {fileID: 0}
+  _weaponShoulder: {fileID: 0}
+  _bodyPos: {fileID: 9169623030623070800}
 --- !u!1 &1614696300982863064
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,7 +934,7 @@ GameObject:
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3961539318280336968
 Transform:
   m_ObjectHideFlags: 0
@@ -1278,6 +1278,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6995653036064496938}
+  - component: {fileID: 8612215912987275422}
+  - component: {fileID: 4180211594716328111}
   m_Layer: 0
   m_Name: FullParts
   m_TagString: Untagged
@@ -1311,6 +1313,32 @@ Transform:
   m_Father: {fileID: 3385501908069964915}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &8612215912987275422
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855434716275628347}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.9
+  m_Center: {x: 0, y: 0.6, z: 0}
+--- !u!114 &4180211594716328111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855434716275628347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec1d6d9a4f39bb49b5cc52d97a384a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parent: {fileID: 1530896329434875333}
 --- !u!1 &8924175991045391885
 GameObject:
   m_ObjectHideFlags: 0

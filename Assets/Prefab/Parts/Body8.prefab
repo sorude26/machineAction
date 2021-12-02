@@ -1620,12 +1620,12 @@ MonoBehaviour:
   - {fileID: 3215620805274374106}
   - {fileID: 4621357950752099325}
   - {fileID: 442775418633884828}
-  m_headParts: {fileID: 9222496108626733995}
-  m_lArmParts: {fileID: 1590688195702531186}
-  m_rArmParts: {fileID: 3541586611065484231}
-  m_weapon: {fileID: 0}
-  m_weaponShoulder: {fileID: 0}
-  m_bodyPos: {fileID: 507958601468583626}
+  _headParts: {fileID: 9222496108626733995}
+  _lArmParts: {fileID: 1590688195702531186}
+  _rArmParts: {fileID: 3541586611065484231}
+  _weapon: {fileID: 0}
+  _weaponShoulder: {fileID: 0}
+  _bodyPos: {fileID: 1826252973360359856}
 --- !u!1 &8501937700521575431
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,30 +17,30 @@ public class PartsBody : UnitPartsMaster<BodyData>
     /// <summary> 機体タイプ </summary>
     public UnitType BodyPartsType { get => _partsData.BodyPartsType[_partsID]; }
     [Tooltip("頭部パーツ接続部")]
-    [SerializeField] Transform m_headParts;
+    [SerializeField] Transform _headParts;
     [Tooltip("左手パーツ接続部")]
-    [SerializeField] Transform m_lArmParts;
+    [SerializeField] Transform _lArmParts;
     [Tooltip("右手パーツ接続部")]
-    [SerializeField] Transform m_rArmParts;
+    [SerializeField] Transform _rArmParts;
     [Tooltip("内蔵武器")]
-    [SerializeField] WeaponMaster m_weapon;
+    [SerializeField] WeaponMaster _weapon;
     [Tooltip("肩武器")]
-    [SerializeField] WeaponMaster m_weaponShoulder;
-    [SerializeField] Transform m_bodyPos;
+    [SerializeField] WeaponMaster _weaponShoulder;
+    [SerializeField] Transform _bodyPos;
     /// <summary> 頭部パーツ接続部 </summary>
-    public Transform HeadPos { get => m_headParts; }
+    public Transform HeadPos { get => _headParts; }
     /// <summary> 左手パーツ接続部 </summary>
-    public Transform LArmPos { get => m_lArmParts; }
+    public Transform LArmPos { get => _lArmParts; }
     /// <summary> 右手パーツ接続部 </summary>
-    public Transform RArmPos { get => m_rArmParts; }
-    public Transform BodyPos { get => m_bodyPos; }
+    public Transform RArmPos { get => _rArmParts; }
+    public Transform BodyPos { get => _bodyPos; }
     /// <summary> 内蔵武器 </summary>
-    public WeaponMaster BodyWeapon { get => m_weapon; }
+    public WeaponMaster BodyWeapon { get => _weapon; }
     /// <summary> 肩装備武器 </summary>
-    public WeaponMaster ShoulderWeapon { get => m_weaponShoulder; }
+    public WeaponMaster ShoulderWeapon { get => _weaponShoulder; }
 
     protected override void PartsBreak()
-    {
+    {        
         Break = true;
     }   
     /// <summary>
@@ -55,13 +55,13 @@ public class PartsBody : UnitPartsMaster<BodyData>
     public override int GetSize()
     {
         int size = PartsSize;
-        if (m_weapon)
+        if (_weapon)
         {
-            size += m_weapon.PartsSize;
+            size += _weapon.PartsSize;
         }
-        if (m_weaponShoulder)
+        if (_weaponShoulder)
         {
-            size += m_weaponShoulder.PartsSize;
+            size += _weaponShoulder.PartsSize;
         }
         return size;
     }

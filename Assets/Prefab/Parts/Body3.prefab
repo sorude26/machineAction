@@ -374,12 +374,12 @@ MonoBehaviour:
   - {fileID: 39998801914340460}
   - {fileID: 39998801567896450}
   - {fileID: 39998801147654876}
-  m_headParts: {fileID: 770186134183474034}
-  m_lArmParts: {fileID: 7160689392429841579}
-  m_rArmParts: {fileID: 4929925565121030942}
-  m_weapon: {fileID: 0}
-  m_weaponShoulder: {fileID: 0}
-  m_bodyPos: {fileID: 8232583161462261267}
+  _headParts: {fileID: 770186134183474034}
+  _lArmParts: {fileID: 7160689392429841579}
+  _rArmParts: {fileID: 4929925565121030942}
+  _weapon: {fileID: 0}
+  _weaponShoulder: {fileID: 0}
+  _bodyPos: {fileID: 7787994838558093673}
 --- !u!1 &1018057973710607385
 GameObject:
   m_ObjectHideFlags: 0

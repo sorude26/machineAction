@@ -437,12 +437,12 @@ MonoBehaviour:
   m_damageSmoke: {fileID: 1948360022452535405}
   m_amors:
   - {fileID: 5153857968782879600}
-  m_headParts: {fileID: 4862694901682069510}
-  m_lArmParts: {fileID: 3068185113134313439}
-  m_rArmParts: {fileID: 982099337957144682}
-  m_weapon: {fileID: 0}
-  m_weaponShoulder: {fileID: 0}
-  m_bodyPos: {fileID: 4290665795687617895}
+  _headParts: {fileID: 4862694901682069510}
+  _lArmParts: {fileID: 3068185113134313439}
+  _rArmParts: {fileID: 982099337957144682}
+  _weapon: {fileID: 0}
+  _weaponShoulder: {fileID: 0}
+  _bodyPos: {fileID: 2728907602433384989}
 --- !u!1 &7166955766831835397
 GameObject:
   m_ObjectHideFlags: 0

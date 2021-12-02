@@ -271,7 +271,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _partsID: 5
   _partsData: {fileID: 11400000, guid: c0525c6946c113d45b7a5e680e703e40, type: 2}
-  _partsObject: []
+  _partsObject:
+  - {fileID: 1043605133188527462}
+  - {fileID: 112263966221800820}
+  - {fileID: 6667479972794597024}
+  - {fileID: 9128706596503663828}
   _anime: {fileID: 0}
   m_hitPos:
   - {fileID: 1084820013950904158}
