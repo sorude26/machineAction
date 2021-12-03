@@ -29,7 +29,7 @@ public class MachineBuildControl : MonoBehaviour
     public WeaponMaster RAWeapon { get; private set; }
     public WeaponMaster LAWeapon { get; private set; }
     public ShoulderWeapon ShoulderWeapon { get; private set; }
-    WeaponMaster _bodyWeapon = default;
+    // WeaponMaster _bodyWeapon = default;
     public void StartSet()
     {
         Build(m_test);

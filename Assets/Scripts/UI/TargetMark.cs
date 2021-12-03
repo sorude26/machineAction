@@ -26,7 +26,8 @@ public class TargetMark : MonoBehaviour
         if (Target != null)
         {
             _rect.position = RectTransformUtility.WorldToScreenPoint(Camera.main, Target.Center.position);
+            gameObject.SetActive(true);
         }
-        gameObject.SetActive(true);
     }
+  
 }

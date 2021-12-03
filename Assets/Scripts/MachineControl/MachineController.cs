@@ -23,8 +23,6 @@ public class MachineController : MonoBehaviour
     BoosterControl _booster = default;
     Rigidbody _rb = default;
     [SerializeField]
-    Transform _camera = default;
-    [SerializeField]
     TargetMark _mark = default;
     [SerializeField]
     bool _fly = default;

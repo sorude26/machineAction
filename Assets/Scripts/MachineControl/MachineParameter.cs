@@ -57,11 +57,4 @@ public class MachineParameter : MonoBehaviour
     [SerializeField]
     float _maxFloatSpeed = 500f;
     public float MaxFloatSpeed { get => _maxFloatSpeed; }
-    PartsHead _head = default;
-    PartsBody _body = default;
-    PartsArm _rArm = default;
-    PartsArm _lArm = default;
-    PartsLeg _leg = default;
-    WeaponMaster _rAWeapon = default;
-    WeaponMaster _lAWeapon = default;
 }

@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         }
         for (int i = 0; i < UnitDataMaster.MaxUintCount; i++)
         {
-            UnitDataMaster.SetData(i, new UnitBuildData(_sParts[1], _sParts[0], _sParts[2], _sParts[3], _sParts[4], _sParts[5], 0), 22);
+            //UnitDataMaster.SetData(i, new UnitBuildData(_sParts[1], _sParts[0], _sParts[2], _sParts[3], _sParts[4], _sParts[5], 0), 22);
         }
     }
     public void Save()
