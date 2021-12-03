@@ -33,6 +33,6 @@ public class BattleManager : MonoBehaviour
         return _allAttackTarget
             .Where(target => Vector3.Distance(target.Center.position, Camera.main.transform.position) > 1f)
             .Where(target => Vector3.Dot((target.Center.position - Camera.main.transform.position).normalized, Camera.main.transform.forward.normalized) > 0.9f)
-            .OrderBy(target => Vector3.Distance(target.Center.position, Camera.main.transform.position)).FirstOrDefault();
+            .OrderByDescending(target => Vector3.Dot((target.Center.position - Camera.main.transform.position).normalized, Camera.main.transform.forward.normalized)).FirstOrDefault();
     }
 }
