@@ -57,9 +57,15 @@ public class PartsArm : UnitPartsMaster<ArmData>
         }
         if (m_currentPartsHp <= 0)
         {
+            EffectPool.Get(EffectType.Bom, transform.position);
+            CameraController.Shake();
             m_currentPartsHp = 0;
             Break = true;
             PartsBreak();
+        }
+        if (_gauge != null)
+        {
+            _gauge.CurrentValue = m_currentPartsHp;
         }
     }
     public override void DestoryParts()
