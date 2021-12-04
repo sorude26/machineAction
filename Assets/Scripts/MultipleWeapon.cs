@@ -5,7 +5,7 @@ using UnityEngine;
 public class MultipleWeapon : WeaponMaster
 {
     [SerializeField]
-    ShotWeapon[] _weapons = default;
+    WeaponMaster[] _weapons = default;
     public override void AttackAction()
     {
         foreach (var weapon in _weapons)
