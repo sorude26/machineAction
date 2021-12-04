@@ -163,6 +163,6 @@ MonoBehaviour:
   _particle: []
   _power: 200
   _triggerShotCount: 1
-  _triggerInterval: 0.2
-  _shotInterval: 0.2
+  _triggerInterval: 0.5
+  _shotInterval: 0.3
   _diffusivity: 0.01

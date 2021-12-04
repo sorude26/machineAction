@@ -79,6 +79,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &2710527504901285638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6751908848330489916}
+  m_Layer: 0
+  m_Name: BackParts
+  m_TagString: Untagged
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6751908848330489916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2710527504901285638}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.8, z: -0.60999995}
+  m_LocalScale: {x: 0.90909094, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4290665795687617895}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3714831544916247570
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +225,7 @@ Transform:
   - {fileID: 982099337957144682}
   - {fileID: 9070359842342278808}
   - {fileID: 4402750181749350723}
+  - {fileID: 6751908848330489916}
   m_Father: {fileID: 8387308470059799614}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -442,9 +473,9 @@ MonoBehaviour:
   _headParts: {fileID: 4862694901682069510}
   _lArmParts: {fileID: 3068185113134313439}
   _rArmParts: {fileID: 982099337957144682}
+  _backPartsPos: {fileID: 6751908848330489916}
   _weapon: {fileID: 0}
   _weaponShoulder: {fileID: 0}
-  _bodyPos: {fileID: 2728907602433384989}
 --- !u!1 &7166955766831835397
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,7 +733,7 @@ PrefabInstance:
     - target: {fileID: 3589531297983651264, guid: bf1acb55dff340e4e98d87fed538d30e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3589531297983651264, guid: bf1acb55dff340e4e98d87fed538d30e,
         type: 3}

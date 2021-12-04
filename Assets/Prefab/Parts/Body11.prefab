@@ -456,12 +456,13 @@ MonoBehaviour:
   - {fileID: 2249767000153062884}
   - {fileID: 1939666978386708299}
   - {fileID: 4393367745259109969}
+  _gauge: {fileID: 0}
   _headParts: {fileID: 1456890125964190963}
   _lArmParts: {fileID: 9068078099672951594}
   _rArmParts: {fileID: 6551951044582489247}
+  _backPartsPos: {fileID: 356383066915540748}
   _weapon: {fileID: 0}
   _weaponShoulder: {fileID: 0}
-  _bodyPos: {fileID: 8255993014491932392}
 --- !u!1 &2164458312335731363
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,6 +1298,7 @@ Transform:
   - {fileID: 4489460308006804260}
   - {fileID: 4570795036576071493}
   - {fileID: 1064135063434177009}
+  - {fileID: 356383066915540748}
   m_Father: {fileID: 2533730518647197899}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1405,6 +1407,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &8378392728178929292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 356383066915540748}
+  m_Layer: 0
+  m_Name: BackParts
+  m_TagString: Untagged
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &356383066915540748
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8378392728178929292}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.9, z: -1.179}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7838421868823662994}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4782781946023380316
 PrefabInstance:
   m_ObjectHideFlags: 0
