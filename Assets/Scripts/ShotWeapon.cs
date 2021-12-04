@@ -5,27 +5,28 @@ using UnityEngine;
 public class ShotWeapon : WeaponMaster
 {
     [SerializeField]
-    BulletType _bullet = default;
+    protected BulletType _bullet = default;
     [SerializeField]
-    Transform _muzzle = default;
+    protected Transform _muzzle = default;
     [SerializeField]
-    ParticleSystem[] _particle = default;
+    protected ParticleSystem[] _particle = default;
     [SerializeField]
-    float _power = 20f;
+    protected float _power = 20f;
     [SerializeField]
-    int _triggerShotCount = 1;
+    protected int _triggerShotCount = 1;
     [SerializeField]
-    float _triggerInterval = 0.1f;
-    float _triggerTimer = 0;
-    bool _trigger = false;
+    protected float _triggerInterval = 0.1f;
     [SerializeField]
-    float _shotInterval = 0.2f;
-    int _shotCount = 0;
+    protected float _shotInterval = 0.2f;
     [SerializeField]
     protected float _diffusivity = 0.01f;
-    public bool ShotNow { get; private set; }
 
-    public void Shot()
+    protected float _triggerTimer = 0;
+    protected bool _trigger = false;
+    protected int _shotCount = 0;
+    public bool ShotNow { get; protected set; }
+
+    public virtual void Shot()
     {
         if (_particle.Length > 0)
         {
@@ -49,7 +50,7 @@ public class ShotWeapon : WeaponMaster
         }
         CameraController.HitShake();
     }
-    void DiffusionShot()
+    protected void DiffusionShot()
     {
         for (int i = 1; i < _shotCount; i++)
         {
@@ -65,7 +66,7 @@ public class ShotWeapon : WeaponMaster
         }
         _shotCount = 0;
     }
-    public void StartShot()
+    public virtual void StartShot()
     {
         if (_triggerTimer > 0 || !gameObject.activeInHierarchy)
         {
@@ -91,7 +92,7 @@ public class ShotWeapon : WeaponMaster
             StartCoroutine(BulletShot());
         }
     }
-    IEnumerator BulletShot()
+    protected virtual IEnumerator BulletShot()
     {
         float timer = _shotInterval;
         while (_shotCount > 0)
@@ -107,7 +108,7 @@ public class ShotWeapon : WeaponMaster
         }
         ShotNow = false;
     }
-    IEnumerator TriggerTimer()
+    protected IEnumerator TriggerTimer()
     {
         while (_triggerTimer > 0)
         {

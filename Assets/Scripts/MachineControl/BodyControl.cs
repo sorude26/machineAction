@@ -33,10 +33,12 @@ public class BodyControl : MonoBehaviour
     bool _action = false;
     int _attackCount = 0;
     bool _attack = false;
-    Vector3 _targetBeforePosL = default;
-    Vector3 _targetTwoBeforePosL = default;
     Vector3 _targetBeforePos = default;
     Vector3 _targetTwoBeforePos = default;
+    Vector3 _targetBeforePosL = default;
+    Vector3 _targetTwoBeforePosL = default;
+    Vector3 _targetBeforePosR = default;
+    Vector3 _targetTwoBeforePosR = default;
     MachineController _machine = default;
     AttackControl attackControl = default;
     public Quaternion BodyAngle { get => _bodyControlBase[0].localRotation; }
@@ -47,8 +49,8 @@ public class BodyControl : MonoBehaviour
         GameScene.InputManager.Instance.OnFirstInputAttack += FightingAttack;
         GameScene.InputManager.Instance.OnFirstInputShotL += HandAttackLeft;
         GameScene.InputManager.Instance.OnFirstInputShotR += HandAttackRight;
-        GameScene.InputManager.Instance.OnFirstInputShot += ShoulderShot;
-        GameScene.InputManager.Instance.OnShotEnd += ResetAngle;
+        GameScene.InputManager.Instance.OnFirstInputShot1 += ShoulderShot;
+        GameScene.InputManager.Instance.OnFirstInputShot2 += BodyWeaponShot;
     }
     private void Update()
     {
@@ -110,7 +112,7 @@ public class BodyControl : MonoBehaviour
             }
             return;
         }
-        var attack = LockOn(_machine.LookTarget.position);
+        var attack = LockOnR(_machine.LookTarget.position);
         if (_machine.RAWeapon.Type == WeaponType.Rifle)
         {
             if (attack)
@@ -126,6 +128,15 @@ public class BodyControl : MonoBehaviour
     public void ShoulderShot()
     {
         _machine.SWeapon.AttackAction();
+    }
+    void BodyWeaponShot()
+    {
+        _machine.SetTarget();
+        if (_machine.LookTarget != null)
+        {
+            LockOn(_machine.LookTarget.position);
+        }
+        _machine.BWeapon.AttackAction();
     }
     void ShotLeft()
     {
@@ -143,6 +154,7 @@ public class BodyControl : MonoBehaviour
         }
         bool attack = false;
         Vector3 targetDir = targetPos - _bodyControlBase[0].position;
+
         if (Vector3.Dot(targetDir.normalized, transform.forward.normalized) < 0.4f)
         {
             _targetTwoBeforePos = _targetBeforePos;
@@ -161,19 +173,6 @@ public class BodyControl : MonoBehaviour
             _controlTarget[0].forward = targetDir;
             _bodyRotaion = _controlTarget[0].localRotation;
         }
-        if (_machine.RAWeapon.Type == WeaponType.Rifle)
-        {
-            targetDir = DeviationShootingControl.CirclePrediction(_rightControlBase[2].position, targetPos, _targetBeforePos, _targetTwoBeforePos, _machine.RAWeapon.AttackSpeed() * 0.2f);
-            _controlTarget[1].forward = targetDir - _rightControlBase[2].position;
-            _rArmRotaion2 = _controlTarget[1].localRotation * Quaternion.Euler(-90, 0, 0);
-            var range = Quaternion.Dot(_rArmRotaion2, _rightControlBase[2].localRotation);
-            if (range > 0.999f || range < -0.999f)
-            {
-                attack = true;
-            }
-        }
-        _targetTwoBeforePos = _targetBeforePos;
-        _targetBeforePos = targetPos;
         return attack;
     }
     bool LockOnL(Vector3 targetPos)
@@ -182,29 +181,14 @@ public class BodyControl : MonoBehaviour
         {
             return false;
         }
+        if (LockOn(targetPos))
+        {
+            return true;
+        }
         bool attack = false;
-        Vector3 targetDir = targetPos - _bodyControlBase[0].position;
-        if (Vector3.Dot(targetDir.normalized, transform.forward.normalized) < 0.4f)
-        {
-            _targetTwoBeforePosL = _targetBeforePosL;
-            _targetBeforePosL = targetPos;
-            return true;
-        }
-        targetDir.y = 0.0f;
-        if (Vector3.Dot(targetDir.normalized, _bodyControlBase[0].forward.normalized) < 0.6f)
-        {
-            _targetTwoBeforePosL = _targetBeforePosL;
-            _targetBeforePosL = targetPos;
-            return true;
-        }
-        if (!_camera)
-        {
-            _controlTarget[0].forward = targetDir;
-            _bodyRotaion = _controlTarget[0].localRotation;
-        }
         if (_machine.LAWeapon.Type == WeaponType.Rifle)
         {
-            targetDir = DeviationShootingControl.CirclePrediction(_leftControlBase[2].position, targetPos, _targetBeforePosL, _targetTwoBeforePosL, _machine.LAWeapon.AttackSpeed() * 0.2f);
+            Vector3 targetDir = DeviationShootingControl.CirclePrediction(_leftControlBase[2].position, targetPos, _targetBeforePosL, _targetTwoBeforePosL, _machine.LAWeapon.AttackSpeed() * 0.2f);
             _controlTarget[2].forward = targetDir - _leftControlBase[2].position;
             _lArmRotaion2 = _controlTarget[2].localRotation * Quaternion.Euler(-90, 0, 0);
             var range = Quaternion.Dot(_lArmRotaion2, _leftControlBase[2].localRotation);
@@ -217,6 +201,33 @@ public class BodyControl : MonoBehaviour
         _targetBeforePosL = targetPos;
         return attack;
     }
+    bool LockOnR(Vector3 targetPos)
+    {
+        if (_action)
+        {
+            return false;
+        }
+        bool attack = false;
+        if (LockOn(targetPos))
+        {
+            return true;
+        }
+        if (_machine.RAWeapon.Type == WeaponType.Rifle)
+        {
+            Vector3 targetDir = DeviationShootingControl.CirclePrediction(_rightControlBase[2].position, targetPos, _targetBeforePosR, _targetTwoBeforePosR, _machine.RAWeapon.AttackSpeed() * 0.2f);
+            _controlTarget[1].forward = targetDir - _rightControlBase[2].position;
+            _rArmRotaion2 = _controlTarget[1].localRotation * Quaternion.Euler(-90, 0, 0);
+            var range = Quaternion.Dot(_rArmRotaion2, _rightControlBase[2].localRotation);
+            if (range > 0.999f || range < -0.999f)
+            {
+                attack = true;
+            }
+        }
+        _targetTwoBeforePosR = _targetBeforePosR;
+        _targetBeforePosR = targetPos;
+        return attack;
+    }
+    
     void ResetAngle()
     {
         _headRotaion = Quaternion.Euler(0, 0, 0);

@@ -28,8 +28,8 @@ public class MachineBuildControl : MonoBehaviour
     PartsLeg _leg = default;
     public WeaponMaster RAWeapon { get; private set; }
     public WeaponMaster LAWeapon { get; private set; }
+    public WeaponMaster BodyWeapon { get; private set; }
     public ShoulderWeapon ShoulderWeapon { get; private set; }
-    // WeaponMaster _bodyWeapon = default;
     public void StartSet()
     {
         Build(m_test);
@@ -88,6 +88,9 @@ public class MachineBuildControl : MonoBehaviour
         LAWeapon.transform.position = _leftArm[3].position;
         LAWeapon.transform.rotation = Quaternion.Euler(90, 0, 0);
         LAWeapon.transform.SetParent(_lArm.Grip);
+        BodyWeapon = Instantiate(GameManager.Instanse.PartsList.GetBodyWeapon(data.BodyWeaponID));
+        BodyWeapon.transform.position = _body.BackPos.position;
+        BodyWeapon.transform.SetParent(_body.BackPos);
         ShoulderWeapon = Instantiate(GameManager.Instanse.PartsList.GetShoulderWeapon(data.ShoulderWeaponID));
         ShoulderWeapon.RShoulder.position = _rArm.Shoulder.position;
         ShoulderWeapon.LShoulder.position = _lArm.Shoulder.position;

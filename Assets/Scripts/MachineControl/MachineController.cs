@@ -34,6 +34,7 @@ public class MachineController : MonoBehaviour
    
     public WeaponMaster RAWeapon { get => _buildControl.RAWeapon; }
     public WeaponMaster LAWeapon { get => _buildControl.LAWeapon; }
+    public WeaponMaster BWeapon { get => _buildControl.BodyWeapon; }
     public ShoulderWeapon SWeapon { get => _buildControl.ShoulderWeapon; }
     public Transform LookTarget { get; protected set; }
     private void Start()

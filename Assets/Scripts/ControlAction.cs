@@ -43,6 +43,14 @@ public class @ControlAction : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Shot2"",
+                    ""type"": ""Button"",
+                    ""id"": ""04ff32c6-61b4-4e1d-882c-86aad3c6f502"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""ShotL"",
                     ""type"": ""Button"",
                     ""id"": ""e526025e-0cae-4436-af1d-569715acf5b4"",
@@ -399,6 +407,28 @@ public class @ControlAction : IInputActionCollection, IDisposable
                     ""action"": ""LockOn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d832330-095c-431f-b440-944e39b48c76"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shot2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb5a1927-4092-4ea9-b104-3fc06a08b2c2"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shot2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -410,6 +440,7 @@ public class @ControlAction : IInputActionCollection, IDisposable
         m_PlayerController_Move = m_PlayerController.FindAction("Move", throwIfNotFound: true);
         m_PlayerController_Jump = m_PlayerController.FindAction("Jump", throwIfNotFound: true);
         m_PlayerController_Shot1 = m_PlayerController.FindAction("Shot1", throwIfNotFound: true);
+        m_PlayerController_Shot2 = m_PlayerController.FindAction("Shot2", throwIfNotFound: true);
         m_PlayerController_ShotL = m_PlayerController.FindAction("ShotL", throwIfNotFound: true);
         m_PlayerController_ShotR = m_PlayerController.FindAction("ShotR", throwIfNotFound: true);
         m_PlayerController_Attack1 = m_PlayerController.FindAction("Attack1", throwIfNotFound: true);
@@ -468,6 +499,7 @@ public class @ControlAction : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerController_Move;
     private readonly InputAction m_PlayerController_Jump;
     private readonly InputAction m_PlayerController_Shot1;
+    private readonly InputAction m_PlayerController_Shot2;
     private readonly InputAction m_PlayerController_ShotL;
     private readonly InputAction m_PlayerController_ShotR;
     private readonly InputAction m_PlayerController_Attack1;
@@ -481,6 +513,7 @@ public class @ControlAction : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_PlayerController_Move;
         public InputAction @Jump => m_Wrapper.m_PlayerController_Jump;
         public InputAction @Shot1 => m_Wrapper.m_PlayerController_Shot1;
+        public InputAction @Shot2 => m_Wrapper.m_PlayerController_Shot2;
         public InputAction @ShotL => m_Wrapper.m_PlayerController_ShotL;
         public InputAction @ShotR => m_Wrapper.m_PlayerController_ShotR;
         public InputAction @Attack1 => m_Wrapper.m_PlayerController_Attack1;
@@ -505,6 +538,9 @@ public class @ControlAction : IInputActionCollection, IDisposable
                 @Shot1.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnShot1;
                 @Shot1.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnShot1;
                 @Shot1.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnShot1;
+                @Shot2.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnShot2;
+                @Shot2.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnShot2;
+                @Shot2.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnShot2;
                 @ShotL.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnShotL;
                 @ShotL.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnShotL;
                 @ShotL.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnShotL;
@@ -536,6 +572,9 @@ public class @ControlAction : IInputActionCollection, IDisposable
                 @Shot1.started += instance.OnShot1;
                 @Shot1.performed += instance.OnShot1;
                 @Shot1.canceled += instance.OnShot1;
+                @Shot2.started += instance.OnShot2;
+                @Shot2.performed += instance.OnShot2;
+                @Shot2.canceled += instance.OnShot2;
                 @ShotL.started += instance.OnShotL;
                 @ShotL.performed += instance.OnShotL;
                 @ShotL.canceled += instance.OnShotL;
@@ -563,6 +602,7 @@ public class @ControlAction : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnShot1(InputAction.CallbackContext context);
+        void OnShot2(InputAction.CallbackContext context);
         void OnShotL(InputAction.CallbackContext context);
         void OnShotR(InputAction.CallbackContext context);
         void OnAttack1(InputAction.CallbackContext context);

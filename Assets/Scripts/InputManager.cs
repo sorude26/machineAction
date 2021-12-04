@@ -20,7 +20,8 @@ namespace GameScene
         public event Action OnInputJump;
         public event Action OnInputJumpEnd;
         public event Action OnFirstInputBooster;
-        public event Action OnFirstInputShot;
+        public event Action OnFirstInputShot1;
+        public event Action OnFirstInputShot2;
         public event Action OnFirstInputShotL;
         public event Action OnFirstInputShotR;
         public event Action OnFirstInputAttack;
@@ -30,7 +31,8 @@ namespace GameScene
         bool _inputCamera;
         bool _firstInputJump;
         bool _firstInputAxisRaw;
-        bool _shot1;
+        bool _shot1; 
+        bool _shot2;
         bool _shotL;
         bool _shotR;
         bool _attack;
@@ -51,11 +53,13 @@ namespace GameScene
             _inputActions.PlayerController.Jump.started += context => { OnJump(); };
             _inputActions.PlayerController.LockOn.started += context => { OnLockOn(); };
             _inputActions.PlayerController.Jump.canceled += context => { EndJump(); };
-            _inputActions.PlayerController.Shot1.started += context => { OnShot(); };
+            _inputActions.PlayerController.Shot1.started += context => { OnShot1(); };
+            _inputActions.PlayerController.Shot2.started += context => { OnShot2(); };
             _inputActions.PlayerController.ShotL.started += context => { OnShotL(); };
             _inputActions.PlayerController.ShotR.started += context => { OnShotR(); };
             _inputActions.PlayerController.Attack1.started += context => { OnAttack(); };
-            _inputActions.PlayerController.Shot1.canceled += context => { EndShot(); };
+            _inputActions.PlayerController.Shot1.canceled += context => { EndShot1(); };
+            _inputActions.PlayerController.Shot2.canceled += context => { EndShot2(); };
             _inputActions.PlayerController.ShotL.canceled += context => { EndShotL(); };
             _inputActions.PlayerController.ShotR.canceled += context => { EndShotR(); };
             _inputActions.PlayerController.Attack1.canceled += context => { EndAttack(); };
@@ -151,20 +155,25 @@ namespace GameScene
             _firstInputJump = false;
             OnInputJumpEnd?.Invoke();
         }
-        void OnShot()
+        void OnShot1()
         {
             if (!_shot1)
             {
                 _shot1 = true;
-                //StartCoroutine(Shot());
             }
-        }        
+        }
+        void OnShot2()
+        {
+            if (!_shot2)
+            {
+                _shot2 = true;
+            }
+        }
         void OnShotL()
         {
             if (!_shotL)
             {
                 _shotL = true;
-                //StartCoroutine(ShotL());
             }
         }
         void OnShotR()
@@ -172,7 +181,6 @@ namespace GameScene
             if (!_shotR)
             {
                 _shotR = true;
-                //StartCoroutine(ShotR());
             }
         }
         void OnAttack()
@@ -191,9 +199,14 @@ namespace GameScene
         {
             OnInputLockOn?.Invoke();
         }
-        void EndShot()
+        void EndShot1()
         {
             _shot1 = false;
+            OnShotEnd?.Invoke();
+        }
+        void EndShot2()
+        {
+            _shot2 = false;
             OnShotEnd?.Invoke();
         }
         void EndShotL()
@@ -216,7 +229,11 @@ namespace GameScene
             {
                 if (_shot1)
                 {
-                    OnFirstInputShot?.Invoke();
+                    OnFirstInputShot1?.Invoke();
+                }
+                if (_shot2)
+                {
+                    OnFirstInputShot2?.Invoke();
                 }
                 if (_shotL)
                 {

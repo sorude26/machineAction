@@ -70,13 +70,15 @@ public class UnitPartsList : ScriptableObject
     [SerializeField] PartsLeg[] _legs;
     [SerializeField] WeaponMaster[] _weapons;
     [SerializeField] ShoulderWeapon[] _shoulderWeapons;
+    [SerializeField] WeaponMaster[] _bodyWeapons;
     public PartsBody GetBody(int id) => _bodys.Where(parts => parts.PartsID == id).FirstOrDefault();
     public PartsHead GetHead(int id) => _heads.Where(parts => parts.PartsID == id).FirstOrDefault();
     public PartsArm GetRArm(int id) => _arms.Where(parts => parts.PartsID == id && parts.Arm == ArmType.Right).FirstOrDefault();
     public PartsArm GetLArm(int id) => _arms.Where(parts => parts.PartsID == id && parts.Arm == ArmType.Left).FirstOrDefault();
     public PartsLeg GetLeg(int id) => _legs.Where(parts => parts.PartsID == id).FirstOrDefault();
     public WeaponMaster GetWeapon(int id) => _weapons.Where(parts => parts.PartsID == id).FirstOrDefault();
-    public ShoulderWeapon GetShoulderWeapon(int id) => _shoulderWeapons.Where(parts => parts.PartsID == id).FirstOrDefault();
+    public ShoulderWeapon GetShoulderWeapon(int id) => _shoulderWeapons.Where(parts => parts.PartsID == id).FirstOrDefault(); 
+    public WeaponMaster GetBodyWeapon(int id) => _bodyWeapons.Where(parts => parts.PartsID == id).FirstOrDefault();
     public PartsBody[] GetAllBodys() => _bodys;
     public PartsHead[] GetAllHeads() => _heads;
     public PartsArm[] GetAllRArms() => _arms.Where(parts => parts.Arm == ArmType.Right).ToArray();
@@ -84,6 +86,7 @@ public class UnitPartsList : ScriptableObject
     public PartsLeg[] GetAllLegs() => _legs;
     public WeaponMaster[] GetAllWeapons() => _weapons;
     public ShoulderWeapon[] GetAllShoulderWeapons() => _shoulderWeapons;
+    public WeaponMaster[] GetAllBodyWeapons() => _bodyWeapons;
     public PartsBody[] GetHaveAllBody()
     {
         List<PartsBody> allParts = new List<PartsBody>();

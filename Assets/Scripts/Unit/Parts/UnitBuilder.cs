@@ -117,7 +117,7 @@ public class UnitBuilder : MonoBehaviour
     {
         lArm2P.rotation = Quaternion.Euler(-50, 0, 0);
         rArm2P.rotation = Quaternion.Euler(-50, 0, 0);
-        return m_body.BodyPos;
+        return m_body.BackPos;
     }
     /// <summary>
     /// 人型の機体を生成する

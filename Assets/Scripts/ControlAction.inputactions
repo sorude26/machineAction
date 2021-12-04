@@ -30,6 +30,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Shot2",
+                    "type": "Button",
+                    "id": "04ff32c6-61b4-4e1d-882c-86aad3c6f502",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "ShotL",
                     "type": "Button",
                     "id": "e526025e-0cae-4436-af1d-569715acf5b4",
@@ -384,6 +392,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "LockOn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4d832330-095c-431f-b440-944e39b48c76",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shot2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bb5a1927-4092-4ea9-b104-3fc06a08b2c2",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shot2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

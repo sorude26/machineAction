@@ -22,18 +22,19 @@ public class PartsBody : UnitPartsMaster<BodyData>
     [SerializeField] Transform _lArmParts;
     [Tooltip("右手パーツ接続部")]
     [SerializeField] Transform _rArmParts;
+    [Tooltip("バックパックパーツ接続部")]
+    [SerializeField] Transform _backPartsPos;
     [Tooltip("内蔵武器")]
     [SerializeField] WeaponMaster _weapon;
     [Tooltip("肩武器")]
     [SerializeField] WeaponMaster _weaponShoulder;
-    [SerializeField] Transform _bodyPos;
     /// <summary> 頭部パーツ接続部 </summary>
     public Transform HeadPos { get => _headParts; }
     /// <summary> 左手パーツ接続部 </summary>
     public Transform LArmPos { get => _lArmParts; }
     /// <summary> 右手パーツ接続部 </summary>
     public Transform RArmPos { get => _rArmParts; }
-    public Transform BodyPos { get => _bodyPos; }
+    public Transform BackPos { get => _backPartsPos; }
     /// <summary> 内蔵武器 </summary>
     public WeaponMaster BodyWeapon { get => _weapon; }
     /// <summary> 肩装備武器 </summary>
