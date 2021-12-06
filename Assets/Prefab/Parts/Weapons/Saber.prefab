@@ -484,6 +484,8 @@ MonoBehaviour:
   _partsObject: []
   _anime: {fileID: 0}
   _blade: {fileID: 4366986202252346352}
+  _triger: {fileID: 1485238785532337963}
+  _knockBackPower: 3
 --- !u!1 &6307724614124026592
 GameObject:
   m_ObjectHideFlags: 0

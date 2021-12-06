@@ -45,14 +45,14 @@ public class UnitBuilder : MonoBehaviour
         unitMaster.SetParts(m_rArm);
         unitMaster.SetParts(m_lArm);
         unitMaster.SetParts(m_leg);
-        m_rAWeapon?.SetWeaponPosition(WeaponPosition.RArm);
-        unitMaster.SetParts(m_rAWeapon);
-        m_lAWeapon?.SetWeaponPosition(WeaponPosition.LArm);
-        unitMaster.SetParts(m_lAWeapon);
-        m_bodyWeapon?.SetWeaponPosition(WeaponPosition.Body);
-        unitMaster.SetParts(m_bodyWeapon);
-        m_shoulderWeapon?.SetWeaponPosition(WeaponPosition.Shoulder);
-        unitMaster.SetParts(m_shoulderWeapon);
+        //m_rAWeapon?.SetWeaponPosition(WeaponPosition.RArm);
+        //unitMaster.SetParts(m_rAWeapon);
+        //m_lAWeapon?.SetWeaponPosition(WeaponPosition.LArm);
+        //unitMaster.SetParts(m_lAWeapon);
+        //m_bodyWeapon?.SetWeaponPosition(WeaponPosition.Body);
+        //unitMaster.SetParts(m_bodyWeapon);
+        //m_shoulderWeapon?.SetWeaponPosition(WeaponPosition.Shoulder);
+        //unitMaster.SetParts(m_shoulderWeapon);
     }
     public Transform SetDataModel(UnitBuildData data, UnitMaster unitMaster)
     {

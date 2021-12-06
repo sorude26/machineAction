@@ -50,6 +50,8 @@ MonoBehaviour:
   _partsObject: []
   _anime: {fileID: 0}
   _blade: {fileID: 2169043324603007913}
+  _triger: {fileID: 1993878791910121287}
+  _knockBackPower: 7
 --- !u!1 &2169043324603007913
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,7 +67,7 @@ GameObject:
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3837659183972367448
 Transform:
   m_ObjectHideFlags: 0

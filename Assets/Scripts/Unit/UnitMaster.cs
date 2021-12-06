@@ -372,18 +372,7 @@ public class UnitMaster : MonoBehaviour
         OnDamage?.Invoke();
         m_attackCount++;
     }
-    /// <summary>
-    /// 武器にイベントを登録する
-    /// </summary>
-    /// <param name="weapon"></param>
-    public void SetBattleEvent(WeaponMaster weapon)
-    {
-        m_attackCount = 0;
-        m_damegePartsList = new List<IUnitParts>();
-        weapon.OnAttack += PlayPartsDamegeEffect;
-        weapon.OnAttackEnd += BattleEndEvent;
-        m_attackerWeapon = weapon;
-    }
+
     /// <summary>
     /// 戦闘終了時のイベント
     /// </summary>
@@ -442,36 +431,6 @@ public class UnitMaster : MonoBehaviour
     {
         if (!leg) { return; }
         Leg = leg;
-    }
-    /// <summary>
-    /// 武装を振り分け登録する
-    /// </summary>
-    /// <param name="weapon"></param>
-    public void SetParts(WeaponMaster weapon)
-    {
-        if (!weapon) { return; }
-        switch (weapon.WeaponPos)
-        {
-            case WeaponPosition.LArm:
-                LAWeapon = weapon;
-                LArm.SetGripWeapon(LAWeapon);
-                break;
-            case WeaponPosition.RArm:
-                RAWeapon = weapon;
-                RArm.SetGripWeapon(RAWeapon);
-                break;
-            case WeaponPosition.Shoulder:
-                SWeapon = weapon;
-                break;
-            case WeaponPosition.RShoulder:
-                RAWeapon = weapon;
-                break;
-            case WeaponPosition.Body:
-                BodyWeapon = weapon;
-                break;
-            default:
-                break;
-        }
     }
     /// <summary>
     /// 機体の色を変更する

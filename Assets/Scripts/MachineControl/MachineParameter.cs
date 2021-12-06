@@ -53,6 +53,10 @@ public class MachineParameter : MonoBehaviour
     [SerializeField]
     float _jetControlPower = 0.8f;
     public float JetControlPower { get => _jetControlPower; }
+    [Tooltip("ジェット移動力")]
+    [SerializeField]
+    float _jetMovePower = 0.8f;
+    public float JetMovePower { get => _jetMovePower; }
     [Tooltip("ジェット持続時間")]
     [SerializeField]
     float _jetTime = 30f;

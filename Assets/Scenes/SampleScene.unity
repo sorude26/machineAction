@@ -1848,7 +1848,7 @@ MonoBehaviour:
   _body: {fileID: 252410046}
   _center: {fileID: 252410051}
   _gauge: {fileID: 0}
-  _hp: 50
+  _hp: 2500
 --- !u!65 &252410048
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2737,7 +2737,7 @@ PrefabInstance:
     - target: {fileID: 3163367175191104258, guid: 92d88cb7ca3ce534cad25a15f1b64580,
         type: 3}
       propertyPath: _hp
-      value: 280
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 3163367175191104259, guid: 92d88cb7ca3ce534cad25a15f1b64580,
         type: 3}
@@ -2980,8 +2980,8 @@ GameObject:
   m_Component:
   - component: {fileID: 478021444}
   - component: {fileID: 478021447}
-  - component: {fileID: 478021446}
   - component: {fileID: 478021445}
+  - component: {fileID: 478021446}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -5749,7 +5749,7 @@ MonoBehaviour:
   _body: {fileID: 958231830}
   _center: {fileID: 958231835}
   _gauge: {fileID: 0}
-  _hp: 50
+  _hp: 2500
 --- !u!65 &958231832
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6988,7 +6988,7 @@ MonoBehaviour:
   _body: {fileID: 1242223933}
   _center: {fileID: 1242223938}
   _gauge: {fileID: 0}
-  _hp: 50
+  _hp: 2500
 --- !u!65 &1242223935
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7404,7 +7404,7 @@ MonoBehaviour:
   _body: {fileID: 1374280610}
   _center: {fileID: 1374280615}
   _gauge: {fileID: 0}
-  _hp: 50
+  _hp: 2500
 --- !u!65 &1374280612
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8062,17 +8062,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionSpeed: 1
-  _walkPower: 1.5
+  _walkPower: 1.4
   _maxWalkSpeed: 12
   _turnPower: 21
   _turnSpeed: 4
-  _jumpPower: 15
-  _landingTime: 0.5
-  _bodyTurnSpeed: 2
-  _bodyTurnRange: 0.4
-  _cameraTurnRange: 50
-  _jetPower: 0.7
+  _jumpPower: 9
+  _landingTime: 0.3
+  _bodyTurnSpeed: 1
+  _bodyTurnRange: 0.5
+  _cameraTurnRange: 60
+  _jetPower: 0
   _jetControlPower: 10
+  _jetMovePower: 0.8
   _jetTime: 50
   _floatSpeed: 40
   _maxFloatSpeed: 500
@@ -9800,7 +9801,7 @@ PrefabInstance:
     - target: {fileID: 3163367175191104258, guid: 92d88cb7ca3ce534cad25a15f1b64580,
         type: 3}
       propertyPath: _hp
-      value: 280
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 3163367175191104259, guid: 92d88cb7ca3ce534cad25a15f1b64580,
         type: 3}
@@ -11564,6 +11565,7 @@ GameObject:
   - component: {fileID: 1944469878}
   - component: {fileID: 1944469881}
   - component: {fileID: 1944469882}
+  - component: {fileID: 1944469883}
   m_Layer: 11
   m_Name: MachineBase
   m_TagString: Untagged
@@ -11656,14 +11658,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_test:
     HeadID: 10
-    BodyID: 6
-    RArmID: 8
-    LArmID: 8
-    LegID: 8
-    WeaponRArmID: 23
-    WeaponLArmID: 23
-    ShoulderWeaponID: 2
-    BodyWeaponID: 1
+    BodyID: 5
+    RArmID: 5
+    LArmID: 5
+    LegID: 5
+    WeaponRArmID: 4
+    WeaponLArmID: 4
+    ShoulderWeaponID: 3
+    BodyWeaponID: 2
     BoosterID: 0
     CoreID: 0
   _camera: {fileID: 2146080150}
@@ -11694,6 +11696,19 @@ MonoBehaviour:
   - {fileID: 1040771245}
   - {fileID: 1423211885}
   - {fileID: 741876495}
+--- !u!135 &1944469883
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944469877}
+  m_Material: {fileID: 13400000, guid: 64d874fb8ad7e144fbe8eb0d9717240b, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.1
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!1 &1944831699
 GameObject:
   m_ObjectHideFlags: 0
@@ -13259,7 +13274,7 @@ PrefabInstance:
     - target: {fileID: 3163367175191104258, guid: 92d88cb7ca3ce534cad25a15f1b64580,
         type: 3}
       propertyPath: _hp
-      value: 280
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 3163367175191104259, guid: 92d88cb7ca3ce534cad25a15f1b64580,
         type: 3}

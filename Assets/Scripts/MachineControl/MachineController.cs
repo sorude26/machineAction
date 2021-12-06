@@ -55,6 +55,10 @@ public class MachineController : MonoBehaviour
         _body.BodyRSpeed = _parameter.BodyTurnSpeed;
         _body.BodyTurnRange = _parameter.BodyTurnRange;
         _body.CameraRange = _parameter.CameraTurnRange;
+        RAWeapon.OwnerRb = _rb;
+        LAWeapon.OwnerRb = _rb;
+        BWeapon.OwnerRb = _rb;
+        SWeapon.OwnerRb = _rb;
     }
 
     private void OnValidate()
@@ -78,7 +82,6 @@ public class MachineController : MonoBehaviour
             LookTarget = null;
         }
         _mark.SetTarget(target);
-        //Debug.Log(LookTarget);
     }
     public void Move(float horizonal, float vertical)
     {
@@ -171,12 +174,15 @@ public class MachineController : MonoBehaviour
     }
     public void Boost()
     {
+        if (_parameter.JetPower < 1f)
+        {
+            return;
+        }
         if (_jump && _boosterTimer > 0)
         {
-            _rb.AddForce(Vector3.zero, ForceMode.Acceleration);
             _boosterTimer -= Time.deltaTime;
             Vector3 vector = _body.BodyTransform.forward * _inputAxis.z + _body.BodyTransform.right * _inputAxis.x;
-            _moveControl.Jet(_rb, Vector3.up + vector * _parameter.JetControlPower, _parameter.JetPower);
+            _moveControl.Jet(_rb, Vector3.up + vector * _parameter.JetMovePower, _parameter.JetPower);
             _body.ResetAngle(0.95f);
             if (_boosterTimer <= 0)
             {

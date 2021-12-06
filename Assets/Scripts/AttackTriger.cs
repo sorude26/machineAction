@@ -1,13 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackTriger : MonoBehaviour
 {
     [SerializeField]
-    EffectType _effect = default;
+    EffectType _effect = EffectType.ShotHit;
     [SerializeField]
     int _power = 1;
+    public event Action HitEvent = default;
     public int Power { get => _power; }
     private void OnTriggerEnter(Collider other)
     {
@@ -40,5 +42,6 @@ public class AttackTriger : MonoBehaviour
                 CameraController.HitShake();
             }
         }
+        HitEvent?.Invoke();
     }
 }

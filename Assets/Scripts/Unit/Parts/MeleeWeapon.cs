@@ -7,7 +7,19 @@ using UnityEngine;
 /// </summary>
 public class MeleeWeapon : WeaponMaster
 {
-    [SerializeField] GameObject _blade;
+    [SerializeField] 
+    GameObject _blade = default;
+    [SerializeField] 
+    AttackTriger _triger = default;
+    [SerializeField]
+    float _knockBackPower = 1f;
+    private void Start()
+    {
+        if (_triger != null)
+        {
+            _triger.HitEvent += HitKnockBack;
+        }
+    }
     public override void AttackAction()
     {
         _blade.SetActive(true);
@@ -15,5 +27,9 @@ public class MeleeWeapon : WeaponMaster
     public override void AttackEnd()
     {
         _blade.SetActive(false);
+    }
+    void HitKnockBack()
+    {
+        OwnerRb.AddForce(-OwnerRb.transform.forward * _knockBackPower, ForceMode.Impulse);
     }
 }
