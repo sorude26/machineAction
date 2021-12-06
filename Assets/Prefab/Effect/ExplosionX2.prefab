@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9197990422199078677}
   - component: {fileID: 9197990422199078676}
   - component: {fileID: 1437262514361204488}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ExplosionX2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4849,6 +4849,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6314651161406548305, guid: b64ab2ba3e2bc2449b08db597ee76812,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6314651161406548306, guid: b64ab2ba3e2bc2449b08db597ee76812,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5169,6 +5174,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6314651161406548305, guid: b64ab2ba3e2bc2449b08db597ee76812,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6314651161406548306, guid: b64ab2ba3e2bc2449b08db597ee76812,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5473,6 +5483,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314651161406548305, guid: b64ab2ba3e2bc2449b08db597ee76812,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6314651161406548306, guid: b64ab2ba3e2bc2449b08db597ee76812,
         type: 3}
@@ -6199,6 +6214,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2878194667517389774, guid: 169a601b62659cd4aa07c415731eff1b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 169a601b62659cd4aa07c415731eff1b, type: 3}
 --- !u!4 &9197990421904551039 stripped
@@ -6223,6 +6243,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314651161406548305, guid: b64ab2ba3e2bc2449b08db597ee76812,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6314651161406548306, guid: b64ab2ba3e2bc2449b08db597ee76812,
         type: 3}
@@ -6548,6 +6573,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314651161406548305, guid: b64ab2ba3e2bc2449b08db597ee76812,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6314651161406548306, guid: b64ab2ba3e2bc2449b08db597ee76812,
         type: 3}

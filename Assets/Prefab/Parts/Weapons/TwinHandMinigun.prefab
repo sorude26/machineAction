@@ -168,7 +168,7 @@ PrefabInstance:
     - target: {fileID: 5503650841852817234, guid: f75b63f3464aa554a82f1d8a65444c2d,
         type: 3}
       propertyPath: _shotInterval
-      value: 1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 5503650841852817234, guid: f75b63f3464aa554a82f1d8a65444c2d,
         type: 3}
@@ -310,7 +310,7 @@ PrefabInstance:
     - target: {fileID: 5503650841852817234, guid: f75b63f3464aa554a82f1d8a65444c2d,
         type: 3}
       propertyPath: _shotInterval
-      value: 1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 5503650841852817234, guid: f75b63f3464aa554a82f1d8a65444c2d,
         type: 3}
