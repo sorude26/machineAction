@@ -46,6 +46,7 @@ public class ShotWeapon : WeaponMaster
         var shot = BulletPool.Get(_bullet, _muzzle.position);
         if (shot)
         {
+            shot.transform.forward = moveDir;
             shot.ShotRb.AddForce(moveDir * _power, ForceMode.Impulse);
         }
         CameraController.HitShake();
@@ -61,6 +62,7 @@ public class ShotWeapon : WeaponMaster
             var shot = BulletPool.Get(_bullet, _muzzle.position);
             if (shot)
             {
+                shot.transform.forward = moveDir;
                 shot.ShotRb.AddForce(moveDir * _power, ForceMode.Impulse);
             }
         }

@@ -52,6 +52,9 @@ public class MachineController : MonoBehaviour
         _leg.ChangeSpeed(_parameter.ActionSpeed);
         _body.Set(this);
         _body.ChangeSpeed(_parameter.ActionSpeed);
+        _body.BodyRSpeed = _parameter.BodyTurnSpeed;
+        _body.BodyTurnRange = _parameter.BodyTurnRange;
+        _body.CameraRange = _parameter.CameraTurnRange;
     }
 
     private void OnValidate()
@@ -59,6 +62,9 @@ public class MachineController : MonoBehaviour
         _leg.ChangeSpeed(_parameter.ActionSpeed);
         _body.ChangeSpeed(_parameter.ActionSpeed);
         _leg.SetLandingTime(_parameter.LandingTime);
+        _body.BodyRSpeed = _parameter.BodyTurnSpeed;
+        _body.BodyTurnRange = _parameter.BodyTurnRange;
+        _body.CameraRange = _parameter.CameraTurnRange;
     }
     public void SetTarget()
     {
@@ -103,7 +109,7 @@ public class MachineController : MonoBehaviour
             else if(_jump)
             {
                 _rb.angularVelocity = Vector3.zero;
-                _trunControl.Turn(_rb, dir.x, _parameter.TurnPower, _parameter.TurnSpeed);
+                _trunControl.Turn(_rb, dir.x, _parameter.JetControlPower, _parameter.TurnSpeed);
             }
 
         }
@@ -153,9 +159,12 @@ public class MachineController : MonoBehaviour
             _moveControl.Jet(_rb,Vector3.up * 0.5f, _parameter.JetPower);
             return;
         }
-        if (_boosterTimer <= -1 || _boosterTimer > 0)
+        if (_parameter.JetPower >= 1f)
         {
-            _booster.Boost();
+            if (_boosterTimer <= -1 || _boosterTimer > 0)
+            {
+                _booster.Boost();
+            }
         }
         Stop();
         _leg.StartJump();
@@ -177,7 +186,7 @@ public class MachineController : MonoBehaviour
     }
     public void JetStart()
     {
-        if (_inputAxis == Vector3.zero || _jet)
+        if (_inputAxis == Vector3.zero || _jet || _parameter.JetPower < 1f)
         {
             return;
         }
@@ -211,10 +220,14 @@ public class MachineController : MonoBehaviour
     }
     public void Jet()
     {
+        _body.QuickTurn();
+        if (_parameter.JetPower < 1f)
+        {
+            return;
+        }
         Vector3 vector = transform.forward * _inputAxis.z + transform.right * _inputAxis.x;
         _rb.AddForce(vector * _parameter.FloatSpeed + Vector3.up * 0.7f, ForceMode.Impulse);
         _jet = false;
-        _body.QuickTurn();
     }
     public void Landing()
     {

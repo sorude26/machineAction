@@ -19,19 +19,13 @@ public class BodyControl : MonoBehaviour
     [SerializeField]
     Transform[] _controlTarget = new Transform[3];
     protected Quaternion _bodyRotaion = Quaternion.Euler(0, 0, 0);
-    protected float _bodyRSpeed = 3.0f;
     protected Quaternion _headRotaion = Quaternion.Euler(0, 0, 0);
-    protected float _headRSpeed = 3.0f;
     protected Quaternion _lArmRotaion = Quaternion.Euler(0, 0, 0);
-    protected float _lArmRSpeed = 4.0f;
     protected Quaternion _lArmRotaion2 = Quaternion.Euler(0, 0, 0);
-    protected float _lArmRSpeed2 = 4.0f;
     protected Quaternion _rArmRotaion = Quaternion.Euler(0, 0, 0);
-    protected float _rArmRSpeed = 4.0f;
     protected Quaternion _rArmRotaion2 = Quaternion.Euler(0, 0, 0);
-    protected float _rArmRSpeed2 = 4.0f;
-    bool _action = false;
     int _attackCount = 0;
+    bool _action = false;
     bool _attack = false;
     Vector3 _targetBeforePos = default;
     Vector3 _targetTwoBeforePos = default;
@@ -41,6 +35,9 @@ public class BodyControl : MonoBehaviour
     Vector3 _targetTwoBeforePosR = default;
     MachineController _machine = default;
     AttackControl attackControl = default;
+    public float BodyRSpeed { get; set; } = 3.0f;
+    public float BodyTurnRange { get; set; } = 0.4f;
+    public float CameraRange { get; set; } = 50f;
     public Quaternion BodyAngle { get => _bodyControlBase[0].localRotation; }
     public Transform BodyTransform { get => _bodyControlBase[0]; }
     public FightingType Fighting { get; set; }
@@ -76,6 +73,7 @@ public class BodyControl : MonoBehaviour
         {
             if (_machine.LAWeapon.Type == WeaponType.Rifle)
             {
+                LockOnL(transform.position);
                 ShotLeft();
             }
             else
@@ -104,6 +102,7 @@ public class BodyControl : MonoBehaviour
         {
             if (_machine.RAWeapon.Type == WeaponType.Rifle)
             {
+                LockOnR(transform.position);
                 ShotRight();
             }
             else
@@ -155,12 +154,12 @@ public class BodyControl : MonoBehaviour
         bool attack = false;
         Vector3 targetDir = targetPos - _bodyControlBase[0].position;
 
-        if (Vector3.Dot(targetDir.normalized, transform.forward.normalized) < 0.4f)
-        {
-            _targetTwoBeforePos = _targetBeforePos;
-            _targetBeforePos = targetPos;
-            return true;
-        }
+        //if (Vector3.Dot(targetDir.normalized, transform.forward.normalized) < 0.4f)
+        //{
+        //    _targetTwoBeforePos = _targetBeforePos;
+        //    _targetBeforePos = targetPos;
+        //    return true;
+        //}
         targetDir.y = 0.0f;
         if (Vector3.Dot(targetDir.normalized, _bodyControlBase[0].forward.normalized) < 0.6f)
         {
@@ -183,6 +182,8 @@ public class BodyControl : MonoBehaviour
         }
         if (LockOn(targetPos))
         {
+            _controlTarget[2].forward = _bodyControlBase[0].forward;
+            _lArmRotaion2 = _controlTarget[2].localRotation * Quaternion.Euler(-90, 0, 0);
             return true;
         }
         bool attack = false;
@@ -210,6 +211,8 @@ public class BodyControl : MonoBehaviour
         bool attack = false;
         if (LockOn(targetPos))
         {
+            _controlTarget[1].forward = _bodyControlBase[0].forward;
+            _rArmRotaion2 = _controlTarget[1].localRotation * Quaternion.Euler(-90, 0, 0);
             return true;
         }
         if (_machine.RAWeapon.Type == WeaponType.Rifle)
@@ -330,12 +333,12 @@ public class BodyControl : MonoBehaviour
 
     protected void PartsMotion()
     {
-        _bodyControlBase[1].localRotation = Quaternion.Lerp(_bodyControlBase[1].localRotation, _headRotaion, _headRSpeed * Time.deltaTime);
-        _bodyControlBase[0].localRotation = Quaternion.Lerp(_bodyControlBase[0].localRotation, _bodyRotaion, _bodyRSpeed * Time.deltaTime);
-        _leftControlBase[0].localRotation = Quaternion.Lerp(_leftControlBase[0].localRotation, _lArmRotaion, _lArmRSpeed * Time.deltaTime);
-        _leftControlBase[2].localRotation = Quaternion.Lerp(_leftControlBase[2].localRotation, _lArmRotaion2, _lArmRSpeed2 * Time.deltaTime);
-        _rightControlBase[0].localRotation = Quaternion.Lerp(_rightControlBase[0].localRotation, _rArmRotaion, _rArmRSpeed * Time.deltaTime);
-        _rightControlBase[2].localRotation = Quaternion.Lerp(_rightControlBase[2].localRotation, _rArmRotaion2, _rArmRSpeed2 * Time.deltaTime);
+        _bodyControlBase[1].localRotation = Quaternion.Lerp(_bodyControlBase[1].localRotation, _headRotaion, BodyRSpeed * Time.deltaTime);
+        _bodyControlBase[0].localRotation = Quaternion.Lerp(_bodyControlBase[0].localRotation, _bodyRotaion, BodyRSpeed * Time.deltaTime);
+        _leftControlBase[0].localRotation = Quaternion.Lerp(_leftControlBase[0].localRotation, _lArmRotaion, BodyRSpeed * Time.deltaTime);
+        _leftControlBase[2].localRotation = Quaternion.Lerp(_leftControlBase[2].localRotation, _lArmRotaion2, BodyRSpeed * Time.deltaTime);
+        _rightControlBase[0].localRotation = Quaternion.Lerp(_rightControlBase[0].localRotation, _rArmRotaion, BodyRSpeed * Time.deltaTime);
+        _rightControlBase[2].localRotation = Quaternion.Lerp(_rightControlBase[2].localRotation, _rArmRotaion2, BodyRSpeed * Time.deltaTime);
     }
     int _angle = default;
     bool _camera = false;
@@ -359,7 +362,7 @@ public class BodyControl : MonoBehaviour
             else
             {
                 _angle = 1;
-                if (angle.y > 0.4f)
+                if (angle.y > BodyTurnRange)
                 {
                     _machine.Move(angle.y, _machine.InputAxis.y);
                 }
@@ -375,7 +378,7 @@ public class BodyControl : MonoBehaviour
             else
             {
                 _angle = -1;
-                if (angle.y < -0.4f)
+                if (angle.y < -BodyTurnRange)
                 {
                     _machine.Move(angle.y, _machine.InputAxis.y);
                 }

@@ -1826,7 +1826,7 @@ GameObject:
   - component: {fileID: 252410049}
   - component: {fileID: 252410048}
   - component: {fileID: 252410047}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3016,7 +3016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 2
-  m_FollowOffset: {x: 0, y: 1.6, z: -12}
+  m_FollowOffset: {x: 0, y: 1, z: -12}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -5727,7 +5727,7 @@ GameObject:
   - component: {fileID: 958231833}
   - component: {fileID: 958231832}
   - component: {fileID: 958231831}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5901,8 +5901,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.06622724, y: -0.000000017168613, z: 0.0000000011395317, w: 0.9978046}
-  m_LocalPosition: {x: 0, y: 5.6, z: -12}
+  m_LocalRotation: {x: 0.041558646, y: -1e-45, z: 0, w: 0.9991361}
+  m_LocalPosition: {x: 0, y: 5, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6966,7 +6966,7 @@ GameObject:
   - component: {fileID: 1242223936}
   - component: {fileID: 1242223935}
   - component: {fileID: 1242223934}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7382,7 +7382,7 @@ GameObject:
   - component: {fileID: 1374280613}
   - component: {fileID: 1374280612}
   - component: {fileID: 1374280611}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7980,8 +7980,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434010852}
-  m_LocalRotation: {x: 0.06622724, y: -0.000000017168613, z: 0.0000000011395317, w: 0.9978046}
-  m_LocalPosition: {x: 0, y: 5.6, z: -12}
+  m_LocalRotation: {x: 0.041558646, y: -1e-45, z: -0, w: 0.9991361}
+  m_LocalPosition: {x: 0, y: 5, z: -12}
   m_LocalScale: {x: 1, y: 0.99999994, z: 0.99999994}
   m_Children:
   - {fileID: 478021444}
@@ -8061,16 +8061,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42d632c01c86bf40875b4ff9cf4c4ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actionSpeed: 0.8
+  _actionSpeed: 1
   _walkPower: 1.5
   _maxWalkSpeed: 12
   _turnPower: 21
   _turnSpeed: 4
-  _bodyTurnSpeed: 0.5
   _jumpPower: 15
   _landingTime: 0.5
-  _jetPower: 5
-  _jetControlPower: 0.2
+  _bodyTurnSpeed: 2
+  _bodyTurnRange: 0.4
+  _cameraTurnRange: 50
+  _jetPower: 0.7
+  _jetControlPower: 10
   _jetTime: 50
   _floatSpeed: 40
   _maxFloatSpeed: 500
@@ -11653,14 +11655,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_test:
-    HeadID: 4
-    BodyID: 4
-    RArmID: 4
-    LArmID: 4
-    LegID: 4
-    WeaponRArmID: 4
-    WeaponLArmID: 4
-    ShoulderWeaponID: 4
+    HeadID: 10
+    BodyID: 6
+    RArmID: 8
+    LArmID: 8
+    LegID: 8
+    WeaponRArmID: 23
+    WeaponLArmID: 23
+    ShoulderWeaponID: 2
     BodyWeaponID: 1
     BoosterID: 0
     CoreID: 0

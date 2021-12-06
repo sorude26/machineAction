@@ -16,8 +16,6 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     float _lockSpeed = 20f;
     Quaternion _cameraRot = default;
-    float _minX = -50f;
-    float _maxX = 50f;
     float _minY = -70f;
     float _maxY = 20f;
     private void Awake()
@@ -61,7 +59,7 @@ public class CameraController : MonoBehaviour
         angle.z /= angle.w;
         angle.w = 1f;
         float angleY = Mathf.Atan(angle.y) * Mathf.Rad2Deg * 2f;
-        angleY = Mathf.Clamp(angleY, _minX, _maxX);
+        angleY = Mathf.Clamp(angleY, -_body.CameraRange, _body.CameraRange);
         angle.y = Mathf.Tan(angleY * Mathf.Deg2Rad * 0.5f);
         float angleX = Mathf.Atan(angle.x) * Mathf.Rad2Deg * 2f;
         angleX = Mathf.Clamp(angleX, _minY, _maxY);

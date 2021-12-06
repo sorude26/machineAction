@@ -25,10 +25,6 @@ public class MachineParameter : MonoBehaviour
     [SerializeField]
     float _turnSpeed = 3f;
     public float TurnSpeed { get => _turnSpeed; }
-    [Tooltip("胴体旋回速度")]
-    [SerializeField]
-    float _bodyTurnSpeed = 0.5f;
-    public float BodyTurnSpeed { get => _bodyTurnSpeed; }
     [Tooltip("ジャンプ力")]
     [SerializeField]
     float _jumpPower = 8f;
@@ -37,6 +33,18 @@ public class MachineParameter : MonoBehaviour
     [SerializeField]
     float _landingTime = 0.5f;
     public float LandingTime { get => _landingTime; }
+    [Tooltip("胴体旋回速度")]
+    [SerializeField]
+    float _bodyTurnSpeed = 4f;
+    public float BodyTurnSpeed { get => _bodyTurnSpeed; }
+    [Tooltip("胴体旋回限界")]
+    [SerializeField]
+    float _bodyTurnRange = 0.4f;
+    public float BodyTurnRange { get => _bodyTurnRange; }
+    [Tooltip("カメラ旋回限界")]
+    [SerializeField]
+    float _cameraTurnRange = 50f;
+    public float CameraTurnRange { get => _cameraTurnRange; }
     [Tooltip("ジェット力")]
     [SerializeField]
     float _jetPower = 3f;
