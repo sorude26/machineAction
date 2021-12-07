@@ -17,6 +17,18 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
     [Tooltip("色が変更可能な装甲")]
     [SerializeField]
     protected Renderer[] m_amors;
+    [Tooltip("メインブースターのパーティクル")]
+    [SerializeField]
+    protected ParticleSystem[] _mainBoosterParticles = default;
+    [Tooltip("サブブースターのパーティクル")]
+    [SerializeField]
+    protected ParticleSystem[] _subBoosterParticles = default;
+    [Tooltip("左ブーストのパーティクル")]
+    [SerializeField]
+    protected ParticleSystem[] _leftBoosterParticles = default;
+    [Tooltip("右ブーストのパーティクル")]
+    [SerializeField]
+    protected ParticleSystem[] _rightBoosterParticles = default;
     [Tooltip("耐久値ゲージ")]
     [SerializeField]
     protected GaugeControl _gauge = default;
@@ -137,5 +149,49 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
         yield return new WaitForSeconds(0.05f);
         ColorChange(m_startColor);
         m_damageColor = false;
+    }
+    /// <summary>
+    /// ブースター起動
+    /// </summary>
+    public void StartBooster()
+    {
+        foreach (var booster in _mainBoosterParticles)
+        {
+            booster.Play();
+        }
+        foreach (var booster in _subBoosterParticles)
+        {
+            booster.Play();
+        }
+    }
+    /// <summary>
+    /// 左ブースター起動
+    /// </summary>
+    public void StartBoosterL()
+    {
+        foreach (var booster in _leftBoosterParticles)
+        {
+            booster.Play();
+        }
+    }
+    /// <summary>
+    /// 右ブースター起動
+    /// </summary>
+    public void StartBoosterR()
+    {
+        foreach (var booster in _rightBoosterParticles)
+        {
+            booster.Play();
+        }
+    }
+    /// <summary>
+    /// ブースター停止
+    /// </summary>
+    public void StopBooster()
+    {
+        foreach (var booster in _mainBoosterParticles)
+        {
+            booster.Stop();
+        }
     }
 }
