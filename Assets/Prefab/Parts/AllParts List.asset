@@ -79,6 +79,8 @@ MonoBehaviour:
   - {fileID: 3214235399804592598, guid: a60663324a180f145bf306f71a8c93b8, type: 3}
   - {fileID: 8575377592030437334, guid: 0ce4dcb8e3cef76489bd3a5312d42820, type: 3}
   - {fileID: 8521978539492361372, guid: 1a031d661849e524e93be7b39d461929, type: 3}
+  _boosters:
+  - {fileID: 4474116586410567403, guid: 1e151721a5b96f54a93a30932f5b4b44, type: 3}
   _weapons:
   - {fileID: -2806528138702990705, guid: eba102c0dffe5d04d9e429edf8b84619, type: 3}
   - {fileID: 3026681684647832431, guid: 8a372143aa5d57c4eb3afcec53a2d418, type: 3}
