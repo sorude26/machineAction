@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody),typeof(MachineBuildControl))]
+[RequireComponent(typeof(Rigidbody), typeof(MachineBuildControl))]
 public class MachineController : MonoBehaviour
 {
     [SerializeField]
@@ -30,23 +30,25 @@ public class MachineController : MonoBehaviour
     bool _jet = false;
     float _boosterTimer = -1;
     Vector3 _inputAxis = Vector3.zero;
+    PartsManager _parts = default;
     public Vector3 InputAxis { get => _inputAxis; }
-   
-    public WeaponMaster RAWeapon { get => _buildControl.RAWeapon; }
-    public WeaponMaster LAWeapon { get => _buildControl.LAWeapon; }
-    public WeaponMaster BWeapon { get => _buildControl.BodyWeapon; }
-    public ShoulderWeapon SWeapon { get => _buildControl.ShoulderWeapon; }
+    public PartsManager MachineParts { get => _parts; }
+    public WeaponMaster RAWeapon { get => _parts.RAWeapon; }
+    public WeaponMaster LAWeapon { get => _parts.LAWeapon; }
+    public WeaponMaster BWeapon { get => _parts.BodyWeapon; }
+    public ShoulderWeapon SWeapon { get => _parts.ShoulderWeapon; }
     public Transform LookTarget { get; protected set; }
     private void Start()
     {
-        _buildControl.StartSet();
+        _parts = new PartsManager();
+        _buildControl.StartSet(_parts);
         GameScene.InputManager.Instance.OnInputAxisRaw += Move;
         GameScene.InputManager.Instance.OnInputAxisRawExit += MoveEnd;
         GameScene.InputManager.Instance.OnFirstInputJump += Jump;
         GameScene.InputManager.Instance.OnInputJump += Boost;
         GameScene.InputManager.Instance.OnFirstInputBooster += JetStart;
         GameScene.InputManager.Instance.OnInputLockOn += SetTarget;
-        _rb = GetComponent<Rigidbody>();        
+        _rb = GetComponent<Rigidbody>();
         _leg.Set(this);
         _leg.SetLandingTime(_parameter.LandingTime);
         _leg.ChangeSpeed(_parameter.ActionSpeed);
@@ -55,6 +57,7 @@ public class MachineController : MonoBehaviour
         _body.BodyRSpeed = _parameter.BodyTurnSpeed;
         _body.BodyTurnRange = _parameter.BodyTurnRange;
         _body.CameraRange = _parameter.CameraTurnRange;
+        _booster.Set(this);
         RAWeapon.OwnerRb = _rb;
         LAWeapon.OwnerRb = _rb;
         BWeapon.OwnerRb = _rb;
@@ -109,7 +112,7 @@ public class MachineController : MonoBehaviour
                     _leg.TurnStartLeft();
                 }
             }
-            else if(_jump)
+            else if (_jump)
             {
                 _rb.angularVelocity = Vector3.zero;
                 _trunControl.Turn(_rb, dir.x, _parameter.JetControlPower, _parameter.TurnSpeed);
@@ -118,7 +121,7 @@ public class MachineController : MonoBehaviour
         }
         else
         {
-            if(vertical != 0)
+            if (vertical != 0)
             {
                 Stop();
             }
@@ -141,7 +144,7 @@ public class MachineController : MonoBehaviour
             if (_groundCheck.IsGrounded())
             {
                 Stop();
-                Brake(); 
+                Brake();
             }
         }
     }
@@ -159,7 +162,7 @@ public class MachineController : MonoBehaviour
         if (_fly)
         {
             Stop();
-            _moveControl.Jet(_rb,Vector3.up * 0.5f, _parameter.JetPower);
+            _moveControl.Jet(_rb, Vector3.up * 0.5f, _parameter.JetPower);
             return;
         }
         if (_parameter.JetPower >= 1f)
@@ -197,29 +200,26 @@ public class MachineController : MonoBehaviour
             return;
         }
         _jet = true;
-        if (_inputAxis.x != 0)
+        if (_inputAxis.x > 0.5f)
         {
-            if (_inputAxis.x > 0.5f)
-            {
-                _booster.BoostL();
-            }
-            else if(_inputAxis.x < -0.5f)
-            {
-                _booster.BoostR();
-            }
-            else
-            {
-                _booster.BoostL();
-                _booster.BoostR();
-            }
+            _booster.BoostL();
+        }
+        else if (_inputAxis.x < -0.5f)
+        {
+            _booster.BoostR();
         }
         else
         {
-            if (_inputAxis.z > 0)
-            {
-                _booster.BoostL();
-                _booster.BoostR();
-            }
+            _booster.BoostL();
+            _booster.BoostR();
+        }
+        if (_inputAxis.z > 0)
+        {
+            _booster.BoostF();
+        }
+        else
+        {
+            _booster.BoostB();
         }
         _leg.StartJet();
         _booster.Boost();
@@ -231,7 +231,7 @@ public class MachineController : MonoBehaviour
         {
             return;
         }
-        Vector3 vector = transform.forward * _inputAxis.z + transform.right * _inputAxis.x;
+        Vector3 vector = transform.forward * _inputAxis.z * 1.5f + transform.right * _inputAxis.x;
         _rb.AddForce(vector * _parameter.FloatSpeed + Vector3.up * 0.7f, ForceMode.Impulse);
         _jet = false;
     }
@@ -255,7 +255,7 @@ public class MachineController : MonoBehaviour
     }
     public void Turn(float angle)
     {
-        _trunControl.Turn(_rb, angle, _parameter.TurnPower, _parameter.TurnSpeed); 
+        _trunControl.Turn(_rb, angle, _parameter.TurnPower, _parameter.TurnSpeed);
     }
     public void Turn()
     {
@@ -284,7 +284,7 @@ public class MachineController : MonoBehaviour
     {
         if (_fly)
         {
-            _fly = false;            
+            _fly = false;
         }
         else
         {

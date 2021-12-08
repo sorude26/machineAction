@@ -4,45 +4,70 @@ using UnityEngine;
 
 public class BoosterControl : MonoBehaviour
 {
-    [SerializeField]
-    ParticleSystem[] m_boost = default;
-    [SerializeField]
-    ParticleSystem[] m_boostL = default;
-    [SerializeField]
-    ParticleSystem[] m_boostR = default;
-    private void Start()
+    MachineController _machine = default;
+    public void Set(MachineController controller)
     {
-        foreach (var item in m_boost)
-        {
-            item.Stop();
-        }
+        _machine = controller;
+        BoostEnd();
     }
     public void Boost()
     {
-        foreach (var item in m_boost)
+        foreach (var parts in _machine.MachineParts.GetAllParts())
         {
-            item.Play();
+            if (parts != null)
+            {
+                parts.StartBooster();
+            }
+        }
+    }
+    public void BoostF()
+    {
+        foreach (var parts in _machine.MachineParts.GetAllParts())
+        {
+            if (parts != null)
+            {
+                parts.StartBoosterF();
+            }
+        }
+    }
+    public void BoostB()
+    {
+        foreach (var parts in _machine.MachineParts.GetAllParts())
+        {
+            if (parts != null)
+            {
+                parts.StartBoosterB();
+            }
         }
     }
     public void BoostL()
     {
-        foreach (var item in m_boostL)
+        foreach (var parts in _machine.MachineParts.GetAllParts())
         {
-            item.Play();
+            if (parts != null)
+            {
+                parts.StartBoosterL();
+            }
         }
     }
     public void BoostR()
     {
-        foreach (var item in m_boostR)
+        foreach (var parts in _machine.MachineParts.GetAllParts())
         {
-            item.Play();
+            if (parts != null)
+            {
+                parts.StartBoosterR();
+            }
         }
     }
     public void BoostEnd()
     {
-        foreach (var item in m_boost)
+        foreach (var parts in _machine.MachineParts.GetAllParts())
         {
-            item.Stop();
+            if (parts != null)
+            {
+                parts.StopBooster();
+            }
         }
     }
 }

@@ -41,7 +41,7 @@ public class PartsArm : UnitPartsMaster<ArmData>
     }
     public override void AddlyDamage(int power)
     {
-        if (m_currentPartsHp <= 0)
+        if (_currentPartsHp <= 0)
         {
             return;
         }
@@ -50,22 +50,22 @@ public class PartsArm : UnitPartsMaster<ArmData>
             return;
         }
         int damage = power;
-        m_currentPartsHp -= damage;
-        if (m_currentPartsHp < MaxPartsHP / 3)
+        _currentPartsHp -= damage;
+        if (_currentPartsHp < MaxPartsHP / 3)
         {
-            m_damageSmoke.SetActive(true);
+            _damageSmoke.SetActive(true);
         }
-        if (m_currentPartsHp <= 0)
+        if (_currentPartsHp <= 0)
         {
             EffectPool.Get(EffectType.Bom, transform.position);
             CameraController.Shake();
-            m_currentPartsHp = 0;
+            _currentPartsHp = 0;
             Break = true;
             PartsBreak();
         }
         if (_gauge != null)
         {
-            _gauge.CurrentValue = m_currentPartsHp;
+            _gauge.CurrentValue = _currentPartsHp;
         }
     }
     public override void DestoryParts()

@@ -64,7 +64,7 @@ public class UnitBuilder : MonoBehaviour
     /// </summary>
     public void BuildUnit(UnitBuildData data)
     {
-        switch (GameManager.Instanse.PartsList.GetBody(data.BodyID).BodyPartsType)
+        switch (GameManager.Instance.PartsList.GetBody(data.BodyID).BodyPartsType)
         {
             case UnitType.Human:
                 BuildHuman(data);
@@ -124,7 +124,7 @@ public class UnitBuilder : MonoBehaviour
     /// </summary>
     void BuildHuman(UnitBuildData data)
     {
-        m_leg = Instantiate(GameManager.Instanse.PartsList.GetLeg(data.LegID));
+        m_leg = Instantiate(GameManager.Instance.PartsList.GetLeg(data.LegID));
         m_leg.transform.position = legbP.position;
         m_leg.transform.SetParent(legbP);
         lLeg1P.transform.position = m_leg.LLeg1.position;
@@ -141,7 +141,7 @@ public class UnitBuilder : MonoBehaviour
         m_leg.RLeg3.SetParent(rLeg3P);
         bodybP.transform.position = m_leg.LegTop.position;
         bodybP.SetParent(m_leg.LegTop);
-        m_body = Instantiate(GameManager.Instanse.PartsList.GetBody(data.BodyID));
+        m_body = Instantiate(GameManager.Instance.PartsList.GetBody(data.BodyID));
         m_body.transform.position = bodybP.position;
         m_body.transform.SetParent(bodybP);
         if (m_body.BodyWeapon) { m_bodyWeapon = m_body.BodyWeapon; }
@@ -149,29 +149,29 @@ public class UnitBuilder : MonoBehaviour
         rArmbP.transform.position = m_body.RArmPos.position;
         lArmbP.transform.position = m_body.LArmPos.position;
         headP.transform.position = m_body.HeadPos.position;
-        m_rArm = Instantiate(GameManager.Instanse.PartsList.GetRArm(data.RArmID));
+        m_rArm = Instantiate(GameManager.Instance.PartsList.GetRArm(data.RArmID));
         m_rArm.transform.position = rArmbP.position;
         m_rArm.transform.SetParent(rArmbP);
         rArm1P.transform.position = m_rArm.ArmTop.position;
         rArm2P.transform.position = m_rArm.ArmBottom.position;
         m_rArm.ArmTop.SetParent(rArm1P);
         m_rArm.ArmBottom.SetParent(rArm2P);
-        m_lArm = Instantiate(GameManager.Instanse.PartsList.GetLArm(data.LArmID));
+        m_lArm = Instantiate(GameManager.Instance.PartsList.GetLArm(data.LArmID));
         m_lArm.transform.position = lArmbP.position;
         m_lArm.transform.SetParent(lArmbP);
         lArm1P.transform.position = m_lArm.ArmTop.position;
         lArm2P.transform.position = m_lArm.ArmBottom.position;
         m_lArm.ArmTop.SetParent(lArm1P);
         m_lArm.ArmBottom.SetParent(lArm2P);
-        m_head = Instantiate(GameManager.Instanse.PartsList.GetHead(data.HeadID));
+        m_head = Instantiate(GameManager.Instance.PartsList.GetHead(data.HeadID));
         m_head.transform.position = headP.position;
         m_head.transform.rotation = m_body.HeadPos.rotation;
         m_head.transform.SetParent(headP);
-        m_rAWeapon = Instantiate(GameManager.Instanse.PartsList.GetWeapon(data.WeaponRArmID));
+        m_rAWeapon = Instantiate(GameManager.Instance.PartsList.GetWeapon(data.WeaponRArmID));
         m_rAWeapon.transform.position = m_rArm.Grip.position;
         m_rAWeapon.transform.rotation = Quaternion.Euler(90, 0, 0);
         m_rAWeapon.transform.SetParent(m_rArm.Grip);
-        m_lAWeapon = Instantiate(GameManager.Instanse.PartsList.GetWeapon(data.WeaponLArmID));
+        m_lAWeapon = Instantiate(GameManager.Instance.PartsList.GetWeapon(data.WeaponLArmID));
         m_lAWeapon.transform.position = m_lArm.Grip.position;
         m_lAWeapon.transform.rotation = Quaternion.Euler(90, 0, 0);
         m_lAWeapon.transform.SetParent(m_lArm.Grip);
@@ -181,7 +181,7 @@ public class UnitBuilder : MonoBehaviour
     /// </summary>
     void BuildWalker(UnitBuildData data)
     {
-        m_leg = Instantiate(GameManager.Instanse.PartsList.GetLeg(data.LegID));
+        m_leg = Instantiate(GameManager.Instance.PartsList.GetLeg(data.LegID));
         m_leg.transform.position = legbP.position;
         m_leg.transform.SetParent(legbP);
         lLeg1P.transform.position = m_leg.LLeg1.position;
@@ -198,7 +198,7 @@ public class UnitBuilder : MonoBehaviour
         m_leg.RLeg3.SetParent(rLeg3P);
         bodybP.transform.position = m_leg.LegTop.position;
         bodybP.SetParent(m_leg.LegTop);
-        m_body = Instantiate(GameManager.Instanse.PartsList.GetBody(data.BodyID));
+        m_body = Instantiate(GameManager.Instance.PartsList.GetBody(data.BodyID));
         m_body.transform.position = bodybP.position;
         m_body.transform.SetParent(bodybP);
         if (m_body.BodyWeapon) { m_bodyWeapon = m_body.BodyWeapon; }
@@ -206,7 +206,7 @@ public class UnitBuilder : MonoBehaviour
     }
     void BuildGiant(UnitBuildData data)
     {
-        m_body = Instantiate(GameManager.Instanse.PartsList.GetBody(data.BodyID)); 
+        m_body = Instantiate(GameManager.Instance.PartsList.GetBody(data.BodyID)); 
         m_body.transform.position = transform.position;
         m_body.transform.SetParent(transform);
         if (m_body.BodyWeapon) { m_bodyWeapon = m_body.BodyWeapon; }

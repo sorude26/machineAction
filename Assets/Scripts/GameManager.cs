@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instanse { get; private set; }
+    public static GameManager Instance { get; private set; }
     [SerializeField] UnitPartsList _partsList;
     public UnitPartsList PartsList { get => _partsList; }
     [SerializeField] ColorData _colorData;
@@ -14,12 +14,12 @@ public class GameManager : MonoBehaviour
     public Color GetColor(int colorNum) => _colorData.GetColor(colorNum);
     private void Awake()
     {
-        if (Instanse)
+        if (Instance)
         {
             Destroy(gameObject);
             return;
         }
-        Instanse = this;
+        Instance = this;
         DontDestroyOnLoad(gameObject);
         UnitDataMaster.StartSet(_partsList);
     }

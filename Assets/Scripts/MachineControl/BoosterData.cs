@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu]
 public class BoosterData : UnitPartsData
 {
     [Tooltip("推進力")]

@@ -10,10 +10,10 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
 {
     [Tooltip("攻撃命中の表示箇所")]
     [SerializeField]
-    protected Transform[] m_hitPos;
+    protected Transform[] _hitPos;
     [Tooltip(" 耐久値半分以下で表示する煙 ")]
     [SerializeField]
-    protected GameObject m_damageSmoke;
+    protected GameObject _damageSmoke;
     [Tooltip("色が変更可能な装甲")]
     [SerializeField]
     protected Renderer[] m_amors;
@@ -23,6 +23,12 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
     [Tooltip("サブブースターのパーティクル")]
     [SerializeField]
     protected ParticleSystem[] _subBoosterParticles = default;
+    [Tooltip("前進ブーストのパーティクル")]
+    [SerializeField]
+    protected ParticleSystem[] _frontBoosterParticles = default;
+    [Tooltip("後退ブーストのパーティクル")]
+    [SerializeField]
+    protected ParticleSystem[] _backBoosterParticles = default;
     [Tooltip("左ブーストのパーティクル")]
     [SerializeField]
     protected ParticleSystem[] _leftBoosterParticles = default;
@@ -33,17 +39,17 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
     [SerializeField]
     protected GaugeControl _gauge = default;
 
-    protected Color m_startColor = Color.green;
-    protected bool m_damageColor;
+    protected Color _startColor = Color.green;
+    protected bool _damageColor;
     /// <summary> 現在のパーツ耐久値 </summary>
-    protected int m_currentPartsHp;
+    protected int _currentPartsHp;
 
     /// <summary> パーツ耐久値 </summary>
     public int MaxPartsHP { get => _partsData.MaxPartsHp[_partsID]; }
     /// <summary> パーツ装甲値 </summary>
     public int Defense { get => _partsData.Defense[_partsID]; }
     /// <summary> 現在のパーツ耐久値 </summary>
-    public int CurrentPartsHp { get => m_currentPartsHp; }
+    public int CurrentPartsHp { get => _currentPartsHp; }
     void Start()
     {
         StartSet();
@@ -53,8 +59,11 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
     /// </summary>
     protected virtual void StartSet()
     {
-        m_damageSmoke?.SetActive(false);
-        m_currentPartsHp = MaxPartsHP;
+        if (_damageSmoke)
+        {
+            _damageSmoke.SetActive(false);
+        }
+        _currentPartsHp = MaxPartsHP;
         if (_gauge != null)
         {
             _gauge.SetMaxValue(MaxPartsHP);
@@ -73,7 +82,7 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
                 renderer.material.color = color;
             }
         }
-        m_startColor = color;
+        _startColor = color;
     }
     /// <summary>
     /// 一時的な色変更
@@ -89,7 +98,7 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
 
     public virtual void AddlyDamage(int power)
     {
-        if (m_currentPartsHp <= 0)
+        if (_currentPartsHp <= 0)
         {
             return;
         }
@@ -98,20 +107,20 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
             return;
         }
         int damage = power;
-        m_currentPartsHp -= damage;
-        if (m_currentPartsHp < MaxPartsHP / 3)
+        _currentPartsHp -= damage;
+        if (_currentPartsHp < MaxPartsHP / 3)
         {
-            m_damageSmoke.SetActive(true);
+            _damageSmoke.SetActive(true);
         }
-        if (m_currentPartsHp <= 0)
+        if (_currentPartsHp <= 0)
         {
-            m_currentPartsHp = 0;
+            _currentPartsHp = 0;
             Break = true;
             PartsBreak();
         }
         if (_gauge != null)
         {
-            _gauge.CurrentValue = m_currentPartsHp;
+            _gauge.CurrentValue = _currentPartsHp;
         }
     }
     /// <summary>
@@ -119,9 +128,9 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
     /// </summary>
     public virtual void DamageEffect()
     {
-        if (!m_damageColor)
+        if (!_damageColor)
         {
-            m_damageColor = true;
+            _damageColor = true;
             StartCoroutine(DamageColor());
         }
     }
@@ -147,12 +156,9 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
         yield return new WaitForSeconds(0.05f);
         ColorChange(Color.white);
         yield return new WaitForSeconds(0.05f);
-        ColorChange(m_startColor);
-        m_damageColor = false;
+        ColorChange(_startColor);
+        _damageColor = false;
     }
-    /// <summary>
-    /// ブースター起動
-    /// </summary>
     public void StartBooster()
     {
         foreach (var booster in _mainBoosterParticles)
@@ -164,9 +170,20 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
             booster.Play();
         }
     }
-    /// <summary>
-    /// 左ブースター起動
-    /// </summary>
+    public void StartBoosterF()
+    {
+        foreach (var booster in _frontBoosterParticles)
+        {
+            booster.Play();
+        }
+    }
+    public void StartBoosterB()
+    {
+        foreach (var booster in _backBoosterParticles)
+        {
+            booster.Play();
+        }
+    }
     public void StartBoosterL()
     {
         foreach (var booster in _leftBoosterParticles)
@@ -174,9 +191,6 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
             booster.Play();
         }
     }
-    /// <summary>
-    /// 右ブースター起動
-    /// </summary>
     public void StartBoosterR()
     {
         foreach (var booster in _rightBoosterParticles)
@@ -184,9 +198,6 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
             booster.Play();
         }
     }
-    /// <summary>
-    /// ブースター停止
-    /// </summary>
     public void StopBooster()
     {
         foreach (var booster in _mainBoosterParticles)
