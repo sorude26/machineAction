@@ -53,7 +53,10 @@ public class PartsArm : UnitPartsMaster<ArmData>
         _currentPartsHp -= damage;
         if (_currentPartsHp < MaxPartsHP / 3)
         {
-            _damageSmoke.SetActive(true);
+            if (_damageSmoke)
+            {
+                _damageSmoke.SetActive(true);
+            }
         }
         if (_currentPartsHp <= 0)
         {
