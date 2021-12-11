@@ -9863,9 +9863,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb51dc29e88c75c499782565b4948935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_effect: 2
-  m_rb: {fileID: 8608823795222648244}
-  m_power: 50
+  _hitEffect: 2
+  _endEffect: 0
+  _rb: {fileID: 8608823795222648244}
+  _power: 1
+  _lifeTime: 3
 --- !u!54 &8608823795222648244
 Rigidbody:
   m_ObjectHideFlags: 0

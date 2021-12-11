@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 0
-  _power: 5
+  _power: 15
 --- !u!135 &3148713800317308942
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 0
-  _power: 5
+  _power: 15
 --- !u!135 &6328390581266324685
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 0
-  _power: 5
+  _power: 15
 --- !u!135 &7176720713792245527
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5201,6 +5201,8 @@ MonoBehaviour:
   _partsObject: []
   _anime: {fileID: 0}
   _blade: {fileID: 6451750817708476396}
+  _triger: {fileID: 0}
+  _knockBackPower: 1
 --- !u!1 &2791911755004925580
 GameObject:
   m_ObjectHideFlags: 0
@@ -14763,7 +14765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 0
-  _power: 5
+  _power: 15
 --- !u!135 &8560036481895996046
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14822,7 +14824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 0
-  _power: 5
+  _power: 15
 --- !u!135 &4016054867480845470
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14919,7 +14921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 0
-  _power: 5
+  _power: 15
 --- !u!135 &6419061417937919235
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14978,7 +14980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 0
-  _power: 5
+  _power: 15
 --- !u!135 &4098246031268732454
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15037,7 +15039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 0
-  _power: 5
+  _power: 15
 --- !u!135 &778775346723933787
 SphereCollider:
   m_ObjectHideFlags: 0
