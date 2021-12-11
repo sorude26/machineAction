@@ -6,13 +6,63 @@ using UnityEngine;
 public class Shot : MonoBehaviour
 {
     [SerializeField]
-    EffectType m_effect = default;
+    EffectType _hitEffect = default;
     [SerializeField]
-    Rigidbody m_rb = default;
+    EffectType _endEffect = default;
     [SerializeField]
-    int m_power = 1;
-    public Rigidbody ShotRb { get => m_rb; }
-    public int Power { get => m_power; }
+    Rigidbody _rb = default;
+    [SerializeField]
+    int _power = 1;
+    [SerializeField]
+    float _lifeTime = 3f;
+
+    bool _hit = false;
+    public int Power { get => _power; }
+    public void StartShot(Vector3 dir, float speed)
+    {
+        StartShot(dir, _power, speed);
+    }
+    public void StartShot(Vector3 dir, int power, float speed)
+    {
+        _hit = false;
+        StartCoroutine(ShotMove());
+        transform.forward = dir;
+        _power = power;
+        _rb.AddForce(dir * speed, ForceMode.Impulse);
+    }
+    public void ShotHit()
+    {
+        _hit = true;
+        _rb.velocity = Vector3.zero;
+        PlayEffect(_hitEffect);
+    }
+    IEnumerator ShotMove()
+    {
+        float timer = 0;
+        while (timer < _lifeTime && !_hit)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        _rb.velocity = Vector3.zero;
+        gameObject.SetActive(false);
+    }
+    void PlayEffect(EffectType effectType)
+    {
+        var effect = EffectPool.Get(effectType, transform.position);
+        if (effect)
+        {
+            effect.Particle.Play();
+            if (_hitEffect == EffectType.Explosion || _hitEffect == EffectType.ExplosionMachine)
+            {
+                CameraController.Shake();
+            }
+            else
+            {
+                CameraController.HitShake();
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Ground")
@@ -28,23 +78,5 @@ public class Shot : MonoBehaviour
                 ShotHit();
             }
         }
-    }
-    public void ShotHit()
-    {
-        var effect = EffectPool.Get(m_effect, transform.position);
-        if (effect)
-        {
-            effect.Particle.Play();
-            if (m_effect == EffectType.Explosion || m_effect == EffectType.ExplosionMachine)
-            {
-                CameraController.Shake();
-            }
-            else
-            {
-                CameraController.HitShake();
-            }
-        }
-        m_rb.velocity = Vector3.zero;
-        gameObject.SetActive(false);
     }
 }

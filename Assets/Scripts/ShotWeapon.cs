@@ -20,6 +20,8 @@ public class ShotWeapon : WeaponMaster
     protected float _shotInterval = 0.2f;
     [SerializeField]
     protected float _diffusivity = 0.01f;
+    [SerializeField]
+    protected int _diffusionShot = 0;
 
     protected float _triggerTimer = 0;
     protected bool _trigger = false;
@@ -35,7 +37,7 @@ public class ShotWeapon : WeaponMaster
                 particle.Play();
             }
         }
-        if (_diffusivity > 0.09f)
+        if (_diffusionShot > 0)
         {
             DiffusionShot();
         }
@@ -46,14 +48,13 @@ public class ShotWeapon : WeaponMaster
         var shot = BulletPool.Get(_bullet, _muzzle.position);
         if (shot)
         {
-            shot.transform.forward = moveDir;
-            shot.ShotRb.AddForce(moveDir * _power, ForceMode.Impulse);
+            shot.StartShot(moveDir.normalized, _power);
         }
         CameraController.HitShake();
     }
     protected void DiffusionShot()
     {
-        for (int i = 1; i < _shotCount; i++)
+        for (int i = 1; i < _diffusionShot; i++)
         {
             Vector3 moveDir = transform.forward;
             moveDir.x += Random.Range(-_diffusivity, _diffusivity);
@@ -62,11 +63,9 @@ public class ShotWeapon : WeaponMaster
             var shot = BulletPool.Get(_bullet, _muzzle.position);
             if (shot)
             {
-                shot.transform.forward = moveDir;
-                shot.ShotRb.AddForce(moveDir * _power, ForceMode.Impulse);
+                shot.StartShot(moveDir.normalized, _power);
             }
         }
-        _shotCount = 0;
     }
     public virtual void StartShot()
     {

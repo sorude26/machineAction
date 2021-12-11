@@ -23,7 +23,7 @@ public abstract class WeaponMaster : PartsMaster<WeaponData>
     /// <summary> 武器種 </summary>
     public WeaponType Type { get => _partsData.Type[_partsID]; }
     /// <summary> 所有者の物理 </summary>
-    public Rigidbody OwnerRb { protected get; set; }
+    public virtual Rigidbody OwnerRb { get; set; }
     /// <summary>
     /// 武装の破壊
     /// </summary>

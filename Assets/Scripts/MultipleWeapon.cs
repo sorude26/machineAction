@@ -6,6 +6,18 @@ public class MultipleWeapon : WeaponMaster
 {
     [SerializeField]
     WeaponMaster[] _weapons = default;
+    public override Rigidbody OwnerRb 
+    { 
+        get => base.OwnerRb;
+        set
+        { 
+            base.OwnerRb = value;
+            foreach (var weapon in _weapons)
+            {
+                weapon.OwnerRb = value;
+            }
+        }
+    }
     public override void AttackAction()
     {
         foreach (var weapon in _weapons)
