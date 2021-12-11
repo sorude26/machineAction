@@ -116,6 +116,7 @@ public class MachineController : MonoBehaviour
             {
                 _rb.angularVelocity = Vector3.zero;
                 _trunControl.Turn(_rb, dir.x, _parameter.JetControlPower, _parameter.TurnSpeed);
+                _body.ResetAngle(0.1f);
             }
 
         }
@@ -154,7 +155,7 @@ public class MachineController : MonoBehaviour
         {
             _rb.angularVelocity = Vector3.zero;
             _moveControl.MoveWalk(_rb, transform.forward * angle, _parameter.WalkPower, _parameter.MaxWalkSpeed);
-            _body.ResetAngle(0.98f);
+            //_body.ResetAngle(0.1f);
         }
     }
     public void Jump()
@@ -186,7 +187,7 @@ public class MachineController : MonoBehaviour
             _boosterTimer -= Time.deltaTime;
             Vector3 vector = _body.BodyTransform.forward * _inputAxis.z + _body.BodyTransform.right * _inputAxis.x;
             _moveControl.Jet(_rb, Vector3.up + vector * _parameter.JetMovePower, _parameter.JetPower);
-            _body.ResetAngle(0.95f);
+            //_body.ResetAngle(0.95f);
             if (_boosterTimer <= 0)
             {
                 _booster.BoostEnd();

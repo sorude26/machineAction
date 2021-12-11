@@ -34,9 +34,11 @@ public class MachineBuildControl : MonoBehaviour
         _rightLeg[0].position = manager.Leg.RLeg1.position;
         _rightLeg[1].position = manager.Leg.RLeg2.position;
         _rightLeg[2].position = manager.Leg.RLeg3.position;
+        _rightLeg[3].position = manager.Leg.RLeg3.position;
         _leftLeg[0].position = manager.Leg.LLeg1.position;
         _leftLeg[1].position = manager.Leg.LLeg2.position;
         _leftLeg[2].position = manager.Leg.LLeg3.position;
+        _leftLeg[3].position = manager.Leg.LLeg3.position;
         manager.Leg.RLeg3.SetParent(_rightLeg[2]);
         manager.Leg.RLeg2.SetParent(_rightLeg[1]);
         manager.Leg.RLeg1.SetParent(_rightLeg[0]);

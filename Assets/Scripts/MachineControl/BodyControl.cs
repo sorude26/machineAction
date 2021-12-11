@@ -246,17 +246,17 @@ public class BodyControl : MonoBehaviour
         {
             value = 1;
         }
-        else if(value < 0)
+        else if (value < 0)
         {
             value = 0;
         }
-        //_headRotaion = Quaternion.Euler(_headRotaion.x * value, _headRotaion.y * value, _headRotaion.z * value);
-        _bodyRotaion = Quaternion.Euler(_bodyRotaion.x * value, _bodyRotaion.y * value, _bodyRotaion.z * value);
-        //_lArmRotaion = Quaternion.Euler(_lArmRotaion.x * value, _lArmRotaion.y * value, _lArmRotaion.z * value);
-        //_lArmRotaion2 = Quaternion.Euler(_lArmRotaion2.x * value, _lArmRotaion2.y * value, _lArmRotaion2.z * value);
-        //_rArmRotaion = Quaternion.Euler(_rArmRotaion.x * value, _rArmRotaion.y * value, _rArmRotaion.z * value);
-        //_rArmRotaion2 = Quaternion.Euler(_rArmRotaion2.x * value, _rArmRotaion2.y * value, _rArmRotaion2.z * value);
-        _machine?.Turn(BodyAngle.y * (1f - value));
+        float v = 1f - value;
+        _machine?.Turn(BodyAngle.y * v);
+        if (_camera)
+        {
+            return;
+        }
+        _bodyRotaion = Quaternion.Euler(_bodyRotaion.x * v, _bodyRotaion.y * v, _bodyRotaion.z * v);
     }
     public void FightingAttack()
     {
