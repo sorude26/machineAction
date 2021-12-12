@@ -486,6 +486,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 598550579224108449}
     m_Modifications:
+    - target: {fileID: 870975099068782114, guid: 7d44de9475fd6a047b748c9105274f1a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3526931550936219105, guid: 7d44de9475fd6a047b748c9105274f1a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -569,12 +574,17 @@ PrefabInstance:
     - target: {fileID: 4738183271121244654, guid: 7d44de9475fd6a047b748c9105274f1a,
         type: 3}
       propertyPath: _diffusivity
-      value: 0.01
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 4738183271121244654, guid: 7d44de9475fd6a047b748c9105274f1a,
         type: 3}
       propertyPath: _power
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738183271121244654, guid: 7d44de9475fd6a047b748c9105274f1a,
+        type: 3}
+      propertyPath: _diffusionShot
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6963882160053930852, guid: 7d44de9475fd6a047b748c9105274f1a,
         type: 3}
@@ -613,6 +623,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 598550579224108449}
     m_Modifications:
+    - target: {fileID: 870975099068782114, guid: 7d44de9475fd6a047b748c9105274f1a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3526931550936219105, guid: 7d44de9475fd6a047b748c9105274f1a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -696,12 +711,17 @@ PrefabInstance:
     - target: {fileID: 4738183271121244654, guid: 7d44de9475fd6a047b748c9105274f1a,
         type: 3}
       propertyPath: _diffusivity
-      value: 0.01
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 4738183271121244654, guid: 7d44de9475fd6a047b748c9105274f1a,
         type: 3}
       propertyPath: _power
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738183271121244654, guid: 7d44de9475fd6a047b748c9105274f1a,
+        type: 3}
+      propertyPath: _diffusionShot
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6963882160053930852, guid: 7d44de9475fd6a047b748c9105274f1a,
         type: 3}

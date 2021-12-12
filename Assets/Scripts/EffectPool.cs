@@ -8,6 +8,7 @@ public enum EffectType
     Bom,
     Explosion,
     ExplosionMachine,
+    AtomicBom,
 }
 public class EffectPool : ObjectPoolBase<EffectControl,EffectType>
 {
