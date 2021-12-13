@@ -42,6 +42,10 @@ public class Shot : MonoBehaviour
         while (timer < _lifeTime && !_hit)
         {
             timer += Time.deltaTime;
+            if (timer >= _lifeTime)
+            {
+                PlayEffect(_endEffect);
+            }
             yield return null;
         }
         _rb.velocity = Vector3.zero;
