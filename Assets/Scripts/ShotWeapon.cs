@@ -41,7 +41,7 @@ public class ShotWeapon : WeaponMaster
         {
             DiffusionShot();
         }
-        Vector3 moveDir = transform.forward;
+        Vector3 moveDir = _muzzle.forward.normalized;
         moveDir.x += Random.Range(-_diffusivity, _diffusivity);
         moveDir.y += Random.Range(-_diffusivity, _diffusivity);
         moveDir.z += Random.Range(-_diffusivity, _diffusivity);
@@ -56,7 +56,7 @@ public class ShotWeapon : WeaponMaster
     {
         for (int i = 1; i < _diffusionShot; i++)
         {
-            Vector3 moveDir = transform.forward;
+            Vector3 moveDir = _muzzle.forward.normalized;
             moveDir.x += Random.Range(-_diffusivity, _diffusivity);
             moveDir.y += Random.Range(-_diffusivity, _diffusivity);
             moveDir.z += Random.Range(-_diffusivity, _diffusivity);
