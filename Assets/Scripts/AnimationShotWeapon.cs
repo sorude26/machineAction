@@ -18,8 +18,11 @@ public class AnimationShotWeapon : ShotWeapon
     }
     private void AnimationShot()
     {
-        _shotCount--;
-        Shot();
+        if (_shotCount > 0)
+        {
+            _shotCount--;
+            Shot();
+        }
     }
     void ShotEnd()
     {
@@ -30,6 +33,10 @@ public class AnimationShotWeapon : ShotWeapon
         if (_shotCount > 0)
         {
             _shotNow = true;
+        }
+        else
+        {
+            _shotNow = false;
         }
     }
     public override float AttackSpeed()

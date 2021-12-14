@@ -368,7 +368,7 @@ public class UnitMaster : MonoBehaviour
         {
             return;
         }
-        m_damegePartsList[m_attackCount].DamageEffect();
+        //m_damegePartsList[m_attackCount].DamageEffect();
         OnDamage?.Invoke();
         m_attackCount++;
     }

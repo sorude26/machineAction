@@ -45,6 +45,52 @@ public class AttackControl
         }
         return "attack";
     }
+    public string AttackActionL(FightingType type, int count)
+    {
+        switch (type)
+        {
+            case FightingType.None:
+                break;
+            case FightingType.LArmBlade:
+                return _lArmBlade[count];
+            case FightingType.DArmBlade:
+                return _lArmBlade[count];
+            case FightingType.LArmKnuckle:
+                return _lArmKnuckle[count];
+            case FightingType.DArmKnuckle:
+                return _lArmKnuckle[count];
+            case FightingType.LBladeRKnuckle:
+                return _lArmBlade[count];
+            case FightingType.RBladeLKnuckle:
+                return _lArmKnuckle[count];
+            default:
+                break;
+        }
+        return "attack";
+    }
+    public string AttackActionR(FightingType type, int count)
+    {
+        switch (type)
+        {
+            case FightingType.None:
+                break;
+            case FightingType.RArmBlade:
+                return _rArmBlade[count];
+            case FightingType.DArmBlade:
+                return _rArmBlade[count];
+            case FightingType.RArmKnuckle:
+                return _rArmKnuckle[count];
+            case FightingType.DArmKnuckle:
+                return _rArmKnuckle[count];
+            case FightingType.LBladeRKnuckle:
+                return _rArmKnuckle[count];
+            case FightingType.RBladeLKnuckle:
+                return _rArmBlade[count];
+            default:
+                break;
+        }
+        return "attack";
+    }
     public FightingType GetType(MachineController machine)
     {
         if (machine.LAWeapon.Type == WeaponType.Blade)

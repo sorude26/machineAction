@@ -9,8 +9,9 @@ public class AttackTriger : MonoBehaviour
     EffectType _effect = EffectType.ShotHit;
     [SerializeField]
     int _power = 1;
-    public event Action HitEvent = default;
-    public int Power { get => _power; }
+    public event Action OnHit = default;
+    public event Action OnDamage = default;
+    public int SetPower { set => _power = value; }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Ground")
@@ -22,7 +23,8 @@ public class AttackTriger : MonoBehaviour
             var target = other.GetComponent<IDamageApplicable>();
             if (target != null)
             {
-                target.AddlyDamage(Power);
+                target.AddlyDamage(_power);
+                OnDamage?.Invoke();
                 AttackHit();
             }
         }
@@ -42,6 +44,6 @@ public class AttackTriger : MonoBehaviour
                 CameraController.HitShake();
             }
         }
-        HitEvent?.Invoke();
+        OnHit?.Invoke();
     }
 }

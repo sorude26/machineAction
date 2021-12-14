@@ -78,7 +78,7 @@ public class BodyControl : MonoBehaviour
             }
             else
             {
-                FightingAttack();
+                FightingAttackL();
             }
             return;
         }
@@ -92,7 +92,7 @@ public class BodyControl : MonoBehaviour
         }
         else
         {
-            FightingAttack();
+            FightingAttackL();
         }
     }
     public void HandAttackRight()
@@ -107,7 +107,7 @@ public class BodyControl : MonoBehaviour
             }
             else
             {
-                FightingAttack();
+                FightingAttackR();
             }
             return;
         }
@@ -121,7 +121,7 @@ public class BodyControl : MonoBehaviour
         }
         else
         {
-            FightingAttack();
+            FightingAttackR();
         }
     }
     public void ShoulderShot()
@@ -153,15 +153,8 @@ public class BodyControl : MonoBehaviour
         }
         bool attack = false;
         Vector3 targetDir = targetPos - _bodyControlBase[0].position;
-
-        //if (Vector3.Dot(targetDir.normalized, transform.forward.normalized) < 0.4f)
-        //{
-        //    _targetTwoBeforePos = _targetBeforePos;
-        //    _targetBeforePos = targetPos;
-        //    return true;
-        //}
         targetDir.y = 0.0f;
-        if (Vector3.Dot(targetDir.normalized, _bodyControlBase[0].forward.normalized) < 0.6f)
+        if (Vector3.Dot(targetDir.normalized, _bodyControlBase[0].forward) < 0.6f)
         {
             _targetTwoBeforePos = _targetBeforePos;
             _targetBeforePos = targetPos;
@@ -170,7 +163,7 @@ public class BodyControl : MonoBehaviour
         if (!_camera)
         {
             _controlTarget[0].forward = targetDir;
-            _bodyRotaion = _controlTarget[0].localRotation;
+            _bodyRotaion = ClampRotation(_controlTarget[0].localRotation);
         }
         return attack;
     }
@@ -230,7 +223,7 @@ public class BodyControl : MonoBehaviour
         _targetBeforePosR = targetPos;
         return attack;
     }
-    
+
     void ResetAngle()
     {
         _headRotaion = Quaternion.Euler(0, 0, 0);
@@ -278,6 +271,44 @@ public class BodyControl : MonoBehaviour
             return;
         }
         _attack = true;
+    }
+    public void FightingAttackL()
+    {
+        _machine.SetTarget();
+        QuickTurn();
+        if (_action)
+        {
+            return;
+        }
+        _action = true;
+        if (_groundCheck.IsGrounded())
+        {
+            ChangeAnimation(attackControl.AttackActionL(Fighting, 2));
+            _leg?.AttackMoveL();
+        }
+        else
+        {
+            ChangeAnimation(attackControl.AttackActionL(Fighting, 1));
+        }
+    }
+    public void FightingAttackR()
+    {
+        _machine.SetTarget();
+        QuickTurn();
+        if (_action)
+        {
+            return;
+        }
+        _action = true;
+        if (_groundCheck.IsGrounded())
+        {
+            ChangeAnimation(attackControl.AttackActionR(Fighting, 2));
+            _leg?.AttackMoveR();
+        }
+        else
+        {
+            ChangeAnimation(attackControl.AttackActionR(Fighting, 1));
+        }
     }
     public void QuickTurn()
     {

@@ -106,6 +106,7 @@ MonoBehaviour:
   - {fileID: 454861407340332651, guid: 4b3fd5e3fee6f4646ba735ea196b75fe, type: 3}
   - {fileID: 8488338353875487487, guid: 0cb0163f708591145b1522ad50ec04c8, type: 3}
   - {fileID: 1567506896233498628, guid: 94ba7916014e2524c9442ea36ff4bc73, type: 3}
+  - {fileID: 2826377652314166329, guid: 33f80a242bb5fbd46abd7278b3a38904, type: 3}
   _shoulderWeapons:
   - {fileID: 597871403941509422, guid: 8de52e936cc69de498eda70db3ac1540, type: 3}
   - {fileID: 5864626562382780757, guid: 3aec0777426bc4f4c88f3dd21b53f047, type: 3}
@@ -118,3 +119,4 @@ MonoBehaviour:
   - {fileID: 1120828072256575328, guid: a650d3711f0e22747b858359a250db35, type: 3}
   - {fileID: 598550579034718899, guid: 71f947f42961b8b46ba9ec2ab447d62a, type: 3}
   - {fileID: 2352274975783961446, guid: 1bdb5aabc7569564fa9aa5fc25b5a03b, type: 3}
+  - {fileID: 7482276149571922182, guid: 710d69f8a369c0d4aae30a7747474412, type: 3}

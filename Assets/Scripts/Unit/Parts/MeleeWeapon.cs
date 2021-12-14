@@ -12,12 +12,26 @@ public class MeleeWeapon : WeaponMaster
     [SerializeField] 
     AttackTriger _triger = default;
     [SerializeField]
+    AttackTriger[] _trigers = default;
+    [SerializeField]
     float _knockBackPower = 1f;
     private void Start()
     {
         if (_triger != null)
         {
-            _triger.HitEvent += HitKnockBack;
+            _triger.OnHit += HitKnockBack;
+        }
+        foreach (var triger in _trigers)
+        {
+            triger.OnDamage += HitStop;
+        }
+        //SetPower(_partsData.Power[PartsID]);
+    }
+    public void SetPower(int power)
+    {
+        foreach (var triger in _trigers)
+        {
+            triger.SetPower = power;
         }
     }
     public override void AttackAction()
@@ -31,5 +45,10 @@ public class MeleeWeapon : WeaponMaster
     void HitKnockBack()
     {
         OwnerRb.AddForce(-OwnerRb.transform.forward * _knockBackPower, ForceMode.Impulse);
+    }
+    void HitStop()
+    {
+        GameScene.TimeManager.Instance.HitStop();
+        CameraController.Shake();
     }
 }

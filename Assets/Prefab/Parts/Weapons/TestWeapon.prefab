@@ -166,12 +166,12 @@ MonoBehaviour:
   _muzzle: {fileID: 4204350377148118324}
   _particle:
   - {fileID: 304128091572516900}
-  _power: 40
-  _triggerShotCount: 2
+  _power: 150
+  _triggerShotCount: 8
   _triggerInterval: 0.1
-  _shotInterval: 0.05
-  _diffusivity: 0.25
-  _diffusionShot: 9
+  _shotInterval: 0.02
+  _diffusivity: 0.15
+  _diffusionShot: 3
 --- !u!1 &6124075452706807118
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +535,26 @@ PrefabInstance:
         type: 3}
       propertyPath: looping
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175206901212930011, guid: 9d8446012d74459408fa9d671da6863f,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175206901212930011, guid: 9d8446012d74459408fa9d671da6863f,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175206901212930011, guid: 9d8446012d74459408fa9d671da6863f,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175206901212930011, guid: 9d8446012d74459408fa9d671da6863f,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7175206901212930012, guid: 9d8446012d74459408fa9d671da6863f,
         type: 3}
