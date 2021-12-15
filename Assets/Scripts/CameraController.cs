@@ -68,14 +68,14 @@ public class CameraController : MonoBehaviour
     }
     public static void Shake()
     {
-        instance._cameraShakeControl?.StartShake(1.2f, 0.8f);
+        instance._cameraShakeControl?.StartShake(1.2f, 3f);
     }
     public static void LightShake()
     {
-        instance._cameraShakeControl?.StartShake(0.1f, 0.3f);
+        instance._cameraShakeControl?.StartShake(0.2f, 1.5f);
     }
     public static void HitShake()
     {
-        instance._cameraShakeControl?.StartShake(0.07f, 0.2f);
+        instance._cameraShakeControl?.StartShake(0.07f, 1f);
     }
 }

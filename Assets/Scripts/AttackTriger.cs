@@ -39,10 +39,6 @@ public class AttackTriger : MonoBehaviour
             {
                 CameraController.Shake();
             }
-            else
-            {
-                CameraController.HitShake();
-            }
         }
         OnHit?.Invoke();
     }

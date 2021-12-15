@@ -261,7 +261,10 @@ public class BodyControl : MonoBehaviour
             if (_groundCheck.IsGrounded())
             {
                 ChangeAnimation(attackControl.AttackAction(Fighting, _attackCount));
-                _leg?.AttackMoveR();
+                if (attackControl.AttackAction(Fighting, _attackCount) != "attack")
+                {
+                    _leg?.AttackMoveR();
+                }
             }
             else
             {

@@ -61,10 +61,6 @@ public class Shot : MonoBehaviour
             {
                 CameraController.Shake();
             }
-            else
-            {
-                CameraController.HitShake();
-            }
         }
     }
     private void OnTriggerEnter(Collider other)

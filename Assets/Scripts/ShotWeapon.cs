@@ -42,24 +42,29 @@ public class ShotWeapon : WeaponMaster
             DiffusionShot();
         }
         Vector3 moveDir = _muzzle.forward.normalized;
-        moveDir.x += Random.Range(-_diffusivity, _diffusivity);
-        moveDir.y += Random.Range(-_diffusivity, _diffusivity);
-        moveDir.z += Random.Range(-_diffusivity, _diffusivity);
+        if (_diffusivity > 0)
+        {
+            moveDir.x += Random.Range(-_diffusivity, _diffusivity);
+            moveDir.y += Random.Range(-_diffusivity, _diffusivity);
+            moveDir.z += Random.Range(-_diffusivity, _diffusivity);
+        }
         var shot = BulletPool.Get(_bullet, _muzzle.position);
         if (shot)
         {
             shot.StartShot(moveDir.normalized, _power);
         }
-        CameraController.HitShake();
     }
     protected void DiffusionShot()
     {
         for (int i = 1; i < _diffusionShot; i++)
         {
             Vector3 moveDir = _muzzle.forward.normalized;
-            moveDir.x += Random.Range(-_diffusivity, _diffusivity);
-            moveDir.y += Random.Range(-_diffusivity, _diffusivity);
-            moveDir.z += Random.Range(-_diffusivity, _diffusivity);
+            if (_diffusivity > 0)
+            {
+                moveDir.x += Random.Range(-_diffusivity, _diffusivity);
+                moveDir.y += Random.Range(-_diffusivity, _diffusivity);
+                moveDir.z += Random.Range(-_diffusivity, _diffusivity);
+            }
             var shot = BulletPool.Get(_bullet, _muzzle.position);
             if (shot)
             {

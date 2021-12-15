@@ -49,6 +49,6 @@ public class MeleeWeapon : WeaponMaster
     void HitStop()
     {
         GameScene.TimeManager.Instance.HitStop();
-        CameraController.Shake();
+        CameraController.LightShake();
     }
 }

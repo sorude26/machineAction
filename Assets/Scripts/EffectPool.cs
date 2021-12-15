@@ -10,6 +10,7 @@ public enum EffectType
     ExplosionMachine,
     AtomicBom,
     Fire,
+    Spark,
 }
 public class EffectPool : ObjectPoolBase<EffectControl,EffectType>
 {

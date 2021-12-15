@@ -10,6 +10,7 @@ public class LegControl : MonoBehaviour
     int _walk = default;
     int _turn = default;
     bool _jump = default;
+    bool _jumpEnd = default;
     bool _isGround = false;
     bool _landing = default;
     bool _float = default;
@@ -127,7 +128,6 @@ public class LegControl : MonoBehaviour
         }
         _jump = true;
         _isGround = false;
-        StartCoroutine(JumpFall());
         if (_walk != 0)
         {
             ChangeAnimation("JunpStart");
@@ -149,7 +149,7 @@ public class LegControl : MonoBehaviour
     }
     public void StartJet()
     {
-        if (_landing)
+        if (_landing || _jumpEnd)
         {
             return;
         }
@@ -217,16 +217,16 @@ public class LegControl : MonoBehaviour
             }
         }
     }
-    IEnumerator JumpFall()
-    {
-        while (!_isGround)
-        {
-            yield return null;
-        }
-        _machine?.Landing();
-        CameraController.Shake();
-        ChangeAnimation("JunpEnd");
-    }
+    //IEnumerator JumpFall()
+    //{
+    //    while (!_isGround)
+    //    {
+    //        yield return null;
+    //    }
+    //    _machine?.Landing();
+    //    CameraController.Shake();
+    //    ChangeAnimation("JunpEnd");
+    //}
     IEnumerator LandingWait()
     {
         _landingTimer = 0;
@@ -240,6 +240,7 @@ public class LegControl : MonoBehaviour
         _walk = 0;
         _turn = 0;
         _landing = false;
+        _jumpEnd = false;
     }
 
     void Walk()
@@ -306,6 +307,13 @@ public class LegControl : MonoBehaviour
     void GroundCheck()
     {
         _isGround = _machine.IsGrounded();
+        if (_isGround && _jump && !_jumpEnd)
+        {
+            _jumpEnd = true;
+            _machine?.Landing();
+            CameraController.Shake();
+            ChangeAnimation("JunpEnd");
+        }
     }
     void ChangeAnimation(string changeTarget,float changeTime = 0.2f) 
     { 
