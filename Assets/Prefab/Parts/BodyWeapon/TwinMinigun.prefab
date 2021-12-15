@@ -190,6 +190,16 @@ PrefabInstance:
       propertyPath: _triggerShotCount
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5503650841852817234, guid: f75b63f3464aa554a82f1d8a65444c2d,
+        type: 3}
+      propertyPath: _diffusionShot
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5503650841852817234, guid: f75b63f3464aa554a82f1d8a65444c2d,
+        type: 3}
+      propertyPath: _diffusivity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f75b63f3464aa554a82f1d8a65444c2d, type: 3}
 --- !u!4 &4894601865224303283 stripped
@@ -316,6 +326,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _triggerShotCount
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5503650841852817234, guid: f75b63f3464aa554a82f1d8a65444c2d,
+        type: 3}
+      propertyPath: _diffusionShot
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5503650841852817234, guid: f75b63f3464aa554a82f1d8a65444c2d,
+        type: 3}
+      propertyPath: _diffusivity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f75b63f3464aa554a82f1d8a65444c2d, type: 3}

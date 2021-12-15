@@ -166,12 +166,12 @@ MonoBehaviour:
   _muzzle: {fileID: 4204350377148118324}
   _particle:
   - {fileID: 304128091572516900}
-  _power: 150
-  _triggerShotCount: 8
+  _power: 120
+  _triggerShotCount: 30
   _triggerInterval: 0.1
-  _shotInterval: 0.02
+  _shotInterval: 0.005
   _diffusivity: 0.15
-  _diffusionShot: 3
+  _diffusionShot: 0
 --- !u!1 &6124075452706807118
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +555,16 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175206901212930011, guid: 9d8446012d74459408fa9d671da6863f,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175206901212930011, guid: 9d8446012d74459408fa9d671da6863f,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7175206901212930012, guid: 9d8446012d74459408fa9d671da6863f,
         type: 3}

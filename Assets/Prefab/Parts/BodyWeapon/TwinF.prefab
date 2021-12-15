@@ -326,11 +326,11 @@ MonoBehaviour:
   _particle:
   - {fileID: 5497709856518763212}
   _power: 190
-  _triggerShotCount: 11
+  _triggerShotCount: 21
   _triggerInterval: 0.1
   _shotInterval: 0.01
   _diffusivity: 0.15
-  _diffusionShot: 4
+  _diffusionShot: 1
 --- !u!1 &2906443330967127278
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,11 +943,11 @@ MonoBehaviour:
   _particle:
   - {fileID: 3886597970023949938}
   _power: 190
-  _triggerShotCount: 11
+  _triggerShotCount: 21
   _triggerInterval: 0.1
   _shotInterval: 0.01
   _diffusivity: 0.15
-  _diffusionShot: 4
+  _diffusionShot: 1
 --- !u!1 &7467354927556571550
 GameObject:
   m_ObjectHideFlags: 0

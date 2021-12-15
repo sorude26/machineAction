@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 3264541068639479356}
   - component: {fileID: 2243719412054352436}
   m_Layer: 0
-  m_Name: TestWeapon
+  m_Name: FWeapon
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -9857,7 +9857,7 @@ GameObject:
   - component: {fileID: 6076479412826670458}
   - component: {fileID: 2693355777267657077}
   m_Layer: 0
-  m_Name: TestWeapon
+  m_Name: FWeapon
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -9918,7 +9918,7 @@ GameObject:
   - component: {fileID: 4674619791636067565}
   - component: {fileID: 7325073519028533864}
   m_Layer: 0
-  m_Name: TestWeapon
+  m_Name: FWeapon
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -10011,7 +10011,7 @@ GameObject:
   - component: {fileID: 8178149286623180733}
   - component: {fileID: 8660911092882516842}
   m_Layer: 0
-  m_Name: TestWeapon
+  m_Name: FWeapon
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -10562,7 +10562,7 @@ GameObject:
   - component: {fileID: 7187763772738076184}
   - component: {fileID: 1365527515026919959}
   m_Layer: 0
-  m_Name: TestWeapon
+  m_Name: FWeapon
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -25426,7 +25426,7 @@ GameObject:
   - component: {fileID: 8388889709698304911}
   - component: {fileID: 3275511784654459669}
   m_Layer: 0
-  m_Name: TestWeapon
+  m_Name: FWeapon
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
