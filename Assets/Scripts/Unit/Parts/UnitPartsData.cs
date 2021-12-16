@@ -32,6 +32,7 @@ public enum LegType
 /// <summary>
 /// 機体パーツデータの基底クラス
 /// </summary>
+[System.Serializable]
 public class UnitPartsData : PartsData
 {
     [Tooltip("パーツ耐久値")]

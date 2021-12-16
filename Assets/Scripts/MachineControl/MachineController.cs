@@ -66,8 +66,8 @@ public class MachineController : MonoBehaviour
 
     private void OnValidate()
     {
-        _leg.ChangeSpeed(_parameter.ActionSpeed);
-        _body.ChangeSpeed(_parameter.ActionSpeed);
+        //_leg.ChangeSpeed(_parameter.ActionSpeed);
+        //_body.ChangeSpeed(_parameter.ActionSpeed);
         _leg.SetLandingTime(_parameter.LandingTime);
         _body.BodyRSpeed = _parameter.BodyTurnSpeed;
         _body.BodyTurnRange = _parameter.BodyTurnRange;

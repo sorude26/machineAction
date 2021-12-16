@@ -6,6 +6,7 @@ using UnityEngine;
 /// 機体パーツの基底クラス
 /// </summary>
 /// <typeparam name="T">対応するパーツのデータ</typeparam>
+[System.Serializable]
 public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : UnitPartsData
 {
     [Tooltip("攻撃命中の表示箇所")]
