@@ -50,6 +50,7 @@ public class Shot : MonoBehaviour
         }
         _rb.velocity = Vector3.zero;
         gameObject.SetActive(false);
+        _hit = false;
     }
     void PlayEffect(EffectType effectType)
     {
@@ -57,7 +58,7 @@ public class Shot : MonoBehaviour
         if (effect)
         {
             effect.Particle.Play();
-            if (_hitEffect == EffectType.Explosion || _hitEffect == EffectType.ExplosionMachine)
+            if (_hitEffect == EffectType.Explosion || _hitEffect == EffectType.ExplosionMachine || _hitEffect == EffectType.AtomicBom)
             {
                 CameraController.Shake();
             }
@@ -65,13 +66,17 @@ public class Shot : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (_hit)
+        {
+            return;
+        }
         if (other.tag == "Ground")
         {
             ShotHit();
         }
         else
         {
-            var target = other.GetComponent<IDamageApplicable>();
+            other.TryGetComponent<IDamageApplicable>(out var target);
             if (target != null)
             {
                 target.AddlyDamage(Power);

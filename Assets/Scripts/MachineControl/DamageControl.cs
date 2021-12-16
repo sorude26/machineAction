@@ -12,11 +12,16 @@ public class DamageControl : MonoBehaviour, IDamageApplicable
     GaugeControl _gauge = default;
     [SerializeField]
     int _hp = 5;
+    [SerializeField]
+    bool _target = true;
     public int CurrentHP { get => _hp; }
     public Transform Center { get => _center; }
     private void Start()
     {
-        BattleManager.Instance.AddTarget(this);
+        if (_target)
+        {
+            BattleManager.Instance.AddTarget(this);
+        }
         if (_gauge != null)
         {
             _gauge.SetMaxValue(_hp);
@@ -49,6 +54,9 @@ public class DamageControl : MonoBehaviour, IDamageApplicable
             return;
         }
         _body.SetActive(false);
-        BattleManager.Instance.ReMoveTarget(this);
+        if (_target)
+        {
+            BattleManager.Instance.ReMoveTarget(this);
+        }
     }
 }

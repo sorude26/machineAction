@@ -20,7 +20,7 @@ public class AttackTriger : MonoBehaviour
         }
         else
         {
-            var target = other.GetComponent<IDamageApplicable>();
+            other.TryGetComponent<IDamageApplicable>(out var target);
             if (target != null)
             {
                 target.AddlyDamage(_power);
