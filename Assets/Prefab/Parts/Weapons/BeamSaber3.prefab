@@ -29459,6 +29459,11 @@ PrefabInstance:
       propertyPath: prewarm
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1028536660251671181, guid: 87c191c61ab04c24ba53e2baa895e612,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1028536660251671182, guid: 87c191c61ab04c24ba53e2baa895e612,
         type: 3}
       propertyPath: m_LocalPosition.x
