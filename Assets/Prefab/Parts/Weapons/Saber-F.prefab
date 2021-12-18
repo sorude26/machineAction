@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 5
+  _effect: 6
   _power: 20
 --- !u!135 &9129099553590474345
 SphereCollider:
@@ -4915,7 +4915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 5
+  _effect: 6
   _power: 20
 --- !u!135 &7159979435857935934
 SphereCollider:
@@ -14644,7 +14644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 5
+  _effect: 6
   _power: 20
 --- !u!135 &6509893205495156059
 SphereCollider:
@@ -19515,7 +19515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 5
+  _effect: 6
   _power: 20
 --- !u!135 &2760831378111407833
 SphereCollider:
@@ -19574,7 +19574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 5
+  _effect: 6
   _power: 20
 --- !u!135 &8554671846677018078
 SphereCollider:
@@ -29336,7 +29336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 5
+  _effect: 6
   _power: 20
 --- !u!135 &384668672908026319
 SphereCollider:
@@ -53762,7 +53762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 5
+  _effect: 6
   _power: 20
 --- !u!135 &7315854329368004001
 SphereCollider:
@@ -53821,7 +53821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 5
+  _effect: 6
   _power: 20
 --- !u!135 &6017887820459957571
 SphereCollider:

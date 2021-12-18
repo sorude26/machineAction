@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
-  _power: 8
+  _effect: 6
+  _power: 20
 --- !u!135 &8133641340005174983
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -111,6 +111,15 @@ MonoBehaviour:
   _anime: {fileID: 0}
   _blade: {fileID: 2331495768070583654}
   _triger: {fileID: 6699194358593157087}
+  _trigers:
+  - {fileID: 6699194358593157087}
+  - {fileID: 830769575356140003}
+  - {fileID: 543215365493304299}
+  - {fileID: 6435833802214121517}
+  - {fileID: 3648372829202296250}
+  - {fileID: 7590735220084273180}
+  - {fileID: 6732297055815689887}
+  - {fileID: 3437952746449865380}
   _knockBackPower: 5
 --- !u!1 &1526402369553768024
 GameObject:
@@ -156,8 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
-  _power: 8
+  _effect: 6
+  _power: 20
 --- !u!135 &2570703295811905772
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -215,8 +224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
-  _power: 8
+  _effect: 6
+  _power: 20
 --- !u!135 &5357405054292987106
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -245,7 +254,7 @@ GameObject:
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2684073303740826371
 Transform:
   m_ObjectHideFlags: 0
@@ -312,8 +321,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
-  _power: 8
+  _effect: 6
+  _power: 20
 --- !u!135 &5837545927185955416
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -401,8 +410,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
-  _power: 8
+  _effect: 6
+  _power: 20
 --- !u!135 &8881016938050385383
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -460,8 +469,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
-  _power: 8
+  _effect: 6
+  _power: 20
 --- !u!135 &3150535738210298674
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -519,8 +528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
-  _power: 8
+  _effect: 6
+  _power: 20
 --- !u!135 &3967435690146750915
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -578,8 +587,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
-  _power: 8
+  _effect: 6
+  _power: 20
 --- !u!135 &4899268717641120491
 SphereCollider:
   m_ObjectHideFlags: 0

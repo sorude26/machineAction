@@ -30,7 +30,7 @@ namespace GameScene
         }
         public void HitStop()
         {
-            timer = 0.3f;
+            timer = 0.05f;
             if (!_slow)
             {
                 _slow = true;
@@ -43,7 +43,7 @@ namespace GameScene
         }
         IEnumerator SlowTime()
         {
-            Time.timeScale = 0.3f;
+            Time.timeScale = 0.1f;
             while (timer > 0)
             {
                 timer -= Time.unscaledDeltaTime;

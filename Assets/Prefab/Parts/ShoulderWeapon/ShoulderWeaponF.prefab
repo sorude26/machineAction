@@ -131,7 +131,7 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  _bullet: 5
+  _bullet: 6
   _muzzle: {fileID: 1685248316150283265}
   _particle:
   - {fileID: 1243275879997728351}
@@ -9897,7 +9897,7 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  _bullet: 5
+  _bullet: 6
   _muzzle: {fileID: 806825659424175224}
   _particle:
   - {fileID: 3842356833699314024}
@@ -9958,7 +9958,7 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  _bullet: 5
+  _bullet: 6
   _muzzle: {fileID: 6606650982992999518}
   _particle:
   - {fileID: 5572465066889046533}
@@ -10051,7 +10051,7 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  _bullet: 5
+  _bullet: 6
   _muzzle: {fileID: 4207779041149119414}
   _particle:
   - {fileID: 4406276505232102761}
@@ -10602,7 +10602,7 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  _bullet: 5
+  _bullet: 6
   _muzzle: {fileID: 4368922015417929498}
   _particle:
   - {fileID: 198483752224702986}
@@ -25466,7 +25466,7 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  _bullet: 5
+  _bullet: 6
   _muzzle: {fileID: 8022970822459035768}
   _particle:
   - {fileID: 4475884198480913940}

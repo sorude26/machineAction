@@ -11,6 +11,7 @@ public enum EffectType
     AtomicBom,
     Fire,
     Spark,
+    BomSpark,
 }
 public class EffectPool : ObjectPoolBase<EffectControl,EffectType>
 {

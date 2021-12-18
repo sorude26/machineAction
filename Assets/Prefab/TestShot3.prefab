@@ -4922,8 +4922,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb51dc29e88c75c499782565b4948935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitEffect: 0
-  _endEffect: 0
+  _hitEffect: 7
+  _endEffect: 7
   _rb: {fileID: 6676508081403593549}
   _power: 50
   _lifeTime: 3

@@ -316,7 +316,7 @@ public class BodyControl : MonoBehaviour
     public void QuickTurn()
     {
         ResetAngle();
-        _machine?.Turn(BodyAngle.y * 10);
+        _machine?.Turn(BodyAngle.y * 5);
     }
     void Attack()
     {

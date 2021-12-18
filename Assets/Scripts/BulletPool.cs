@@ -8,6 +8,7 @@ public enum BulletType
     Flame,
     Explosive,
     Grenade,
+    GrenadeSpark,
     Atomic,
     Fire,
 }

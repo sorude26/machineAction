@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
+  _effect: 6
   _power: 15
 --- !u!135 &3384229164081276285
 SphereCollider:
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
+  _effect: 6
   _power: 15
 --- !u!135 &7138375141383498632
 SphereCollider:
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
+  _effect: 6
   _power: 15
 --- !u!135 &8786059592167352562
 SphereCollider:
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
+  _effect: 6
   _power: 15
 --- !u!135 &8910584522213378817
 SphereCollider:
@@ -587,7 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
+  _effect: 6
   _power: 15
 --- !u!135 &4117035104106327243
 SphereCollider:
@@ -646,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
+  _effect: 6
   _power: 15
 --- !u!135 &4508305882568146162
 SphereCollider:
@@ -713,6 +713,15 @@ MonoBehaviour:
   _anime: {fileID: 0}
   _blade: {fileID: 4948391652686375337}
   _triger: {fileID: 5579225746446273219}
+  _trigers:
+  - {fileID: 4582730452516077659}
+  - {fileID: 7417837140697147473}
+  - {fileID: 6743236604000025065}
+  - {fileID: 8120715037032055148}
+  - {fileID: 5579225746446273219}
+  - {fileID: 6740901708788914707}
+  - {fileID: 8366482364972818333}
+  - {fileID: 807237150542646256}
   _knockBackPower: 6
 --- !u!1 &9055835793063329409
 GameObject:
@@ -758,7 +767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
+  _effect: 6
   _power: 15
 --- !u!135 &8719214929016798364
 SphereCollider:
@@ -817,7 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
+  _effect: 6
   _power: 15
 --- !u!135 &7783180898629563506
 SphereCollider:

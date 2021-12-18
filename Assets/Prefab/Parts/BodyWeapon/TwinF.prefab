@@ -321,7 +321,7 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  _bullet: 5
+  _bullet: 6
   _muzzle: {fileID: 3444727263622211594}
   _particle:
   - {fileID: 5497709856518763212}
@@ -938,7 +938,7 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  _bullet: 5
+  _bullet: 6
   _muzzle: {fileID: 6226807630416903348}
   _particle:
   - {fileID: 3886597970023949938}
