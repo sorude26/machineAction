@@ -4825,7 +4825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2495630e6c03d364eb65fb8bb00d5d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_particleSystem: {fileID: 72503732982134960}
+  _particleSystem: {fileID: 0}
 --- !u!1 &2978060391774818117
 GameObject:
   m_ObjectHideFlags: 0
@@ -14485,7 +14485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2495630e6c03d364eb65fb8bb00d5d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_particleSystem: {fileID: 4571360543371510126}
+  _particleSystem: {fileID: 4571360543371510126}
 --- !u!1 &6428540642971872363
 GameObject:
   m_ObjectHideFlags: 0

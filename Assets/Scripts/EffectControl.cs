@@ -5,6 +5,6 @@ using UnityEngine;
 public class EffectControl : MonoBehaviour
 {
     [SerializeField]
-    ParticleSystem m_particleSystem = default;
-    public ParticleSystem Particle { get => m_particleSystem; }
+    ParticleSystem _particleSystem = default;
+    public ParticleSystem Particle { get => _particleSystem; }
 }
