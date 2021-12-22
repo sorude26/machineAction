@@ -263,7 +263,7 @@ public class BodyControl : MonoBehaviour
                 ChangeAnimation(attackControl.AttackAction(Fighting, _attackCount));
                 if (attackControl.AttackAction(Fighting, _attackCount) != "attack")
                 {
-                    _leg?.AttackMoveR();
+                    _leg.AttackMoveR();
                 }
             }
             else
@@ -287,7 +287,7 @@ public class BodyControl : MonoBehaviour
         if (_groundCheck.IsGrounded())
         {
             ChangeAnimation(attackControl.AttackActionL(Fighting, 2));
-            _leg?.AttackMoveL();
+            _leg.AttackMoveL();
         }
         else
         {
@@ -306,7 +306,7 @@ public class BodyControl : MonoBehaviour
         if (_groundCheck.IsGrounded())
         {
             ChangeAnimation(attackControl.AttackActionR(Fighting, 2));
-            _leg?.AttackMoveR();
+            _leg.AttackMoveR();
         }
         else
         {
@@ -316,7 +316,7 @@ public class BodyControl : MonoBehaviour
     public void QuickTurn()
     {
         ResetAngle();
-        _machine?.Turn(BodyAngle.y * 5);
+        _machine.Turn(BodyAngle.y * 5);
     }
     void Attack()
     {
@@ -424,7 +424,7 @@ public class BodyControl : MonoBehaviour
         _machine.MoveEnd();
         _camera = false;
     }
-    Quaternion ClampRotation(Quaternion angle, float maxX = 80f, float maxY = 80f, float maxZ = 80f, float minX = -80f, float minY = -80f, float minZ = -80f)
+    Quaternion ClampRotation(Quaternion angle, float maxX = 80f, float maxY = 0f, float maxZ = 80f, float minX = -80f, float minY = 0f, float minZ = -80f)
     {
         angle.x /= angle.w;
         angle.y /= angle.w;

@@ -21,4 +21,8 @@ public class TurnControl : MonoBehaviour
             rb.AddTorque(0, dir * speed, 0,ForceMode.Impulse);
         }
     }
+    public void SetTurn(Transform transfom,Vector3 forward)
+    {
+        transfom.forward = forward;
+    }
 }

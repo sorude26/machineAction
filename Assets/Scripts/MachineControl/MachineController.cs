@@ -262,6 +262,10 @@ public class MachineController : MonoBehaviour
     {
         _trunControl.StrongTurn(_rb, _body.BodyAngle.y, _parameter.TurnPower, _parameter.TurnSpeed);
     }
+    public void Turn(Vector3 dir)
+    {
+        _trunControl.SetTurn(transform,dir);
+    }
     public void Stop()
     {
         _rb.angularVelocity = Vector3.zero;
