@@ -131,12 +131,14 @@ MonoBehaviour:
   _anime: {fileID: 0}
   _bullet: 0
   _muzzle: {fileID: 5645134598294259977}
-  _particle: []
+  _particle:
+  - {fileID: 8085980606477632537}
   _power: 110
   _triggerShotCount: 1
   _triggerInterval: 0.1
   _shotInterval: 0.2
   _diffusivity: 0.01
+  _diffusionShot: 0
 --- !u!1 &7766386298207026439
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +176,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1240207881354033163}
     m_Modifications:
+    - target: {fileID: 919495982146355540, guid: 9d8446012d74459408fa9d671da6863f,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7175206901212930009, guid: 9d8446012d74459408fa9d671da6863f,
         type: 3}
       propertyPath: m_Name
@@ -182,6 +189,16 @@ PrefabInstance:
     - target: {fileID: 7175206901212930009, guid: 9d8446012d74459408fa9d671da6863f,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175206901212930011, guid: 9d8446012d74459408fa9d671da6863f,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175206901212930011, guid: 9d8446012d74459408fa9d671da6863f,
+        type: 3}
+      propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7175206901212930012, guid: 9d8446012d74459408fa9d671da6863f,
@@ -244,6 +261,12 @@ PrefabInstance:
 --- !u!4 &8085980606477632542 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7175206901212930012, guid: 9d8446012d74459408fa9d671da6863f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1415353128994626498}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8085980606477632537 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7175206901212930011, guid: 9d8446012d74459408fa9d671da6863f,
     type: 3}
   m_PrefabInstance: {fileID: 1415353128994626498}
   m_PrefabAsset: {fileID: 0}
