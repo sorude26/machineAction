@@ -6272,7 +6272,7 @@ MonoBehaviour:
   _power: 55
   _triggerShotCount: 1
   _triggerInterval: 50
-  _shotInterval: 0.5
+  _shotInterval: 2
   _diffusivity: 0.01
   _diffusionShot: 0
 --- !u!1 &7017770093618839384

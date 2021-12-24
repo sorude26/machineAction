@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 6
-  _power: 8
+  _power: 80
 --- !u!135 &2909456658181445201
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 6
-  _power: 8
+  _power: 80
 --- !u!135 &707657380983059222
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 6
-  _power: 8
+  _power: 80
 --- !u!135 &50907499337403349
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 6
-  _power: 8
+  _power: 80
 --- !u!135 &9069265519014242338
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 6
-  _power: 8
+  _power: 80
 --- !u!135 &2951125514562628076
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -599,7 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 6
-  _power: 8
+  _power: 80
 --- !u!135 &1176156596763814300
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 6
-  _power: 8
+  _power: 80
 --- !u!135 &1065415512392470599
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -747,7 +747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 6
-  _power: 8
+  _power: 80
 --- !u!135 &5742247520003638689
 SphereCollider:
   m_ObjectHideFlags: 0
