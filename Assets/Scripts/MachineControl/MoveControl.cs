@@ -25,6 +25,13 @@ public class MoveControl : MonoBehaviour
     {
         rb.AddForce(dir * power, ForceMode.Impulse);
     }
+    public void Jet(Rigidbody rb, Vector3 dir, float power,float maxSpeed)
+    {
+        if (rb.velocity.sqrMagnitude < maxSpeed)
+        {
+            rb.AddForce(dir * power);
+        }
+    }
     public void Jet(Rigidbody rb, Vector3 dir, float power)
     {
         rb.AddForce(dir * power);

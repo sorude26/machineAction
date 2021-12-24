@@ -12,10 +12,7 @@ public class FollowObject : MonoBehaviour
     float _followSpeed = 1f;
     [SerializeField]
     float _rotationSpeed = 1f;
-    private void Start()
-    {
-        this.gameObject.transform.parent = null;
-    }
+   
     private void Update()
     {
         if (_followTarget == null)

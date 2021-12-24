@@ -217,16 +217,6 @@ public class LegControl : MonoBehaviour
             }
         }
     }
-    //IEnumerator JumpFall()
-    //{
-    //    while (!_isGround)
-    //    {
-    //        yield return null;
-    //    }
-    //    _machine?.Landing();
-    //    CameraController.Shake();
-    //    ChangeAnimation("JunpEnd");
-    //}
     IEnumerator LandingWait()
     {
         _landingTimer = 0;
@@ -248,11 +238,11 @@ public class LegControl : MonoBehaviour
         _machine?.Walk(_walk);
         if (_turn > 0)
         {
-            TurnRight();
+            _machine?.Turn(0.2f);
         }
         else if (_turn < 0)
         {
-            TurnLeft();
+            _machine?.Turn(-0.2f);
         }
         _turn = 0;
     }

@@ -11,6 +11,8 @@ public class BodyControl : MonoBehaviour
     [SerializeField]
     LegControl _leg = default;
     [SerializeField]
+    Transform _bodyRotaionTarget = default;
+    [SerializeField]
     Transform[] _bodyControlBase = new Transform[2];
     [SerializeField]
     Transform[] _rightControlBase = new Transform[4];
@@ -48,10 +50,6 @@ public class BodyControl : MonoBehaviour
         GameScene.InputManager.Instance.OnFirstInputShotR += HandAttackRight;
         GameScene.InputManager.Instance.OnFirstInputShot1 += ShoulderShot;
         GameScene.InputManager.Instance.OnFirstInputShot2 += BodyWeaponShot;
-    }
-    private void Update()
-    {
-        PartsMotion();
     }
     public void Set(MachineController controller)
     {
@@ -302,6 +300,7 @@ public class BodyControl : MonoBehaviour
         {
             return;
         }
+        AttackTurn();
         _action = true;
         if (_groundCheck.IsGrounded())
         {
@@ -316,12 +315,13 @@ public class BodyControl : MonoBehaviour
     public void QuickTurn()
     {
         ResetAngle();
-        _machine.Turn(BodyAngle.y * 5);
+        _machine.Turn(BodyAngle.y);
     }
     void Attack()
     {
         if (_attack)
         {
+            AttackTurn();
             if (_attackCount == 1)
             {
                 ChangeAnimation(attackControl.AttackAction(Fighting, _attackCount));
@@ -347,6 +347,17 @@ public class BodyControl : MonoBehaviour
         }
         _attack = false;
     }
+    void AttackTurn()
+    {
+        if (_machine.LookTarget != null)
+        {
+            _machine?.Turn(BodyAngle.y);
+            Vector3 targetDir = _machine.LookTarget.position - _bodyControlBase[0].position;
+            targetDir.y = 0.0f;
+            _controlTarget[0].forward = targetDir;
+            _bodyRotaion = ClampRotation(_controlTarget[0].localRotation);
+        }
+    }
     void OnBladeL()
     {
         _machine.LAWeapon.AttackAction();
@@ -365,7 +376,7 @@ public class BodyControl : MonoBehaviour
         _animator.CrossFadeInFixedTime(changeTarget, changeTime);
     }
 
-    protected void PartsMotion()
+    public void PartsMotion()
     {
         _bodyControlBase[1].localRotation = Quaternion.Lerp(_bodyControlBase[1].localRotation, _headRotaion, BodyRSpeed * Time.deltaTime);
         _bodyControlBase[0].localRotation = Quaternion.Lerp(_bodyControlBase[0].localRotation, _bodyRotaion, BodyRSpeed * Time.deltaTime);
@@ -373,6 +384,7 @@ public class BodyControl : MonoBehaviour
         _leftControlBase[2].localRotation = Quaternion.Lerp(_leftControlBase[2].localRotation, _lArmRotaion2, BodyRSpeed * Time.deltaTime);
         _rightControlBase[0].localRotation = Quaternion.Lerp(_rightControlBase[0].localRotation, _rArmRotaion, BodyRSpeed * Time.deltaTime);
         _rightControlBase[2].localRotation = Quaternion.Lerp(_rightControlBase[2].localRotation, _rArmRotaion2, BodyRSpeed * Time.deltaTime);
+        _bodyRotaionTarget.localRotation = _bodyControlBase[0].localRotation;
     }
     int _angle = default;
     bool _camera = false;
@@ -424,7 +436,7 @@ public class BodyControl : MonoBehaviour
         _machine.MoveEnd();
         _camera = false;
     }
-    Quaternion ClampRotation(Quaternion angle, float maxX = 80f, float maxY = 0f, float maxZ = 80f, float minX = -80f, float minY = 0f, float minZ = -80f)
+    Quaternion ClampRotation(Quaternion angle, float maxX = 80f, float maxY = 80f, float maxZ = 80f, float minX = -80f, float minY = -80f, float minZ = -80f)
     {
         angle.x /= angle.w;
         angle.y /= angle.w;

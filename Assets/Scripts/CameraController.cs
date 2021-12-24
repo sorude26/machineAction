@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
     }
     private void Update()
     {
-        _cameraRot = _cameraTarget.localRotation;
+        _cameraRot = _cameraTarget.rotation;
         transform.localRotation = Quaternion.Lerp(transform.localRotation, _cameraRot, _followSpeed * Time.deltaTime);
     }
     void DefaultLock()

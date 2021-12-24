@@ -12,8 +12,6 @@ public class MachineController : MonoBehaviour
     [SerializeField]
     MoveControl _moveControl = default;
     [SerializeField]
-    TurnControl _trunControl = default;
-    [SerializeField]
     GroundCheck _groundCheck = default;
     [SerializeField]
     LegControl _leg = default;
@@ -25,11 +23,13 @@ public class MachineController : MonoBehaviour
     [SerializeField]
     TargetMark _mark = default;
     [SerializeField]
+    Transform _bodyAngle = default;
     bool _fly = default;
     bool _jump = false;
     bool _jet = false;
     float _boosterTimer = -1;
     Vector3 _inputAxis = Vector3.zero;
+    Quaternion _legRotaion = Quaternion.Euler(0, 0, 0);
     PartsManager _parts = default;
     public Vector3 InputAxis { get => _inputAxis; }
     public PartsManager MachineParts { get => _parts; }
@@ -63,15 +63,10 @@ public class MachineController : MonoBehaviour
         BWeapon.OwnerRb = _rb;
         SWeapon.OwnerRb = _rb;
     }
-
-    private void OnValidate()
+    private void Update()
     {
-        //_leg.ChangeSpeed(_parameter.ActionSpeed);
-        //_body.ChangeSpeed(_parameter.ActionSpeed);
-        _leg.SetLandingTime(_parameter.LandingTime);
-        _body.BodyRSpeed = _parameter.BodyTurnSpeed;
-        _body.BodyTurnRange = _parameter.BodyTurnRange;
-        _body.CameraRange = _parameter.CameraTurnRange;
+        _body.PartsMotion();
+        _leg.transform.localRotation = Quaternion.Lerp(_leg.transform.localRotation, _legRotaion, _parameter.TurnSpeed * Time.deltaTime);
     }
     public void SetTarget()
     {
@@ -112,11 +107,10 @@ public class MachineController : MonoBehaviour
                     _leg.TurnStartLeft();
                 }
             }
-            else if (_jump)
+            else if (_jump && !_jet)
             {
-                _rb.angularVelocity = Vector3.zero;
-                _trunControl.Turn(_rb, dir.x, _parameter.JetControlPower, _parameter.TurnSpeed);
-                _body.ResetAngle(0.1f);
+                _body.ResetAngle(0.8f);
+                _moveControl.Jet(_rb, _body.BodyTransform.forward * _inputAxis.z + _body.BodyTransform.right * _inputAxis.x, _parameter.JetPower,_parameter.JetControlPower);
             }
 
         }
@@ -129,11 +123,11 @@ public class MachineController : MonoBehaviour
             _moveControl.MoveFloat(_rb, dir, _parameter.FloatSpeed, _parameter.MaxFloatSpeed);
             if (horizonal > 0)
             {
-                _trunControl.Turn(_rb, 1, _parameter.TurnPower * 0.05f, _parameter.TurnSpeed * 0.1f);
+               
             }
             else if (horizonal < 0)
             {
-                _trunControl.Turn(_rb, -1, _parameter.TurnPower * 0.05f, _parameter.TurnSpeed * 0.1f);
+                
             }
         }
     }
@@ -154,8 +148,7 @@ public class MachineController : MonoBehaviour
         if (_groundCheck.IsGrounded())
         {
             _rb.angularVelocity = Vector3.zero;
-            _moveControl.MoveWalk(_rb, transform.forward * angle, _parameter.WalkPower, _parameter.MaxWalkSpeed);
-            //_body.ResetAngle(0.1f);
+            _moveControl.MoveWalk(_rb, _leg.transform.forward * angle, _parameter.WalkPower, _parameter.MaxWalkSpeed);
         }
     }
     public void Jump()
@@ -185,7 +178,7 @@ public class MachineController : MonoBehaviour
         if (_jump && _boosterTimer > 0)
         {
             _boosterTimer -= Time.deltaTime;
-            Vector3 vector = _body.BodyTransform.forward * _inputAxis.z + _body.BodyTransform.right * _inputAxis.x;
+            Vector3 vector = _bodyAngle.forward * _inputAxis.z + _bodyAngle.right * _inputAxis.x;
             _moveControl.Jet(_rb, Vector3.up + vector * _parameter.JetMovePower, _parameter.JetPower);
             //_body.ResetAngle(0.95f);
             if (_boosterTimer <= 0)
@@ -196,8 +189,24 @@ public class MachineController : MonoBehaviour
     }
     public void JetStart()
     {
-        if (_inputAxis == Vector3.zero || _jet || _parameter.JetPower < 1f)
+        if ( _jet || _parameter.JetPower < 1f)
         {
+            return;
+        }
+        if (_inputAxis == Vector3.zero)
+        {
+            _booster.BoostL();
+            _booster.BoostR();
+            if (IsGrounded())
+            {
+                Jump();
+            }
+            else
+            {
+                StrongTurn();
+                _body.QuickTurn();
+                _rb.AddForce(_parameter.FloatSpeed * Vector3.down * 0.5f, ForceMode.Impulse);
+            }
             return;
         }
         _jet = true;
@@ -232,8 +241,10 @@ public class MachineController : MonoBehaviour
         {
             return;
         }
-        Vector3 vector = transform.forward * _inputAxis.z * 1.5f + transform.right * _inputAxis.x;
+        StrongTurn();
+        Vector3 vector = _bodyAngle.forward * _inputAxis.z * 1.5f + _bodyAngle.right * _inputAxis.x;
         _rb.AddForce(vector * _parameter.FloatSpeed + Vector3.up * 0.7f, ForceMode.Impulse);
+        _leg.transform.localRotation = _legRotaion;
         _jet = false;
     }
     public void Landing()
@@ -256,15 +267,15 @@ public class MachineController : MonoBehaviour
     }
     public void Turn(float angle)
     {
-        _trunControl.Turn(_rb, angle, _parameter.TurnPower, _parameter.TurnSpeed);
+        _legRotaion = Quaternion.Euler(Vector3.up * angle * _parameter.TurnPower) * _legRotaion;
     }
     public void Turn()
     {
-        _trunControl.StrongTurn(_rb, _body.BodyAngle.y, _parameter.TurnPower, _parameter.TurnSpeed);
+        _legRotaion = Quaternion.Euler(Vector3.up * _body.BodyAngle.y * _parameter.TurnPower) * _legRotaion;
     }
-    public void Turn(Vector3 dir)
+    public void StrongTurn()
     {
-        _trunControl.SetTurn(transform,dir);
+        _legRotaion = Quaternion.Euler(Vector3.up * _body.BodyAngle.y * _parameter.TurnPower * 8f) * _legRotaion;
     }
     public void Stop()
     {
