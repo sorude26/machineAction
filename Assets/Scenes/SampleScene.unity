@@ -8594,7 +8594,7 @@ MonoBehaviour:
   _maxWalkSpeed: 12
   _turnPower: 5
   _turnSpeed: 10
-  _jumpPower: 19
+  _jumpPower: 13
   _landingTime: 0.3
   _bodyTurnSpeed: 4
   _bodyTurnRange: 0.5
@@ -11405,10 +11405,10 @@ MonoBehaviour:
     RArmID: 4
     LArmID: 4
     LegID: 4
-    WeaponRArmID: 21
-    WeaponLArmID: 21
-    ShoulderWeaponID: 0
-    BodyWeaponID: 0
+    WeaponRArmID: 24
+    WeaponLArmID: 24
+    ShoulderWeaponID: 5
+    BodyWeaponID: 5
     BoosterID: 0
     CoreID: 0
   _camera: {fileID: 2146080150}

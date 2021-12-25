@@ -180,7 +180,6 @@ public class MachineController : MonoBehaviour
             _boosterTimer -= Time.deltaTime;
             Vector3 vector = _bodyAngle.forward * _inputAxis.z + _bodyAngle.right * _inputAxis.x;
             _moveControl.Jet(_rb, Vector3.up + vector * _parameter.JetMovePower, _parameter.JetPower);
-            //_body.ResetAngle(0.95f);
             if (_boosterTimer <= 0)
             {
                 _booster.BoostEnd();
@@ -195,18 +194,6 @@ public class MachineController : MonoBehaviour
         }
         if (_inputAxis == Vector3.zero)
         {
-            _booster.BoostL();
-            _booster.BoostR();
-            if (IsGrounded())
-            {
-                Jump();
-            }
-            else
-            {
-                StrongTurn();
-                _body.QuickTurn();
-                _rb.AddForce(_parameter.FloatSpeed * Vector3.down * 0.5f, ForceMode.Impulse);
-            }
             return;
         }
         _jet = true;
@@ -265,6 +252,12 @@ public class MachineController : MonoBehaviour
         _moveControl.Jump(_rb, dir, _parameter.JumpPower);
         _body.QuickTurn();
     }
+    public void AngleMove(Vector3 dir)
+    {
+        _booster.BoostL();
+        _booster.BoostR();
+        _rb.velocity = dir * _parameter.JetPower * _parameter.WalkPower;
+    }
     public void Turn(float angle)
     {
         _legRotaion = Quaternion.Euler(Vector3.up * angle * _parameter.TurnPower) * _legRotaion;
@@ -276,6 +269,11 @@ public class MachineController : MonoBehaviour
     public void StrongTurn()
     {
         _legRotaion = Quaternion.Euler(Vector3.up * _body.BodyAngle.y * _parameter.TurnPower * 8f) * _legRotaion;
+    }
+    public void SetAngle(Vector3 angle)
+    {
+        angle.y = 0;
+        _legRotaion = Quaternion.Euler(angle);
     }
     public void Stop()
     {

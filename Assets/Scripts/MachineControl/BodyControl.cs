@@ -29,8 +29,6 @@ public class BodyControl : MonoBehaviour
     int _attackCount = 0;
     bool _action = false;
     bool _attack = false;
-    Vector3 _targetBeforePos = default;
-    Vector3 _targetTwoBeforePos = default;
     Vector3 _targetBeforePosL = default;
     Vector3 _targetTwoBeforePosL = default;
     Vector3 _targetBeforePosR = default;
@@ -154,8 +152,6 @@ public class BodyControl : MonoBehaviour
         targetDir.y = 0.0f;
         if (Vector3.Dot(targetDir.normalized, _bodyControlBase[0].forward) < 0.6f)
         {
-            _targetTwoBeforePos = _targetBeforePos;
-            _targetBeforePos = targetPos;
             return true;
         }
         if (!_camera)
@@ -252,6 +248,7 @@ public class BodyControl : MonoBehaviour
     public void FightingAttack()
     {
         _machine.SetTarget();
+        AttackTurn();
         QuickTurn();
         _action = true;
         if (_attackCount == 0)
@@ -276,6 +273,7 @@ public class BodyControl : MonoBehaviour
     public void FightingAttackL()
     {
         _machine.SetTarget();
+        AttackTurn();
         QuickTurn();
         if (_action)
         {
@@ -295,12 +293,12 @@ public class BodyControl : MonoBehaviour
     public void FightingAttackR()
     {
         _machine.SetTarget();
+        AttackTurn();
         QuickTurn();
         if (_action)
         {
             return;
         }
-        AttackTurn();
         _action = true;
         if (_groundCheck.IsGrounded())
         {
@@ -321,6 +319,7 @@ public class BodyControl : MonoBehaviour
     {
         if (_attack)
         {
+            _machine.SetTarget();
             AttackTurn();
             if (_attackCount == 1)
             {
@@ -351,11 +350,12 @@ public class BodyControl : MonoBehaviour
     {
         if (_machine.LookTarget != null)
         {
-            _machine?.Turn(BodyAngle.y);
             Vector3 targetDir = _machine.LookTarget.position - _bodyControlBase[0].position;
-            targetDir.y = 0.0f;
-            _controlTarget[0].forward = targetDir;
-            _bodyRotaion = ClampRotation(_controlTarget[0].localRotation);
+            SetBodyRotaion(targetDir);
+            if (!_groundCheck.IsGrounded())
+            {
+                _machine.AngleMove(targetDir.normalized);
+            }
         }
     }
     void OnBladeL()
@@ -388,6 +388,11 @@ public class BodyControl : MonoBehaviour
     }
     int _angle = default;
     bool _camera = false;
+    public void SetBodyRotaion(Vector3 angle)
+    {
+        _controlTarget[0].forward = angle;
+        _bodyRotaion = ClampRotation(_controlTarget[0].localRotation);
+    }
     public void SetBodyRotaion(Quaternion angle)
     {
         if (_action)
