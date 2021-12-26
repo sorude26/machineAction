@@ -6,6 +6,10 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager Instance { get; private set; }
+
+    [SerializeField]
+    GameObject _clearMassage = default;
+
     List<DamageControl> _allAttackTarget = default;
     private void Awake()
     {
@@ -20,6 +24,10 @@ public class BattleManager : MonoBehaviour
     public void ReMoveTarget(DamageControl target)
     {
         _allAttackTarget.Remove(target);
+        if (_allAttackTarget.Count == 0)
+        {
+            BattleEnd();
+        }
     }
     public DamageControl GetTarget(Transform attacker)
     {
@@ -34,5 +42,9 @@ public class BattleManager : MonoBehaviour
             .Where(target => Vector3.Distance(target.Center.position, Camera.main.transform.position) > 1f)
             .Where(target => Vector3.Dot((target.Center.position - Camera.main.transform.position).normalized, Camera.main.transform.forward) > 0.9f)
             .OrderByDescending(target => Vector3.Dot((target.Center.position - Camera.main.transform.position).normalized, Camera.main.transform.forward)).FirstOrDefault();
+    }
+    void BattleEnd()
+    {
+        _clearMassage.SetActive(true);
     }
 }
