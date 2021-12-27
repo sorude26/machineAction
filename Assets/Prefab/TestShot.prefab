@@ -865,7 +865,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 100
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5558,7 +5558,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.1
+      value: 0.15
       mode: 0
       spread: 0
       speed:
@@ -5677,7 +5677,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 100
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -9738,7 +9738,7 @@ MonoBehaviour:
   _endEffect: 0
   _rb: {fileID: 7941519406880972311}
   _power: 50
-  _lifeTime: 8
+  _lifeTime: 15
 --- !u!54 &7941519406880972311
 Rigidbody:
   m_ObjectHideFlags: 0

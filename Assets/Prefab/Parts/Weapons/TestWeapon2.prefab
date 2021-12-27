@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead02ec81098f8f4787e91eeccde5f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _partsID: 9
+  _partsID: 31
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
@@ -136,6 +136,7 @@ MonoBehaviour:
   _triggerInterval: 0.1
   _shotInterval: 0.2
   _diffusivity: 0.01
+  _diffusionShot: 0
 --- !u!1 &8868751112660553724
 GameObject:
   m_ObjectHideFlags: 0

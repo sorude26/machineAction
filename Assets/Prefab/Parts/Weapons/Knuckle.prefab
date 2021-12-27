@@ -51,7 +51,8 @@ MonoBehaviour:
   _anime: {fileID: 0}
   _blade: {fileID: 2169043324603007913}
   _triger: {fileID: 1993878791910121287}
-  _trigers: []
+  _trigers:
+  - {fileID: 1993878791910121287}
   _knockBackPower: 7
 --- !u!1 &2169043324603007913
 GameObject:
@@ -158,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d9d73bfb2179744ab28e5117683412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effect: 0
-  _power: 10
+  _effect: 6
+  _power: 30
 --- !u!135 &3382344044322376372
 SphereCollider:
   m_ObjectHideFlags: 0
