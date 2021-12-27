@@ -44,7 +44,10 @@ public class MeleeWeapon : WeaponMaster
     }
     void HitKnockBack()
     {
-        OwnerRb.AddForce(-OwnerRb.transform.forward * _knockBackPower, ForceMode.Impulse);
+        if (_knockBackPower > 0)
+        {
+            OwnerRb.AddForce(-OwnerRb.transform.forward * _knockBackPower, ForceMode.Impulse);
+        }
     }
     void HitStop()
     {

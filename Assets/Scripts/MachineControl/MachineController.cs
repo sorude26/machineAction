@@ -109,8 +109,9 @@ public class MachineController : MonoBehaviour
             }
             else if (_jump && !_jet)
             {
+                Turn(horizonal * 0.05f);
                 _body.ResetAngle(0.8f);
-                _moveControl.Jet(_rb, _body.BodyTransform.forward * _inputAxis.z + _body.BodyTransform.right * _inputAxis.x, _parameter.JetPower,_parameter.JetControlPower);
+                _moveControl.Jet(_rb, _body.BodyTransform.forward * _inputAxis.z + _body.BodyTransform.right * _inputAxis.x, _parameter.JetPower, _parameter.JetControlPower);
             }
 
         }
@@ -123,11 +124,11 @@ public class MachineController : MonoBehaviour
             _moveControl.MoveFloat(_rb, dir, _parameter.FloatSpeed, _parameter.MaxFloatSpeed);
             if (horizonal > 0)
             {
-               
+
             }
             else if (horizonal < 0)
             {
-                
+
             }
         }
     }
@@ -188,7 +189,7 @@ public class MachineController : MonoBehaviour
     }
     public void JetStart()
     {
-        if ( _jet || _parameter.JetPower < 1f)
+        if (_jet || _parameter.JetPower < 1f)
         {
             return;
         }
@@ -257,6 +258,13 @@ public class MachineController : MonoBehaviour
         _booster.BoostL();
         _booster.BoostR();
         _rb.velocity = dir * _parameter.JetPower * _parameter.WalkPower;
+    }
+    public void AngleBooster(Vector3 dir)
+    {
+        _booster.BoostL();
+        _booster.BoostR();
+        _booster.BoostF();
+        _rb.velocity = dir * _parameter.JetPower * _parameter.WalkPower * 2f;
     }
     public void Turn(float angle)
     {

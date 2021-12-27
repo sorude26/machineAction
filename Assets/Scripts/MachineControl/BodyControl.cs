@@ -248,7 +248,7 @@ public class BodyControl : MonoBehaviour
     public void FightingAttack()
     {
         _machine.SetTarget();
-        AttackTurn();
+        AttackBooster();
         QuickTurn();
         _action = true;
         if (_attackCount == 0)
@@ -273,7 +273,7 @@ public class BodyControl : MonoBehaviour
     public void FightingAttackL()
     {
         _machine.SetTarget();
-        AttackTurn();
+        AttackBooster(true);
         QuickTurn();
         if (_action)
         {
@@ -293,7 +293,7 @@ public class BodyControl : MonoBehaviour
     public void FightingAttackR()
     {
         _machine.SetTarget();
-        AttackTurn();
+        AttackBooster(true);
         QuickTurn();
         if (_action)
         {
@@ -320,7 +320,7 @@ public class BodyControl : MonoBehaviour
         if (_attack)
         {
             _machine.SetTarget();
-            AttackTurn();
+            AttackBooster();
             if (_attackCount == 1)
             {
                 ChangeAnimation(attackControl.AttackAction(Fighting, _attackCount));
@@ -346,7 +346,7 @@ public class BodyControl : MonoBehaviour
         }
         _attack = false;
     }
-    void AttackTurn()
+    void AttackBooster(bool force = false)
     {
         if (_machine.LookTarget != null)
         {
@@ -354,7 +354,14 @@ public class BodyControl : MonoBehaviour
             SetBodyRotaion(targetDir);
             if (!_groundCheck.IsGrounded())
             {
-                _machine.AngleMove(targetDir.normalized);
+                if (force)
+                {
+                    _machine.AngleBooster(targetDir.normalized);
+                }
+                else
+                {
+                    _machine.AngleMove(targetDir.normalized);
+                }
             }
         }
     }

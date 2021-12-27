@@ -33,5 +33,5 @@ public abstract class WeaponMaster : PartsMaster<WeaponData>
     /// </summary>
     public abstract void AttackAction();
     public virtual void AttackEnd() { }
-    public virtual float AttackSpeed() { return 0; }
+    public virtual float AttackSpeed() { return 1; }
 }
