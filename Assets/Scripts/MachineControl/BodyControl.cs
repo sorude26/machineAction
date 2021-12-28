@@ -41,14 +41,7 @@ public class BodyControl : MonoBehaviour
     public Quaternion BodyAngle { get => _bodyControlBase[0].localRotation; }
     public Transform BodyTransform { get => _bodyControlBase[0]; }
     public FightingType Fighting { get; set; }
-    private void Start()
-    {
-        GameScene.InputManager.Instance.OnFirstInputAttack += FightingAttack;
-        GameScene.InputManager.Instance.OnFirstInputShotL += HandAttackLeft;
-        GameScene.InputManager.Instance.OnFirstInputShotR += HandAttackRight;
-        GameScene.InputManager.Instance.OnFirstInputShot1 += ShoulderShot;
-        GameScene.InputManager.Instance.OnFirstInputShot2 += BodyWeaponShot;
-    }
+    
     public void Set(MachineController controller)
     {
         _machine = controller;
@@ -124,7 +117,7 @@ public class BodyControl : MonoBehaviour
     {
         _machine.SWeapon.AttackAction();
     }
-    void BodyWeaponShot()
+    public void BodyWeaponShot()
     {
         _machine.SetTarget();
         if (_machine.LookTarget != null)
@@ -176,7 +169,7 @@ public class BodyControl : MonoBehaviour
         bool attack = false;
         if (_machine.LAWeapon.Type == WeaponType.Rifle)
         {
-            Vector3 targetDir = DeviationShootingControl.CirclePrediction(_leftControlBase[2].position, targetPos, _targetBeforePosL, _targetTwoBeforePosL, _machine.LAWeapon.AttackSpeed() * 0.2f);
+            Vector3 targetDir = DeviationShootingControl.CirclePrediction(_leftControlBase[2].position, targetPos, _targetBeforePosL, _targetTwoBeforePosL, _machine.LAWeapon.AttackSpeed() * 0.8f);
             _controlTarget[2].forward = targetDir - _leftControlBase[2].position;
             _lArmRotaion2 = _controlTarget[2].localRotation * Quaternion.Euler(-90, 0, 0);
             var range = Quaternion.Dot(_lArmRotaion2, _leftControlBase[2].localRotation);
@@ -204,7 +197,7 @@ public class BodyControl : MonoBehaviour
         }
         if (_machine.RAWeapon.Type == WeaponType.Rifle)
         {
-            Vector3 targetDir = DeviationShootingControl.CirclePrediction(_rightControlBase[2].position, targetPos, _targetBeforePosR, _targetTwoBeforePosR, _machine.RAWeapon.AttackSpeed() * 0.2f);
+            Vector3 targetDir = DeviationShootingControl.CirclePrediction(_rightControlBase[2].position, targetPos, _targetBeforePosR, _targetTwoBeforePosR, _machine.RAWeapon.AttackSpeed() * 0.8f);
             _controlTarget[1].forward = targetDir - _rightControlBase[2].position;
             _rArmRotaion2 = _controlTarget[1].localRotation * Quaternion.Euler(-90, 0, 0);
             var range = Quaternion.Dot(_rArmRotaion2, _rightControlBase[2].localRotation);

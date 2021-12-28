@@ -32,22 +32,17 @@ public class MachineController : MonoBehaviour
     Quaternion _legRotaion = Quaternion.Euler(0, 0, 0);
     PartsManager _parts = default;
     public Vector3 InputAxis { get => _inputAxis; }
+    public BodyControl BodyControl { get => _body; }
     public PartsManager MachineParts { get => _parts; }
     public WeaponMaster RAWeapon { get => _parts.RAWeapon; }
     public WeaponMaster LAWeapon { get => _parts.LAWeapon; }
     public WeaponMaster BWeapon { get => _parts.BodyWeapon; }
     public ShoulderWeapon SWeapon { get => _parts.ShoulderWeapon; }
     public Transform LookTarget { get; protected set; }
-    private void Start()
+    public void StartSet()
     {
         _parts = new PartsManager();
         _buildControl.StartSet(_parts);
-        GameScene.InputManager.Instance.OnInputAxisRaw += Move;
-        GameScene.InputManager.Instance.OnInputAxisRawExit += MoveEnd;
-        GameScene.InputManager.Instance.OnFirstInputJump += Jump;
-        GameScene.InputManager.Instance.OnInputJump += Boost;
-        GameScene.InputManager.Instance.OnFirstInputBooster += JetStart;
-        GameScene.InputManager.Instance.OnInputLockOn += SetTarget;
         _rb = GetComponent<Rigidbody>();
         _leg.Set(this);
         _leg.SetLandingTime(_parameter.LandingTime);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class MachineBuildControl : MonoBehaviour
 {
     [SerializeField]
-    UnitBuildData m_test = default;
+    UnitBuildData _buildData = default;
     [SerializeField]
     Transform _camera = default;
     [SerializeField]
@@ -23,7 +23,11 @@ public class MachineBuildControl : MonoBehaviour
 
     public void StartSet(PartsManager manager)
     {
-        Build(m_test, manager);
+        Build(_buildData, manager);
+    }
+    public void SetData(UnitBuildData data)
+    {
+        _buildData = data;
     }
     public void Build(UnitBuildData data, PartsManager manager)
     {

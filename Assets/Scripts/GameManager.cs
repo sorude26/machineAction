@@ -5,12 +5,18 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    [SerializeField] UnitPartsList _partsList;
+    [SerializeField]
+    UnitPartsList _partsList;
     public UnitPartsList PartsList { get => _partsList; }
-    [SerializeField] ColorData _colorData;
-    [SerializeField] int[] _sParts;
-    [SerializeField] GameDataManager _dataManager;
-    public bool AutoMode { get; set; }
+    [SerializeField]
+    ColorData _colorData;
+    [SerializeField]
+    int[] _sParts;
+    [SerializeField]
+    GameDataManager _dataManager;
+    [SerializeField]
+    UnitBuildData _buildData = default;
+    public UnitBuildData CurrentBuildData { get => _buildData; }
     public Color GetColor(int colorNum) => _colorData.GetColor(colorNum);
     private void Awake()
     {
