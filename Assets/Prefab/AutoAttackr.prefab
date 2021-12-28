@@ -175,6 +175,7 @@ MonoBehaviour:
   _body: {fileID: 3163367175191104259}
   _center: {fileID: 3163367175191104262}
   _gauge: {fileID: 408346737508070277}
+  _deadEffect: 3
   _hp: 50
   _target: 1
 --- !u!114 &3163367175191104313

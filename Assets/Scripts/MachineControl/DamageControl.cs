@@ -11,6 +11,8 @@ public class DamageControl : MonoBehaviour, IDamageApplicable
     [SerializeField]
     GaugeControl _gauge = default;
     [SerializeField]
+    EffectType _deadEffect = EffectType.ExplosionMachine;
+    [SerializeField]
     int _hp = 5;
     [SerializeField]
     bool _target = true;
@@ -46,7 +48,7 @@ public class DamageControl : MonoBehaviour, IDamageApplicable
         {
             _center = transform;
         }
-        EffectPool.Get(EffectType.ExplosionMachine, _center.position);
+        EffectPool.Get(_deadEffect, _center.position);
         CameraController.Shake();
         if (_body == null)
         {

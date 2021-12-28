@@ -24,6 +24,17 @@ public class AutoAttacker : MonoBehaviour
     Quaternion _aimRotaion = Quaternion.Euler(0, 0, 0);
     void Update()
     {
+        Vector3 targetDir = DeviationShootingControl.CirclePrediction(_weaponBase.position, _target.position, _beforePos, _beforePos2, _weapon.AttackSpeed() * _aimRange);
+        _targetLock.forward = targetDir - _targetLock.position;
+        _aimRotaion = _targetLock.localRotation;
+        _beforePos2 = _beforePos;
+        _beforePos = _target.position;
+        _attackTimer += Time.deltaTime;
+        if (_attackTimer >= _attackInterval)
+        {
+            _attackTimer = 0;
+            _weapon.AttackAction();
+        }
         if (_aimSpeed > 0)
         {
             _weaponBase.localRotation = Quaternion.Lerp(_weaponBase.localRotation, _aimRotaion, _aimSpeed * Time.deltaTime);
@@ -31,15 +42,6 @@ public class AutoAttacker : MonoBehaviour
         else
         {
             _weaponBase.localRotation = _aimRotaion;
-        }
-        Vector3 targetDir = DeviationShootingControl.CirclePrediction(_weaponBase.position, _target.position, _beforePos, _beforePos2, _weapon.AttackSpeed() * _aimRange);
-        _targetLock.forward = targetDir - _targetLock.position;
-        _aimRotaion = _targetLock.localRotation;
-        _attackTimer += Time.deltaTime;
-        if (_attackTimer >= _attackInterval)
-        {
-            _attackTimer = 0;
-            _weapon.AttackAction();
         }
     }
 }
