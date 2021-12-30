@@ -29,6 +29,7 @@ public class BodyControl : MonoBehaviour
     int _attackCount = 0;
     bool _action = false;
     bool _attack = false;
+    bool _knockDown = false;
     Vector3 _targetBeforePosL = default;
     Vector3 _targetTwoBeforePosL = default;
     Vector3 _targetBeforePosR = default;
@@ -55,8 +56,21 @@ public class BodyControl : MonoBehaviour
             _animator.SetFloat("Speed", speed);
         }
     }
+    public void KnockDown()
+    {
+        if (_knockDown)
+        {
+            return;
+        }
+        _knockDown = true;
+        ChangeAnimation("Damage");
+    }
     public void HandAttackLeft()
     {
+        if (_knockDown)
+        {
+            return;
+        }
         _machine.SetTarget();
         if (_machine.LookTarget == null)
         {
@@ -86,6 +100,10 @@ public class BodyControl : MonoBehaviour
     }
     public void HandAttackRight()
     {
+        if (_knockDown)
+        {
+            return;
+        }
         _machine.SetTarget();
         if (_machine.LookTarget == null)
         {
@@ -115,10 +133,18 @@ public class BodyControl : MonoBehaviour
     }
     public void ShoulderShot()
     {
+        if (_knockDown)
+        {
+            return;
+        }
         _machine.SWeapon.AttackAction();
     }
     public void BodyWeaponShot()
     {
+        if (_knockDown)
+        {
+            return;
+        }
         _machine.SetTarget();
         if (_machine.LookTarget != null)
         {
@@ -240,6 +266,10 @@ public class BodyControl : MonoBehaviour
     }
     public void FightingAttack()
     {
+        if (_knockDown)
+        {
+            return;
+        }
         _machine.SetTarget();
         AttackBooster();
         QuickTurn();
@@ -265,6 +295,10 @@ public class BodyControl : MonoBehaviour
     }
     public void FightingAttackL()
     {
+        if (_knockDown)
+        {
+            return;
+        }
         _machine.SetTarget();
         AttackBooster(true);
         QuickTurn();
@@ -285,6 +319,10 @@ public class BodyControl : MonoBehaviour
     }
     public void FightingAttackR()
     {
+        if (_knockDown)
+        {
+            return;
+        }
         _machine.SetTarget();
         AttackBooster(true);
         QuickTurn();
@@ -310,6 +348,10 @@ public class BodyControl : MonoBehaviour
     }
     void Attack()
     {
+        if (_knockDown)
+        {
+            return;
+        }
         if (_attack)
         {
             _machine.SetTarget();
@@ -395,6 +437,10 @@ public class BodyControl : MonoBehaviour
     }
     public void SetBodyRotaion(Quaternion angle)
     {
+        if (_knockDown)
+        {
+            return;
+        }
         if (_action)
         {
             return;

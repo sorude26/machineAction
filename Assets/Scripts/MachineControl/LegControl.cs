@@ -9,11 +9,12 @@ public class LegControl : MonoBehaviour
     Animator _animator = default;
     int _walk = default;
     int _turn = default;
-    bool _jump = default;
-    bool _jumpEnd = default;
+    bool _jump = false;
+    bool _jumpEnd = false;
     bool _isGround = false;
-    bool _landing = default;
-    bool _float = default;
+    bool _landing = false;
+    bool _float = false;
+    bool _knockDown = false;
     float _landingTime = 0.5f;
     float _landingTimer = 0;
     MachineController _machine = default;
@@ -32,9 +33,18 @@ public class LegControl : MonoBehaviour
             _animator.SetFloat("Speed", speed);
         }
     }
+    public void KnockDown()
+    {
+        if (_knockDown)
+        {
+            return;
+        }
+        _knockDown = true;
+        ChangeAnimation("KnockDownF");
+    }
     public void WalkStart(int angle)
     {
-        if (_jump)
+        if (_jump|| _knockDown)
         {
             return;
         }
@@ -58,7 +68,7 @@ public class LegControl : MonoBehaviour
     }
     public void WalkStop()
     {
-        if (_jump)
+        if (_jump|| _knockDown)
         {
             return;
         }
@@ -72,7 +82,7 @@ public class LegControl : MonoBehaviour
     }
     public void TurnStartLeft()
     {
-        if (_jump)
+        if (_jump || _knockDown)
         {
             return;
         }
@@ -89,7 +99,7 @@ public class LegControl : MonoBehaviour
     }
     public void TurnStartRight()
     {
-        if (_jump)
+        if (_jump || _knockDown)
         {
             return;
         }
@@ -122,7 +132,7 @@ public class LegControl : MonoBehaviour
     }
     public void StartJump()
     {
-        if (_jump || _float)
+        if (_jump || _float || _knockDown)
         {
             return;
         }
@@ -149,7 +159,7 @@ public class LegControl : MonoBehaviour
     }
     public void StartJet()
     {
-        if (_landing || _jumpEnd)
+        if (_landing || _jumpEnd || _knockDown)
         {
             return;
         }
@@ -225,7 +235,10 @@ public class LegControl : MonoBehaviour
             _landingTimer += Time.deltaTime;
             yield return null;
         }
-        _animator.Play("LandingEnd");
+        if (!_knockDown)
+        {
+            _animator.Play("LandingEnd");
+        }
         _jump = false;
         _walk = 0;
         _turn = 0;
@@ -275,7 +288,7 @@ public class LegControl : MonoBehaviour
     }
     void Landing()
     {
-        if (_landing || _float)
+        if (_landing || _float || _knockDown)
         {
             return;
         }
@@ -296,6 +309,10 @@ public class LegControl : MonoBehaviour
     }
     void GroundCheck()
     {
+        if (_knockDown)
+        {
+            return;
+        }
         _isGround = _machine.IsGrounded();
         if (_isGround && _jump && !_jumpEnd)
         {
@@ -312,7 +329,7 @@ public class LegControl : MonoBehaviour
     
     public void AttackMoveR()
     {
-        if (_jump || _float || _landing)
+        if (_jump || _float || _landing || _knockDown)
         {
             return;
         }
@@ -320,7 +337,7 @@ public class LegControl : MonoBehaviour
     }
     public void AttackMoveL()
     {
-        if (_jump || _float || _landing)
+        if (_jump || _float || _landing || _knockDown)
         {
             return;
         }

@@ -17,6 +17,10 @@ public class ShakeControl : MonoBehaviour
     }
     public void StartShake(float time)
     {
+        if (!gameObject.activeInHierarchy)
+        {
+            return;
+        }
         if (m_timer < time)
         {
             m_timer = time;
@@ -33,6 +37,10 @@ public class ShakeControl : MonoBehaviour
     }
     public void StartShake(float time, float power)
     {
+        if (!gameObject.activeInHierarchy)
+        {
+            return;
+        }
         if (m_timer < time)
         {
             m_timer = time;

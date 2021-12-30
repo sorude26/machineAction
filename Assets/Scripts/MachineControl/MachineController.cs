@@ -24,9 +24,10 @@ public class MachineController : MonoBehaviour
     TargetMark _mark = default;
     [SerializeField]
     Transform _bodyAngle = default;
-    bool _fly = default;
+    bool _fly = false;
     bool _jump = false;
     bool _jet = false;
+    bool _knockDown = false;
     float _boosterTimer = -1;
     Vector3 _inputAxis = Vector3.zero;
     Quaternion _legRotaion = Quaternion.Euler(0, 0, 0);
@@ -57,6 +58,7 @@ public class MachineController : MonoBehaviour
         LAWeapon.OwnerRb = _rb;
         BWeapon.OwnerRb = _rb;
         SWeapon.OwnerRb = _rb;
+        _parts.Body.OnBodyBreak += BodyBreak;
     }
     private void Update()
     {
@@ -65,6 +67,10 @@ public class MachineController : MonoBehaviour
     }
     public void SetTarget()
     {
+        if (_knockDown)
+        {
+            return;
+        }
         var target = BattleManager.Instance.GetTarget();
         if (target)
         {
@@ -78,6 +84,10 @@ public class MachineController : MonoBehaviour
     }
     public void Move(float horizonal, float vertical)
     {
+        if (_knockDown)
+        {
+            return;
+        }
         _inputAxis = new Vector3(horizonal, 0, vertical);
         var dir = _inputAxis;
         dir.x += _body.BodyAngle.y;
@@ -149,6 +159,10 @@ public class MachineController : MonoBehaviour
     }
     public void Jump()
     {
+        if (_knockDown)
+        {
+            return;
+        }
         if (_fly)
         {
             Stop();
@@ -167,6 +181,10 @@ public class MachineController : MonoBehaviour
     }
     public void Boost()
     {
+        if (_knockDown)
+        {
+            return;
+        }
         if (_parameter.JetPower < 1f)
         {
             return;
@@ -184,6 +202,10 @@ public class MachineController : MonoBehaviour
     }
     public void JetStart()
     {
+        if (_knockDown)
+        {
+            return;
+        }
         if (_jet || _parameter.JetPower < 1f)
         {
             return;
@@ -219,6 +241,10 @@ public class MachineController : MonoBehaviour
     }
     public void Jet()
     {
+        if (_knockDown)
+        {
+            return;
+        }
         _body.QuickTurn();
         if (_parameter.JetPower < 1f)
         {
@@ -297,6 +323,19 @@ public class MachineController : MonoBehaviour
     {
         return _groundCheck.IsGrounded();
     }
+    void BodyBreak()
+    {
+        if (_knockDown)
+        {
+            return;
+        }
+        CameraController.Shake();
+        _knockDown = true;
+        _body.KnockDown();
+        _leg.KnockDown();
+        _booster.BoostEnd();
+        StartCoroutine(Explosion());
+    }
     void ChangeFloat()
     {
         if (_fly)
@@ -308,5 +347,12 @@ public class MachineController : MonoBehaviour
             _fly = true;
         }
         _leg.ChangeMode();
+    }
+    IEnumerator Explosion()
+    {
+        yield return new WaitForSeconds(3f);
+        CameraController.Shake();
+        EffectPool.Get(EffectType.HeavyExplosion, BodyControl.BodyTransform.position);
+        gameObject.SetActive(false);
     }
 }

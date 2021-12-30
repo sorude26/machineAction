@@ -15925,7 +15925,7 @@ MonoBehaviour:
   _triggerInterval: 3
   _shotInterval: 0.2
   _diffusivity: 0.03
-  _diffusionShot: 6
+  _diffusionShot: 3
 --- !u!1 &4910563120974229345
 GameObject:
   m_ObjectHideFlags: 0
@@ -16067,7 +16067,7 @@ MonoBehaviour:
   _triggerInterval: 3
   _shotInterval: 0.2
   _diffusivity: 0.03
-  _diffusionShot: 6
+  _diffusionShot: 3
 --- !u!1 &5172949128007981216
 GameObject:
   m_ObjectHideFlags: 0
@@ -21789,7 +21789,7 @@ MonoBehaviour:
   _triggerInterval: 3
   _shotInterval: 0.2
   _diffusivity: 0.03
-  _diffusionShot: 6
+  _diffusionShot: 3
 --- !u!1 &7265371323397538478
 GameObject:
   m_ObjectHideFlags: 0
@@ -21970,7 +21970,7 @@ MonoBehaviour:
   _triggerInterval: 3
   _shotInterval: 0.2
   _diffusivity: 0.03
-  _diffusionShot: 6
+  _diffusionShot: 3
 --- !u!1 &8037231449978500128
 GameObject:
   m_ObjectHideFlags: 0

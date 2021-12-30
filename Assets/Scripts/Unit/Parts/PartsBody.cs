@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
@@ -6,16 +6,6 @@ using UnityEngine;
 /// </summary>
 public class PartsBody : UnitPartsMaster<BodyData>
 {
-    /// <summary> 機体出力 </summary>
-    public int UnitOutput { get => _partsData.UnitOutput[_partsID]; }
-    /// <summary> 昇降力 </summary>
-    public float LiftingForce { get => _partsData.LiftingForce[_partsID]; }
-    /// <summary> 移動力 </summary>
-    public int MovePower { get => _partsData.MovePower[_partsID]; }
-    /// <summary> 命中精度 </summary>
-    public int HitAccuracy { get => _partsData.HitAccuracy[_partsID]; }
-    /// <summary> 機体タイプ </summary>
-    public UnitType BodyPartsType { get => _partsData.BodyPartsType[_partsID]; }
     [Tooltip("頭部パーツ接続部")]
     [SerializeField] Transform _headParts;
     [Tooltip("左手パーツ接続部")]
@@ -28,6 +18,18 @@ public class PartsBody : UnitPartsMaster<BodyData>
     [SerializeField] WeaponMaster _weapon;
     [Tooltip("肩武器")]
     [SerializeField] WeaponMaster _weaponShoulder;
+    /// <summary> 胴体破壊時のイベント </summary>
+    public event Action OnBodyBreak;
+    /// <summary> 機体出力 </summary>
+    public int UnitOutput { get => _partsData.UnitOutput[_partsID]; }
+    /// <summary> 昇降力 </summary>
+    public float LiftingForce { get => _partsData.LiftingForce[_partsID]; }
+    /// <summary> 移動力 </summary>
+    public int MovePower { get => _partsData.MovePower[_partsID]; }
+    /// <summary> 命中精度 </summary>
+    public int HitAccuracy { get => _partsData.HitAccuracy[_partsID]; }
+    /// <summary> 機体タイプ </summary>
+    public UnitType BodyPartsType { get => _partsData.BodyPartsType[_partsID]; }   
     /// <summary> 頭部パーツ接続部 </summary>
     public Transform HeadPos { get => _headParts; }
     /// <summary> 左手パーツ接続部 </summary>
@@ -43,6 +45,8 @@ public class PartsBody : UnitPartsMaster<BodyData>
     protected override void PartsBreak()
     {        
         Break = true;
+        EffectPool.Get(EffectType.HeavyExplosion, transform.position);
+        OnBodyBreak?.Invoke();
     }   
     /// <summary>
     /// 機体の回避力と出力の合計値を返す
