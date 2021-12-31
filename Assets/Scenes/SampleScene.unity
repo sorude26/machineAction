@@ -3133,10 +3133,10 @@ MonoBehaviour:
     RArmID: 4
     LArmID: 4
     LegID: 4
-    WeaponRArmID: 7
-    WeaponLArmID: 7
+    WeaponRArmID: 4
+    WeaponLArmID: 1
     ShoulderWeaponID: 0
-    BodyWeaponID: 2
+    BodyWeaponID: 4
     BoosterID: 0
     CoreID: 0
 --- !u!4 &427596897

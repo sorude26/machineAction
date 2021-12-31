@@ -7,17 +7,26 @@ using UnityEngine;
 public class PartsBody : UnitPartsMaster<BodyData>
 {
     [Tooltip("頭部パーツ接続部")]
-    [SerializeField] Transform _headParts;
+    [SerializeField]
+    Transform _headParts = default;
     [Tooltip("左手パーツ接続部")]
-    [SerializeField] Transform _lArmParts;
+    [SerializeField]
+    Transform _lArmParts = default;
     [Tooltip("右手パーツ接続部")]
-    [SerializeField] Transform _rArmParts;
+    [SerializeField] 
+    Transform _rArmParts = default;
     [Tooltip("バックパックパーツ接続部")]
-    [SerializeField] Transform _backPartsPos;
+    [SerializeField]
+    Transform _backPartsPos = default;
     [Tooltip("内蔵武器")]
-    [SerializeField] WeaponMaster _weapon;
+    [SerializeField]
+    WeaponMaster _weapon = default;
     [Tooltip("肩武器")]
-    [SerializeField] WeaponMaster _weaponShoulder;
+    [SerializeField]
+    WeaponMaster _weaponShoulder =default;
+    [Tooltip("破壊時エフェクト")]
+    [SerializeField]
+    GameObject _breakSpark = default;
     /// <summary> 胴体破壊時のイベント </summary>
     public event Action OnBodyBreak;
     /// <summary> 機体出力 </summary>
@@ -47,6 +56,10 @@ public class PartsBody : UnitPartsMaster<BodyData>
         Break = true;
         EffectPool.Get(EffectType.HeavyExplosion, transform.position);
         OnBodyBreak?.Invoke();
+        if (_breakSpark != null)
+        {
+            _breakSpark.SetActive(true);
+        }
     }   
     /// <summary>
     /// 機体の回避力と出力の合計値を返す
