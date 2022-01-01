@@ -16,7 +16,28 @@ public class PartsManager
     public ShoulderWeapon ShoulderWeapon { get; set; }
     public IUnitParts[] GetAllParts()
     {
-        IUnitParts[] AllParts = { Head, Body, RArm, LArm, Leg, Booster };
-        return AllParts;
+        IUnitParts[] allParts = { Head, Body, RArm, LArm, Leg, Booster };
+        return allParts;
+    }
+    public void ResetAllParts()
+    {
+        IParts[] allParts = { RAWeapon, LAWeapon, BodyWeapon, ShoulderWeapon, Booster, Head, Body, RArm, LArm, Leg };
+        foreach (var parts in allParts)
+        {
+            if (parts != null)
+            {
+                parts.DestoryParts();
+            }
+        }
+        Head = null;
+        Body = null;
+        RArm = null;
+        LArm = null;
+        Leg = null;
+        Booster = null;
+        RAWeapon = null;
+        LAWeapon = null;
+        BodyWeapon = null;
+        ShoulderWeapon = null;
     }
 }

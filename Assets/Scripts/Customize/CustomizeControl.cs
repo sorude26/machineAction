@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class CustomizeControl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    UnitBuildData _unitBuildData = default;
+    [SerializeField]
+    MachineBuildControl _buildControl = default;
+    PartsManager _partsManager = default;
+    private void Awake()
     {
-        
+        _partsManager = new PartsManager();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Build()
     {
-        
+        _partsManager.ResetAllParts();
+        _buildControl.SetData(_unitBuildData);
+        _buildControl.StartSet(_partsManager);
     }
 }
