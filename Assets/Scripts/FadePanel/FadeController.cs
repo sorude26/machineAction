@@ -6,117 +6,105 @@ using UnityEngine.UI;
 
 public class FadeController : MonoBehaviour
 {
-    public static FadeController Instance { get; private set; }
-    [SerializeField] float _fadeSpeed = 1f;
-    [SerializeField] Image _fadePanel = default;
-    Color _fadePanelColor;
-    public static bool FadeNow { get; private set; }
+    private static FadeController instance = default;
+    [Tooltip("フェードスピード")]
+    [SerializeField]
+    private float _fadeSpeed = 1f;
+    [Tooltip("フェードする画像")]
+    [SerializeField]
+    private Image _fadeImage = default;
+    [Tooltip("開始時の色")]
+    [SerializeField]
+    private Color _startColor = Color.black;
     private void Awake()
     {
-        Instance = this;
-        _fadePanel.gameObject.SetActive(true);
-        _fadePanelColor = _fadePanel.color;
+        instance = this;
+        _fadeImage.gameObject.SetActive(false);
     }
-    public void StartFadeIn()
+    /// <summary>
+    /// フェードインする
+    /// </summary>
+    public static void StartFadeIn()
     {
-        if (FadeNow)
+        instance?.StartCoroutine(instance.FadeIn(() => { }));
+    }
+    /// <summary>
+    /// フェードアウトする
+    /// </summary>
+    public static void StartFadeOut()
+    {
+        instance?.StartCoroutine(instance.FadeOut(() => { }));
+    }
+    /// <summary>
+    /// フェードイン後にアクションする
+    /// </summary>
+    /// <param name="action"></param>
+    public static void StartFadeIn(Action action)
+    {
+        if (instance == null)
         {
+            action?.Invoke();
             return;
         }
-        StartCoroutine(FadeIn());
+        instance.StartCoroutine(instance.FadeIn(action));
     }
-    public void StartFadeIn(Action fadeInAction)
+    /// <summary>
+    /// フェードアウト後にアクションする
+    /// </summary>
+    /// <param name="action"></param>
+    public static void StartFadeOut(Action action)
     {
-        if (FadeNow)
+        if (instance == null)
         {
+            action?.Invoke();
             return;
         }
-        StartCoroutine(FadeIn(fadeInAction));
-    }
-    public void StartFadeOut(Action fadeOutAction)
-    {
-        if (FadeNow)
-        {
-            return;
-        }
-        StartCoroutine(FadeOut(fadeOutAction));
-    }
-    public void StartFadeOutIn(Action fadeInAction)
-    {
-        if (FadeNow)
-        {
-            return;
-        }
-        StartCoroutine(FadeOutIn(fadeInAction));
-    }
-    public void StartFadeOutIn(Action fadeOutAction, Action fadeInAction)
-    {
-        if (FadeNow)
-        {
-            return;
-        }
-        StartCoroutine(FadeOutIn(fadeOutAction, fadeInAction));
+        instance.StartCoroutine(instance.FadeOut(action));
     }
     IEnumerator FadeIn(Action action)
     {
-        FadeNow = true;
+        _fadeImage.gameObject.SetActive(true);
         yield return FadeIn();
-        action.Invoke();
-        FadeNow = false;
+        action?.Invoke();
+        _fadeImage.gameObject.SetActive(false);
     }
     IEnumerator FadeOut(Action action)
     {
-        FadeNow = true;
+        _fadeImage.gameObject.SetActive(true);
         yield return FadeOut();
-        action.Invoke();
-        FadeNow = false;
-    }
-    IEnumerator FadeOutIn(Action action)
-    {
-        FadeNow = true;
-        yield return FadeOut();
-        yield return FadeIn();
-        action.Invoke();
-        FadeNow = false;
-    }
-    IEnumerator FadeOutIn(Action fadeOutAction,Action fadeInAction)
-    {
-        FadeNow = true;
-        yield return FadeOut();
-        fadeOutAction.Invoke();
-        yield return FadeIn();
-        fadeInAction.Invoke();
-        FadeNow = false;
+        action?.Invoke();
     }
     IEnumerator FadeIn()
     {
-        _fadePanel.gameObject.SetActive(true);
-        float a = 1;
-        while (a > 0)
+        float clearScale = 1f;
+        Color currentColor = _startColor;
+        while (clearScale > 0f)
         {
-            a -= _fadeSpeed * Time.deltaTime;
-            if (a <= 0)
+            clearScale -= _fadeSpeed * Time.deltaTime;
+            if (clearScale <= 0f)
             {
-                a = 0;
+                clearScale = 0f;
             }
-            _fadePanel.color = _fadePanelColor * new Color(1, 1, 1, a);
-            yield return new WaitForEndOfFrame();
+            currentColor.a = clearScale;
+            _fadeImage.color = currentColor;
+            yield return null;
         }
-        _fadePanel.gameObject.SetActive(false);
     }
+
     IEnumerator FadeOut()
     {
-        _fadePanel.gameObject.SetActive(true);
-        float a = 0;
-        while (a < 1f)
+        float clearScale = 0f;
+        Color currentColor = _startColor;
+        while (clearScale < 1f)
         {
-            a += _fadeSpeed * Time.deltaTime;
-            if (a >= 1f)
+            clearScale += _fadeSpeed * Time.deltaTime;
+            if (clearScale >= 1f)
             {
-                a = 1f;
+                clearScale = 1f;
             }
-            _fadePanel.color = _fadePanelColor * new Color(1, 1, 1, a);
-            yield return new WaitForEndOfFrame();
+            currentColor.a = clearScale;
+            _fadeImage.color = currentColor;
+            yield return null;
         }
     }
 }
