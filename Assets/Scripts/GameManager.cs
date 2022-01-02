@@ -8,19 +8,22 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     UnitPartsList _partsList;
     public UnitPartsList PartsList { get => _partsList; }
-    [SerializeField]
-    ColorData _colorData;
+    // [SerializeField]
+    // ColorData _colorData;
     [SerializeField]
     int[] _sParts;
     [SerializeField]
     GameDataManager _dataManager;
     [SerializeField]
     UnitBuildData _buildData = default;
+    [SerializeField]
+    Color _color = default;
     public UnitBuildData CurrentBuildData { get => _buildData; }
-    public Color GetColor(int colorNum) => _colorData.GetColor(colorNum);
+    public Color PlayerColor { get =>_color; }
+    // public Color GetColor(int colorNum) => _colorData.GetColor(colorNum);
     private void Awake()
     {
-        if (Instance)
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;
@@ -29,7 +32,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         UnitDataMaster.StartSet(_partsList);
     }
-
+    public void SetData(UnitBuildData buildData,Color color)
+    {
+        _buildData = buildData;
+        _color = color;
+    }
     void SetAllParts()
     {
         for (int i = 0; i < 6; i++)

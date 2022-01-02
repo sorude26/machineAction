@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     {
         _buildControl.SetData(GameManager.Instance.CurrentBuildData);
         _controller.StartSet();
+        _controller.MachineParts.ChangeColor(GameManager.Instance.PlayerColor);
         GameScene.InputManager.Instance.OnInputAxisRaw += _controller.Move;
         GameScene.InputManager.Instance.OnInputAxisRawExit += _controller.MoveEnd;
         GameScene.InputManager.Instance.OnFirstInputJump += _controller.Jump;
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
         GameScene.InputManager.Instance.OnFirstInputShotR += _controller.BodyControl.HandAttackRight;
         GameScene.InputManager.Instance.OnFirstInputShot1 += _controller.BodyControl.ShoulderShot;
         GameScene.InputManager.Instance.OnFirstInputShot2 += _controller.BodyControl.BodyWeaponShot;
+        _controller.OnBreak += BattleManager.Instance.GameEnd;
+        FadeController.StartFadeIn();
     }
 
     public void OutControl()

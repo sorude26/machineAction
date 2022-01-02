@@ -289,11 +289,8 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: 914926fcfa9fedd448ebfc8ddd6b02ab, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  m_hitPos:
-  - {fileID: 5948248185131501935}
-  - {fileID: 8476924899173909344}
-  - {fileID: 6081823018433940864}
-  m_damageSmoke: {fileID: 4952693413308483886}
+  _hitPos: []
+  _damageSmoke: {fileID: 0}
   m_amors:
   - {fileID: 10943295803739021}
   - {fileID: 7763750111792394347}
@@ -302,6 +299,13 @@ MonoBehaviour:
   - {fileID: 8299189274454134199}
   - {fileID: 7152149228693687830}
   - {fileID: 7152603327539282529}
+  _mainBoosterParticles: []
+  _subBoosterParticles: []
+  _frontBoosterParticles: []
+  _backBoosterParticles: []
+  _leftBoosterParticles: []
+  _rightBoosterParticles: []
+  _gauge: {fileID: 0}
   m_legTop: {fileID: 5948248185131501935}
   m_lLeg1: {fileID: 8476924899173909344}
   m_lLeg2: {fileID: 5826981752074184110}

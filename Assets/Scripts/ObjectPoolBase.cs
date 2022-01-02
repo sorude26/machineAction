@@ -23,6 +23,7 @@ public abstract class ObjectPoolBase<T,key> : MonoBehaviour where T : MonoBehavi
         else
         {
             Destroy(gameObject);
+            return;
         }
         if (_objectPrefab.Length > _createCount.Length)
         {

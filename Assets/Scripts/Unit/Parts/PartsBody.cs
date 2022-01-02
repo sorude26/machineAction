@@ -54,7 +54,7 @@ public class PartsBody : UnitPartsMaster<BodyData>
     protected override void PartsBreak()
     {        
         Break = true;
-        EffectPool.Get(EffectType.HeavyExplosion, transform.position);
+        EffectPool.Get(EffectType.ExplosionMachine, transform.position);
         OnBodyBreak?.Invoke();
         if (_breakSpark != null)
         {

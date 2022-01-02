@@ -124,15 +124,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ce3fe1d5910d744a76a85100c0339e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _partsID: 11
+  _partsID: 6
   _partsData: {fileID: 11400000, guid: 914926fcfa9fedd448ebfc8ddd6b02ab, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  m_hitPos:
-  - {fileID: 8246589145975789357}
-  - {fileID: 6150157181870562594}
-  - {fileID: 8402398421525599170}
-  m_damageSmoke: {fileID: 7225508266819835756}
+  _hitPos: []
+  _damageSmoke: {fileID: 0}
   m_amors:
   - {fileID: 8222782361379066309}
   - {fileID: 5423398832435260969}
@@ -143,6 +140,13 @@ MonoBehaviour:
   - {fileID: 4881497117247085603}
   - {fileID: 7321032692526681572}
   - {fileID: 3756267236694869665}
+  _mainBoosterParticles: []
+  _subBoosterParticles: []
+  _frontBoosterParticles: []
+  _backBoosterParticles: []
+  _leftBoosterParticles: []
+  _rightBoosterParticles: []
+  _gauge: {fileID: 0}
   m_legTop: {fileID: 8246589145975789357}
   m_lLeg1: {fileID: 6150157181870562594}
   m_lLeg2: {fileID: 8079510579561774060}

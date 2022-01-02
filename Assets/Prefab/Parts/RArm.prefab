@@ -373,7 +373,7 @@ Transform:
   m_GameObject: {fileID: 4674283435595006364}
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.53125, y: 0.5500001, z: 0}
-  m_LocalScale: {x: 1, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7716732237791050598}
   m_RootOrder: 0
@@ -523,14 +523,19 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: c0525c6946c113d45b7a5e680e703e40, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  m_hitPos:
-  - {fileID: 2617637780505900118}
-  - {fileID: 4286981290150089839}
-  m_damageSmoke: {fileID: 1195055761276554075}
+  _hitPos: []
+  _damageSmoke: {fileID: 0}
   m_amors:
   - {fileID: 524627754991177235}
   - {fileID: 8943669742584703596}
   - {fileID: 6796596171727344270}
+  _mainBoosterParticles: []
+  _subBoosterParticles: []
+  _frontBoosterParticles: []
+  _backBoosterParticles: []
+  _leftBoosterParticles: []
+  _rightBoosterParticles: []
+  _gauge: {fileID: 0}
   m_grip: {fileID: 519327472923837602}
   m_shoulder: {fileID: 1989710313046959798}
   m_armTop: {fileID: 515568220380183139}
@@ -767,12 +772,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45a5b0c089bb7a544994d2314af810a7, type: 3}
---- !u!1 &1195055761276554075 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1016132564122419652, guid: 45a5b0c089bb7a544994d2314af810a7,
-    type: 3}
-  m_PrefabInstance: {fileID: 2202180833510754975}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1195055761276554078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1016132564122419649, guid: 45a5b0c089bb7a544994d2314af810a7,

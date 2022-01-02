@@ -46,5 +46,16 @@ public class BattleManager : MonoBehaviour
     void BattleEnd()
     {
         _clearMassage.SetActive(true);
+        StartCoroutine(BattleEnd(3f));
+    }
+    public void GameEnd()
+    {
+        StartCoroutine(BattleEnd(5f));
+    }
+    IEnumerator BattleEnd(float time)
+    {
+        GameScene.InputManager.Instance.InputActionsOut();
+        yield return new WaitForSeconds(time);
+        SceneChange.RoadCustomize();
     }
 }

@@ -1141,20 +1141,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ce3fe1d5910d744a76a85100c0339e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _partsID: 13
+  _partsID: 9
   _partsData: {fileID: 11400000, guid: 914926fcfa9fedd448ebfc8ddd6b02ab, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  m_hitPos:
-  - {fileID: 4847056029511931121}
-  - {fileID: 4847056030618730834}
-  - {fileID: 4847056028940962996}
-  m_damageSmoke: {fileID: 8699398457029865778}
+  _hitPos: []
+  _damageSmoke: {fileID: 0}
   m_amors:
   - {fileID: 4847056030420145594}
   - {fileID: 4847056029599830291}
   - {fileID: 4847056029247316811}
   - {fileID: 4847056029483765413}
+  _mainBoosterParticles: []
+  _subBoosterParticles: []
+  _frontBoosterParticles: []
+  _backBoosterParticles: []
+  _leftBoosterParticles: []
+  _rightBoosterParticles: []
+  _gauge: {fileID: 0}
   m_legTop: {fileID: 7677939683356801439}
   m_lLeg1: {fileID: 4847056030606457577}
   m_lLeg2: {fileID: 4847056029195555509}

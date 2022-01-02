@@ -66,6 +66,10 @@ namespace GameScene
             _inputActions.PlayerController.Jet.started += context => { OnJet(); };
             StartCoroutine(ActionUpdate());
         }
+        public void InputActionsOut()
+        {
+            _inputActions.Dispose();
+        }
         void OnMove(Vector2 dir)
         {
             float h = dir.x;
