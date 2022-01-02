@@ -19,6 +19,14 @@ public class PartsManager
         IUnitParts[] allParts = { Head, Body, RArm, LArm, Leg, Booster };
         return allParts;
     }
+    public void ChangeColor(Color color)
+    {
+        IUnitParts[] allParts = { Head, Body, RArm, LArm, Leg };
+        foreach (var parts in allParts)
+        {
+            parts.PartsColorChange(color);
+        }
+    }
     public void ResetAllParts()
     {
         IParts[] allParts = { RAWeapon, LAWeapon, BodyWeapon, ShoulderWeapon, Booster, Head, Body, RArm, LArm, Leg };

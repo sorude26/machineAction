@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,7 @@ public class MachineController : MonoBehaviour
     TargetMark _mark = default;
     [SerializeField]
     Transform _bodyAngle = default;
+
     bool _fly = false;
     bool _jump = false;
     bool _jet = false;
@@ -32,6 +34,9 @@ public class MachineController : MonoBehaviour
     Vector3 _inputAxis = Vector3.zero;
     Quaternion _legRotaion = Quaternion.Euler(0, 0, 0);
     PartsManager _parts = default;
+
+    public event Action OnBreak = default;
+
     public Vector3 InputAxis { get => _inputAxis; }
     public BodyControl BodyControl { get => _body; }
     public PartsManager MachineParts { get => _parts; }
@@ -354,5 +359,6 @@ public class MachineController : MonoBehaviour
         CameraController.Shake();
         EffectPool.Get(EffectType.HeavyExplosion, BodyControl.BodyTransform.position);
         gameObject.SetActive(false);
+        OnBreak?.Invoke();
     }
 }
