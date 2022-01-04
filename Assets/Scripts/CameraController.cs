@@ -72,7 +72,7 @@ public class CameraController : MonoBehaviour
         {
             return;
         }
-        instance._cameraShakeControl.StartShake(1.2f, 1f);
+        instance._cameraShakeControl.StartShake(1.2f, 2f);
     }
     public static void LightShake()
     {
@@ -80,7 +80,7 @@ public class CameraController : MonoBehaviour
         {
             return;
         }
-        instance._cameraShakeControl.StartShake(0.2f, 0.7f);
+        instance._cameraShakeControl.StartShake(0.2f, 1.7f);
     }
     public static void HitShake()
     {
