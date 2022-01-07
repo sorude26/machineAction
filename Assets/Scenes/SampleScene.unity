@@ -3127,18 +3127,18 @@ MonoBehaviour:
   _sParts: 
   _dataManager: {fileID: 0}
   _buildData:
-    HeadID: 0
-    BodyID: 0
-    RArmID: 0
-    LArmID: 0
-    LegID: 0
-    WeaponRArmID: 4
-    WeaponLArmID: 1
+    HeadID: 5
+    BodyID: 5
+    RArmID: 5
+    LArmID: 5
+    LegID: 5
+    WeaponRArmID: 18
+    WeaponLArmID: 18
     ShoulderWeaponID: 0
-    BodyWeaponID: 4
+    BodyWeaponID: 0
     BoosterID: 0
     CoreID: 0
-  _color: {r: 0, g: 0, b: 0, a: 0}
+  _color: {r: 0.22247079, g: 0.4245283, b: 0.21426664, a: 0}
 --- !u!4 &427596897
 Transform:
   m_ObjectHideFlags: 0
@@ -8621,7 +8621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42d632c01c86bf40875b4ff9cf4c4ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actionSpeed: 1.2
+  _actionSpeed: 0.8
   _walkPower: 1.4
   _maxWalkSpeed: 12
   _turnPower: 5
@@ -12313,7 +12313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2123050805
 Transform:
   m_ObjectHideFlags: 0

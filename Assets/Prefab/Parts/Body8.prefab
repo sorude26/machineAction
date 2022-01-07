@@ -119,6 +119,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 507958601468583626}
+  - component: {fileID: 3261955239665692860}
+  - component: {fileID: 3079574969688554023}
   m_Layer: 0
   m_Name: FullParts
   m_TagString: Untagged
@@ -157,6 +159,32 @@ Transform:
   m_Father: {fileID: 5251923922622390163}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3261955239665692860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800849867525266139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec1d6d9a4f39bb49b5cc52d97a384a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parent: {fileID: 8297876741587207717}
+--- !u!135 &3079574969688554023
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800849867525266139}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0.92, z: 0}
 --- !u!1 &1556536710858853332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,6 +1677,8 @@ MonoBehaviour:
   - {fileID: 3215620805274374106}
   - {fileID: 4621357950752099325}
   - {fileID: 442775418633884828}
+  - {fileID: 5074799933412999962}
+  - {fileID: 5074799933412999962}
   _mainBoosterParticles: []
   _subBoosterParticles: []
   _frontBoosterParticles: []
