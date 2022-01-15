@@ -56,6 +56,6 @@ public class BattleManager : MonoBehaviour
     {
         GameScene.InputManager.Instance.InputActionsOut();
         yield return new WaitForSeconds(time);
-        SceneChange.RoadCustomize();
+        SceneChange.LoadCustomize();
     }
 }

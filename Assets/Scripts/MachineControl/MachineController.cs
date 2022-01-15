@@ -281,16 +281,19 @@ public class MachineController : MonoBehaviour
     }
     public void AngleMove(Vector3 dir)
     {
-        _booster.BoostL();
-        _booster.BoostR();
+        //_booster.BoostL();
+        //_booster.BoostR();
         _rb.velocity = dir * _parameter.JetPower * _parameter.WalkPower;
     }
     public void AngleBooster(Vector3 dir)
     {
+        _rb.velocity = dir * _parameter.JetPower * _parameter.WalkPower * 2f;
+    }
+    public void Booster()
+    {
         _booster.BoostL();
         _booster.BoostR();
         _booster.BoostF();
-        _rb.velocity = dir * _parameter.JetPower * _parameter.WalkPower * 2f;
     }
     public void Turn(float angle)
     {

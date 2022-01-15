@@ -183,8 +183,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0.92, z: 0}
+  m_Radius: 0.8
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!1 &1556536710858853332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,7 +1677,7 @@ MonoBehaviour:
   - {fileID: 3215620805274374106}
   - {fileID: 4621357950752099325}
   - {fileID: 442775418633884828}
-  - {fileID: 5074799933412999962}
+  - {fileID: 4468028101133701747}
   - {fileID: 5074799933412999962}
   _mainBoosterParticles: []
   _subBoosterParticles: []

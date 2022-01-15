@@ -338,6 +338,7 @@ public class BodyControl : MonoBehaviour
         }
         else
         {
+            _machine.Booster();
             ChangeAnimation(attackControl.AttackActionR(Fighting, 1));
         }
     }

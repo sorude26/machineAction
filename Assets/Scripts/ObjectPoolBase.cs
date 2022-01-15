@@ -32,29 +32,39 @@ public abstract class ObjectPoolBase<T,key> : MonoBehaviour where T : MonoBehavi
         _objectDic = new Dictionary<key, T[]>();
         for (int i = 0; i < _objectPrefab.Length; i++)
         {
-            var bulletData = new T[_createCount[i]];
+            var objectData = new T[_createCount[i]];
             for (int b = 0; b < _createCount[i]; b++)
             {
-                var bullet = Instantiate(_objectPrefab[i], transform);
-                bullet.gameObject.SetActive(false);
-                bulletData[b] = bullet;
+                var instanceObject = Instantiate(_objectPrefab[i], transform);
+                instanceObject.gameObject.SetActive(false);
+                objectData[b] = instanceObject;
             }
-            _objectDic.Add((key)Enum.ToObject(typeof(key), i), bulletData);
+            _objectDic.Add((key)Enum.ToObject(typeof(key), i), objectData);
         }
     }
 
     public static T Get(key type, Vector3 pos)
     {
-        foreach (var bullet in instance._objectDic[type])
+        foreach (var objects in instance._objectDic[type])
         {
-            if (bullet.gameObject.activeInHierarchy)
+            if (objects.gameObject.activeInHierarchy)
             {
                 continue;
             }
-            bullet.transform.position = pos;
-            bullet.gameObject.SetActive(true);
-            return bullet;
+            objects.transform.position = pos;
+            objects.gameObject.SetActive(true);
+            return objects;
         }
         return null;
+    }
+    public static void FullReset()
+    {
+        for (int i = 0; i < instance._objectPrefab.Length; i++)
+        {            
+            foreach (var objects in instance._objectDic[(key)Enum.ToObject(typeof(key),i)])
+            {
+                objects.gameObject.SetActive(false);
+            }
+        }
     }
 }

@@ -22,7 +22,7 @@ public class SceneChange
     /// <summary>
     /// Gameシーンに移行する
     /// </summary>
-    public static void RoadGame()
+    public static void LoadGame()
     {
         if (roadNow)
         {
@@ -34,13 +34,15 @@ public class SceneChange
     /// <summary>
     /// Customizeシーンに移行する
     /// </summary>
-    public static void RoadCustomize()
+    public static void LoadCustomize()
     {
         if (roadNow)
         {
             return;
         }
         roadNow = true;
+        BulletPool.FullReset();
+        EffectPool.FullReset();
         FadeController.StartFadeOut(Customize);
     }
     private static void Title()

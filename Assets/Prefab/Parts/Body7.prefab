@@ -130,7 +130,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.8
   m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!114 &5337231703847480796
 MonoBehaviour:
@@ -702,11 +702,8 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ad2cfe481fba7ba49aea7fc5954d31ac, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  m_hitPos:
-  - {fileID: 1596750712945445652}
-  - {fileID: 1829492013390857942}
-  - {fileID: 4492012378061558115}
-  m_damageSmoke: {fileID: 2953864718500735332}
+  _hitPos: []
+  _damageSmoke: {fileID: 0}
   m_amors:
   - {fileID: 8390740286309794425}
   - {fileID: 8075190584140974321}
@@ -716,6 +713,8 @@ MonoBehaviour:
   - {fileID: 5523068081651946762}
   - {fileID: 2448312674317305560}
   _subBoosterParticles: []
+  _frontBoosterParticles: []
+  _backBoosterParticles: []
   _leftBoosterParticles: []
   _rightBoosterParticles: []
   _gauge: {fileID: 0}
@@ -725,6 +724,7 @@ MonoBehaviour:
   _backPartsPos: {fileID: 3760445980523929015}
   _weapon: {fileID: 0}
   _weaponShoulder: {fileID: 0}
+  _breakSpark: {fileID: 0}
 --- !u!1001 &116554708063681294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -905,12 +905,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45a5b0c089bb7a544994d2314af810a7, type: 3}
---- !u!1 &2953864718500735332 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1016132564122419652, guid: 45a5b0c089bb7a544994d2314af810a7,
-    type: 3}
-  m_PrefabInstance: {fileID: 2802430157505357984}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2953864718500735329 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1016132564122419649, guid: 45a5b0c089bb7a544994d2314af810a7,

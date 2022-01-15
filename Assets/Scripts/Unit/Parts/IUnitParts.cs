@@ -25,6 +25,11 @@ public interface IUnitParts : IParts, IDamageApplicable
     /// <param name="color"></param>
     void PartsColorChange(Color color);
     /// <summary>
+    /// ゲージ設定
+    /// </summary>
+    /// <param name="gauge"></param>
+    void SetGauge(GaugeControl gauge);
+    /// <summary>
     /// メインブースター起動
     /// </summary>
     void StartBooster();

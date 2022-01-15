@@ -163,6 +163,10 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
         ColorChange(_startColor);
         _damageColor = false;
     }
+    public void SetGauge(GaugeControl gauge)
+    {
+        _gauge = gauge;
+    }
     public void StartBooster()
     {
         foreach (var booster in _mainBoosterParticles)

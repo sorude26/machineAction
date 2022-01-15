@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     MachineController _controller = default;
     [SerializeField]
     MachineBuildControl _buildControl = default;
+    [SerializeField]
+    GaugeControl _gauge = default;
+
     void Start()
     {
         _buildControl.SetData(GameManager.Instance.CurrentBuildData);
@@ -25,9 +28,10 @@ public class PlayerController : MonoBehaviour
         GameScene.InputManager.Instance.OnFirstInputShot1 += _controller.BodyControl.ShoulderShot;
         GameScene.InputManager.Instance.OnFirstInputShot2 += _controller.BodyControl.BodyWeaponShot;
         _controller.OnBreak += BattleManager.Instance.GameEnd;
+        _controller.MachineParts.Body.SetGauge(_gauge);
         FadeController.StartFadeIn();
     }
-
+   
     public void OutControl()
     {
         GameScene.InputManager.Instance.OnInputAxisRaw -= _controller.Move;

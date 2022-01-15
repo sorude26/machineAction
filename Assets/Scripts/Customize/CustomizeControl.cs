@@ -28,6 +28,16 @@ public class CustomizeControl : MonoBehaviour
     bool _inputStop = false;
     bool _buttonOn = false;
     PartsManager _partsManager = default;
+
+    [SerializeField]
+    Transform _cameraTarget = default;
+    [SerializeField]
+    float _followSpeed = 5f;
+    [SerializeField]
+    float _lockSpeed = 20f;
+    Quaternion _cameraRot = default;
+    float _minY = -70f;
+    float _maxY = 70f;
     private void Awake()
     {
         _partsManager = new PartsManager();
@@ -53,12 +63,39 @@ public class CustomizeControl : MonoBehaviour
         _setColor = true;
         GameScene.InputManager.Instance.OnInputAxisRaw += MoveCursor;
         GameScene.InputManager.Instance.OnFirstInputJump += ChangeOn;
+        GameScene.InputManager.Instance.OnFirstInputShot2 += ChangeOn;
+        GameScene.InputManager.Instance.OnInputCameraRawExit += ResetLock;
+        GameScene.InputManager.Instance.OnInputCameraRaw += FreeLock;
         Build();
         TargetControl(_targetNumber, 0);
         FadeController.StartFadeIn();
     }
+    private void Update()
+    {
+        _cameraRot = _cameraTarget.rotation;
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, _cameraRot, _followSpeed * Time.deltaTime);
+    }
+    void DefaultLock()
+    {
+        _cameraRot = _cameraTarget.rotation;
+    }
+    void FreeLock(Vector2 dir)
+    {
+        _cameraRot = _cameraTarget.localRotation;
+        if (Mathf.Abs(dir.x) > 0.1f)
+        {
+            _cameraRot *= Quaternion.Euler(0, dir.x * _lockSpeed, 0);
+        }
+        _cameraTarget.rotation = _cameraRot;
+    }
+    void ResetLock()
+    {
+        _cameraRot = _cameraTarget.localRotation;
+    }
     public void Build()
     {
+        var rot = transform.localRotation;
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
         foreach (var transform in _modelTransform)
         {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -71,6 +108,7 @@ public class CustomizeControl : MonoBehaviour
         _modelTransform[2].localRotation = Quaternion.Euler(-70, 0, -1);
         _modelTransform[3].localRotation = Quaternion.Euler(-70, 0, 1);
         SetColor();
+        transform.localRotation = rot;
     }
     void SetColor()
     {
@@ -228,7 +266,7 @@ public class CustomizeControl : MonoBehaviour
     public void SetDataBattlleStart()
     {
         GameManager.Instance.SetData(_currentBuildData, _color);
-        SceneChange.RoadGame();
+        SceneChange.LoadGame();
     }
     public void ChangeHead(int number)
     {
