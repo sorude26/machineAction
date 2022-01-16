@@ -11,6 +11,7 @@ public enum BulletType
     GrenadeSpark,
     Atomic,
     Fire,
+    Laser,
 }
 public class BulletPool : ObjectPoolBase<Shot,BulletType>
 {
