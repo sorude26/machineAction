@@ -314,6 +314,7 @@ public class BodyControl : MonoBehaviour
         }
         else
         {
+            _machine.Booster();
             ChangeAnimation(attackControl.AttackActionL(Fighting, 1));
         }
     }
@@ -385,11 +386,11 @@ public class BodyControl : MonoBehaviour
     void AttackBooster(bool force = false)
     {
         if (_machine.LookTarget != null)
-        {
-            Vector3 targetDir = _machine.LookTarget.position - _bodyControlBase[0].position;
-            SetBodyRotaion(targetDir);
+        {           
             if (!_groundCheck.IsGrounded())
             {
+                Vector3 targetDir = _machine.LookTarget.position - _bodyControlBase[0].position;
+                SetBodyRotaion(targetDir.normalized);
                 if (force)
                 {
                     _machine.AngleBooster(targetDir.normalized);

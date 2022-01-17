@@ -881,7 +881,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 297.56226, y: 9, z: 267.36057}
-  m_Center: {x: 18.518059, y: 0.5, z: 7.838852}
+  m_Center: {x: 18.518059, y: 3.19, z: 7.838852}
 --- !u!64 &147514613
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1195,7 +1195,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh94330
+  m_Name: pb_Mesh851298
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2531,7 +2531,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 297.56226, y: 9, z: 267.36057}
-  m_Center: {x: 18.518059, y: 0.5, z: 7.838852}
+  m_Center: {x: 18.518059, y: 5.9, z: 7.838852}
 --- !u!64 &356998065
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3129,13 +3129,13 @@ MonoBehaviour:
   _buildData:
     HeadID: 5
     BodyID: 5
-    RArmID: 5
-    LArmID: 5
+    RArmID: 7
+    LArmID: 7
     LegID: 5
-    WeaponRArmID: 18
-    WeaponLArmID: 18
+    WeaponRArmID: 15
+    WeaponLArmID: 15
     ShoulderWeaponID: 0
-    BodyWeaponID: 7
+    BodyWeaponID: 0
     BoosterID: 0
     CoreID: 0
   _color: {r: 0.22247079, g: 0.4245283, b: 0.21426664, a: 0}
@@ -3235,7 +3235,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh232728
+  m_Name: pb_Mesh851714
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4164,7 +4164,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh232804
+  m_Name: pb_Mesh851790
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5409,7 +5409,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh231960
+  m_Name: pb_Mesh850934
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11525,7 +11525,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 297.56226, y: 9, z: 267.36057}
-  m_Center: {x: 18.518059, y: 0.5, z: 7.838852}
+  m_Center: {x: 18.518059, y: -5.11, z: 7.838852}
 --- !u!64 &1915992360
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11827,7 +11827,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh231848
+  m_Name: pb_Mesh850822
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12590,7 +12590,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 297.56226, y: 9, z: 267.36057}
-  m_Center: {x: 18.518059, y: 0.5, z: 7.838852}
+  m_Center: {x: 18.518059, y: -3.87, z: 7.838852}
 --- !u!64 &2069809084
 MeshCollider:
   m_ObjectHideFlags: 0

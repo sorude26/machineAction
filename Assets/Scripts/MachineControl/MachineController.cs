@@ -287,6 +287,7 @@ public class MachineController : MonoBehaviour
     }
     public void AngleBooster(Vector3 dir)
     {
+        _inputAxis = dir.normalized;
         _rb.velocity = dir * _parameter.JetPower * _parameter.WalkPower * 2f;
     }
     public void Booster()

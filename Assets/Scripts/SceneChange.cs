@@ -41,8 +41,6 @@ public class SceneChange
             return;
         }
         roadNow = true;
-        BulletPool.FullReset();
-        EffectPool.FullReset();
         FadeController.StartFadeOut(Customize);
     }
     private static void Title()
@@ -58,6 +56,8 @@ public class SceneChange
     private static void Customize()
     {
         roadNow = false;
+        BulletPool.FullReset();
+        EffectPool.FullReset();
         SceneManager.LoadScene("CustomizeScene");
     }
 }

@@ -45,6 +45,10 @@ public abstract class ObjectPoolBase<T,key> : MonoBehaviour where T : MonoBehavi
 
     public static T Get(key type, Vector3 pos)
     {
+        if (instance == null)
+        {
+            return null;
+        }
         foreach (var objects in instance._objectDic[type])
         {
             if (objects.gameObject.activeInHierarchy)
@@ -59,6 +63,10 @@ public abstract class ObjectPoolBase<T,key> : MonoBehaviour where T : MonoBehavi
     }
     public static void FullReset()
     {
+        if (instance == null)
+        {
+            return;
+        }
         for (int i = 0; i < instance._objectPrefab.Length; i++)
         {            
             foreach (var objects in instance._objectDic[(key)Enum.ToObject(typeof(key),i)])
