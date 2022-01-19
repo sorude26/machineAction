@@ -1195,7 +1195,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh851298
+  m_Name: pb_Mesh63530
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3129,8 +3129,8 @@ MonoBehaviour:
   _buildData:
     HeadID: 5
     BodyID: 5
-    RArmID: 7
-    LArmID: 7
+    RArmID: 8
+    LArmID: 8
     LegID: 5
     WeaponRArmID: 15
     WeaponLArmID: 15
@@ -3235,7 +3235,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh851714
+  m_Name: pb_Mesh63946
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4119,7 +4119,8 @@ MonoBehaviour:
   - {fileID: 2756723513998015953, guid: 27d1e0a9dfc641646bd3d03df16809ab, type: 3}
   - {fileID: 539456653993431494, guid: 6c334dc89a42d744a856cc4090ca751f, type: 3}
   - {fileID: 3446535902180258072, guid: 5b683434d4d121744ab91537aa6baa78, type: 3}
-  _createCount: 90010000900100005a00000064000000640000000a00000090010000c8000000
+  - {fileID: 7936975108558534139, guid: 2b718fec8e0b02d4089a46856ffd0c63, type: 3}
+  _createCount: 90010000900100005a00000064000000640000000a00000090010000c800000001000000
 --- !u!4 &625573515
 Transform:
   m_ObjectHideFlags: 0
@@ -4164,7 +4165,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh851790
+  m_Name: pb_Mesh64022
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5409,7 +5410,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh850934
+  m_Name: pb_Mesh63166
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11827,7 +11828,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh850822
+  m_Name: pb_Mesh63054
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12920,7 +12921,7 @@ MonoBehaviour:
   drawTripods: 0
   boneSize: 1
   tripodSize: 1
-  boneColor: {r: 0, g: 0, b: 1, a: 0.5}
+  boneColor: {r: 0, g: 0, b: 1, a: 0}
   m_Transforms:
   - {fileID: 468874461}
   - {fileID: 1040771245}
