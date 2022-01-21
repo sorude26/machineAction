@@ -21,25 +21,12 @@ public class FadeController : MonoBehaviour
         instance = this;
         _fadeImage.gameObject.SetActive(false);
     }
-    /// <summary>
-    /// フェードインする
-    /// </summary>
-    public static void StartFadeIn()
-    {
-        instance?.StartCoroutine(instance.FadeIn(() => { }));
-    }
-    /// <summary>
-    /// フェードアウトする
-    /// </summary>
-    public static void StartFadeOut()
-    {
-        instance?.StartCoroutine(instance.FadeOut(() => { }));
-    }
+
     /// <summary>
     /// フェードイン後にアクションする
     /// </summary>
     /// <param name="action"></param>
-    public static void StartFadeIn(Action action)
+    public static void StartFadeIn(Action action = null)
     {
         if (instance == null)
         {
@@ -52,7 +39,7 @@ public class FadeController : MonoBehaviour
     /// フェードアウト後にアクションする
     /// </summary>
     /// <param name="action"></param>
-    public static void StartFadeOut(Action action)
+    public static void StartFadeOut(Action action = null)
     {
         if (instance == null)
         {
