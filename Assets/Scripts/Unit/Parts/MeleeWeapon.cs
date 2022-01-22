@@ -15,6 +15,8 @@ public class MeleeWeapon : WeaponMaster
     AttackTriger[] _trigers = default;
     [SerializeField]
     float _knockBackPower = 1f;
+    [SerializeField]
+    float _speedPower = 1f;
     private void Start()
     {
         if (_triger != null)
@@ -53,5 +55,9 @@ public class MeleeWeapon : WeaponMaster
     {
         GameScene.TimeManager.Instance.HitStop();
         CameraController.LightShake();
+    }
+    public override float AttackSpeed()
+    {
+        return _speedPower;
     }
 }

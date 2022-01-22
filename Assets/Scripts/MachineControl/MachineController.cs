@@ -34,6 +34,7 @@ public class MachineController : MonoBehaviour
     Vector3 _inputAxis = Vector3.zero;
     Quaternion _legRotaion = Quaternion.Euler(0, 0, 0);
     PartsManager _parts = default;
+    Transform _target = default;
 
     public event Action OnBreak = default;
 
@@ -76,16 +77,31 @@ public class MachineController : MonoBehaviour
         {
             return;
         }
-        var target = BattleManager.Instance.GetTarget();
-        if (target)
+        if (_target)
         {
-            LookTarget = target.Center;
+            LookTarget = _target;
         }
         else
         {
-            LookTarget = null;
+            var target = BattleManager.Instance.GetTarget();
+            if (target)
+            {
+                LookTarget = target.Center;
+            }
+            else
+            {
+                LookTarget = null;
+            }
+            _mark.SetTarget(target);
         }
-        _mark.SetTarget(target);
+    }
+    public void SetTarget(Transform target)
+    {
+        _target = target;
+    }
+    public void Move(Vector3 dir)
+    {
+        Move(dir.x, dir.z);
     }
     public void Move(float horizonal, float vertical)
     {

@@ -11,6 +11,8 @@ public class BattleManager : MonoBehaviour
     GameObject _clearMassage = default;
 
     List<DamageControl> _allAttackTarget = default;
+
+    public Transform PlayerPos { get; set; }
     private void Awake()
     {
         Instance = this;

@@ -23,9 +23,7 @@ public class CameraController : MonoBehaviour
         instance = this;
     }
     void Start()
-    {
-        GameScene.InputManager.Instance.OnInputCameraRawExit += ResetLock;
-        GameScene.InputManager.Instance.OnInputCameraRaw += FreeLock;
+    {       
         _cameraRot = transform.localRotation;
     }
     private void Update()
@@ -37,7 +35,7 @@ public class CameraController : MonoBehaviour
     {
         _cameraRot = _cameraTarget.rotation;
     }
-    void FreeLock(Vector2 dir)
+    public void FreeLock(Vector2 dir)
     {
         _cameraRot = _cameraTarget.localRotation;
         if (Mathf.Abs(dir.x) > 0.1f)
@@ -47,7 +45,7 @@ public class CameraController : MonoBehaviour
         _cameraRot = ClampRotation(_cameraRot);
         _body.SetBodyRotaion(_cameraRot);
     }
-    void ResetLock()
+    public void ResetLock()
     {
         _cameraRot = _cameraTarget.localRotation;
         _body.InputEnd();

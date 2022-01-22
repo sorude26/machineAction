@@ -10,12 +10,21 @@ public class PlayerController : MonoBehaviour
     MachineBuildControl _buildControl = default;
     [SerializeField]
     GaugeControl _gauge = default;
+    [SerializeField]
+    CameraController _cameraControl = default;
 
     void Start()
     {
         _buildControl.SetData(GameManager.Instance.CurrentBuildData);
         _controller.StartSet();
-        _controller.MachineParts.ChangeColor(GameManager.Instance.PlayerColor);
+        _controller.MachineParts.ChangeColor(GameManager.Instance.PlayerColor);        
+        _controller.OnBreak += BattleManager.Instance.GameEnd;
+        _controller.MachineParts.Body.SetGauge(_gauge);
+        BattleManager.Instance.PlayerPos = _controller.MachineParts.Body.transform;
+        FadeController.StartFadeIn(SetControl);
+    }
+    void SetControl()
+    {
         GameScene.InputManager.Instance.OnInputAxisRaw += _controller.Move;
         GameScene.InputManager.Instance.OnInputAxisRawExit += _controller.MoveEnd;
         GameScene.InputManager.Instance.OnFirstInputJump += _controller.Jump;
@@ -27,11 +36,9 @@ public class PlayerController : MonoBehaviour
         GameScene.InputManager.Instance.OnFirstInputShotR += _controller.BodyControl.HandAttackRight;
         GameScene.InputManager.Instance.OnFirstInputShot1 += _controller.BodyControl.ShoulderShot;
         GameScene.InputManager.Instance.OnFirstInputShot2 += _controller.BodyControl.BodyWeaponShot;
-        _controller.OnBreak += BattleManager.Instance.GameEnd;
-        _controller.MachineParts.Body.SetGauge(_gauge);
-        FadeController.StartFadeIn();
+        GameScene.InputManager.Instance.OnInputCameraRawExit += _cameraControl.ResetLock;
+        GameScene.InputManager.Instance.OnInputCameraRaw += _cameraControl.FreeLock;
     }
-   
     public void OutControl()
     {
         GameScene.InputManager.Instance.OnInputAxisRaw -= _controller.Move;

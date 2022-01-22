@@ -9561,7 +9561,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -14467,7 +14467,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -19305,6 +19305,7 @@ MonoBehaviour:
   - {fileID: 1359002865356862292}
   - {fileID: 1704701272252928236}
   _knockBackPower: 1
+  _speedPower: 1
 --- !u!1 &1855310727816323469
 GameObject:
   m_ObjectHideFlags: 0
