@@ -97,5 +97,7 @@ public class MachineBuildControl : MonoBehaviour
         manager.ShoulderWeapon.RShoulder.SetParent(manager.RArm.Shoulder);
         manager.ShoulderWeapon.LShoulder.SetParent(manager.LArm.Shoulder);
         manager.ShoulderWeapon.transform.SetParent(_bodyBase[0]);
+        manager.LArm.SetBody(manager.Body);
+        manager.RArm.SetBody(manager.Body);
     }
 }
