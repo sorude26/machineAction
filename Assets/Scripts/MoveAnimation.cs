@@ -28,6 +28,10 @@ public class MoveAnimation : MonoBehaviour
         _turn = 0;
         ChangeAnimation("Wait");
     }
+    public void SetTurn(int i)
+    {
+        _turn = i;
+    }
     public void TurnStartLeft()
     {
         _turn = -1;

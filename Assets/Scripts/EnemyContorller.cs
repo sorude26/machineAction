@@ -43,7 +43,7 @@ public class EnemyContorller : MonoBehaviour
             _set = true;
         }
         Vector3 dir = _controller.MachineParts.Body.transform.forward - BattleManager.Instance.PlayerPos.position;
-        _controller.Move(-dir.normalized);
+        _controller.Move(dir.normalized);
         if (dir.magnitude < _attackRange)
         {
             _controller.BodyControl.HandAttackLeft();

@@ -35,16 +35,15 @@ public class MachineBuildControl : MonoBehaviour
     {
         manager.Leg = Instantiate(GameManager.Instance.PartsList.GetLeg(data.LegID));
         manager.Leg.transform.position = _legBase[0].position;
+        _legBase[3].position = manager.Leg.LegTop.position;
         if (manager.Leg.Type == LegType.Animation)
         {
-            _legBase[3].position = manager.Leg.LegTop.position;
             _legBase[5].SetParent(manager.Leg.LegTop);
             manager.Leg.transform.SetParent(transform);
             LegBase = manager.Leg.transform;
         }
         else
         {
-            _legBase[3].position = manager.Leg.LegTop.position;
             manager.Leg.transform.SetParent(_legBase[3]);
             LegBase = transform;
         }
@@ -116,6 +115,7 @@ public class MachineBuildControl : MonoBehaviour
     public void Purge(Transform parent)
     {
         transform.SetParent(parent);
+        _legBase[5].position = transform.position;
         _legBase[5].SetParent(transform);
     }
 }

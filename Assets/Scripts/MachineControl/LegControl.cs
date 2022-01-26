@@ -144,12 +144,16 @@ public class LegControl : MonoBehaviour
         if (_jump || _knockDown)
         {
             return;
-        }
+        }       
         if (_turn < 0)
         {
+            if (_legType == LegType.Animation)
+            {
+                _moveAnimation.SetTurn(_turn);
+            }
             return;
         }
-        _turn = -1;
+        _turn = -1;        
         if (_walk != 0)
         {
             return;
@@ -174,9 +178,13 @@ public class LegControl : MonoBehaviour
         if (_jump || _knockDown)
         {
             return;
-        }
+        } 
         if (_turn > 0)
         {
+            if (_legType == LegType.Animation)
+            {
+                _moveAnimation.SetTurn(_turn);
+            }
             return;
         }
         _turn = 1;
