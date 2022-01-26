@@ -100,6 +100,7 @@ public class CustomizeControl : MonoBehaviour
         {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
+        _buildControl.Purge(transform);
         _partsManager.ResetAllParts();
         _buildControl.SetData(_currentBuildData);
         _buildControl.StartSet(_partsManager);

@@ -49,7 +49,7 @@ public class DamageControl : MonoBehaviour, IDamageApplicable
             _center = transform;
         }
         EffectPool.Get(_deadEffect, _center.position);
-        CameraController.Shake();
+        CameraEffectManager.Shake(transform.position);
         if (_body == null)
         {
             gameObject.SetActive(false);

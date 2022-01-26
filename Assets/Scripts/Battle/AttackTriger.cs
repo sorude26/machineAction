@@ -37,7 +37,7 @@ public class AttackTriger : MonoBehaviour
             effect.Particle.Play();
             if (_effect == EffectType.Explosion || _effect == EffectType.ExplosionMachine)
             {
-                CameraController.Shake();
+                CameraEffectManager.Shake(transform.position);
             }
         }
         OnHit?.Invoke();

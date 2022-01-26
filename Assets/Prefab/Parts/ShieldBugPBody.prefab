@@ -1959,6 +1959,7 @@ GameObject:
   - component: {fileID: 3248089578757713485}
   - component: {fileID: 3248089578757713482}
   - component: {fileID: 5030390751712469422}
+  - component: {fileID: 2229046720390338391}
   m_Layer: 0
   m_Name: ShieldBugPBody
   m_TagString: Untagged
@@ -2016,16 +2017,8 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ad2cfe481fba7ba49aea7fc5954d31ac, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  m_hitPos:
-  - {fileID: 3248089577798209901}
-  - {fileID: 3248089577853882586}
-  - {fileID: 3248089579637744231}
-  - {fileID: 3248089578306006363}
-  - {fileID: 3248089579006101146}
-  - {fileID: 3248089578835310777}
-  - {fileID: 3248089578012478304}
-  - {fileID: 3248089577849501186}
-  m_damageSmoke: {fileID: 5030390751848209968}
+  _hitPos: []
+  _damageSmoke: {fileID: 0}
   m_amors:
   - {fileID: 3248089578846285973}
   - {fileID: 3248089579226908989}
@@ -2048,12 +2041,33 @@ MonoBehaviour:
   - {fileID: 3248089578622244285}
   - {fileID: 3248089577885493102}
   - {fileID: 3248089578866936159}
-  m_headParts: {fileID: 3248089579006101146}
-  m_lArmParts: {fileID: 3248089578012478304}
-  m_rArmParts: {fileID: 3248089578012478304}
-  m_weapon: {fileID: 0}
-  m_weaponShoulder: {fileID: 0}
-  m_bodyPos: {fileID: 3248089579006101146}
+  _mainBoosterParticles: []
+  _subBoosterParticles: []
+  _frontBoosterParticles: []
+  _backBoosterParticles: []
+  _leftBoosterParticles: []
+  _rightBoosterParticles: []
+  _gauge: {fileID: 0}
+  _headParts: {fileID: 0}
+  _lArmParts: {fileID: 0}
+  _rArmParts: {fileID: 0}
+  _backPartsPos: {fileID: 0}
+  _weapon: {fileID: 0}
+  _weaponShoulder: {fileID: 0}
+  _breakSpark: {fileID: 0}
+--- !u!114 &2229046720390338391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3248089578757713484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5e3a359615ec2478a1c1cc4cd9cc9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 3248089578757713482}
 --- !u!1 &3248089578768151353
 GameObject:
   m_ObjectHideFlags: 0

@@ -71,7 +71,7 @@ public class PartsArm : UnitPartsMaster<ArmData>
         if (_currentPartsHp <= 0)
         {
             EffectPool.Get(EffectType.Bom, transform.position);
-            CameraController.Shake();
+            CameraEffectManager.Shake(transform.position);
             _currentPartsHp = 0;
             Break = true;
             PartsBreak();

@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    static CameraController instance = default;
     [SerializeField]
     Transform _cameraTarget = default;
     [SerializeField]
     BodyControl _body = default;
-    [SerializeField]
-    ShakeControl _cameraShakeControl = default;
     [SerializeField]
     float _followSpeed = 5f;
     [SerializeField]
@@ -18,10 +15,6 @@ public class CameraController : MonoBehaviour
     Quaternion _cameraRot = default;
     float _minY = -70f;
     float _maxY = 20f;
-    private void Awake()
-    {
-        instance = this;
-    }
     void Start()
     {       
         _cameraRot = transform.localRotation;
@@ -63,29 +56,5 @@ public class CameraController : MonoBehaviour
         angleX = Mathf.Clamp(angleX, _minY, _maxY);
         angle.x = Mathf.Tan(angleX * Mathf.Deg2Rad * 0.5f);
         return angle;
-    }
-    public static void Shake()
-    {
-        if (!instance)
-        {
-            return;
-        }
-        instance._cameraShakeControl.StartShake(1.2f, 2f);
-    }
-    public static void LightShake()
-    {
-        if (!instance)
-        {
-            return;
-        }
-        instance._cameraShakeControl.StartShake(0.2f, 1.7f);
-    }
-    public static void HitShake()
-    {
-        if (!instance)
-        {
-            return;
-        }
-        instance._cameraShakeControl.StartShake(0.07f, 0.5f);
     }
 }

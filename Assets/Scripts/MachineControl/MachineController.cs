@@ -35,6 +35,7 @@ public class MachineController : MonoBehaviour
     Quaternion _legRotaion = Quaternion.Euler(0, 0, 0);
     PartsManager _parts = default;
     Transform _target = default;
+    Transform _legTransform = default;
 
     public event Action OnBreak = default;
 
@@ -50,6 +51,7 @@ public class MachineController : MonoBehaviour
     {
         _parts = new PartsManager();
         _buildControl.StartSet(_parts);
+        _legTransform = _buildControl.LegBase;
         _rb = GetComponent<Rigidbody>();
         _leg.Set(this);
         _leg.SetLandingTime(_parameter.LandingTime);
@@ -69,7 +71,7 @@ public class MachineController : MonoBehaviour
     private void Update()
     {
         _body.PartsMotion();
-        _leg.transform.localRotation = Quaternion.Lerp(_leg.transform.localRotation, _legRotaion, _parameter.TurnSpeed * Time.deltaTime);
+        _legTransform.localRotation = Quaternion.Lerp(_legTransform.localRotation, _legRotaion, _parameter.TurnSpeed * Time.deltaTime);
     }
     public void SetTarget()
     {
@@ -178,6 +180,14 @@ public class MachineController : MonoBehaviour
             _moveControl.MoveWalk(_rb, _leg.transform.forward * angle, _parameter.WalkPower, _parameter.MaxWalkSpeed);
         }
     }
+    public void Move(int angle)
+    {
+        if (_groundCheck.IsGrounded())
+        {
+            _rb.angularVelocity = Vector3.zero;
+            _moveControl.MoveFloat(_rb, _leg.transform.forward * angle, _parameter.WalkPower, _parameter.MaxWalkSpeed);
+        }
+    }
     public void Jump()
     {
         if (_knockDown)
@@ -274,7 +284,7 @@ public class MachineController : MonoBehaviour
         StrongTurn();
         Vector3 vector = _bodyAngle.forward * _inputAxis.z * 1.5f + _bodyAngle.right * _inputAxis.x;
         _rb.AddForce(vector * _parameter.FloatSpeed + Vector3.up * 0.7f, ForceMode.Impulse);
-        _leg.transform.localRotation = _legRotaion;
+        _legTransform.localRotation = _legRotaion;
         _jet = false;
     }
     public void Landing()
@@ -354,7 +364,7 @@ public class MachineController : MonoBehaviour
         {
             return;
         }
-        CameraController.Shake();
+        CameraEffectManager.Shake(transform.position);
         _knockDown = true;
         _body.KnockDown();
         _leg.KnockDown();
@@ -376,7 +386,7 @@ public class MachineController : MonoBehaviour
     IEnumerator Explosion()
     {
         yield return new WaitForSeconds(3f);
-        CameraController.Shake();
+        CameraEffectManager.Shake(transform.position);
         EffectPool.Get(EffectType.HeavyExplosion, BodyControl.BodyTransform.position);
         gameObject.SetActive(false);
         OnBreak?.Invoke();

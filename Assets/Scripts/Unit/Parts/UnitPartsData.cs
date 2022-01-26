@@ -28,6 +28,7 @@ public enum LegType
 {
     Normal,
     Crawler,
+    Animation,
 }
 /// <summary>
 /// 機体パーツデータの基底クラス

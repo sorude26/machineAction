@@ -60,7 +60,7 @@ public class Shot : MonoBehaviour
             effect.Particle.Play();
             if (_hitEffect == EffectType.Explosion || _hitEffect == EffectType.ExplosionMachine || _hitEffect == EffectType.AtomicBom)
             {
-                CameraController.Shake();
+                CameraEffectManager.Shake(transform.position);
             }
         }
     }

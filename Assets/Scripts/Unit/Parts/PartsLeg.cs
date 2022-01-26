@@ -23,6 +23,10 @@ public class PartsLeg : UnitPartsMaster<LegData>
     [SerializeField] Transform m_rLeg2;
     [SerializeField] Transform m_rLeg3;
 
+    [Tooltip("脚部パーツのアニメーション操作機能")]
+    [SerializeField]
+    MoveAnimation _moveAnimation = default;
+
     /// <summary> 脚部パーツの頂点 </summary>
     public Transform LegTop { get => m_legTop; }
     public Transform LLeg1 { get => m_lLeg1; }
@@ -31,6 +35,7 @@ public class PartsLeg : UnitPartsMaster<LegData>
     public Transform RLeg1 { get => m_rLeg1; }
     public Transform RLeg2 { get => m_rLeg2; }
     public Transform RLeg3 { get => m_rLeg3; }
+    public MoveAnimation MoveAnimation { get => _moveAnimation; }
     protected override void StartSet()
     {
         CurrentMovePower = _partsData.MovePower[_partsID];

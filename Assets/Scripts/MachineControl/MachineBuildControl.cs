@@ -15,11 +15,13 @@ public class MachineBuildControl : MonoBehaviour
     [SerializeField]
     Transform[] _leftArm = new Transform[4];
     [SerializeField]
-    Transform[] _legBase = new Transform[5];
+    Transform[] _legBase = new Transform[6];
     [SerializeField]
     Transform[] _rightLeg = new Transform[3];
     [SerializeField]
     Transform[] _leftLeg = new Transform[3];
+
+    public Transform LegBase { get; set; }
 
     public void StartSet(PartsManager manager)
     {
@@ -33,8 +35,19 @@ public class MachineBuildControl : MonoBehaviour
     {
         manager.Leg = Instantiate(GameManager.Instance.PartsList.GetLeg(data.LegID));
         manager.Leg.transform.position = _legBase[0].position;
-        _legBase[3].position = manager.Leg.LegTop.position;
-        manager.Leg.transform.SetParent(_legBase[3]);
+        if (manager.Leg.Type == LegType.Animation)
+        {
+            _legBase[3].position = manager.Leg.LegTop.position;
+            _legBase[5].SetParent(manager.Leg.LegTop);
+            manager.Leg.transform.SetParent(transform);
+            LegBase = manager.Leg.transform;
+        }
+        else
+        {
+            _legBase[3].position = manager.Leg.LegTop.position;
+            manager.Leg.transform.SetParent(_legBase[3]);
+            LegBase = transform;
+        }
         _rightLeg[0].position = manager.Leg.RLeg1.position;
         _rightLeg[1].position = manager.Leg.RLeg2.position;
         _rightLeg[2].position = manager.Leg.RLeg3.position;
@@ -99,5 +112,10 @@ public class MachineBuildControl : MonoBehaviour
         manager.ShoulderWeapon.transform.SetParent(_bodyBase[0]);
         manager.LArm.SetBody(manager.Body);
         manager.RArm.SetBody(manager.Body);
+    }
+    public void Purge(Transform parent)
+    {
+        transform.SetParent(parent);
+        _legBase[5].SetParent(transform);
     }
 }
