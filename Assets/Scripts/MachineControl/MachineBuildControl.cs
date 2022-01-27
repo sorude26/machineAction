@@ -9,6 +9,8 @@ public class MachineBuildControl : MonoBehaviour
     [SerializeField]
     Transform _camera = default;
     [SerializeField]
+    Transform _bodyRotaionTarget = default;
+    [SerializeField]
     Transform[] _bodyBase = new Transform[2];
     [SerializeField]
     Transform[] _rightArm = new Transform[4];
@@ -41,10 +43,12 @@ public class MachineBuildControl : MonoBehaviour
             _legBase[5].SetParent(manager.Leg.LegTop);
             manager.Leg.transform.SetParent(transform);
             LegBase = manager.Leg.transform;
+           // _bodyRotaionTarget.SetParent(LegBase);
         }
         else
         {
             manager.Leg.transform.SetParent(_legBase[3]);
+            //_bodyRotaionTarget.SetParent(_legBase[5]);
             LegBase = transform;
         }
         _rightLeg[0].position = manager.Leg.RLeg1.position;

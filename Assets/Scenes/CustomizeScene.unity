@@ -13228,6 +13228,7 @@ MonoBehaviour:
     BoosterID: 0
     CoreID: 0
   _camera: {fileID: 2026194993}
+  _bodyRotaionTarget: {fileID: 374009038}
   _bodyBase:
   - {fileID: 1771348747}
   - {fileID: 1268489664}
