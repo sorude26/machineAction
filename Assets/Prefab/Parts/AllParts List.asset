@@ -41,6 +41,8 @@ MonoBehaviour:
   - {fileID: 4012201561706920292, guid: 068ca3f176dc98343bbb7bd82187fd14, type: 3}
   - {fileID: 3519385473321551688, guid: e0bcceadc0535f246be2058243dcaffc, type: 3}
   - {fileID: 3976147376430907916, guid: aa18c893b2802fe409da5ccfa5500c90, type: 3}
+  - {fileID: 6739921977726794125, guid: f03fe4977486bc142bd3ddefcee7f3ce, type: 3}
+  - {fileID: 7116169451017917088, guid: c2f31d5bcd74ff041a93bef364c0a5f4, type: 3}
   _arms:
   - {fileID: 3591593199869367836, guid: 4493c569bba02214cafee0676e5e63b2, type: 3}
   - {fileID: 7776047727513404436, guid: e4524d5efb8012341a25b234aa6d0f62, type: 3}
@@ -79,6 +81,7 @@ MonoBehaviour:
   - {fileID: 3214235399804592598, guid: a60663324a180f145bf306f71a8c93b8, type: 3}
   - {fileID: 8575377592030437334, guid: 0ce4dcb8e3cef76489bd3a5312d42820, type: 3}
   - {fileID: 8521978539492361372, guid: 1a031d661849e524e93be7b39d461929, type: 3}
+  - {fileID: 3199241407781486742, guid: 23dc874da209014449f2fbd4edbe0892, type: 3}
   _boosters:
   - {fileID: 4474116586410567403, guid: 1e151721a5b96f54a93a30932f5b4b44, type: 3}
   _weapons:

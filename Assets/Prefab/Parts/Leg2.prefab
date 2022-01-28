@@ -453,7 +453,7 @@ Transform:
   m_GameObject: {fileID: 3094492286485152717}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.192, z: 0.09}
-  m_LocalScale: {x: 1.2, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 138190013236648533}
   m_RootOrder: 1
@@ -774,11 +774,8 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: 914926fcfa9fedd448ebfc8ddd6b02ab, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  m_hitPos:
-  - {fileID: 4759285428212147885}
-  - {fileID: 5478780725645996849}
-  - {fileID: 8032864017449317707}
-  m_damageSmoke: {fileID: 6069599675421058796}
+  _hitPos: []
+  _damageSmoke: {fileID: 0}
   m_amors:
   - {fileID: 343494276110451787}
   - {fileID: 8686322038870752438}
@@ -787,6 +784,13 @@ MonoBehaviour:
   - {fileID: 7934250869781059193}
   - {fileID: 8712074608366558545}
   - {fileID: 8250129715563817566}
+  _mainBoosterParticles: []
+  _subBoosterParticles: []
+  _frontBoosterParticles: []
+  _backBoosterParticles: []
+  _leftBoosterParticles: []
+  _rightBoosterParticles: []
+  _gauge: {fileID: 0}
   m_legTop: {fileID: 4759285428212147885}
   m_lLeg1: {fileID: 3125266721743294608}
   m_lLeg2: {fileID: 8469489614813507877}
@@ -794,6 +798,7 @@ MonoBehaviour:
   m_rLeg1: {fileID: 8030184847010209430}
   m_rLeg2: {fileID: 7752492644054875017}
   m_rLeg3: {fileID: 3385236002114485705}
+  _moveAnimation: {fileID: 0}
 --- !u!1 &5624418109705894390
 GameObject:
   m_ObjectHideFlags: 0

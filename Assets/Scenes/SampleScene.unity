@@ -2565,7 +2565,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1698826
+  m_Name: pb_Mesh17576
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3768,7 +3768,6 @@ MonoBehaviour:
     BoosterID: 0
     CoreID: 0
   _camera: {fileID: 996807435}
-  _bodyRotaionTarget: {fileID: 0}
   _bodyBase:
   - {fileID: 1243155343}
   - {fileID: 12059180}
@@ -6600,7 +6599,7 @@ MonoBehaviour:
     BodyID: 5
     RArmID: 8
     LArmID: 8
-    LegID: 13
+    LegID: 12
     WeaponRArmID: 4
     WeaponLArmID: 4
     ShoulderWeaponID: 0
@@ -7150,7 +7149,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1699932
+  m_Name: pb_Mesh18682
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8772,7 +8771,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1700144
+  m_Name: pb_Mesh18894
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10911,7 +10910,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1697884
+  m_Name: pb_Mesh16634
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11194,7 +11193,6 @@ MonoBehaviour:
     BoosterID: 0
     CoreID: 0
   _camera: {fileID: 1499656823}
-  _bodyRotaionTarget: {fileID: 0}
   _bodyBase:
   - {fileID: 1691263540}
   - {fileID: 342180340}
@@ -16308,7 +16306,6 @@ MonoBehaviour:
     BoosterID: 0
     CoreID: 0
   _camera: {fileID: 453529737}
-  _bodyRotaionTarget: {fileID: 246160411}
   _bodyBase:
   - {fileID: 465970624}
   - {fileID: 1041808988}
@@ -16544,7 +16541,6 @@ MonoBehaviour:
     BoosterID: 0
     CoreID: 0
   _camera: {fileID: 409634874}
-  _bodyRotaionTarget: {fileID: 2085280248}
   _bodyBase:
   - {fileID: 1847909135}
   - {fileID: 1961267678}
@@ -20638,7 +20634,6 @@ MonoBehaviour:
     BoosterID: 0
     CoreID: 0
   _camera: {fileID: 1773100086}
-  _bodyRotaionTarget: {fileID: 0}
   _bodyBase:
   - {fileID: 1388433599}
   - {fileID: 2024655454}
@@ -25939,7 +25934,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1697552
+  m_Name: pb_Mesh16302
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26548,7 +26543,6 @@ MonoBehaviour:
     BoosterID: 0
     CoreID: 0
   _camera: {fileID: 2146080150}
-  _bodyRotaionTarget: {fileID: 730905139}
   _bodyBase:
   - {fileID: 1007097280}
   - {fileID: 2031917631}

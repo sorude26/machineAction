@@ -20,7 +20,14 @@ public class MoveAnimation : MonoBehaviour
     public void WalkStart(int angle)
     {
         _walk = angle;
-        ChangeAnimation("Walk");
+        if (angle >= 0)
+        {
+            ChangeAnimation("Walk");
+        }
+        else
+        {
+            ChangeAnimation("WalkBack");
+        }
     }
     public void WalkStop()
     {
