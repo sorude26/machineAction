@@ -36,7 +36,7 @@ public class MeleeWeapon : WeaponMaster
             triger.SetPower = power;
         }
     }
-    public override void AttackAction()
+    public override void AttackAction(Vector3 target)
     {
         _blade.SetActive(true);
     }

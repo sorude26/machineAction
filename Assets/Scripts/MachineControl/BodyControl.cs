@@ -137,7 +137,7 @@ public class BodyControl : MonoBehaviour
         {
             return;
         }
-        _machine.SWeapon.AttackAction();
+        _machine.SWeapon.AttackAction(_machine.LookTarget.position);
     }
     public void BodyWeaponShot()
     {
@@ -150,15 +150,15 @@ public class BodyControl : MonoBehaviour
         {
             LockOn(_machine.LookTarget.position);
         }
-        _machine.BWeapon.AttackAction();
+        _machine.BWeapon.AttackAction(_machine.LookTarget.position);
     }
     void ShotLeft()
     {
-        _machine.LAWeapon.AttackAction();
+        _machine.LAWeapon.AttackAction(_machine.LookTarget.position);
     }
     void ShotRight()
     {
-        _machine.RAWeapon.AttackAction();
+        _machine.RAWeapon.AttackAction(_machine.LookTarget.position);
     }
     bool LockOn(Vector3 targetPos)
     {
@@ -404,11 +404,11 @@ public class BodyControl : MonoBehaviour
     }
     void OnBladeL()
     {
-        _machine.LAWeapon.AttackAction();
+        _machine.LAWeapon.AttackAction(_machine.LookTarget.position);
     }
     void OnBladeR()
     {
-        _machine.RAWeapon.AttackAction();
+        _machine.RAWeapon.AttackAction(_machine.LookTarget.position);
     }
     void EndBlade()
     {

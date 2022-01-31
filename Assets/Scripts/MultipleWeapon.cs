@@ -18,11 +18,11 @@ public class MultipleWeapon : WeaponMaster
             }
         }
     }
-    public override void AttackAction()
+    public override void AttackAction(Vector3 target)
     {
         foreach (var weapon in _weapons)
         {
-            weapon.AttackAction();
+            weapon.AttackAction(target);
         }
     }
     public override float AttackSpeed()

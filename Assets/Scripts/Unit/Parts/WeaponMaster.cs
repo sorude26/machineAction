@@ -31,7 +31,7 @@ public abstract class WeaponMaster : PartsMaster<WeaponData>
     /// <summary>
     /// 攻撃開始
     /// </summary>
-    public abstract void AttackAction();
+    public abstract void AttackAction(Vector3 target);
     public virtual void AttackEnd() { }
     public virtual float AttackSpeed() { return 1; }
 }

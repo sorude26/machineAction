@@ -25,6 +25,8 @@ public class MachineController : MonoBehaviour
     TargetMark _mark = default;
     [SerializeField]
     Transform _bodyAngle = default;
+    [SerializeField]
+    Transform _front = default;
 
     bool _fly = false;
     bool _jump = false;
@@ -66,7 +68,8 @@ public class MachineController : MonoBehaviour
         LAWeapon.OwnerRb = _rb;
         BWeapon.OwnerRb = _rb;
         SWeapon.OwnerRb = _rb;
-        _parts.Body.OnBodyBreak += BodyBreak;
+        _parts.Body.OnBodyBreak += BodyBreak; 
+        LookTarget = _front;
     }
     private void Update()
     {
@@ -92,7 +95,7 @@ public class MachineController : MonoBehaviour
             }
             else
             {
-                LookTarget = null;
+                LookTarget = _front;
             }
             _mark.SetTarget(target);
         }

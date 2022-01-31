@@ -14726,6 +14726,8 @@ MonoBehaviour:
   _shotInterval: 50
   _diffusivity: 0
   _diffusionShot: 1
+  _parabola: 0
+  _angle: 0
 --- !u!1 &3673518824023718568
 GameObject:
   m_ObjectHideFlags: 0

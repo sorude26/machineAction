@@ -13,6 +13,7 @@ public enum BulletType
     Fire,
     Laser,
     None,
+    Energy,
 }
 public class BulletPool : ObjectPoolBase<Shot,BulletType>
 {

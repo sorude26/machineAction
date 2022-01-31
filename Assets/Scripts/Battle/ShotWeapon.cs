@@ -22,10 +22,15 @@ public class ShotWeapon : WeaponMaster
     protected float _diffusivity = 0.01f;
     [SerializeField]
     protected int _diffusionShot = 0;
+    [SerializeField]
+    protected float _parabola = 0;
+    [SerializeField]
+    protected float _angle = 0;
 
     protected float _triggerTimer = 0;
     protected bool _trigger = false;
     protected int _shotCount = 0;
+    protected Vector3 _target = default;
     public bool ShotNow { get; protected set; }
 
     public virtual void Shot()
@@ -36,6 +41,38 @@ public class ShotWeapon : WeaponMaster
             {
                 particle.Play();
             }
+        }
+        if (_parabola > 0)
+        {
+            if (_diffusivity > 0)
+            {
+                Vector3 target = _target;
+                target.x += Random.Range(-_diffusivity, _diffusivity);
+                target.y += Random.Range(-_diffusivity, _diffusivity);
+                target.z += Random.Range(-_diffusivity, _diffusivity);
+                ParabolaShot.ShootFixedTime(target, _parabola, _bullet, _muzzle.position);
+            }
+            else
+            {
+                ParabolaShot.ShootFixedTime(_target, _parabola, _bullet, _muzzle.position);
+            }
+            return;
+        }
+        if (_angle > 0)
+        {
+            if (_diffusivity > 0)
+            {
+                Vector3 target = _target;
+                target.x += Random.Range(-_diffusivity, _diffusivity);
+                target.y += Random.Range(-_diffusivity, _diffusivity);
+                target.z += Random.Range(-_diffusivity, _diffusivity);
+                ParabolaShot.ShootFixedAngle(target, _angle, _muzzle.position, _bullet);
+            }
+            else
+            {
+                ParabolaShot.ShootFixedAngle(_target, _angle, _muzzle.position, _bullet);
+            }
+            return;
         }
         if (_diffusionShot > 0)
         {
@@ -72,8 +109,9 @@ public class ShotWeapon : WeaponMaster
             }
         }
     }
-    public virtual void StartShot()
+    public virtual void StartShot(Vector3 target)
     {
+        _target = target;
         if (_triggerTimer > 0 || !gameObject.activeInHierarchy)
         {
             return;
@@ -125,9 +163,9 @@ public class ShotWeapon : WeaponMaster
         _trigger = false;
     }
 
-    public override void AttackAction()
+    public override void AttackAction(Vector3 target)
     {
-        StartShot();
+        StartShot(target);
     }
     public override float AttackSpeed()
     {

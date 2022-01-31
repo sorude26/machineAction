@@ -28,6 +28,10 @@ public class AnimationShotWeapon : ShotWeapon
     {
         _shotNow = false;
     }
+    void StartShot()
+    {
+        StartShot(_target);
+    }
     void ShotStart()
     {
         if (_shotCount > 0)

@@ -33,7 +33,7 @@ public class AutoAttacker : MonoBehaviour
         if (_attackTimer >= _attackInterval)
         {
             _attackTimer = 0;
-            _weapon.AttackAction();
+            _weapon.AttackAction(_targetLock.position);
         }
         if (_aimSpeed > 0)
         {

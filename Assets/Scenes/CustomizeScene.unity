@@ -2855,7 +2855,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh202892
+  m_Name: pb_Mesh619100
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16688,9 +16688,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1889574726}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 7
+  m_MaxValue: 10
   m_WholeNumbers: 1
-  m_Value: 4
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

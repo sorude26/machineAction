@@ -339,6 +339,7 @@ MonoBehaviour:
   _shotInterval: 0.2
   _diffusivity: 0.001
   _diffusionShot: 0
+  _parabola: 0
 --- !u!1 &4114183653366913094
 GameObject:
   m_ObjectHideFlags: 0
@@ -5629,6 +5630,7 @@ MonoBehaviour:
   _shotInterval: 0.2
   _diffusivity: 0.001
   _diffusionShot: 0
+  _parabola: 0
 --- !u!1 &5872138714240189586
 GameObject:
   m_ObjectHideFlags: 0

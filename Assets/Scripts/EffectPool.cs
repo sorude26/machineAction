@@ -14,6 +14,7 @@ public enum EffectType
     BomSpark,
     HeavyExplosion,
     Stealth,
+    Energy,
 }
 public class EffectPool : ObjectPoolBase<EffectControl,EffectType>
 {

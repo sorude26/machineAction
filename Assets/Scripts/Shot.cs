@@ -18,6 +18,10 @@ public class Shot : MonoBehaviour
 
     bool _hit = false;
     public int Power { get => _power; }
+    public void StartShot(Vector3 dir)
+    {
+        StartShot(dir, _power, 1f);
+    }
     public void StartShot(Vector3 dir, float speed)
     {
         StartShot(dir, _power, speed);
@@ -26,7 +30,7 @@ public class Shot : MonoBehaviour
     {
         _hit = false;
         StartCoroutine(ShotMove());
-        transform.forward = dir;
+        transform.forward = dir.normalized;
         _power = power;
         _rb.AddForce(dir * speed, ForceMode.Impulse);
     }

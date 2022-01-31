@@ -14551,7 +14551,7 @@ MonoBehaviour:
   _endEffect: 0
   _rb: {fileID: 8608823795222648244}
   _power: 200
-  _lifeTime: 15
+  _lifeTime: 25
 --- !u!54 &8608823795222648244
 Rigidbody:
   m_ObjectHideFlags: 0
