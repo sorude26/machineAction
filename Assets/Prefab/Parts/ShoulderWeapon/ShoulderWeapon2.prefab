@@ -90,7 +90,7 @@ MonoBehaviour:
   _triggerShotCount: 5
   _triggerInterval: 1.2
   _shotInterval: 0.2
-  _diffusivity: 80
+  _diffusivity: 40
   _diffusionShot: 0
   _parabola: 0
   _angle: 70
@@ -217,7 +217,7 @@ MonoBehaviour:
   _triggerShotCount: 5
   _triggerInterval: 1.2
   _shotInterval: 0.2
-  _diffusivity: 80
+  _diffusivity: 40
   _diffusionShot: 0
   _parabola: 0
   _angle: 70
@@ -904,7 +904,7 @@ MonoBehaviour:
   _triggerShotCount: 5
   _triggerInterval: 1.2
   _shotInterval: 0.2
-  _diffusivity: 80
+  _diffusivity: 40
   _diffusionShot: 0
   _parabola: 0
   _angle: 70
@@ -20400,7 +20400,7 @@ MonoBehaviour:
   _triggerShotCount: 5
   _triggerInterval: 1.2
   _shotInterval: 0.2
-  _diffusivity: 80
+  _diffusivity: 40
   _diffusionShot: 0
   _parabola: 0
   _angle: 70
@@ -20467,7 +20467,7 @@ MonoBehaviour:
   _triggerShotCount: 5
   _triggerInterval: 1.2
   _shotInterval: 0.2
-  _diffusivity: 80
+  _diffusivity: 40
   _diffusionShot: 0
   _parabola: 0
   _angle: 70
@@ -20564,7 +20564,7 @@ MonoBehaviour:
   _triggerShotCount: 5
   _triggerInterval: 1.2
   _shotInterval: 0.2
-  _diffusivity: 80
+  _diffusivity: 40
   _diffusionShot: 0
   _parabola: 0
   _angle: 70

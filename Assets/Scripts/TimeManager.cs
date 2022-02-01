@@ -8,6 +8,10 @@ namespace GameScene
     {
         static TimeManager instance = default;
         [SerializeField]
+        float _stop = 0.05f;
+        [SerializeField]
+        float _scale = 0.1f;
+        [SerializeField]
         GameObject _timeEffect = default;
         bool _slow = false;
         float timer = 0;
@@ -30,7 +34,7 @@ namespace GameScene
         }
         public void HitStop()
         {
-            timer = 0.05f;
+            timer = _stop;
             if (!_slow)
             {
                 _slow = true;
@@ -43,7 +47,7 @@ namespace GameScene
         }
         IEnumerator SlowTime()
         {
-            Time.timeScale = 0.1f;
+            Time.timeScale = _scale;
             while (timer > 0)
             {
                 timer -= Time.unscaledDeltaTime;

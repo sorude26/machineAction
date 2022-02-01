@@ -5,15 +5,15 @@ using UnityEngine;
 public class ShakeControl : MonoBehaviour
 {
     [SerializeField]
-    float m_startShakeRange = 0.5f;
-    float m_shakeRange = 0.5f;
+    float _startShakeRange = 0.5f;
+    float _shakeRange = 0.5f;
 
-    float m_timer = 0;
-    bool m_shake = default;
-    Vector3 m_startPos = default;
+    float _timer = 0;
+    bool _shake = default;
+    Vector3 _startPos = default;
     private void Start()
     {
-        m_startPos = transform.localPosition;
+        _startPos = transform.localPosition;
     }
     public void StartShake(float time)
     {
@@ -21,17 +21,17 @@ public class ShakeControl : MonoBehaviour
         {
             return;
         }
-        if (m_timer < time)
+        if (_timer < time)
         {
-            m_timer = time;
+            _timer = time;
         }
-        if (m_shakeRange < m_startShakeRange)
+        if (_shakeRange < _startShakeRange)
         {
-            m_shakeRange = m_startShakeRange;
+            _shakeRange = _startShakeRange;
         }
-        if (!m_shake)
+        if (!_shake)
         {
-            m_shake = true;
+            _shake = true;
             StartCoroutine(Shake());
         }
     }
@@ -41,38 +41,45 @@ public class ShakeControl : MonoBehaviour
         {
             return;
         }
-        if (m_timer < time)
+        if (_timer < time)
         {
-            m_timer = time;
+            _timer = time;
         }
-        if (m_shakeRange < power)
+        if (_shakeRange < power)
         {
-            m_shakeRange = power;
+            _shakeRange = power;
         }
-        if (!m_shake)
+        if (!_shake)
         {
-            m_shake = true;
-            m_shakeRange = power;
-            m_timer = time;
+            _shake = true;
+            _shakeRange = power;
+            _timer = time;
             StartCoroutine(Shake());
         }
     }
 
     private IEnumerator Shake()
     {
-        while (m_timer > 0 && m_shakeRange > 0)
+        float timer = 0;
+        Vector3 v = _startPos;
+        while (_timer > 0 && _shakeRange > 0)
         {
-            m_timer -= Time.deltaTime;
-            Vector3 v = m_startPos;
-            v.x = Random.Range(-m_shakeRange, m_shakeRange);
-            v.y = Random.Range(-m_shakeRange, m_shakeRange);
-            m_shakeRange -= Time.deltaTime * 0.5f;
-            transform.localPosition = v;
+            timer += Time.deltaTime;
+            if (timer > 0.1f)
+            {
+                timer = 0; 
+                v = _startPos;
+                v.x = Random.Range(-_shakeRange, _shakeRange);
+                v.y = Random.Range(-_shakeRange, _shakeRange);
+            }
+            _timer -= Time.deltaTime;
+            transform.localPosition = Vector3.Lerp(_startPos, v, timer * 10);
+            _shakeRange -= Time.deltaTime * 0.5f;
             yield return null;
         }
-        transform.localPosition = m_startPos; 
-        m_timer = 0;
-        m_shakeRange = 0;
-        m_shake = false;
+        transform.localPosition = _startPos; 
+        _timer = 0;
+        _shakeRange = 0;
+        _shake = false;
     }
 }
