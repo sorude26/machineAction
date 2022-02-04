@@ -5236,15 +5236,15 @@ MonoBehaviour:
   - {fileID: 7111887860312912210}
   - {fileID: 4706402847538040572}
   _power: 150
-  _triggerShotCount: 3
-  _triggerInterval: 5
-  _shotInterval: 1
+  _triggerShotCount: 1
+  _triggerInterval: 2
+  _shotInterval: 0.1
   _diffusivity: 2
   _diffusionShot: 0
   _parabola: 0
-  _angle: 30
+  _angle: 22
   _base: {fileID: 6946443062709476204}
-  _moveSpeed: 10
+  _moveSpeed: 20
   _startAngle: -20
 --- !u!1 &1089947079737596177
 GameObject:
@@ -15312,15 +15312,15 @@ MonoBehaviour:
   - {fileID: 7910051108321950480}
   - {fileID: 7157555604309466731}
   _power: 150
-  _triggerShotCount: 3
-  _triggerInterval: 5
-  _shotInterval: 1
+  _triggerShotCount: 1
+  _triggerInterval: 2
+  _shotInterval: 0.1
   _diffusivity: 2
   _diffusionShot: 0
   _parabola: 0
-  _angle: 30
+  _angle: 22
   _base: {fileID: 4833443347443428647}
-  _moveSpeed: 10
+  _moveSpeed: 20
   _startAngle: -20
 --- !u!1 &3249719781005955205
 GameObject:
@@ -16007,15 +16007,15 @@ MonoBehaviour:
   - {fileID: 2815881791931331036}
   - {fileID: 1972192961523704239}
   _power: 150
-  _triggerShotCount: 3
-  _triggerInterval: 5
-  _shotInterval: 1
+  _triggerShotCount: 1
+  _triggerInterval: 2
+  _shotInterval: 0.1
   _diffusivity: 2
   _diffusionShot: 0
   _parabola: 0
-  _angle: 30
+  _angle: 22
   _base: {fileID: 7325005308084417150}
-  _moveSpeed: 10
+  _moveSpeed: 15
   _startAngle: -20
 --- !u!1 &4528781223931973378
 GameObject:
@@ -21349,15 +21349,15 @@ MonoBehaviour:
   - {fileID: 7906362134122791235}
   - {fileID: 5039824967279034406}
   _power: 150
-  _triggerShotCount: 3
-  _triggerInterval: 5
-  _shotInterval: 1
+  _triggerShotCount: 1
+  _triggerInterval: 2
+  _shotInterval: 0.1
   _diffusivity: 2
   _diffusionShot: 0
   _parabola: 0
-  _angle: 30
+  _angle: 22
   _base: {fileID: 6474251062446846331}
-  _moveSpeed: 10
+  _moveSpeed: 15
   _startAngle: -20
 --- !u!1 &7649916583421051071
 GameObject:
