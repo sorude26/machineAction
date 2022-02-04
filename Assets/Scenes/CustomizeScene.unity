@@ -9075,7 +9075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe30e82bf0e95a4995db939a59b5a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_startShakeRange: 0.5
+  _startShakeRange: 0.5
 --- !u!1 &797632113
 GameObject:
   m_ObjectHideFlags: 0
@@ -16688,7 +16688,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1889574726}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 11
   m_WholeNumbers: 1
   m_Value: 1
   m_OnValueChanged:

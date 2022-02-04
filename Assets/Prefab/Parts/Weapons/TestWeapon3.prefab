@@ -128,14 +128,17 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  _bullet: 0
+  _bullet: 9
   _muzzle: {fileID: 6023401259031292906}
   _particle: []
   _power: 20
   _triggerShotCount: 1
-  _triggerInterval: 0.1
+  _triggerInterval: 0.5
   _shotInterval: 0.2
-  _diffusivity: 0.01
+  _diffusivity: 0.03
+  _diffusionShot: 0
+  _parabola: 0
+  _angle: 1
 --- !u!1 &8504863979443363812
 GameObject:
   m_ObjectHideFlags: 0

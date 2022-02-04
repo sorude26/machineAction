@@ -10848,7 +10848,7 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 1273381813997882401}
-  _bullet: 7
+  _bullet: 9
   _muzzle: {fileID: 1916559684847339265}
   _particle:
   - {fileID: 5579702921639055841}
@@ -10858,6 +10858,8 @@ MonoBehaviour:
   _shotInterval: 0.7
   _diffusivity: 360
   _diffusionShot: 10
+  _parabola: 0
+  _angle: 0
 --- !u!95 &1273381813997882401
 Animator:
   serializedVersion: 3
