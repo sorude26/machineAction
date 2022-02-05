@@ -6269,13 +6269,14 @@ MonoBehaviour:
   _particle:
   - {fileID: 3701319489010265919}
   - {fileID: 7899435403156861278}
-  _power: 55
+  _power: 5
   _triggerShotCount: 1
   _triggerInterval: 60
   _shotInterval: 0.5
-  _diffusivity: 0.01
+  _diffusivity: 5
   _diffusionShot: 0
   _parabola: 12
+  _angle: 0
 --- !u!1 &7017770093618839384
 GameObject:
   m_ObjectHideFlags: 0

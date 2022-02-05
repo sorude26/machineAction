@@ -65,7 +65,7 @@ MonoBehaviour:
   _hitEffect: 5
   _endEffect: 5
   _rb: {fileID: 539456653993431489}
-  _power: 2
+  _power: 6
   _lifeTime: 0.4
 --- !u!54 &539456653993431489
 Rigidbody:
