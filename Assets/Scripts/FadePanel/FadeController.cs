@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class FadeController : MonoBehaviour
 {
-    private static FadeController instance = default;
     [Tooltip("フェードスピード")]
     [SerializeField]
     private float _fadeSpeed = 1f;
@@ -16,24 +15,52 @@ public class FadeController : MonoBehaviour
     [Tooltip("開始時の色")]
     [SerializeField]
     private Color _startColor = Color.black;
+
+    private static FadeController instance = default;
+    public static FadeController Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                var obj = new GameObject("FadeCanvas");
+                obj.AddComponent<RectTransform>();
+                var canvas = obj.AddComponent<Canvas>();
+                canvas.sortingOrder = 20;
+                canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+                var fadeController = obj.AddComponent<FadeController>();
+                var imageObj = new GameObject("FadeImage");
+                imageObj.transform.SetParent(obj.transform);
+                var imageRect = imageObj.AddComponent<RectTransform>();
+                var image = imageObj.AddComponent<Image>();
+                imageRect.sizeDelta = new Vector2(2000, 1100);
+                imageRect.localPosition = Vector2.zero;
+                image.color = Color.black;
+                fadeController._fadeImage = image;
+                instance = fadeController;
+                DontDestroyOnLoad(obj);
+            }
+            return instance;
+        }
+    }
     private void Awake()
     {
-        instance = this;
-        _fadeImage.gameObject.SetActive(false);
+        if (instance)
+        {
+            Destroy(gameObject);
+        }
     }
-
+    public void ChangeFadeSpeed(float speed)
+    {
+        _fadeSpeed = speed;
+    }
     /// <summary>
     /// フェードイン後にアクションする
     /// </summary>
     /// <param name="action"></param>
     public static void StartFadeIn(Action action = null)
     {
-        if (instance == null)
-        {
-            action?.Invoke();
-            return;
-        }
-        instance.StartCoroutine(instance.FadeIn(action));
+        Instance.StartCoroutine(Instance.FadeIn(action));
     }
     /// <summary>
     /// フェードアウト後にアクションする
@@ -41,12 +68,11 @@ public class FadeController : MonoBehaviour
     /// <param name="action"></param>
     public static void StartFadeOut(Action action = null)
     {
-        if (instance == null)
-        {
-            action?.Invoke();
-            return;
-        }
-        instance.StartCoroutine(instance.FadeOut(action));
+        Instance.StartCoroutine(Instance.FadeOut(action));
+    }
+    public static void StartFadeOutIn(Action outAction = null, Action inAction = null)
+    {
+        Instance.StartCoroutine(Instance.FadeOutIn(outAction, inAction));
     }
     IEnumerator FadeIn(Action action)
     {
@@ -60,6 +86,15 @@ public class FadeController : MonoBehaviour
         _fadeImage.gameObject.SetActive(true);
         yield return FadeOut();
         action?.Invoke();
+    }
+    IEnumerator FadeOutIn(Action outAction, Action inAction)
+    {
+        _fadeImage.gameObject.SetActive(true);
+        yield return FadeOut();
+        outAction?.Invoke();
+        yield return FadeIn();
+        inAction?.Invoke();
+        _fadeImage.gameObject.SetActive(false);
     }
     IEnumerator FadeIn()
     {
