@@ -12,8 +12,7 @@ public class FollowObject : MonoBehaviour
     float _followSpeed = 1f;
     [SerializeField]
     float _rotationSpeed = 1f;
-
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         if (_followTarget == null)
         {

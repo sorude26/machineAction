@@ -7,7 +7,7 @@ public class ShakeControl : MonoBehaviour
     [SerializeField]
     float _startShakeRange = 0.5f;
     float _shakeRange = 0.5f;
-
+    float _shakeLevel = 0.1f;
     float _timer = 0;
     bool _shake = default;
     Vector3 _startPos = default;
@@ -57,7 +57,30 @@ public class ShakeControl : MonoBehaviour
             StartCoroutine(Shake());
         }
     }
-
+    public void StartShake(float time, float power,float level)
+    {
+        if (!gameObject.activeInHierarchy)
+        {
+            return;
+        }
+        if (_timer < time)
+        {
+            _timer = time;
+        }
+        if (_shakeRange < power)
+        {
+            _shakeLevel = level;
+            _shakeRange = power;
+        }
+        if (!_shake)
+        {
+            _shakeLevel = level;
+            _shake = true;
+            _shakeRange = power;
+            _timer = time;
+            StartCoroutine(Shake());
+        }
+    }
     private IEnumerator Shake()
     {
         float timer = 0;
@@ -65,7 +88,7 @@ public class ShakeControl : MonoBehaviour
         while (_timer > 0 && _shakeRange > 0)
         {
             timer += Time.deltaTime;
-            if (timer > 0.1f)
+            if (timer > _shakeLevel)
             {
                 timer = 0; 
                 v = _startPos;

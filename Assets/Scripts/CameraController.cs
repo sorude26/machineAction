@@ -12,16 +12,22 @@ public class CameraController : MonoBehaviour
     float _followSpeed = 5f;
     [SerializeField]
     float _lockSpeed = 20f;
+    [SerializeField]
+    float _upSpeed = 1f;
     Quaternion _cameraRot = default;
-    float _minY = -70f;
-    float _maxY = 20f;
+    float _minY = -40f;
+    float _maxY = 40f;
+    float _angleY = 0;
+    Vector3 _startCameraPos = default;
     void Start()
     {       
         _cameraRot = transform.localRotation;
+        _startCameraPos = transform.localPosition;
     }
     private void Update()
     {
         _cameraRot = _cameraTarget.localRotation;
+        _cameraRot.x = _angleY;
         transform.localRotation = Quaternion.Lerp(transform.localRotation, _cameraRot, _followSpeed * Time.deltaTime);
     }
     void DefaultLock()
@@ -34,12 +40,18 @@ public class CameraController : MonoBehaviour
         if (Mathf.Abs(dir.x) > 0.1f)
         {
             _cameraRot *= Quaternion.Euler(0, dir.x * _lockSpeed, 0);
-        }        
+        }
+        if (Mathf.Abs(dir.y) > 0.5f)
+        {
+            _cameraRot *= Quaternion.Euler(dir.y * _upSpeed, 0, 0);
+        }
         _cameraRot = ClampRotation(_cameraRot);
+        _angleY = _cameraRot.x;
         _body.SetBodyRotaion(_cameraRot);
     }
     public void ResetLock()
     {
+        _angleY = 0;
         _cameraRot = _cameraTarget.localRotation;
         _body.InputEnd();
     }
