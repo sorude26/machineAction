@@ -30,8 +30,13 @@ public class BodyControl : MonoBehaviour
     bool _action = false;
     bool _attack = false;
     bool _knockDown = false;
+    Vector3 _targetCurrentPos = default;
+    Vector3 _targetBeforePos = default;
+    Vector3 _targetTwoBeforePos = default;
+    Vector3 _targetCurrentPosL = default;
     Vector3 _targetBeforePosL = default;
     Vector3 _targetTwoBeforePosL = default;
+    Vector3 _targetCurrentPosR = default;
     Vector3 _targetBeforePosR = default;
     Vector3 _targetTwoBeforePosR = default;
     MachineController _machine = default;
@@ -137,7 +142,12 @@ public class BodyControl : MonoBehaviour
         {
             return;
         }
-        _machine.SWeapon.AttackAction(_machine.LookTarget.position);
+        _machine.SetTarget(); 
+        if (_machine.LookTarget != null)
+        {
+            LockOn(_machine.LookTarget.position);
+        }
+        _machine.SWeapon.AttackAction(_targetCurrentPos);
     }
     public void BodyWeaponShot()
     {
@@ -150,15 +160,15 @@ public class BodyControl : MonoBehaviour
         {
             LockOn(_machine.LookTarget.position);
         }
-        _machine.BWeapon.AttackAction(_machine.LookTarget.position);
+        _machine.BWeapon.AttackAction(_targetCurrentPos);
     }
     void ShotLeft()
     {
-        _machine.LAWeapon.AttackAction(_machine.LookTarget.position);
+        _machine.LAWeapon.AttackAction(_targetCurrentPosL);
     }
     void ShotRight()
     {
-        _machine.RAWeapon.AttackAction(_machine.LookTarget.position);
+        _machine.RAWeapon.AttackAction(_targetCurrentPosR);
     }
     bool LockOn(Vector3 targetPos)
     {
@@ -173,11 +183,14 @@ public class BodyControl : MonoBehaviour
         {
             return true;
         }
+        _targetCurrentPos = DeviationShootingControl.CirclePrediction(_bodyControlBase[0].position, targetPos, _targetBeforePos, _targetTwoBeforePos, _machine.BWeapon.AttackSpeed());
         if (!_camera)
         {
             _controlTarget[0].forward = targetDir;
             _bodyRotaion = ClampRotation(_controlTarget[0].localRotation);
         }
+        _targetTwoBeforePos = _targetBeforePos;
+        _targetBeforePos = targetPos;
         return attack;
     }
     bool LockOnL(Vector3 targetPos)
@@ -195,8 +208,8 @@ public class BodyControl : MonoBehaviour
         bool attack = false;
         if (_machine.LAWeapon.Type == WeaponType.Rifle)
         {
-            Vector3 targetDir = DeviationShootingControl.CirclePrediction(_leftControlBase[2].position, targetPos, _targetBeforePosL, _targetTwoBeforePosL, _machine.LAWeapon.AttackSpeed() * 0.8f);
-            _controlTarget[2].forward = targetDir - _leftControlBase[2].position;
+            _targetCurrentPosL = DeviationShootingControl.CirclePrediction(_leftControlBase[2].position, targetPos, _targetBeforePosL, _targetTwoBeforePosL, _machine.LAWeapon.AttackSpeed() * 0.8f);
+            _controlTarget[2].forward = _targetCurrentPosL - _leftControlBase[2].position;
             _lArmRotaion2 = _controlTarget[2].localRotation * Quaternion.Euler(-90, 0, 0);
             var range = Quaternion.Dot(_lArmRotaion2, _leftControlBase[2].localRotation);
             if (range > 0.999f || range < -0.999f)
@@ -223,8 +236,8 @@ public class BodyControl : MonoBehaviour
         }
         if (_machine.RAWeapon.Type == WeaponType.Rifle)
         {
-            Vector3 targetDir = DeviationShootingControl.CirclePrediction(_rightControlBase[2].position, targetPos, _targetBeforePosR, _targetTwoBeforePosR, _machine.RAWeapon.AttackSpeed() * 0.8f);
-            _controlTarget[1].forward = targetDir - _rightControlBase[2].position;
+            _targetCurrentPosR = DeviationShootingControl.CirclePrediction(_rightControlBase[2].position, targetPos, _targetBeforePosR, _targetTwoBeforePosR, _machine.RAWeapon.AttackSpeed() * 0.8f);
+            _controlTarget[1].forward = _targetCurrentPosR - _rightControlBase[2].position;
             _rArmRotaion2 = _controlTarget[1].localRotation * Quaternion.Euler(-90, 0, 0);
             var range = Quaternion.Dot(_rArmRotaion2, _rightControlBase[2].localRotation);
             if (range > 0.999f || range < -0.999f)
@@ -404,11 +417,11 @@ public class BodyControl : MonoBehaviour
     }
     void OnBladeL()
     {
-        _machine.LAWeapon.AttackAction(_machine.LookTarget.position);
+        _machine.LAWeapon.AttackAction(_targetCurrentPosL);
     }
     void OnBladeR()
     {
-        _machine.RAWeapon.AttackAction(_machine.LookTarget.position);
+        _machine.RAWeapon.AttackAction(_targetCurrentPosR);
     }
     void EndBlade()
     {
