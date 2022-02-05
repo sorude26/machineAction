@@ -66,11 +66,17 @@ public class ShotWeapon : WeaponMaster
                 target.x += Random.Range(-_diffusivity, _diffusivity);
                 target.y += Random.Range(-_diffusivity, _diffusivity);
                 target.z += Random.Range(-_diffusivity, _diffusivity);
-                ParabolaShot.ShootFixedAngle(target, _angle, _muzzle.position, _bullet);
+                if(!ParabolaShot.ShootFixedAngle(target, _angle, _muzzle.position, _bullet))
+                {
+                    BulletStartShot();
+                }
             }
             else
             {
-                ParabolaShot.ShootFixedAngle(_target, _angle, _muzzle.position, _bullet);
+                if (!ParabolaShot.ShootFixedAngle(_target, _angle, _muzzle.position, _bullet))
+                {
+                    BulletStartShot();
+                }
             }
             return;
         }
@@ -78,6 +84,10 @@ public class ShotWeapon : WeaponMaster
         {
             DiffusionShot();
         }
+        BulletStartShot();
+    }
+    protected void BulletStartShot()
+    {
         Vector3 moveDir = _muzzle.forward.normalized;
         if (_diffusivity > 0)
         {
