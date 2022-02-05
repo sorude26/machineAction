@@ -61,6 +61,14 @@ public class DamageControl : MonoBehaviour, IDamageApplicable
             BattleManager.Instance.ReMoveTarget(this);
         }
     }
+    public void SetTarget()
+    {
+        if (!_target)
+        {
+            BattleManager.Instance.AddTarget(this);
+            _target = true;
+        }
+    }
     public void ReMoveThis()
     {
         if (_target)
