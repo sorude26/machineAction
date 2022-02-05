@@ -225,7 +225,7 @@ public class LegControl : MonoBehaviour
     }
     public void StartJump()
     {
-        if (_legType == LegType.Crawler)
+        if (_legType != LegType.Normal)
         {
             return;
         }
