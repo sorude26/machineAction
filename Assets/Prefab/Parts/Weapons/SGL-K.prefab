@@ -90,10 +90,12 @@ MonoBehaviour:
   - {fileID: 1416472790245090715}
   _power: 120
   _triggerShotCount: 1
-  _triggerInterval: 1.2
+  _triggerInterval: 2
   _shotInterval: 0.2
   _diffusivity: 0.1
   _diffusionShot: 0
+  _parabola: 0
+  _angle: 0.1
 --- !u!1 &5768207149884652491
 GameObject:
   m_ObjectHideFlags: 0

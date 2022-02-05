@@ -398,7 +398,7 @@ MonoBehaviour:
   _particle:
   - {fileID: 7101116143186364641}
   - {fileID: 1881537099034850839}
-  _power: 150
+  _power: 1
   _triggerShotCount: 4
   _triggerInterval: 1
   _shotInterval: 0.2
@@ -525,7 +525,7 @@ MonoBehaviour:
   _particle:
   - {fileID: 4419657814450277341}
   - {fileID: 809395400682115943}
-  _power: 150
+  _power: 1
   _triggerShotCount: 4
   _triggerInterval: 1
   _shotInterval: 0.2
@@ -592,7 +592,7 @@ MonoBehaviour:
   _particle:
   - {fileID: 3909543930102366013}
   - {fileID: 965010606279404869}
-  _power: 150
+  _power: 1
   _triggerShotCount: 8
   _triggerInterval: 1
   _shotInterval: 0.1
@@ -10721,7 +10721,7 @@ MonoBehaviour:
   _particle:
   - {fileID: 8365408598695591959}
   - {fileID: 23513228422514206}
-  _power: 150
+  _power: 1
   _triggerShotCount: 4
   _triggerInterval: 1
   _shotInterval: 0.2
@@ -30217,7 +30217,7 @@ MonoBehaviour:
   _particle:
   - {fileID: 6155668398591850272}
   - {fileID: 1015221278457427802}
-  _power: 150
+  _power: 1
   _triggerShotCount: 8
   _triggerInterval: 1
   _shotInterval: 0.1
@@ -30284,7 +30284,7 @@ MonoBehaviour:
   _particle:
   - {fileID: 1520614455975409700}
   - {fileID: 3961002642918180746}
-  _power: 150
+  _power: 1
   _triggerShotCount: 4
   _triggerInterval: 1
   _shotInterval: 0.2
