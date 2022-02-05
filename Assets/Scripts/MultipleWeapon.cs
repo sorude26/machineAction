@@ -27,7 +27,11 @@ public class MultipleWeapon : WeaponMaster
     }
     public override float AttackSpeed()
     {
-        return _weapons[0].AttackSpeed();
+        if (_weapons.Length > 0)
+        {
+            return _weapons[0].AttackSpeed();
+        }
+        return 1;
     }
     public override void DestoryParts()
     {

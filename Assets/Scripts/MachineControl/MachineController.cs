@@ -27,7 +27,7 @@ public class MachineController : MonoBehaviour
     Transform _bodyAngle = default;
     [SerializeField]
     Transform _front = default;
-
+    bool _start = false;
     bool _fly = false;
     bool _jump = false;
     bool _jet = false;
@@ -70,9 +70,14 @@ public class MachineController : MonoBehaviour
         SWeapon.OwnerRb = _rb;
         _parts.Body.OnBodyBreak += BodyBreak; 
         LookTarget = _front;
+        _start = true;
     }
     private void Update()
     {
+        if (!_start)
+        {
+            return;
+        }
         _body.PartsMotion();
         _legTransform.localRotation = Quaternion.Lerp(_legTransform.localRotation, _legRotaion, _parameter.TurnSpeed * Time.deltaTime);
     }

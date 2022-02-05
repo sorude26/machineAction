@@ -22,7 +22,11 @@ public class EnemyContorller : MonoBehaviour
     DamageControl _damageControl = default;
     bool _set = false;
     float timer = 0;
-    void Start()
+    public void SetBuild(UnitBuildData buildData)
+    {
+        _buildData = buildData;
+    }
+    public void StartSet()
     {
         Quaternion start = transform.rotation;
         transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -31,16 +35,18 @@ public class EnemyContorller : MonoBehaviour
         _controller.MachineParts.ChangeColor(_color);
         _controller.MachineParts.Body.SetGauge(_gauge);
         _controller.OnBreak += BreakBody;
-        _controller.transform.rotation = start;
+        transform.rotation = start;
+        _damageControl.SetTarget();
         timer = Random.Range(1, 7);
+        _controller.SetTarget(BattleManager.Instance.PlayerPos);
+        _set = true;
     }
 
     void Update()
     {       
         if (!_set)
         {
-            _controller.SetTarget(BattleManager.Instance.PlayerPos);
-            _set = true;
+            return;
         }
         Vector3 dir = _controller.MachineParts.Body.transform.forward - BattleManager.Instance.PlayerPos.position;
         _controller.Move(dir.normalized);
@@ -48,16 +54,18 @@ public class EnemyContorller : MonoBehaviour
         {
             _controller.BodyControl.HandAttackLeft();
             _controller.BodyControl.HandAttackRight();
+            _controller.BodyControl.BodyWeaponShot();
         }
         timer -= Time.deltaTime;
         if (timer < 0)
         {
-            timer = Random.Range(1, 7);
+            timer = Random.Range(3, 9);
             _controller.Jump();
         }
     }
     void BreakBody()
     {
+        _set = false;
         if (_damageControl)
         {
             _damageControl.ReMoveThis();
