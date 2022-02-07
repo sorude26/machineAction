@@ -27,7 +27,7 @@ public class CameraEffectManager : MonoBehaviour
     }
     public static void Shake(Vector3 pos)
     {
-        var range = (BattleManager.Instance.PlayerPos.position - pos).magnitude;
+        var range = (BattleManager.Instance.PlayerPos.position - pos).magnitude / 2f;
         if (range < instance._shakeRange)
         {
             instance._cameraShakeControl.StartShake(instance._shakePower / range, instance._shakeTime, instance._shakeLevel);
@@ -39,6 +39,22 @@ public class CameraEffectManager : MonoBehaviour
         if (range < instance._lightShakeRange)
         {
             instance._cameraShakeControl.StartShake(instance._lightShakePower / range, instance._lightShakeTime, instance._shakeLevel);
+        }
+    }
+    public static void SmallShake(Vector3 pos)
+    {
+        var range = (BattleManager.Instance.PlayerPos.position - pos).magnitude * 2f;
+        if (range < instance._lightShakeRange)
+        {
+            instance._cameraShakeControl.StartShake(instance._lightShakePower / range, instance._lightShakeTime / 2f, instance._shakeLevel / 2f);
+        }
+    }
+    public static void ExplosionShake(Vector3 pos,float time)
+    {
+        var range = (BattleManager.Instance.PlayerPos.position - pos).magnitude / 2f;
+        if (range < instance._shakeRange)
+        {
+            instance._cameraShakeControl.StartShake(instance._shakePower / range, instance._shakeTime + time, instance._shakeLevel);
         }
     }
 }
