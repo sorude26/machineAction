@@ -35,28 +35,6 @@ public class ShakeControl : MonoBehaviour
             StartCoroutine(Shake());
         }
     }
-    public void StartShake(float time, float power)
-    {
-        if (!gameObject.activeInHierarchy)
-        {
-            return;
-        }
-        if (_timer < time)
-        {
-            _timer = time;
-        }
-        if (_shakeRange < power)
-        {
-            _shakeRange = power;
-        }
-        if (!_shake)
-        {
-            _shake = true;
-            _shakeRange = power;
-            _timer = time;
-            StartCoroutine(Shake());
-        }
-    }
     public void StartShake(float time, float power,float level)
     {
         if (!gameObject.activeInHierarchy)
