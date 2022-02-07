@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
-  m_FogDensity: 0.01
+  m_Fog: 1
+  m_FogColor: {r: 0.48584908, g: 0.5915264, b: 1, a: 1}
+  m_FogMode: 2
+  m_FogDensity: 0.005
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.5575382, g: 0.5747391, b: 0.6320754, a: 1}
@@ -493,7 +493,7 @@ MonoBehaviour:
     WeaponRArmID: 1
     WeaponLArmID: 1
     ShoulderWeaponID: 0
-    BodyWeaponID: 8
+    BodyWeaponID: 0
     BoosterID: 0
     CoreID: 0
   _color: {r: 0.5471698, g: 0, b: 0, a: 1}
@@ -1523,7 +1523,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 963194228}
+  - {fileID: 1378561217}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1541,12 +1541,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shakeLevel: 0.05
   _shakeRange: 300
-  _shakePower: 2
-  _shakeTime: 2
+  _shakePower: 4
+  _shakeTime: 0.6
   _lightShakeRange: 50
-  _lightShakePower: 1
-  _lightShakeTime: 1
-  _cameraShakeControl: {fileID: 890590130}
+  _lightShakePower: 4
+  _lightShakeTime: 0.2
+  _cameraShakeControl: {fileID: 1378561216}
 --- !u!114 &105395468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3101,7 +3101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &238485580
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4251,7 +4251,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh237704
+  m_Name: pb_Mesh79562
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5635,8 +5635,8 @@ MonoBehaviour:
     RArmID: 8
     LArmID: 8
     LegID: 8
-    WeaponRArmID: 21
-    WeaponLArmID: 21
+    WeaponRArmID: 1
+    WeaponLArmID: 4
     ShoulderWeaponID: 0
     BodyWeaponID: 0
     BoosterID: 0
@@ -5797,7 +5797,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh237198
+  m_Name: pb_Mesh79044
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5983,8 +5983,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458182605}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -2.5, z: 0}
-  m_LocalScale: {x: 4, y: 1, z: 4}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 9, y: 1, z: 9}
   m_Children: []
   m_Father: {fileID: 1683036084}
   m_RootOrder: 7
@@ -6758,7 +6758,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh236596
+  m_Name: pb_Mesh78434
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11001,7 +11001,7 @@ MonoBehaviour:
     WeaponRArmID: 1
     WeaponLArmID: 1
     ShoulderWeaponID: 0
-    BodyWeaponID: 8
+    BodyWeaponID: 0
     BoosterID: 0
     CoreID: 0
   _color: {r: 0.5471698, g: 0, b: 0, a: 1}
@@ -11095,51 +11095,6 @@ Transform:
   m_Father: {fileID: 703150676}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &890590128
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 890590129}
-  - component: {fileID: 890590130}
-  m_Layer: 0
-  m_Name: ShakeControl
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &890590129
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890590128}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1742666816}
-  m_Father: {fileID: 2146080150}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &890590130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890590128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe30e82bf0e95a4995db939a59b5a44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _startShakeRange: 0.5
 --- !u!1 &890907151
 GameObject:
   m_ObjectHideFlags: 0
@@ -12020,11 +11975,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.06104851, y: 0, z: 0, w: 0.99813485}
+  m_LocalRotation: {x: 0.06104851, y: -0, z: -0, w: 0.99813485}
   m_LocalPosition: {x: 0, y: 0, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 105395466}
+  m_Father: {fileID: 1378561217}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 7, y: 0, z: 0}
 --- !u!114 &963194229
@@ -18348,7 +18303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1173155301
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24897,7 +24852,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh236008
+  m_Name: pb_Mesh77826
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26587,6 +26542,51 @@ Transform:
   - {fileID: 763541503}
   - {fileID: 1569838324}
   m_Father: {fileID: 2081498754}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1378561215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1378561217}
+  - component: {fileID: 1378561216}
+  m_Layer: 0
+  m_Name: ShakeControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1378561216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378561215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe30e82bf0e95a4995db939a59b5a44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startShakeRange: 0.5
+--- !u!4 &1378561217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378561215}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 963194228}
+  m_Father: {fileID: 105395466}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1379154268
@@ -32123,7 +32123,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh235846
+  m_Name: pb_Mesh77664
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -33264,7 +33264,7 @@ MonoBehaviour:
     WeaponRArmID: 6
     WeaponLArmID: 4
     ShoulderWeaponID: 0
-    BodyWeaponID: 8
+    BodyWeaponID: 0
     BoosterID: 0
     CoreID: 0
   _color: {r: 0.5471698, g: 0, b: 0, a: 1}
@@ -35408,7 +35408,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh235380
+  m_Name: pb_Mesh77198
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -36132,7 +36132,7 @@ Transform:
   - {fileID: 147583569}
   - {fileID: 1380583294}
   - {fileID: 708050621}
-  m_Father: {fileID: 890590129}
+  m_Father: {fileID: 2146080150}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1742666817
@@ -36151,7 +36151,7 @@ MonoBehaviour:
   _body: {fileID: 1961025150}
   _followSpeed: 10
   _lockSpeed: 20
-  _upSpeed: 10
+  _upSpeed: 15
 --- !u!1 &1758548326
 GameObject:
   m_ObjectHideFlags: 0
@@ -45915,7 +45915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2123050805
 Transform:
   m_ObjectHideFlags: 0
@@ -46056,7 +46056,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 890590129}
+  - {fileID: 1742666816}
   m_Father: {fileID: 1944469880}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

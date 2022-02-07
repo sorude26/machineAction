@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class EnemyContorller : MonoBehaviour
@@ -22,6 +23,11 @@ public class EnemyContorller : MonoBehaviour
     DamageControl _damageControl = default;
     bool _set = false;
     float timer = 0;
+    private async void Start()
+    {
+        await Task.Delay(1);
+        StartSet();
+    }
     public void SetBuild(UnitBuildData buildData)
     {
         _buildData = buildData;

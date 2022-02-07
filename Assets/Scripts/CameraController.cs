@@ -15,8 +15,8 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     float _upSpeed = 1f;
     Quaternion _cameraRot = default;
-    float _minY = -40f;
-    float _maxY = 40f;
+    float _minY = -90f;
+    float _maxY = 90f;
     float _angleY = 0;
     Vector3 _startCameraPos = default;
     void Start()
