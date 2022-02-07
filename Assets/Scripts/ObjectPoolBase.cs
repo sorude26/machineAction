@@ -49,6 +49,7 @@ public abstract class ObjectPoolBase<T,key> : MonoBehaviour where T : MonoBehavi
         {
             return null;
         }
+        instance.GetAction(type, pos);
         foreach (var objects in instance._objectDic[type])
         {
             if (objects.gameObject.activeInHierarchy)
@@ -75,4 +76,5 @@ public abstract class ObjectPoolBase<T,key> : MonoBehaviour where T : MonoBehavi
             }
         }
     }
+    protected virtual void GetAction(key type,Vector3 pos) { }
 }
