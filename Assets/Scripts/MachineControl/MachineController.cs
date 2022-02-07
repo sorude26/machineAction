@@ -372,7 +372,6 @@ public class MachineController : MonoBehaviour
         {
             return;
         }
-        CameraEffectManager.Shake(transform.position);
         _knockDown = true;
         _body.KnockDown();
         _leg.KnockDown();
@@ -394,7 +393,6 @@ public class MachineController : MonoBehaviour
     IEnumerator Explosion()
     {
         yield return new WaitForSeconds(3f);
-        CameraEffectManager.Shake(transform.position);
         EffectPool.Get(EffectType.HeavyExplosion, BodyControl.BodyTransform.position);
         gameObject.SetActive(false);
         OnBreak?.Invoke();

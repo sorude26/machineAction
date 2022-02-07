@@ -62,10 +62,6 @@ public class Shot : MonoBehaviour
         if (effect)
         {
             effect.Particle.Play();
-            if (_hitEffect == EffectType.Explosion || _hitEffect == EffectType.ExplosionMachine || _hitEffect == EffectType.AtomicBom)
-            {
-                CameraEffectManager.Shake(transform.position);
-            }
         }
     }
     private void OnTriggerEnter(Collider other)
