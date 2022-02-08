@@ -14548,7 +14548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitEffect: 2
-  _endEffect: 0
+  _endEffect: 9
   _rb: {fileID: 8608823795222648244}
   _power: 200
   _lifeTime: 25

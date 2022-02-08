@@ -9735,7 +9735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitEffect: 1
-  _endEffect: 0
+  _endEffect: 9
   _rb: {fileID: 7941519406880972311}
   _power: 50
   _lifeTime: 15

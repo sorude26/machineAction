@@ -4923,7 +4923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitEffect: 7
-  _endEffect: 7
+  _endEffect: 9
   _rb: {fileID: 6676508081403593549}
   _power: 50
   _lifeTime: 3
