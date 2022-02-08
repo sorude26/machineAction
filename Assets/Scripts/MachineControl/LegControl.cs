@@ -7,6 +7,10 @@ public class LegControl : MonoBehaviour
 {
     [SerializeField]
     Animator _animator = default;
+    [SerializeField]
+    ParticleSystem _walkEffect = default;
+    [SerializeField]
+    ParticleSystem _landingEffect = default;
     int _walk = default;
     int _turn = default;
     bool _jump = false;
@@ -391,6 +395,10 @@ public class LegControl : MonoBehaviour
     void Shake()
     {
         CameraEffectManager.LightShake(transform.position);
+        if (_walkEffect)
+        {
+            _walkEffect.Play();
+        }
     }
     void TurnLeft()
     {
@@ -412,6 +420,10 @@ public class LegControl : MonoBehaviour
             return;
         }
         _landing = true;
+        if (_landingEffect)
+        {
+            _landingEffect.Play();
+        }
         StartCoroutine(LandingWait());
     }
     void Jet()

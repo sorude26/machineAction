@@ -16,32 +16,53 @@ public class FollowCamera : MonoBehaviour
     float _followMaxSpeed = 5f;
     [SerializeField]
     float _rotationMaxSpeed = 5f;
-    private Vector3 _currentVelocityAngle;
-    private Vector3 _currentVelocityPosition;
-    //private void FixedUpdate()
-    //{
-    //    if (_followTarget == null)
-    //    {
-    //        Destroy(gameObject);
-    //        return;
-    //    }
-    //    transform.forward = Vector3.SmoothDamp(transform.forward, _rotationTarget.forward, ref _currentVelocityAngle, _rotationSpeed);
-    //    float speed = (transform.position - _followTarget.position).sqrMagnitude;
-    //    if (speed <= 0)
-    //    {
-    //        speed = 1;
-    //    }
-    //    transform.position = Vector3.SmoothDamp(transform.position, _followTarget.position, ref _currentVelocityPosition, _followSpeed / speed);
-    //}
-    private void FixedUpdate()
+    [SerializeField]
+    bool _noneLerp = false;
+    [SerializeField]
+    Transform _lookTarget = default;
+    [SerializeField]
+    Transform _lookRotationTarget = default;
+    [SerializeField]
+    Transform _camera = default;
+    [SerializeField]
+    Vector3 _normalPos = default;
+    [SerializeField]
+    Vector3 _changePos = default;
+    private void Start()
     {
-        if (_followTarget == null)
+        GameScene.InputManager.Instance.OnInputLockOn += ChangeLook;
+    }
+    private void LateUpdate()
+    {
+        if (!_noneLerp)
         {
-            Destroy(gameObject);
             return;
         }
+        _camera.localPosition = _changePos;
+        transform.forward = _lookRotationTarget.forward;
+        transform.position = _lookTarget.position;
+    }
+    private void FixedUpdate()
+    {
+        if (_noneLerp)
+        {
+            return;
+        }
+        _camera.localPosition = _normalPos;
         transform.forward = Vector3.Lerp(transform.forward, _rotationTarget.forward, _rotationSpeed * Time.deltaTime);
         float speed = (transform.position - _followTarget.position).sqrMagnitude;
         transform.position = Vector3.Lerp(transform.position, _followTarget.position, speed * _followSpeed * Time.deltaTime);
+    }
+    void ChangeLook()
+    {
+        if (_noneLerp)
+        {
+            _noneLerp = false;
+        }
+        else
+        {
+            _noneLerp = true;
+        }
+        CameraEffectManager.LockChange();
     }
 }

@@ -11,6 +11,7 @@ public class ShakeControl : MonoBehaviour
     float _timer = 0;
     bool _shake = default;
     Vector3 _startPos = default;
+    Vector3 _current = default;
     private void Start()
     {
         _startPos = transform.localPosition;
@@ -70,8 +71,8 @@ public class ShakeControl : MonoBehaviour
             {
                 timer = 0; 
                 v = _startPos;
-                v.x = Random.Range(-_shakeRange, _shakeRange);
-                v.y = Random.Range(-_shakeRange, _shakeRange);
+                v.x += Random.Range(-_shakeRange, _shakeRange);
+                v.y += Random.Range(-_shakeRange, _shakeRange);
             }
             _timer -= Time.deltaTime;
             transform.localPosition = Vector3.Lerp(_startPos, v, timer * 10);

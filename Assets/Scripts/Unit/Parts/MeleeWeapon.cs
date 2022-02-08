@@ -53,7 +53,7 @@ public class MeleeWeapon : WeaponMaster
     }
     void HitStop()
     {
-        GameScene.TimeManager.Instance.HitStop();
+        CameraEffectManager.HitStop();
         CameraEffectManager.LightShake(transform.position);
     }
     public override float AttackSpeed()

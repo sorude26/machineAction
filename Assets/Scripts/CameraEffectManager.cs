@@ -21,40 +21,64 @@ public class CameraEffectManager : MonoBehaviour
     float _lightShakeTime = 1f;
     [SerializeField]
     ShakeControl _cameraShakeControl = default;
+    [SerializeField]
+    GameObject _cameraffect = default;
+    bool _lock = false;
     private void Awake()
     {
         instance = this;
     }
+    public static void LockChange()
+    {
+        if (instance._lock)
+        {
+            instance._lock = false;
+            instance._cameraffect.SetActive(false);
+        }
+        else
+        {
+            instance._lock = true;
+            instance._cameraffect.SetActive(true);
+        }
+    }
+    public static void HitStop()
+    {
+        if (instance._lock)
+        {
+            return;
+        }
+        GameScene.TimeManager.Instance.HitStop();
+    }
     public static void Shake(Vector3 pos)
     {
-        var range = (BattleManager.Instance.PlayerPos.position - pos).magnitude / 2f;
+        var range = (BattleManager.Instance.PlayerPos.position - pos).magnitude / 2f + 1f;
         if (range < instance._shakeRange)
         {
-            instance._cameraShakeControl.StartShake(instance._shakePower / range, instance._shakeTime, instance._shakeLevel);
+            instance._cameraShakeControl.StartShake(instance._shakeTime,instance._shakePower / range, instance._shakeLevel);
         }
     }
     public static void LightShake(Vector3 pos)
     {
-        var range = (BattleManager.Instance.PlayerPos.position - pos).magnitude;
+        var range = (BattleManager.Instance.PlayerPos.position - pos).magnitude + 1f;
         if (range < instance._lightShakeRange)
         {
-            instance._cameraShakeControl.StartShake(instance._lightShakePower / range, instance._lightShakeTime, instance._shakeLevel);
+            instance._cameraShakeControl.StartShake(instance._lightShakeTime, instance._lightShakePower / range,  instance._shakeLevel);
         }
     }
     public static void SmallShake(Vector3 pos)
     {
-        var range = (BattleManager.Instance.PlayerPos.position - pos).magnitude * 2f;
+        var range = (BattleManager.Instance.PlayerPos.position - pos).magnitude * 2f + 1f;
         if (range < instance._lightShakeRange)
         {
-            instance._cameraShakeControl.StartShake(instance._lightShakePower / range, instance._lightShakeTime / 2f, instance._shakeLevel / 2f);
+            instance._cameraShakeControl.StartShake(instance._lightShakeTime / 2f, instance._lightShakePower / range,  instance._shakeLevel / 2f);
         }
     }
     public static void ExplosionShake(Vector3 pos,float time)
     {
-        var range = (BattleManager.Instance.PlayerPos.position - pos).magnitude / 2f;
+        var range = (BattleManager.Instance.PlayerPos.position - pos).magnitude / 3f + 1f;
         if (range < instance._shakeRange)
         {
-            instance._cameraShakeControl.StartShake(instance._shakePower / range, instance._shakeTime + time, instance._shakeLevel);
+            instance._cameraShakeControl.StartShake(instance._shakeTime + time, instance._shakePower * 2 / range, instance._shakeLevel);
         }
     }
 }
