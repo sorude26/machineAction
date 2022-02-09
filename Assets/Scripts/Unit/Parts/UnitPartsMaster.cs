@@ -46,7 +46,7 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
     protected int _currentPartsHp;
 
     /// <summary> パーツ耐久値 </summary>
-    public int MaxPartsHP { get => _partsData.MaxPartsHp[_partsID]; }
+    public int MaxPartsHP { get => _partsData.MaxPartsHp[0]; }
     /// <summary> パーツ装甲値 </summary>
     public int Defense { get => _partsData.Defense[_partsID]; }
     /// <summary> 現在のパーツ耐久値 </summary>
@@ -76,6 +76,10 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
     /// <param name="color"></param>
     public virtual void PartsColorChange(Color color)
     {
+        if (m_amors.Length == 0)
+        {
+            return;
+        }
         foreach (var renderer in m_amors)
         {
             if (renderer != null)

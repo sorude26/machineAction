@@ -62,6 +62,8 @@ MonoBehaviour:
   _shotInterval: 0.4
   _diffusivity: 0.01
   _diffusionShot: 0
+  _parabola: 0
+  _angle: 0
 --- !u!1 &3163367175191104259
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +128,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 71f7c9ba7a6491c4a91868cac16aecd7, type: 2}
+  - {fileID: 2100000, guid: de0f38436d8157049970328e5610b224, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

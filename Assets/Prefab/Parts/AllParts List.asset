@@ -29,6 +29,7 @@ MonoBehaviour:
   - {fileID: 5030390751712469422, guid: ad14bd21e27f4634892e60155e29c936, type: 3}
   - {fileID: 4638026902309122467, guid: ef7af24f1f036df4d92eaa85660d73dc, type: 3}
   - {fileID: 988286626101339618, guid: 9d09f543ca1e25940b3b4c2865e02703, type: 3}
+  - {fileID: 8521985229875931496, guid: 86124579733840349b960dbe9876e143, type: 3}
   _heads:
   - {fileID: 2066303778021644219, guid: aab2d5a6644d8fd41a915db4909cd2a5, type: 3}
   - {fileID: 8687329476209071182, guid: 45b17d460ac44234fbc1697dd786890c, type: 3}
@@ -66,6 +67,8 @@ MonoBehaviour:
   - {fileID: 1213432938223984781, guid: 98a00ddc34db7e0469606579a3c01823, type: 3}
   - {fileID: 5298819557339693795, guid: 7f176d56a012f2e4f9669db42ecc8231, type: 3}
   - {fileID: 8981536705485123934, guid: e0aa9fd03bf78e044b7fa2b48b097bba, type: 3}
+  - {fileID: 6857551412088324837, guid: bf1d00fc64d778f41b680dccf6a152fe, type: 3}
+  - {fileID: 5075337448797334941, guid: 5ddd933c9bbc5bd48bc044ecdb45c1fb, type: 3}
   _legs:
   - {fileID: 893659994548617108, guid: 1b81b123a1ea1c94fa948354aaa294c0, type: 3}
   - {fileID: 2082606773929971798, guid: 6cfa39eec1b9b4e4ca0689a5b5289e2c, type: 3}
@@ -82,8 +85,11 @@ MonoBehaviour:
   - {fileID: 8575377592030437334, guid: 0ce4dcb8e3cef76489bd3a5312d42820, type: 3}
   - {fileID: 8521978539492361372, guid: 1a031d661849e524e93be7b39d461929, type: 3}
   - {fileID: 3199241407781486742, guid: 23dc874da209014449f2fbd4edbe0892, type: 3}
+  - {fileID: 1076675768147630070, guid: 8fd690ec41ceb9c438af88fe54387195, type: 3}
   _boosters:
+  - {fileID: 2819065776677723995, guid: d0df7e621e9120247aa20beac1b15d0e, type: 3}
   - {fileID: 4474116586410567403, guid: 1e151721a5b96f54a93a30932f5b4b44, type: 3}
+  - {fileID: 6959795866442355810, guid: 7873279622fbeb647ad25ea94ee36dce, type: 3}
   _weapons:
   - {fileID: -2806528138702990705, guid: eba102c0dffe5d04d9e429edf8b84619, type: 3}
   - {fileID: 3026681684647832431, guid: 8a372143aa5d57c4eb3afcec53a2d418, type: 3}

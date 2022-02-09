@@ -480,10 +480,10 @@ MonoBehaviour:
   _gauge: {fileID: 1959388586}
   _buildData:
     HeadID: 1
-    BodyID: 1
-    RArmID: 1
-    LArmID: 1
-    LegID: 1
+    BodyID: 55
+    RArmID: 55
+    LArmID: 55
+    LegID: 55
     WeaponRArmID: 1
     WeaponLArmID: 1
     ShoulderWeaponID: 0
@@ -4328,7 +4328,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh45176
+  m_Name: pb_Mesh709868
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10519,13 +10519,13 @@ MonoBehaviour:
   _sParts: 
   _dataManager: {fileID: 0}
   _buildData:
-    HeadID: 6
-    BodyID: 6
-    RArmID: 8
-    LArmID: 8
-    LegID: 8
+    HeadID: 0
+    BodyID: 0
+    RArmID: 0
+    LArmID: 0
+    LegID: 0
     WeaponRArmID: 1
-    WeaponLArmID: 4
+    WeaponLArmID: 1
     ShoulderWeaponID: 0
     BodyWeaponID: 0
     BoosterID: 0
@@ -10686,7 +10686,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh44658
+  m_Name: pb_Mesh709346
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11647,7 +11647,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh44042
+  m_Name: pb_Mesh708718
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15883,10 +15883,10 @@ MonoBehaviour:
   _gauge: {fileID: 1302425952}
   _buildData:
     HeadID: 1
-    BodyID: 1
-    RArmID: 1
-    LArmID: 1
-    LegID: 1
+    BodyID: 55
+    RArmID: 55
+    LArmID: 55
+    LegID: 55
     WeaponRArmID: 1
     WeaponLArmID: 1
     ShoulderWeaponID: 0
@@ -34592,7 +34592,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh50216
+  m_Name: pb_Mesh708110
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -41863,7 +41863,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh43278
+  m_Name: pb_Mesh707948
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -42997,12 +42997,12 @@ MonoBehaviour:
   _gauge: {fileID: 1732316297}
   _buildData:
     HeadID: 3
-    BodyID: 3
-    RArmID: 3
-    LArmID: 3
-    LegID: 3
-    WeaponRArmID: 6
-    WeaponLArmID: 4
+    BodyID: 55
+    RArmID: 55
+    LArmID: 55
+    LegID: 55
+    WeaponRArmID: 1
+    WeaponLArmID: 1
     ShoulderWeaponID: 0
     BodyWeaponID: 0
     BoosterID: 0
@@ -45195,7 +45195,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh42812
+  m_Name: pb_Mesh707466
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

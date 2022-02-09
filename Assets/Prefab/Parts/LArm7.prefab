@@ -1226,11 +1226,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1514656166247070935, guid: e9dc5d7d033174345804731ff2e48db3,
         type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1514656166247070935, guid: e9dc5d7d033174345804731ff2e48db3,
-        type: 3}
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
@@ -1566,11 +1561,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6707963035087447343}
     m_Modifications:
-    - target: {fileID: 1514656166247070935, guid: e9dc5d7d033174345804731ff2e48db3,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1514656166247070935, guid: e9dc5d7d033174345804731ff2e48db3,
         type: 3}
       propertyPath: looping

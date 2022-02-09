@@ -13,7 +13,7 @@ public class PartsLeg : UnitPartsMaster<LegData>
     /// <summary> 現在の回避力 </summary>
     public int CurrentAvoidance { get; private set; }
     /// <summary> 脚部の種類 </summary>
-    public LegType Type { get => _partsData.LegType[_partsID]; }
+    public LegType Type { get => _legType; }
     [Tooltip("脚部パーツの頂点")]
     [SerializeField] Transform m_legTop;
     [SerializeField] Transform m_lLeg1;
@@ -26,7 +26,8 @@ public class PartsLeg : UnitPartsMaster<LegData>
     [Tooltip("脚部パーツのアニメーション操作機能")]
     [SerializeField]
     MoveAnimation _moveAnimation = default;
-
+    [SerializeField]
+    LegType _legType = default;
     /// <summary> 脚部パーツの頂点 </summary>
     public Transform LegTop { get => m_legTop; }
     public Transform LLeg1 { get => m_lLeg1; }
@@ -36,13 +37,7 @@ public class PartsLeg : UnitPartsMaster<LegData>
     public Transform RLeg2 { get => m_rLeg2; }
     public Transform RLeg3 { get => m_rLeg3; }
     public MoveAnimation MoveAnimation { get => _moveAnimation; }
-    protected override void StartSet()
-    {
-        CurrentMovePower = _partsData.MovePower[_partsID];
-        CurrentLiftingForce = _partsData.LiftingForce[_partsID];
-        CurrentAvoidance = _partsData.Avoidance[_partsID];
-        base.StartSet();
-    }
+
     protected override void PartsBreak()
     {
         if (Break) { return; }

@@ -737,6 +737,7 @@ MonoBehaviour:
   m_rLeg2: {fileID: 935543645185308178}
   m_rLeg3: {fileID: 5302728202013732946}
   _moveAnimation: {fileID: 7560795984383997904}
+  _legType: 2
 --- !u!1001 &2766228602241793119
 PrefabInstance:
   m_ObjectHideFlags: 0

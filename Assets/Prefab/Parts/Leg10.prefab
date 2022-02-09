@@ -281,6 +281,7 @@ MonoBehaviour:
   m_rLeg2: {fileID: 6420535365339061283}
   m_rLeg3: {fileID: 2051097352382683747}
   _moveAnimation: {fileID: 0}
+  _legType: 1
 --- !u!1 &1209146357230627403
 GameObject:
   m_ObjectHideFlags: 0
