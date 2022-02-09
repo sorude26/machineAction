@@ -51,8 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a2ce97af4009343bbee85d2915aeec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _center: {fileID: 0}
   _lockOnMark: {fileID: 1360886515812328474}
   _rect: {fileID: 1360886514380268576}
+  _range: 400
 --- !u!95 &7078990839804821247
 Animator:
   serializedVersion: 3
