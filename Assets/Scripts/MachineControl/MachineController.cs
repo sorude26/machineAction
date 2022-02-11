@@ -49,6 +49,7 @@ public class MachineController : MonoBehaviour
     public WeaponMaster BWeapon { get => _parts.BodyWeapon; }
     public ShoulderWeapon SWeapon { get => _parts.ShoulderWeapon; }
     public Transform LookTarget { get; protected set; }
+    public MachineParameter Parameter { get => _parameter; }
     public void StartSet()
     {
         _parts = new PartsManager();
@@ -185,7 +186,16 @@ public class MachineController : MonoBehaviour
         if (_groundCheck.IsGrounded())
         {
             _rb.angularVelocity = Vector3.zero;
+            Brake();
             _moveControl.MoveWalk(_rb, _leg.transform.forward * angle, _parameter.WalkPower, _parameter.MaxWalkSpeed);
+        }
+    }
+    public void Run(int angle)
+    {
+        if (_groundCheck.IsGrounded())
+        {
+            _rb.angularVelocity = Vector3.zero;
+            _moveControl.MoveWalk(_rb, _leg.transform.forward * angle, _parameter.RunPower, _parameter.MaxRunSpeed);
         }
     }
     public void Move(int angle)

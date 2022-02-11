@@ -17,6 +17,14 @@ public class MachineParameter : MonoBehaviour
     [SerializeField]
     float _maxWalkSpeed = 12f;
     public float MaxWalkSpeed { get => _maxWalkSpeed; }
+    [Tooltip("走行移動力")]
+    [SerializeField]
+    float _runPower = 1.5f;
+    public float RunPower { get => _runPower; }
+    [Tooltip("走行最高速度")]
+    [SerializeField]
+    float _maxRunSpeed = 35f;
+    public float MaxRunSpeed { get => _maxRunSpeed; }
     [Tooltip("旋回力")]
     [SerializeField]
     float _turnPower = 21f;

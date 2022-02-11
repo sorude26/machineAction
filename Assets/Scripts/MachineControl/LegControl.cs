@@ -83,7 +83,14 @@ public class LegControl : MonoBehaviour
             switch (_legType)
             {
                 case LegType.Normal:
-                    ChangeAnimation("Walk", 0.5f);
+                    if (_machine.Parameter.ActionSpeed > 1)
+                    {
+                        ChangeAnimation("Run");
+                    }
+                    else
+                    {
+                        ChangeAnimation("Walk", 0.5f);
+                    }
                     break;
                 case LegType.Crawler:
                     ChangeAnimation("MoveFront", 0.1f);
@@ -361,11 +368,24 @@ public class LegControl : MonoBehaviour
         _machine?.Walk(_walk);
         if (_turn > 0)
         {
-            _machine?.Turn(0.2f);
+            _machine.Turn(0.2f);
         }
         else if (_turn < 0)
         {
             _machine?.Turn(-0.2f);
+        }
+        _turn = 0;
+    }
+    void Run()
+    {
+        _machine.Run(_walk);
+        if (_turn > 0)
+        {
+            _machine.Turn(0.1f);
+        }
+        else if (_turn < 0)
+        {
+            _machine.Turn(-0.1f);
         }
         _turn = 0;
     }
@@ -374,11 +394,11 @@ public class LegControl : MonoBehaviour
         _machine.Move(_walk);
         if (_turn > 0)
         {
-            _machine?.Turn(0.05f);
+            _machine.Turn(0.05f);
         }
         else if (_turn < 0)
         {
-            _machine?.Turn(-0.05f);
+            _machine.Turn(-0.05f);
         }
         _turn = 0;
     }
