@@ -17,7 +17,7 @@
 	}
 		SubShader
 		{
-						Tags { "RenderType" = "Opaque" }
+						Tags {  "Queue" = "Transparent"	"RenderType" = "Transparent" }
 				LOD 200
 
 				CGPROGRAM
@@ -57,16 +57,17 @@
 				#define STEP_EDGE_2 (STEP_EDGE)
 
 				float scanline = step(
-						fmod(abs(IN.worldPos.x - LINE_POS), INTERVAL),
+						fmod(abs(IN.worldPos.y - LINE_POS), INTERVAL),
 						STEP_EDGE
 					);
 				float trajectory = smoothstep(
 						STEP_EDGE_1, STEP_EDGE_2,
-						fmod(abs(IN.worldPos.x - LINE_POS), INTERVAL)
+						fmod(abs(IN.worldPos.y - LINE_POS), INTERVAL)
 					);
 
 				fixed4 baseColor = tex2D(_MainTex, IN.uv_MainTex);
 				o.Albedo = baseColor.rgb;
+				o.Alpha = 0;
 				o.Emission = _LineColor * scanline + _TrajectoryColor * trajectory;
 				o.Metallic = _Metallic;
 				o.Smoothness = _Glossiness;
