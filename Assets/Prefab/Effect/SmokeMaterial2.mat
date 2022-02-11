@@ -65,8 +65,8 @@ Material:
     - _BlendOp: 0
     - _BumpScale: 1
     - _CameraFadingEnabled: 0
-    - _CameraFarFadeDistance: 2
-    - _CameraNearFadeDistance: 1
+    - _CameraFarFadeDistance: 1
+    - _CameraNearFadeDistance: 0.1
     - _ColorMode: 1
     - _Cull: 2
     - _Cutoff: 0.5
