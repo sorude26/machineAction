@@ -5,14 +5,26 @@ using UnityEngine;
 public class StageSelectController : MonoBehaviour
 {
     [SerializeField]
+    StageNamePanel _namePanelPrefab = default;
+    [SerializeField]
     RectTransform[] _selectTargets = default;
 
     int _stageMaxNumber = default;
-    int _stageNumber = 0;
+    public int _stageNumber = 0;
     int _targetNumber = 0;
     float _changetime = 1f;
     bool _inputStop = false;
     bool _buttonOn = false;
+    private void Start()
+    {
+        float angle = 360.0f / _stageNumber;
+        for (int i = 0; i < _stageNumber; i++)
+        {
+            var p = Instantiate(_namePanelPrefab, transform);
+            p.SetPanel("Stage" + (i + 1).ToString(), Quaternion.Euler(0, -angle * i, 0), _stageNumber);
+        }
+        transform.position = Vector3.forward * _stageNumber - Vector3.forward * 5 + Vector3.up * 2;
+    }
     void MoveCursor(float v, float h)
     {
         if (_inputStop)
