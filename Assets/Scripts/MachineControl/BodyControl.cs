@@ -497,6 +497,10 @@ public class BodyControl : MonoBehaviour
             }
         }
     }
+    public void BodyResetAngle()
+    {
+        _bodyRotaion = Quaternion.Euler(0, _bodyRotaion.y, 0);
+    }
     public void InputEnd()
     {
         _machine.MoveEnd();

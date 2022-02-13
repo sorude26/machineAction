@@ -83,7 +83,7 @@ public class LegControl : MonoBehaviour
             switch (_legType)
             {
                 case LegType.Normal:
-                    if (_machine.Parameter.ActionSpeed > 1)
+                    if (_machine.Parameter.ActionSpeed >= 1)
                     {
                         ChangeAnimation("Run");
                     }
@@ -381,11 +381,11 @@ public class LegControl : MonoBehaviour
         _machine.Run(_walk);
         if (_turn > 0)
         {
-            _machine.Turn(0.1f);
+            _machine.Turn(0.2f);
         }
         else if (_turn < 0)
         {
-            _machine.Turn(-0.1f);
+            _machine.Turn(-0.2f);
         }
         _turn = 0;
     }
@@ -430,6 +430,10 @@ public class LegControl : MonoBehaviour
     }
     void Jump()
     {
+        if (_landingEffect)
+        {
+            _landingEffect.Play();
+        }
         Vector3 dir = transform.forward * _walk + transform.right * _turn;
         _machine?.StartJump((Vector3.up + dir).normalized);
     }
@@ -440,10 +444,6 @@ public class LegControl : MonoBehaviour
             return;
         }
         _landing = true;
-        if (_landingEffect)
-        {
-            _landingEffect.Play();
-        }
         StartCoroutine(LandingWait());
     }
     void Jet()
@@ -470,6 +470,10 @@ public class LegControl : MonoBehaviour
             _jumpEnd = true;
             _machine?.Landing();
             CameraEffectManager.Shake(transform.position);
+            if (_landingEffect)
+            {
+                _landingEffect.Play();
+            }
             ChangeAnimation("JunpEnd");
         }
     }

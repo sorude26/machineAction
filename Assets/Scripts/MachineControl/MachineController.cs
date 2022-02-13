@@ -187,7 +187,7 @@ public class MachineController : MonoBehaviour
         {
             _rb.angularVelocity = Vector3.zero;
             Brake();
-            _moveControl.MoveWalk(_rb, _leg.transform.forward * angle, _parameter.WalkPower, _parameter.MaxWalkSpeed);
+            _moveControl.MoveWalk(_rb, _leg.transform.forward * angle, _parameter.WalkPower, _parameter.MaxWalkSpeed * _parameter.ActionSpeed);
         }
     }
     public void Run(int angle)
@@ -195,7 +195,7 @@ public class MachineController : MonoBehaviour
         if (_groundCheck.IsGrounded())
         {
             _rb.angularVelocity = Vector3.zero;
-            _moveControl.MoveWalk(_rb, _leg.transform.forward * angle, _parameter.RunPower, _parameter.MaxRunSpeed);
+            _moveControl.MoveWalk(_rb, _leg.transform.forward * angle, _parameter.RunPower, _parameter.MaxRunSpeed * _parameter.ActionSpeed);
         }
     }
     public void Move(int angle)
@@ -203,7 +203,7 @@ public class MachineController : MonoBehaviour
         if (_groundCheck.IsGrounded())
         {
             _rb.angularVelocity = Vector3.zero;
-            _moveControl.MoveFloat(_rb, _leg.transform.forward * angle, _parameter.WalkPower, _parameter.MaxWalkSpeed);
+            _moveControl.MoveFloat(_rb, _leg.transform.forward * angle, _parameter.WalkPower, _parameter.MaxWalkSpeed * _parameter.ActionSpeed);
         }
     }
     public void Jump()
@@ -361,6 +361,7 @@ public class MachineController : MonoBehaviour
     {
         _rb.angularVelocity = Vector3.zero;
         _inputAxis = Vector3.zero;
+        _body.BodyResetAngle();
         _jet = false;
     }
     public void Brake()
