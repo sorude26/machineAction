@@ -15,7 +15,7 @@ public class StageNamePanel : MonoBehaviour
         {
             item.text = name;
         }
-        _stagePanel.transform.position = Vector3.back * number;
+        _stagePanel.transform.position = Vector3.back * number * 2;
         transform.rotation = angle;
     }
 }

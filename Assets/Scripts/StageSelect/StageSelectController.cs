@@ -7,23 +7,24 @@ public class StageSelectController : MonoBehaviour
     [SerializeField]
     StageNamePanel _namePanelPrefab = default;
     [SerializeField]
-    RectTransform[] _selectTargets = default;
-
+    Transform _base = default;
+    [SerializeField]
     int _stageMaxNumber = default;
-    public int _stageNumber = 0;
+    int _stageNumber = 0;
     int _targetNumber = 0;
     float _changetime = 1f;
     bool _inputStop = false;
     bool _buttonOn = false;
+    float Angle => 360f / _stageMaxNumber;
     private void Start()
     {
-        float angle = 360.0f / _stageNumber;
-        for (int i = 0; i < _stageNumber; i++)
+        for (int i = 0; i < _stageMaxNumber; i++)
         {
-            var p = Instantiate(_namePanelPrefab, transform);
-            p.SetPanel("Stage" + (i + 1).ToString(), Quaternion.Euler(0, -angle * i, 0), _stageNumber);
+            var p = Instantiate(_namePanelPrefab, _base);
+            p.SetPanel("Stage" + (i + 1).ToString(), Quaternion.Euler(0, -Angle * i, 0), _stageMaxNumber);
         }
-        transform.position = Vector3.forward * _stageNumber - Vector3.forward * 5 + Vector3.up * 2;
+        transform.position = Vector3.forward * _stageMaxNumber * 2 - Vector3.forward * 5 + Vector3.up * 2;
+        GameScene.InputManager.Instance.OnInputAxisRaw += MoveCursor;
     }
     void MoveCursor(float v, float h)
     {
@@ -35,22 +36,22 @@ public class StageSelectController : MonoBehaviour
         {
             if (h > 0)
             {
-                UIControl(1, 0);
+                UIControl(0, 1);
             }
             else
             {
-                UIControl(-1, 0);
+                UIControl(0, -1);
             }
         }
         else if (v > 0.8f || v < -0.8f)
         {
             if (v > 0)
             {
-                UIControl(0, 1);
+                UIControl(1, 0);
             }
             else
             {
-                UIControl(0, -1);
+                UIControl(-1, 0);
             }
         }
     }
@@ -92,7 +93,7 @@ public class StageSelectController : MonoBehaviour
     }
     void ChangeStage(int target)
     {
-
+        transform.rotation = Quaternion.Euler(0, -Angle * target, 0);
     }
     void ChangeSelectTarget(int value)
     {
