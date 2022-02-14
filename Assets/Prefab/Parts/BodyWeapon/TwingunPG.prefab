@@ -400,7 +400,7 @@ MonoBehaviour:
   - {fileID: 1881537099034850839}
   _power: 1
   _triggerShotCount: 4
-  _triggerInterval: 1
+  _triggerInterval: 5
   _shotInterval: 0.2
   _diffusivity: 6
   _diffusionShot: 0
@@ -527,7 +527,7 @@ MonoBehaviour:
   - {fileID: 809395400682115943}
   _power: 1
   _triggerShotCount: 4
-  _triggerInterval: 1
+  _triggerInterval: 5
   _shotInterval: 0.2
   _diffusivity: 6
   _diffusionShot: 0
@@ -594,7 +594,7 @@ MonoBehaviour:
   - {fileID: 965010606279404869}
   _power: 1
   _triggerShotCount: 8
-  _triggerInterval: 1
+  _triggerInterval: 5
   _shotInterval: 0.1
   _diffusivity: 6
   _diffusionShot: 0
@@ -10723,7 +10723,7 @@ MonoBehaviour:
   - {fileID: 23513228422514206}
   _power: 1
   _triggerShotCount: 4
-  _triggerInterval: 1
+  _triggerInterval: 5
   _shotInterval: 0.2
   _diffusivity: 6
   _diffusionShot: 0
@@ -30219,7 +30219,7 @@ MonoBehaviour:
   - {fileID: 1015221278457427802}
   _power: 1
   _triggerShotCount: 8
-  _triggerInterval: 1
+  _triggerInterval: 5
   _shotInterval: 0.1
   _diffusivity: 6
   _diffusionShot: 0
@@ -30286,7 +30286,7 @@ MonoBehaviour:
   - {fileID: 3961002642918180746}
   _power: 1
   _triggerShotCount: 4
-  _triggerInterval: 1
+  _triggerInterval: 5
   _shotInterval: 0.2
   _diffusivity: 6
   _diffusionShot: 0

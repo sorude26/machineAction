@@ -4896,7 +4896,7 @@ MonoBehaviour:
   _hitEffect: 0
   _endEffect: 9
   _rb: {fileID: 5615883408008679376}
-  _power: 15
+  _power: 5
   _lifeTime: 3
 --- !u!54 &5615883408008679376
 Rigidbody:
