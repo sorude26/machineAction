@@ -52,10 +52,11 @@ public class CustomizeControl : MonoBehaviour
         _sliders[2].value = _currentBuildData.LArmID;
         _sliders[3].value = _currentBuildData.RArmID;
         _sliders[4].value = _currentBuildData.LegID;
-        _sliders[5].value = _currentBuildData.WeaponLArmID;
-        _sliders[6].value = _currentBuildData.WeaponRArmID;
-        _sliders[7].value = _currentBuildData.ShoulderWeaponID;
-        _sliders[8].value = _currentBuildData.BodyWeaponID;
+        _sliders[5].value = _currentBuildData.BoosterID;
+        _sliders[6].value = _currentBuildData.WeaponLArmID;
+        _sliders[7].value = _currentBuildData.WeaponRArmID;
+        _sliders[8].value = _currentBuildData.ShoulderWeaponID;
+        _sliders[9].value = _currentBuildData.BodyWeaponID;
         _colorSliders[0].value = _color.r;
         _colorSliders[1].value = _color.g;
         _colorSliders[2].value = _color.b;
@@ -312,6 +313,11 @@ public class CustomizeControl : MonoBehaviour
     public void ChangeBWeapon(int number)
     {
         _currentBuildData.BodyWeaponID = (int)_sliders[number].value;
+        Build();
+    }
+    public void ChangeBooster(int number)
+    {
+        _currentBuildData.BoosterID = (int)_sliders[number].value;
         Build();
     }
     public void ChangeColor()

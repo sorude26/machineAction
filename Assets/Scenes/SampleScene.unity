@@ -11078,17 +11078,17 @@ MonoBehaviour:
   _dataManager: {fileID: 0}
   _buildData:
     HeadID: 0
-    BodyID: 56
-    RArmID: 55
-    LArmID: 55
-    LegID: 13
-    WeaponRArmID: 1
-    WeaponLArmID: 29
+    BodyID: 0
+    RArmID: 0
+    LArmID: 0
+    LegID: 0
+    WeaponRArmID: 18
+    WeaponLArmID: 18
     ShoulderWeaponID: 0
-    BodyWeaponID: 12
+    BodyWeaponID: 9
     BoosterID: 0
     CoreID: 0
-  _color: {r: 0.13643645, g: 0.3962264, b: 0.27190554, a: 0}
+  _color: {r: 0.5330188, g: 0.73315364, b: 1, a: 0}
 --- !u!4 &427596897
 Transform:
   m_ObjectHideFlags: 0
@@ -18838,7 +18838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &968636116
 Transform:
   m_ObjectHideFlags: 0
@@ -62520,7 +62520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2123050805
 Transform:
   m_ObjectHideFlags: 0
