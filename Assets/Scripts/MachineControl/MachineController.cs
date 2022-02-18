@@ -94,7 +94,7 @@ public class MachineController : MonoBehaviour
         }
         else
         {
-            var target = BattleManager.Instance.GetTarget();
+            var target = BattleManager.Instance.GetTarget(_parameter.LockOnRange);
             if (target)
             {
                 LookTarget = target.Center;
@@ -127,27 +127,27 @@ public class MachineController : MonoBehaviour
         {
             if (_groundCheck.IsGrounded())
             {
-                if (dir.z > 0.1f)
+                if (dir.z > InputStatus.MoveLimit)
                 {
                     _leg.WalkStart(1);
                 }
-                else if (dir.z < -0.1f)
+                else if (dir.z < -InputStatus.MoveLimit)
                 {
                     _leg.WalkStart(-1);
                 }
-                if (dir.x > 0.1f)
+                if (dir.x > InputStatus.MoveLimit)
                 {
                     _leg.TurnStartRight();
                 }
-                else if (dir.x < -0.1f)
+                else if (dir.x < -InputStatus.MoveLimit)
                 {
                     _leg.TurnStartLeft();
                 }
             }
             else if (_jump && !_jet)
             {
-                Turn(horizonal * 0.05f);
-                _body.ResetAngle(0.8f);
+                Turn(horizonal * MachineStatus.FlyTurnDelay);
+                _body.ResetAngle(MachineStatus.FlyBodyReset);
                 _moveControl.Jet(_rb, _body.BodyTransform.forward * _inputAxis.z + _body.BodyTransform.right * _inputAxis.x, _parameter.JetPower, _parameter.JetControlPower);
             }
 
@@ -215,10 +215,10 @@ public class MachineController : MonoBehaviour
         if (_fly)
         {
             Stop();
-            _moveControl.Jet(_rb, Vector3.up * 0.5f, _parameter.JetPower);
+            _moveControl.Jet(_rb, Vector3.up, _parameter.JetPower);
             return;
         }
-        if (_parameter.JetPower >= 1f)
+        if (_parameter.JetPower >= MachineStatus.JetLimit)
         {
             if (_boosterTimer <= -1 || _boosterTimer > 0)
             {
@@ -234,7 +234,7 @@ public class MachineController : MonoBehaviour
         {
             return;
         }
-        if (_parameter.JetPower < 1f)
+        if (_parameter.JetPower < MachineStatus.JetLimit)
         {
             return;
         }
@@ -255,7 +255,7 @@ public class MachineController : MonoBehaviour
         {
             return;
         }
-        if (_jet || _parameter.JetPower < 1f)
+        if (_jet || _parameter.JetPower < MachineStatus.JetLimit)
         {
             return;
         }
@@ -264,11 +264,11 @@ public class MachineController : MonoBehaviour
             return;
         }
         _jet = true;
-        if (_inputAxis.x > 0.5f)
+        if (_inputAxis.x > InputStatus.InputLimit)
         {
             _booster.BoostL();
         }
-        else if (_inputAxis.x < -0.5f)
+        else if (_inputAxis.x < -InputStatus.InputLimit)
         {
             _booster.BoostR();
         }
@@ -295,13 +295,13 @@ public class MachineController : MonoBehaviour
             return;
         }
         _body.QuickTurn();
-        if (_parameter.JetPower < 1f)
+        if (_parameter.JetPower < MachineStatus.JetLimit)
         {
             return;
         }
         StrongTurn();
-        Vector3 vector = _bodyAngle.forward * _inputAxis.z * 1.5f + _bodyAngle.right * _inputAxis.x;
-        _rb.AddForce(vector * _parameter.FloatSpeed + Vector3.up * 0.7f, ForceMode.Impulse);
+        Vector3 vector = _bodyAngle.forward * _inputAxis.z + _bodyAngle.right * _inputAxis.x;
+        _rb.AddForce(vector * _parameter.FloatSpeed + Vector3.up, ForceMode.Impulse);
         _legTransform.localRotation = _legRotaion;
         _jet = false;
     }
@@ -313,7 +313,7 @@ public class MachineController : MonoBehaviour
         _boosterTimer = -1;
         Brake();
         Stop();
-        _body.ResetAngle(0.1f);
+        _body.ResetAngle(MachineStatus.LandingBodyReset);
     }
     public void StartJump(Vector3 dir)
     {
@@ -325,14 +325,12 @@ public class MachineController : MonoBehaviour
     }
     public void AngleMove(Vector3 dir)
     {
-        //_booster.BoostL();
-        //_booster.BoostR();
         _rb.velocity = dir * _parameter.JetPower * _parameter.WalkPower;
     }
     public void AngleBooster(Vector3 dir)
     {
         _inputAxis = dir.normalized;
-        _rb.velocity = dir * _parameter.JetPower * _parameter.WalkPower * 2f;
+        _rb.velocity = dir * _parameter.JetPower * _parameter.RunPower;
     }
     public void Booster()
     {
@@ -350,7 +348,7 @@ public class MachineController : MonoBehaviour
     }
     public void StrongTurn()
     {
-        _legRotaion = Quaternion.Euler(Vector3.up * _body.BodyAngle.y * _parameter.TurnPower * 8f) * _legRotaion;
+        _legRotaion = Quaternion.Euler(Vector3.up * _body.BodyAngle.y * _parameter.TurnPower * MachineStatus.StrongTurn) * _legRotaion;
     }
     public void SetAngle(Vector3 angle)
     {
@@ -367,7 +365,7 @@ public class MachineController : MonoBehaviour
     public void Brake()
     {
         var v = _rb.velocity;
-        _rb.velocity = v * 0.3f;
+        _rb.velocity = v * MachineStatus.BrakePower;
         if (_groundCheck.IsGrounded())
         {
             _booster.BoostEnd();
@@ -403,7 +401,7 @@ public class MachineController : MonoBehaviour
     }
     IEnumerator Explosion()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(MachineStatus.ExplosionWait);
         EffectPool.Get(EffectType.HeavyExplosion, BodyControl.BodyTransform.position);
         gameObject.SetActive(false);
         OnBreak?.Invoke();

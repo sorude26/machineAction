@@ -44,39 +44,14 @@ public class ShotWeapon : WeaponMaster
         }
         if (_parabola > 0)
         {
-            if (_diffusivity > 0)
-            {
-                Vector3 target = _target;
-                target.x += Random.Range(-_diffusivity, _diffusivity);
-                target.y += Random.Range(-_diffusivity, _diffusivity);
-                target.z += Random.Range(-_diffusivity, _diffusivity);
-                ParabolaShot.ShootFixedTime(target, _parabola, _bullet, _muzzle.position);
-            }
-            else
-            {
-                ParabolaShot.ShootFixedTime(_target, _parabola, _bullet, _muzzle.position);
-            }
+            ParabolaShot.ShootFixedTime(Diffusivity(_target), _parabola, _bullet, _muzzle.position);
             return;
         }
         if (_angle > 0)
         {
-            if (_diffusivity > 0)
+            if (!ParabolaShot.ShootFixedAngle(Diffusivity(_target), _angle, _muzzle.position, _bullet))
             {
-                Vector3 target = _target;
-                target.x += Random.Range(-_diffusivity, _diffusivity);
-                target.y += Random.Range(-_diffusivity, _diffusivity);
-                target.z += Random.Range(-_diffusivity, _diffusivity);
-                if(!ParabolaShot.ShootFixedAngle(target, _angle, _muzzle.position, _bullet))
-                {
-                    BulletStartShot();
-                }
-            }
-            else
-            {
-                if (!ParabolaShot.ShootFixedAngle(_target, _angle, _muzzle.position, _bullet))
-                {
-                    BulletStartShot();
-                }
+                BulletStartShot();
             }
             return;
         }
@@ -88,35 +63,17 @@ public class ShotWeapon : WeaponMaster
     }
     protected void BulletStartShot()
     {
-        Vector3 moveDir = _muzzle.forward.normalized;
-        if (_diffusivity > 0)
-        {
-            moveDir.x += Random.Range(-_diffusivity, _diffusivity);
-            moveDir.y += Random.Range(-_diffusivity, _diffusivity);
-            moveDir.z += Random.Range(-_diffusivity, _diffusivity);
-        }
         var shot = BulletPool.Get(_bullet, _muzzle.position);
         if (shot)
         {
-            shot.StartShot(moveDir.normalized, _power);
+            shot.StartShot(Diffusivity(_muzzle.forward).normalized, _power);
         }
     }
     protected void DiffusionShot()
     {
         for (int i = 1; i < _diffusionShot; i++)
         {
-            Vector3 moveDir = _muzzle.forward.normalized;
-            if (_diffusivity > 0)
-            {
-                moveDir.x += Random.Range(-_diffusivity, _diffusivity);
-                moveDir.y += Random.Range(-_diffusivity, _diffusivity);
-                moveDir.z += Random.Range(-_diffusivity, _diffusivity);
-            }
-            var shot = BulletPool.Get(_bullet, _muzzle.position);
-            if (shot)
-            {
-                shot.StartShot(moveDir.normalized, _power);
-            }
+            BulletStartShot();
         }
     }
     public virtual void StartShot(Vector3 target)
@@ -151,7 +108,7 @@ public class ShotWeapon : WeaponMaster
         float timer = _shotInterval;
         while (_shotCount > 0)
         {
-            timer += Time.deltaTime;           
+            timer += Time.deltaTime;
             if (timer >= _shotInterval)
             {
                 Shot();
@@ -172,7 +129,16 @@ public class ShotWeapon : WeaponMaster
         _triggerTimer = 0;
         _trigger = false;
     }
-
+    protected Vector3 Diffusivity(Vector3 target)
+    {
+        if (_diffusivity > 0)
+        {
+            target.x += Random.Range(-_diffusivity, _diffusivity);
+            target.y += Random.Range(-_diffusivity, _diffusivity);
+            target.z += Random.Range(-_diffusivity, _diffusivity);
+        }
+        return target;
+    }
     public override void AttackAction(Vector3 target)
     {
         StartShot(target);

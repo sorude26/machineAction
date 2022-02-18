@@ -49,6 +49,11 @@ public class FadeController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
     public void ChangeFadeSpeed(float speed)
     {

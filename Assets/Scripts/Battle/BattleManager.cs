@@ -31,18 +31,12 @@ public class BattleManager : MonoBehaviour
             BattleEnd();
         }
     }
-    public DamageControl GetTarget(Transform attacker)
+    public DamageControl GetTarget(float range)
     {
         return _allAttackTarget
-            .Where(target => Vector3.Distance(target.Center.position, attacker.position) > 1f)
-            .Where(target => Vector3.Dot((target.Center.position - attacker.position).normalized, attacker.forward) > 0.4f)
-            .OrderBy(target => Vector3.Distance(target.Center.position, attacker.position)).FirstOrDefault();
-    }
-    public DamageControl GetTarget()
-    {
-        return _allAttackTarget
-            .Where(target => Vector3.Distance(target.Center.position, Camera.main.transform.position) > 1f)
+            .Where(target => Vector3.Distance(target.Center.position, Camera.main.transform.position) > 0.3f)
             .Where(target => Vector3.Dot((target.Center.position - Camera.main.transform.position).normalized, Camera.main.transform.forward) > 0.9f)
+            .Where(target => Vector3.Distance(target.Center.position, Camera.main.transform.position) < range)
             .OrderByDescending(target => Vector3.Dot((target.Center.position - Camera.main.transform.position).normalized, Camera.main.transform.forward)).FirstOrDefault();
     }
     void BattleEnd()

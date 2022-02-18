@@ -179,7 +179,7 @@ public class BodyControl : MonoBehaviour
         bool attack = false;
         Vector3 targetDir = targetPos - _bodyControlBase[0].position;
         targetDir.y = 0.0f;
-        if (Vector3.Dot(targetDir.normalized, _bodyControlBase[0].forward) < 0.6f)
+        if (Vector3.Dot(targetDir.normalized, _bodyControlBase[0].forward) < MachineStatus.BodyLock)
         {
             return true;
         }
@@ -212,7 +212,7 @@ public class BodyControl : MonoBehaviour
             _controlTarget[2].forward = _targetCurrentPosL - _leftControlBase[2].position;
             _lArmRotaion2 = _controlTarget[2].localRotation * Quaternion.Euler(-90, 0, 0);
             var range = Quaternion.Dot(_lArmRotaion2, _leftControlBase[2].localRotation);
-            if (range > 0.999f || range < -0.999f)
+            if (range > MachineStatus.AttackRange || range < -MachineStatus.AttackRange)
             {
                 attack = true;
             }
@@ -240,7 +240,7 @@ public class BodyControl : MonoBehaviour
             _controlTarget[1].forward = _targetCurrentPosR - _rightControlBase[2].position;
             _rArmRotaion2 = _controlTarget[1].localRotation * Quaternion.Euler(-90, 0, 0);
             var range = Quaternion.Dot(_rArmRotaion2, _rightControlBase[2].localRotation);
-            if (range > 0.999f || range < -0.999f)
+            if (range > MachineStatus.AttackRange || range < -MachineStatus.AttackRange)
             {
                 attack = true;
             }

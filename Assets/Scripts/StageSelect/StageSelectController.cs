@@ -91,6 +91,10 @@ public class StageSelectController : MonoBehaviour
             ChangeSelectTarget(value);
         }
     }
+    void SelectStage()
+    {
+
+    }
     void ChangeStage(int target)
     {
         transform.rotation = Quaternion.Euler(0, -Angle * target, 0);

@@ -19,25 +19,22 @@ public class CustomizeControl : MonoBehaviour
     Button _button = default;
     [SerializeField]
     GameObject _mark = default;
-    UnitBuildData _buildData = default;
-    int _targetMaxNumber = default;
-    int _targetNumber = 0;
-    float _changetime = 1f;
-    Color _color = default;
-    bool _setColor = false;
-    bool _inputStop = false;
-    bool _buttonOn = false;
-    PartsManager _partsManager = default;
-
     [SerializeField]
     Transform _cameraTarget = default;
     [SerializeField]
     float _followSpeed = 5f;
     [SerializeField]
     float _lockSpeed = 20f;
+    PartsManager _partsManager = default;
+    UnitBuildData _buildData = default;
     Quaternion _cameraRot = default;
-    float _minY = -70f;
-    float _maxY = 70f;
+    Color _color = default;
+    int _targetMaxNumber = default;
+    int _targetNumber = 0;
+    float _changetime = 1f;
+    bool _setColor = false;
+    bool _inputStop = false;
+    bool _buttonOn = false;
     private void Awake()
     {
         _partsManager = new PartsManager();

@@ -368,11 +368,11 @@ public class LegControl : MonoBehaviour
         _machine?.Walk(_walk);
         if (_turn > 0)
         {
-            _machine.Turn(0.2f);
+            _machine.Turn(MachineStatus.TurnPower);
         }
         else if (_turn < 0)
         {
-            _machine?.Turn(-0.2f);
+            _machine?.Turn(-MachineStatus.TurnPower);
         }
         _turn = 0;
     }
@@ -381,11 +381,11 @@ public class LegControl : MonoBehaviour
         _machine.Run(_walk);
         if (_turn > 0)
         {
-            _machine.Turn(0.2f);
+            _machine.Turn(MachineStatus.TurnPower);
         }
         else if (_turn < 0)
         {
-            _machine.Turn(-0.2f);
+            _machine.Turn(-MachineStatus.TurnPower);
         }
         _turn = 0;
     }
@@ -394,11 +394,11 @@ public class LegControl : MonoBehaviour
         _machine.Move(_walk);
         if (_turn > 0)
         {
-            _machine.Turn(0.05f);
+            _machine.Turn(MachineStatus.TurnMovePower);
         }
         else if (_turn < 0)
         {
-            _machine.Turn(-0.05f);
+            _machine.Turn(-MachineStatus.TurnMovePower);
         }
         _turn = 0;
     }
@@ -422,11 +422,11 @@ public class LegControl : MonoBehaviour
     }
     void TurnLeft()
     {
-        _machine?.Turn(-1f);
+        _machine?.Turn(-MachineStatus.Turn);
     }
     void TurnRight()
     {
-        _machine?.Turn(1f);
+        _machine?.Turn(MachineStatus.Turn);
     }
     void Jump()
     {

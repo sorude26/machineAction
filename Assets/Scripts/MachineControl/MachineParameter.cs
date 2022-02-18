@@ -53,6 +53,10 @@ public class MachineParameter : MonoBehaviour
     [SerializeField]
     float _cameraTurnRange = 50f;
     public float CameraTurnRange { get => _cameraTurnRange; }
+    [Tooltip("ロックオン範囲")]
+    [SerializeField]
+    float _lockOnRange = 100f;
+    public float LockOnRange { get => _lockOnRange; }
     [Tooltip("ジェット力")]
     [SerializeField]
     float _jetPower = 3f;

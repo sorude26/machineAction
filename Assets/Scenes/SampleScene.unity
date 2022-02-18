@@ -917,6 +917,7 @@ MonoBehaviour:
   _bodyTurnSpeed: 4
   _bodyTurnRange: 1
   _cameraTurnRange: 60
+  _lockOnRange: 100
   _jetPower: 8
   _jetControlPower: 10
   _jetMovePower: 0.8
@@ -3985,7 +3986,6 @@ GameObject:
   m_Component:
   - component: {fileID: 259758823}
   - component: {fileID: 259758825}
-  - component: {fileID: 259758824}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -4007,18 +4007,6 @@ Transform:
   m_Father: {fileID: 1289746571}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &259758824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 259758822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4803dc1d3d9fb24886ba5891a7dc5c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &259758825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4644,7 +4632,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-17493876
+  m_Name: pb_Mesh805572
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10199,7 +10187,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh52932
+  m_Name: pb_Mesh804660
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10517,6 +10505,7 @@ MonoBehaviour:
   _bodyTurnSpeed: 4
   _bodyTurnRange: 1
   _cameraTurnRange: 60
+  _lockOnRange: 100
   _jetPower: 8
   _jetControlPower: 10
   _jetMovePower: 0.8
@@ -10887,7 +10876,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh53212
+  m_Name: pb_Mesh804904
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11082,13 +11071,13 @@ MonoBehaviour:
     RArmID: 0
     LArmID: 0
     LegID: 0
-    WeaponRArmID: 18
-    WeaponLArmID: 18
+    WeaponRArmID: 4
+    WeaponLArmID: 4
     ShoulderWeaponID: 0
-    BodyWeaponID: 9
+    BodyWeaponID: 0
     BoosterID: 0
     CoreID: 0
-  _color: {r: 0.5330188, g: 0.73315364, b: 1, a: 0}
+  _color: {r: 0.53333336, g: 1, b: 0.6248023, a: 0}
 --- !u!4 &427596897
 Transform:
   m_ObjectHideFlags: 0
@@ -11468,7 +11457,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-17493870
+  m_Name: pb_Mesh805264
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13064,7 +13053,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-17493872
+  m_Name: pb_Mesh804976
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14078,7 +14067,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh52512
+  m_Name: pb_Mesh804218
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16683,6 +16672,7 @@ MonoBehaviour:
   _bodyTurnSpeed: 4
   _bodyTurnRange: 1
   _cameraTurnRange: 60
+  _lockOnRange: 100
   _jetPower: 8
   _jetControlPower: 10
   _jetMovePower: 0.8
@@ -17828,7 +17818,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh54202
+  m_Name: pb_Mesh805906
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -38013,7 +38003,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh54296
+  m_Name: pb_Mesh806000
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -38293,7 +38283,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-17493868
+  m_Name: pb_Mesh806256
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -38653,7 +38643,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1294217036}
   - component: {fileID: 1294217038}
-  - component: {fileID: 1294217037}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -38675,18 +38664,6 @@ Transform:
   m_Father: {fileID: 592616861}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1294217037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1294217035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4803dc1d3d9fb24886ba5891a7dc5c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1294217038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41042,7 +41019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1396829563
 Transform:
   m_ObjectHideFlags: 0
@@ -46363,7 +46340,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-17493882
+  m_Name: pb_Mesh806372
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -46816,9 +46793,10 @@ MonoBehaviour:
   _turnSpeed: 10
   _jumpPower: 13
   _landingTime: 0.3
-  _bodyTurnSpeed: 1
+  _bodyTurnSpeed: 4
   _bodyTurnRange: 0.5
   _cameraTurnRange: 60
+  _lockOnRange: 300
   _jetPower: 5
   _jetControlPower: 10
   _jetMovePower: 0.8
@@ -48188,7 +48166,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1589087172}
   - component: {fileID: 1589087174}
-  - component: {fileID: 1589087173}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -48210,18 +48187,6 @@ Transform:
   m_Father: {fileID: 1944469880}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1589087173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589087171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4803dc1d3d9fb24886ba5891a7dc5c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1589087174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48801,7 +48766,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh53330
+  m_Name: pb_Mesh805032
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -50187,7 +50152,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1707145639}
   - component: {fileID: 1707145641}
-  - component: {fileID: 1707145640}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -50209,18 +50173,6 @@ Transform:
   m_Father: {fileID: 244289938}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1707145640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707145638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4803dc1d3d9fb24886ba5891a7dc5c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1707145641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50558,7 +50510,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-17493874
+  m_Name: pb_Mesh805282
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -58122,7 +58074,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1862803610
 Transform:
   m_ObjectHideFlags: 0
