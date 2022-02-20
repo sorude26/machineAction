@@ -17,7 +17,7 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
     protected GameObject _damageSmoke;
     [Tooltip("色が変更可能な装甲")]
     [SerializeField]
-    protected Renderer[] m_amors;
+    protected Renderer[] _amors;
     [Tooltip("メインブースターのパーティクル")]
     [SerializeField]
     protected ParticleSystem[] _mainBoosterParticles = default;
@@ -76,11 +76,11 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
     /// <param name="color"></param>
     public virtual void PartsColorChange(Color color)
     {
-        if (m_amors.Length == 0)
+        if (_amors.Length == 0)
         {
             return;
         }
-        foreach (var renderer in m_amors)
+        foreach (var renderer in _amors)
         {
             if (renderer != null)
             {
@@ -95,7 +95,7 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
     /// <param name="color"></param>
     public virtual void ColorChange(Color color)
     {
-        foreach (var renderer in m_amors)
+        foreach (var renderer in _amors)
         {
             renderer.material.color = color;
         }
