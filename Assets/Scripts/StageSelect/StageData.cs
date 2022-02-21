@@ -2,10 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageData 
+[CreateAssetMenu]
+public class StageData : ScriptableObject
 {
-    public int StageType { get; private set; }
-    public int Enemy { get; private set; }
-    public int Wintype { get; private set; } 
-    public int Objects { get; private set; }
+    [SerializeField]
+    int _stageType = default;
+    [SerializeField]
+    int _enemy = default;
+    [SerializeField]
+    int _battleType = default;
+    [SerializeField]
+    int _stageObject = default;
+    public int StageType { get=> _stageType; }
+    public int Enemy { get => _enemy; }
+    public int Wintype { get => _battleType; } 
+    public int Objects { get => _stageObject; }
 }
