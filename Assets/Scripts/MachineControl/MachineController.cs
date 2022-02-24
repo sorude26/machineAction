@@ -32,7 +32,6 @@ public class MachineController : MonoBehaviour
     bool _jump = false;
     bool _jet = false;
     bool _knockDown = false;
-    float _boosterTimer = -1;
     Vector3 _inputAxis = Vector3.zero;
     Quaternion _legRotaion = Quaternion.Euler(0, 0, 0);
     PartsManager _parts = default;
@@ -146,11 +145,13 @@ public class MachineController : MonoBehaviour
             }
             else if (_jump && !_jet)
             {
+                if (!_booster.BoostCheckFly())
+                {
+                    _moveControl.Jet(_rb, _body.BodyTransform.forward * _inputAxis.z + _body.BodyTransform.right * _inputAxis.x, _parameter.JetPower, _parameter.JetControlPower);
+                }
                 Turn(horizonal * MachineStatus.FlyTurnDelay);
                 _body.ResetAngle(MachineStatus.FlyBodyReset);
-                _moveControl.Jet(_rb, _body.BodyTransform.forward * _inputAxis.z + _body.BodyTransform.right * _inputAxis.x, _parameter.JetPower, _parameter.JetControlPower);
             }
-
         }
         else
         {
@@ -220,7 +221,7 @@ public class MachineController : MonoBehaviour
         }
         if (_parameter.JetPower >= MachineStatus.JetLimit)
         {
-            if (_boosterTimer <= -1 || _boosterTimer > 0)
+            if (_booster.BoostCheckFly())
             {
                 _booster.Boost();
             }
@@ -238,12 +239,11 @@ public class MachineController : MonoBehaviour
         {
             return;
         }
-        if (_jump && _boosterTimer > 0)
+        if (_jump && _booster.BoostCheckFly())
         {
-            _boosterTimer -= Time.deltaTime;
             Vector3 vector = _bodyAngle.forward * _inputAxis.z + _bodyAngle.right * _inputAxis.x;
             _moveControl.Jet(_rb, Vector3.up + vector * _parameter.JetMovePower, _parameter.JetPower);
-            if (_boosterTimer <= 0)
+            if (_booster.CurrentBoostPower <= 0)
             {
                 _booster.BoostEnd();
             }
@@ -260,6 +260,10 @@ public class MachineController : MonoBehaviour
             return;
         }
         if (_inputAxis == Vector3.zero)
+        {
+            return;
+        }
+        if (!_booster.BoostCheckJet())
         {
             return;
         }
@@ -299,6 +303,10 @@ public class MachineController : MonoBehaviour
         {
             return;
         }
+        if (_groundCheck.IsGrounded())
+        {
+            _booster.BoostCheckJet();
+        }
         StrongTurn();
         Vector3 vector = _bodyAngle.forward * _inputAxis.z + _bodyAngle.right * _inputAxis.x;
         _rb.AddForce(vector * _parameter.FloatSpeed + Vector3.up, ForceMode.Impulse);
@@ -310,14 +318,13 @@ public class MachineController : MonoBehaviour
         _jump = false;
         _jet = false;
         _booster.BoostEnd();
-        _boosterTimer = -1;
+        _booster.BoostRecovery();
         Brake();
         Stop();
         _body.ResetAngle(MachineStatus.LandingBodyReset);
     }
     public void StartJump(Vector3 dir)
     {
-        _boosterTimer = _parameter.JetTime;
         _jump = true;
         _rb.angularVelocity = Vector3.zero;
         _moveControl.Jump(_rb, dir, _parameter.JumpPower);
@@ -325,10 +332,18 @@ public class MachineController : MonoBehaviour
     }
     public void AngleMove(Vector3 dir)
     {
+        if (!_booster.BoostCheckFly())
+        {
+            return;
+        }
         _rb.velocity = dir * _parameter.JetPower * _parameter.WalkPower;
     }
     public void AngleBooster(Vector3 dir)
     {
+        if (!_booster.BoostCheckFly())
+        {
+            return;
+        }
         _inputAxis = dir.normalized;
         _rb.velocity = dir * _parameter.JetPower * _parameter.RunPower;
     }
@@ -369,6 +384,7 @@ public class MachineController : MonoBehaviour
         if (_groundCheck.IsGrounded())
         {
             _booster.BoostEnd();
+            _booster.BoostRecovery();
         }
     }
     public bool IsGrounded()

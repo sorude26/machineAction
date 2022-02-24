@@ -7,9 +7,9 @@ public class GaugeControl : MonoBehaviour
 {
     [SerializeField]
     protected Image _gauge = default;
-    protected int _maxValue = 100;
-    protected int _currentValue = 100;
-    public int CurrentValue { 
+    protected float _maxValue = 100;
+    protected float _currentValue = 100;
+    public float CurrentValue { 
         get => _currentValue;
         set
         {
@@ -17,7 +17,7 @@ public class GaugeControl : MonoBehaviour
             UpdateGauge();
         }
     }
-    public virtual void SetMaxValue(int maxValue)
+    public virtual void SetMaxValue(float maxValue)
     {
         _maxValue = maxValue;
         CurrentValue = maxValue; 
@@ -33,6 +33,6 @@ public class GaugeControl : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
-        _gauge.fillAmount = CurrentValue / (float)_maxValue;
+        _gauge.fillAmount = CurrentValue / _maxValue;
     }
 }
