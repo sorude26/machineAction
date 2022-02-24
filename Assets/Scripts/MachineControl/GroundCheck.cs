@@ -15,6 +15,8 @@ public class GroundCheck : MonoBehaviour
     Vector3 _checkDir = Vector3.down;
     [SerializeField]
     float _checkRange = 0.2f;
+    [SerializeField]
+    LayerMask _layer = default;
     public bool IsGrounded()
     {
         int leftCount = default;
@@ -23,7 +25,7 @@ public class GroundCheck : MonoBehaviour
         {
             Vector3 start = pos.position;
             Vector3 end = start + _checkDir * _checkRange;
-            bool left = Physics.Linecast(start, end);
+            bool left = Physics.Linecast(start, end, _layer);
             if (left)
             {
                 leftCount++;
@@ -37,7 +39,7 @@ public class GroundCheck : MonoBehaviour
         {
             Vector3 start = pos.position;
             Vector3 end = start + _checkDir * _checkRange;
-            bool right = Physics.Linecast(start, end);
+            bool right = Physics.Linecast(start, end, _layer);
             if (right)
             {
                 rightCount++;
