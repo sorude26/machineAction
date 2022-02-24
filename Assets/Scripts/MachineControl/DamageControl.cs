@@ -66,6 +66,7 @@ public class DamageControl : MonoBehaviour, IDamageApplicable
         {
             BattleManager.Instance.AddTarget(this);
             _target = true;
+            //_gauge.gameObject.SetActive(true);
         }
     }
     public void ReMoveThis()
@@ -73,6 +74,7 @@ public class DamageControl : MonoBehaviour, IDamageApplicable
         if (_target)
         {
             BattleManager.Instance.ReMoveTarget(this);
+            //_gauge.gameObject.SetActive(false);
         }
     }
 }
