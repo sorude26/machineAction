@@ -20,6 +20,7 @@ namespace GameScene
         public event Action OnInputJump;
         public event Action OnInputJumpEnd;
         public event Action OnFirstInputBooster;
+        public event Action OnFirstInputChangeMode;
         public event Action OnFirstInputShot1;
         public event Action OnFirstInputShot2;
         public event Action OnFirstInputShotL;
@@ -64,6 +65,7 @@ namespace GameScene
             _inputActions.PlayerController.ShotR.canceled += context => { EndShotR(); };
             _inputActions.PlayerController.Attack1.canceled += context => { EndAttack(); };
             _inputActions.PlayerController.Jet.started += context => { OnJet(); };
+            _inputActions.PlayerController.ChangeMode.started += context => { OnChangeMode(); };
             StartCoroutine(ActionUpdate());
         }
         public void InputActionsOut()
@@ -202,6 +204,10 @@ namespace GameScene
         void OnLockOn()
         {
             OnInputLockOn?.Invoke();
+        }
+        void OnChangeMode()
+        {
+            OnFirstInputChangeMode?.Invoke();
         }
         void EndShot1()
         {

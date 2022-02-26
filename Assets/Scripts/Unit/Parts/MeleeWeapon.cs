@@ -48,12 +48,12 @@ public class MeleeWeapon : WeaponMaster
     {
         if (_knockBackPower > 0)
         {
-            OwnerRb.AddForce(-OwnerRb.transform.forward * _knockBackPower, ForceMode.Impulse);
+            OwnerRb?.AddForce(-OwnerRb.transform.forward * _knockBackPower, ForceMode.Impulse);
         }
     }
     void HitStop()
     {
-        CameraEffectManager.HitStop();
+        CameraEffectManager.HitStop(transform.position);
         CameraEffectManager.LightShake(transform.position);
     }
     public override float AttackSpeed()
