@@ -25,11 +25,12 @@ public class BoosterControl : MonoBehaviour
     }
     float _currentPower = default;
     float _maxBoostPower = 100f;
-    float _needPowerJet = 700f;
+    protected float NeedPowerJet { get=>_maxBoostPower * 0.2f; }
     float _needPowerFly = 1f;
     float _needPower = 0.1f;
     float _powerRecoverySpeed = 5f;
     bool _boost = false;
+    bool _set = false;
     public void Set(MachineController controller)
     {
         _machine = controller;
@@ -39,14 +40,29 @@ public class BoosterControl : MonoBehaviour
             _gauge.SetMaxValue(_maxBoostPower);
         }
         BoostEnd();
+        _set = true;
     }
     private void Update()
     {
+        if (!_set)
+        {
+            return;
+        }
+        if (CurrentBoostPower > 0 && _machine.FloatMode)
+        {
+            CurrentBoostPower -= _needPowerFly * Time.deltaTime;
+        }
+        if (CurrentBoostPower <= 0 && _machine.FloatMode)
+        {
+            _machine.ChangeFloat();
+            return;
+        }
         if (_boost)
         {
             if (CurrentBoostPower > 0)
             {
                 CurrentBoostPower -= _needPower * Time.deltaTime;
+                
             }
             return;
         }
@@ -54,7 +70,7 @@ public class BoosterControl : MonoBehaviour
     }
     public bool BoostCheckJet()
     {
-        CurrentBoostPower -= _needPowerJet * Time.deltaTime;
+        CurrentBoostPower -= NeedPowerJet;
         if (CurrentBoostPower > 0)
         {
             return true;

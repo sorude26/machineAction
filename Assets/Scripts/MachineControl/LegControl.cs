@@ -83,7 +83,7 @@ public class LegControl : MonoBehaviour
             switch (_legType)
             {
                 case LegType.Normal:
-                    if (_machine.Parameter.ActionSpeed >= 1)
+                    if (_machine.Parameter.ActionSpeed > 1)
                     {
                         ChangeAnimation("Run");
                     }

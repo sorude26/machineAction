@@ -292,10 +292,7 @@ public class BodyControl : MonoBehaviour
             if (_groundCheck.IsGrounded())
             {
                 ChangeAnimation(attackControl.AttackAction(Fighting, _attackCount));
-                if (attackControl.AttackAction(Fighting, _attackCount) != "attack")
-                {
-                    _leg.AttackMoveR();
-                }
+                _leg.AttackMoveR();
             }
             else
             {
@@ -463,7 +460,13 @@ public class BodyControl : MonoBehaviour
         angle.x = 0;
         angle.z = 0;
         _bodyRotaion = angle;
-        _camera = true;
+        _camera = true; 
+        if (_machine.FloatMode)
+        {
+            angle.y *= _machine.Parameter.FloatTurnSpeed;
+            _machine.Turn(angle);
+            return;
+        }
         if (angle.y > 0)
         {
             if (_angle < 0)

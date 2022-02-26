@@ -84,6 +84,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ChangeMode",
+                    "type": "Button",
+                    "id": "674a995d-e692-4a74-b48e-d23020772739",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -414,6 +422,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shot2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52412825-24df-4668-a01e-569263a57d4c",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeMode",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

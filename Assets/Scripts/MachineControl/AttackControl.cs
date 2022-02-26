@@ -43,7 +43,7 @@ public class AttackControl
             default:
                 break;
         }
-        return "attack";
+        return "attackFront";
     }
     public string AttackActionL(FightingType type, int count)
     {
@@ -66,7 +66,7 @@ public class AttackControl
             default:
                 break;
         }
-        return "attack";
+        return "attackFront";
     }
     public string AttackActionR(FightingType type, int count)
     {
@@ -89,7 +89,7 @@ public class AttackControl
             default:
                 break;
         }
-        return "attack";
+        return "attackFront";
     }
     public FightingType GetType(MachineController machine)
     {

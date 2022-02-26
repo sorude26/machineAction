@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
         GameScene.InputManager.Instance.OnFirstInputShot2 += _controller.BodyControl.BodyWeaponShot;
         GameScene.InputManager.Instance.OnInputCameraRawExit += _cameraControl.ResetLock;
         GameScene.InputManager.Instance.OnInputCameraRaw += _cameraControl.FreeLock;
+        GameScene.InputManager.Instance.OnFirstInputChangeMode += _controller.ChangeFloat;
     }
     public void OutControl()
     {
@@ -52,5 +53,8 @@ public class PlayerController : MonoBehaviour
         GameScene.InputManager.Instance.OnFirstInputShotR -= _controller.BodyControl.HandAttackRight;
         GameScene.InputManager.Instance.OnFirstInputShot1 -= _controller.BodyControl.ShoulderShot;
         GameScene.InputManager.Instance.OnFirstInputShot2 -= _controller.BodyControl.BodyWeaponShot;
+        GameScene.InputManager.Instance.OnInputCameraRawExit -= _cameraControl.ResetLock;
+        GameScene.InputManager.Instance.OnInputCameraRaw -= _cameraControl.FreeLock;
+        GameScene.InputManager.Instance.OnFirstInputChangeMode -= _controller.ChangeFloat;
     }
 }

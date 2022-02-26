@@ -97,6 +97,14 @@ public class @ControlAction : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChangeMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""674a995d-e692-4a74-b48e-d23020772739"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -429,6 +437,17 @@ public class @ControlAction : IInputActionCollection, IDisposable
                     ""action"": ""Shot2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52412825-24df-4668-a01e-569263a57d4c"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -447,6 +466,7 @@ public class @ControlAction : IInputActionCollection, IDisposable
         m_PlayerController_Jet = m_PlayerController.FindAction("Jet", throwIfNotFound: true);
         m_PlayerController_CameraMove = m_PlayerController.FindAction("CameraMove", throwIfNotFound: true);
         m_PlayerController_LockOn = m_PlayerController.FindAction("LockOn", throwIfNotFound: true);
+        m_PlayerController_ChangeMode = m_PlayerController.FindAction("ChangeMode", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -506,6 +526,7 @@ public class @ControlAction : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerController_Jet;
     private readonly InputAction m_PlayerController_CameraMove;
     private readonly InputAction m_PlayerController_LockOn;
+    private readonly InputAction m_PlayerController_ChangeMode;
     public struct PlayerControllerActions
     {
         private @ControlAction m_Wrapper;
@@ -520,6 +541,7 @@ public class @ControlAction : IInputActionCollection, IDisposable
         public InputAction @Jet => m_Wrapper.m_PlayerController_Jet;
         public InputAction @CameraMove => m_Wrapper.m_PlayerController_CameraMove;
         public InputAction @LockOn => m_Wrapper.m_PlayerController_LockOn;
+        public InputAction @ChangeMode => m_Wrapper.m_PlayerController_ChangeMode;
         public InputActionMap Get() { return m_Wrapper.m_PlayerController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -559,6 +581,9 @@ public class @ControlAction : IInputActionCollection, IDisposable
                 @LockOn.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnLockOn;
                 @LockOn.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnLockOn;
                 @LockOn.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnLockOn;
+                @ChangeMode.started -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnChangeMode;
+                @ChangeMode.performed -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnChangeMode;
+                @ChangeMode.canceled -= m_Wrapper.m_PlayerControllerActionsCallbackInterface.OnChangeMode;
             }
             m_Wrapper.m_PlayerControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -593,6 +618,9 @@ public class @ControlAction : IInputActionCollection, IDisposable
                 @LockOn.started += instance.OnLockOn;
                 @LockOn.performed += instance.OnLockOn;
                 @LockOn.canceled += instance.OnLockOn;
+                @ChangeMode.started += instance.OnChangeMode;
+                @ChangeMode.performed += instance.OnChangeMode;
+                @ChangeMode.canceled += instance.OnChangeMode;
             }
         }
     }
@@ -609,5 +637,6 @@ public class @ControlAction : IInputActionCollection, IDisposable
         void OnJet(InputAction.CallbackContext context);
         void OnCameraMove(InputAction.CallbackContext context);
         void OnLockOn(InputAction.CallbackContext context);
+        void OnChangeMode(InputAction.CallbackContext context);
     }
 }

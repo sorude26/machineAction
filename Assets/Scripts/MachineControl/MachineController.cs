@@ -28,7 +28,6 @@ public class MachineController : MonoBehaviour
     [SerializeField]
     Transform _front = default;
     bool _start = false;
-    bool _fly = false;
     bool _jump = false;
     bool _jet = false;
     bool _knockDown = false;
@@ -40,6 +39,7 @@ public class MachineController : MonoBehaviour
 
     public event Action OnBreak = default;
 
+    public bool FloatMode { get; private set; }
     public Vector3 InputAxis { get => _inputAxis; }
     public BodyControl BodyControl { get => _body; }
     public PartsManager MachineParts { get => _parts; }
@@ -120,10 +120,10 @@ public class MachineController : MonoBehaviour
             return;
         }
         _inputAxis = new Vector3(horizonal, 0, vertical);
-        var dir = _inputAxis;
-        dir.x += _body.BodyAngle.y;
-        if (!_fly)
+        if (!FloatMode)
         {
+            var dir = _inputAxis;
+            dir.x += _body.BodyAngle.y;
             if (_groundCheck.IsGrounded())
             {
                 if (dir.z > InputStatus.MoveLimit)
@@ -155,24 +155,12 @@ public class MachineController : MonoBehaviour
         }
         else
         {
-            if (vertical != 0)
-            {
-                Stop();
-            }
-            _moveControl.MoveFloat(_rb, dir, _parameter.FloatSpeed, _parameter.MaxFloatSpeed);
-            if (horizonal > 0)
-            {
-
-            }
-            else if (horizonal < 0)
-            {
-
-            }
+            _moveControl.MoveFloat(_rb,  transform.forward * _inputAxis.z + transform.right * _inputAxis.x, _parameter.FloatSpeed, _parameter.MaxFloatSpeed);
         }
     }
     public void MoveEnd()
     {
-        if (!_fly)
+        if (!FloatMode)
         {
             _leg.WalkStop();
             if (_groundCheck.IsGrounded())
@@ -213,7 +201,7 @@ public class MachineController : MonoBehaviour
         {
             return;
         }
-        if (_fly)
+        if (FloatMode)
         {
             Stop();
             _moveControl.Jet(_rb, Vector3.up, _parameter.JetPower);
@@ -309,7 +297,7 @@ public class MachineController : MonoBehaviour
         }
         StrongTurn();
         Vector3 vector = _bodyAngle.forward * _inputAxis.z + _bodyAngle.right * _inputAxis.x;
-        _rb.AddForce(vector * _parameter.FloatSpeed + Vector3.up, ForceMode.Impulse);
+        _rb.AddForce(vector * _parameter.JetImpulsePower + Vector3.up, ForceMode.Impulse);
         _legTransform.localRotation = _legRotaion;
         _jet = false;
     }
@@ -357,6 +345,10 @@ public class MachineController : MonoBehaviour
     {
         _legRotaion = Quaternion.Euler(Vector3.up * angle * _parameter.TurnPower) * _legRotaion;
     }
+    public void Turn(Quaternion angle)
+    {
+        _legRotaion = angle * _legRotaion;
+    }
     public void Turn()
     {
         _legRotaion = Quaternion.Euler(Vector3.up * _body.BodyAngle.y * _parameter.TurnPower) * _legRotaion;
@@ -403,15 +395,17 @@ public class MachineController : MonoBehaviour
         _booster.BoostEnd();
         StartCoroutine(Explosion());
     }
-    void ChangeFloat()
+    public void ChangeFloat()
     {
-        if (_fly)
+        if (FloatMode)
         {
-            _fly = false;
+            FloatMode = false;
+            _booster.BoostEnd();
         }
         else
         {
-            _fly = true;
+            FloatMode = true;
+            _booster.Boost();
         }
         _leg.ChangeMode();
     }

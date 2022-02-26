@@ -73,10 +73,19 @@ public class MachineParameter : MonoBehaviour
     [SerializeField]
     float _jetTime = 30f;
     public float JetTime { get => _jetTime; }
+
+    [Tooltip("ジェット移動速度")]
+    [SerializeField]
+    float _jetImpulsePower = 40f;
+    public float JetImpulsePower { get => _jetImpulsePower; }
     [Tooltip("ホバー移動力")]
     [SerializeField]
     float _floatSpeed = 30f;
     public float FloatSpeed { get => _floatSpeed; }
+    [Tooltip("ホバー旋回力")]
+    [SerializeField]
+    float _floatTurnSpeed = 0.3f;
+    public float FloatTurnSpeed { get => _floatTurnSpeed; }
     [Tooltip("ホバー最高速度")]
     [SerializeField]
     float _maxFloatSpeed = 500f;
