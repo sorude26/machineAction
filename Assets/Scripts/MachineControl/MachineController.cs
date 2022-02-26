@@ -397,17 +397,25 @@ public class MachineController : MonoBehaviour
     }
     public void ChangeFloat()
     {
+        _booster.Boost();
         if (FloatMode)
         {
             FloatMode = false;
             _booster.BoostEnd();
+            _leg.ChangeMode();
         }
         else
         {
-            FloatMode = true;
-            _booster.Boost();
+            if (_booster.BoostCheckFly())
+            {
+                FloatMode = true;
+                _leg.ChangeMode();
+            }
+            else
+            {
+                _booster.BoostEnd();
+            }
         }
-        _leg.ChangeMode();
     }
     IEnumerator Explosion()
     {

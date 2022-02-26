@@ -18,6 +18,8 @@ public class EnemyContorller : MonoBehaviour
     [SerializeField]
     float _attackRange = 100f;
     [SerializeField]
+    float _fightRange = 5f;
+    [SerializeField]
     CameraController _cameraControl = default;
     [SerializeField]
     DamageControl _damageControl = default;
@@ -56,11 +58,21 @@ public class EnemyContorller : MonoBehaviour
         }
         Vector3 dir = _controller.MachineParts.Body.transform.forward - BattleManager.Instance.PlayerPos.position;
         _controller.Move(-dir.normalized);
-        if (dir.magnitude < _attackRange)
+        if (Vector3.Distance(_controller.MachineParts.Body.transform.position, BattleManager.Instance.PlayerPos.position) < _attackRange)
         {
-            _controller.BodyControl.HandAttackLeft();
-            _controller.BodyControl.HandAttackRight();
+            if (_controller.LAWeapon.Type == WeaponType.Rifle)
+            {
+                _controller.BodyControl.HandAttackLeft();
+            }
+            if (_controller.RAWeapon.Type == WeaponType.Rifle)
+            {
+                _controller.BodyControl.HandAttackRight();
+            }
             _controller.BodyControl.BodyWeaponShot();
+            if (Vector3.Distance(_controller.MachineParts.Body.transform.position, BattleManager.Instance.PlayerPos.position) < _fightRange)
+            {
+                _controller.BodyControl.FightingAttack();
+            }
         }
         timer -= Time.deltaTime;
         if (timer < 0)
