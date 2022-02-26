@@ -51,7 +51,7 @@ public class SceneChange
     private static void Game()
     {
         roadNow = false;
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("BattleStageScene");
     }
     private static void Customize()
     {

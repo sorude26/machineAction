@@ -271,11 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _partsID: 5
   _partsData: {fileID: 11400000, guid: c0525c6946c113d45b7a5e680e703e40, type: 2}
-  _partsObject:
-  - {fileID: 1043605133188527462}
-  - {fileID: 112263966221800820}
-  - {fileID: 6667479972794597024}
-  - {fileID: 9128706596503663828}
+  _partsObject: []
   _anime: {fileID: 0}
   _hitPos: []
   _damageSmoke: {fileID: 0}
@@ -697,6 +693,8 @@ MonoBehaviour:
   _shotInterval: 0.2
   _diffusivity: 0.01
   _diffusionShot: 0
+  _parabola: 0
+  _angle: 0
 --- !u!1 &7921882418225601350
 GameObject:
   m_ObjectHideFlags: 0

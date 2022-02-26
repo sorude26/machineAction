@@ -1242,11 +1242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _partsID: 4
   _partsData: {fileID: 11400000, guid: 90925bcaf2cb3444193d3c3a6b40a2f1, type: 2}
-  _partsObject:
-  - {fileID: 5804692209099737753}
-  - {fileID: 7471848754502482483}
-  - {fileID: 3918370006867492916}
-  - {fileID: 7932871416088340933}
+  _partsObject: []
   _anime: {fileID: 0}
   _hitPos: []
   _damageSmoke: {fileID: 0}
