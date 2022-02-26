@@ -17,9 +17,10 @@ public class MapManager : MonoBehaviour
     [SerializeField] int _maxX = 15;
     /// <summary> ステージの最大Z座標 </summary>
     [SerializeField] int _maxZ = 15;
-    [SerializeField] Vector2Int[] _sizeData = { new Vector2Int(10, 10), new Vector2Int(16, 16), new Vector2Int(20, 20) };
+    [SerializeField] Vector2Int[] m_sizeData = { new Vector2Int(10, 10), new Vector2Int(16, 16), new Vector2Int(20, 20) };
     /// <summary> 地形サイズ </summary>
     [SerializeField] int _mapScale = 10;
+    [SerializeField] MeshMaterialCombiner _meshMaterial = default;
     /// <summary> ステージの最大X座標 </summary>
     public int MaxX { get => _maxX; }
     /// <summary> ステージの最大Z座標 </summary>
@@ -37,12 +38,16 @@ public class MapManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        _maxX = _sizeData[0].x;
-        _maxZ = _sizeData[0].y;
+        _maxX = m_sizeData[0].x;
+        _maxZ = m_sizeData[0].y;
         MapDatas = _mapCreater.MapCreate(_maxX, _maxZ, this.transform, MapScale);
         MoveList = new List<MapData>();
         AttackList = new List<MapData>();
         _mapCreater.CityCreate(this);
+        if (_meshMaterial)
+        {
+            _meshMaterial.OnPressedCombineMaterialButton();
+        }
     }
     /// <summary>
     /// ユニットの出現可能箇所の配列を返す

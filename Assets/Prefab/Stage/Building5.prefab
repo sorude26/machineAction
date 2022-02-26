@@ -247,7 +247,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3400306848289323495}
   - component: {fileID: 388575076761759359}
-  - component: {fileID: 3601749688573539508}
   - component: {fileID: 4986452499163432345}
   m_Layer: 0
   m_Name: Building5
@@ -285,20 +284,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 30, y: 5, z: 30}
   m_Center: {x: 10, y: 1, z: 10}
---- !u!114 &3601749688573539508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3400306848289323488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e372337f59c4df54b91ece53d04e976b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_symbol: {fileID: 5173415360886761065}
-  m_silhouette: {fileID: 3400306849168903384}
 --- !u!54 &4986452499163432345
 Rigidbody:
   m_ObjectHideFlags: 0
