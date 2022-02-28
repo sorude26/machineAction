@@ -20,8 +20,8 @@ public class CameraController : MonoBehaviour
     float _minY = -90f;
     float _maxY = 90f;
     float _angleY = 0;
-    float _minX = -10f;
-    float _maxX = 10f;
+    float _minX = -2f;
+    float _maxX = 2f;
     Vector3 _startCameraPos = default;
     void Start()
     {       

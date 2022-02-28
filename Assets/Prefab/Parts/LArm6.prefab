@@ -29,6 +29,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: LArm6
       objectReference: {fileID: 0}
+    - target: {fileID: 3618551852816209376, guid: 533cd56ad3111824087e727fa613c392,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618551852816209376, guid: 533cd56ad3111824087e727fa613c392,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.31347594
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618551852816209376, guid: 533cd56ad3111824087e727fa613c392,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.21949817
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618551852816209376, guid: 533cd56ad3111824087e727fa613c392,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -45
+      objectReference: {fileID: 0}
     - target: {fileID: 5768030462619353083, guid: 533cd56ad3111824087e727fa613c392,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38,6 +58,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631189282835236059, guid: 533cd56ad3111824087e727fa613c392,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631189282835236059, guid: 533cd56ad3111824087e727fa613c392,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7567979
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631189282835236059, guid: 533cd56ad3111824087e727fa613c392,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5299155
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631189282835236059, guid: 533cd56ad3111824087e727fa613c392,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -135
       objectReference: {fileID: 0}
     - target: {fileID: 8981032150606047737, guid: 533cd56ad3111824087e727fa613c392,
         type: 3}

@@ -5,16 +5,22 @@ using UnityEngine;
 public class AnimationShotWeapon : ShotWeapon
 {
     protected bool _shotNow = false;
+    private bool _playNow = false;
     protected override IEnumerator BulletShot()
     {
-        _anime.SetFloat("BarrelSpeed", _shotInterval);
-        _anime.Play("startShot");
+        if (!_playNow)
+        {
+            _anime.SetFloat("BarrelSpeed", _shotInterval);
+            _anime.Play("startShot");
+        }
+        _playNow = true;
         while (_shotCount > 0 || _shotNow)
         {
             yield return null;
         }
         _anime.Play("endShot");
         ShotNow = false;
+        _playNow = false;
     }
     private void AnimationShot()
     {

@@ -6255,6 +6255,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyMachineBase
       objectReference: {fileID: 0}
+    - target: {fileID: 613586504764106863, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 226e579a6c7e16a4b9cfc289310e0ed8, type: 3}
 --- !u!1 &689931441
@@ -6459,6 +6464,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyMachineBase (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 613586504764106863, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}
@@ -7486,11 +7496,11 @@ MonoBehaviour:
     BodyID: 0
     RArmID: 0
     LArmID: 0
-    LegID: 0
+    LegID: 6
     WeaponRArmID: 4
     WeaponLArmID: 3
     ShoulderWeaponID: 0
-    BodyWeaponID: 0
+    BodyWeaponID: 13
     BoosterID: 1
     CoreID: 0
   _color: {r: 0.53333336, g: 1, b: 0.6248023, a: 0}
@@ -7579,6 +7589,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyMachineBase (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 613586504764106863, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}
@@ -8694,6 +8709,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyMachineBase (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 613586504764106863, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 226e579a6c7e16a4b9cfc289310e0ed8, type: 3}
 --- !u!1 &1413007263
@@ -9481,6 +9501,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyMachineBase (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 613586504764106863, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}
@@ -15347,6 +15372,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyMachineBase (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 613586504764106863, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}

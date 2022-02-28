@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         GameScene.InputManager.Instance.OnInputCameraRawExit += _cameraControl.ResetLock;
         GameScene.InputManager.Instance.OnInputCameraRaw += _cameraControl.FreeLock;
         GameScene.InputManager.Instance.OnFirstInputChangeMode += _controller.ChangeFloat;
+        GameScene.InputManager.Instance.OnShotEnd += _controller.BodyControl.ShotEnd;
     }
     public void OutControl()
     {
@@ -56,5 +57,6 @@ public class PlayerController : MonoBehaviour
         GameScene.InputManager.Instance.OnInputCameraRawExit -= _cameraControl.ResetLock;
         GameScene.InputManager.Instance.OnInputCameraRaw -= _cameraControl.FreeLock;
         GameScene.InputManager.Instance.OnFirstInputChangeMode -= _controller.ChangeFloat;
+        GameScene.InputManager.Instance.OnShotEnd -= _controller.BodyControl.ShotEnd;
     }
 }

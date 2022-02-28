@@ -29,6 +29,7 @@ public class BodyControl : MonoBehaviour
     int _attackCount = 0;
     bool _action = false;
     bool _attack = false;
+    bool _shot = false;
     bool _knockDown = false;
     Vector3 _targetCurrentPos = default;
     Vector3 _targetBeforePos = default;
@@ -176,6 +177,7 @@ public class BodyControl : MonoBehaviour
         {
             return false;
         }
+        _shot = true;
         bool attack = false;
         Vector3 targetDir = targetPos - _bodyControlBase[0].position;
         targetDir.y = 0.0f;
@@ -287,6 +289,7 @@ public class BodyControl : MonoBehaviour
         AttackBooster();
         QuickTurn();
         _action = true;
+        _shot = false;
         if (_attackCount == 0)
         {
             if (_groundCheck.IsGrounded())
@@ -366,6 +369,7 @@ public class BodyControl : MonoBehaviour
         }
         if (_attack)
         {
+            _shot = false;
             _machine.SetTarget();
             AttackBooster();
             if (_attackCount == 1)
@@ -460,7 +464,7 @@ public class BodyControl : MonoBehaviour
         angle.x = 0;
         angle.z = 0;
         _bodyRotaion = angle;
-        _camera = true; 
+        _camera = true;
         if (_machine.FloatMode)
         {
             angle.y *= _machine.Parameter.FloatTurnSpeed;
@@ -502,12 +506,20 @@ public class BodyControl : MonoBehaviour
     }
     public void BodyResetAngle()
     {
+        if (_camera || _shot)
+        {
+            return;
+        }
         _bodyRotaion = Quaternion.Euler(0, _bodyRotaion.y, 0);
     }
     public void InputEnd()
     {
         _machine.MoveEnd();
         _camera = false;
+    }
+    public void ShotEnd()
+    {
+        _shot = false;
     }
     Quaternion ClampRotation(Quaternion angle, float maxX = 80f, float maxY = 80f, float maxZ = 80f, float minX = -80f, float minY = -80f, float minZ = -80f)
     {
