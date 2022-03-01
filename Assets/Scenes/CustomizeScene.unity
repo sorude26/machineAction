@@ -1061,7 +1061,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh134712
+  m_Name: pb_Mesh4496240
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2207,7 +2207,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1857214298}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 8
+  m_MaxValue: 12
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -2930,6 +2930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19dbdf385a2e3f141b8a000d1e3794a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gauge: {fileID: 0}
 --- !u!1 &437539725
 GameObject:
   m_ObjectHideFlags: 0
@@ -11737,6 +11738,9 @@ MonoBehaviour:
   - {fileID: 1845452529}
   _checkDir: {x: 0, y: -1, z: 0}
   _checkRange: 0.2
+  _layer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1134475315
 GameObject:
   m_ObjectHideFlags: 0
@@ -15784,7 +15788,9 @@ MonoBehaviour:
   _jetControlPower: 10
   _jetMovePower: 0.8
   _jetTime: 50
+  _jetImpulsePower: 40
   _floatSpeed: 80
+  _floatTurnSpeed: 0.3
   _maxFloatSpeed: 500
 --- !u!1 &1862680932
 GameObject:
@@ -17448,7 +17454,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1889574726}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 11
+  m_MaxValue: 13
   m_WholeNumbers: 1
   m_Value: 1
   m_OnValueChanged:
