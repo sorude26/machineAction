@@ -20,14 +20,13 @@ public interface IParts
     /// </summary>
     int Weight { get; }
     /// <summary>
-    /// パーツのサイズを返す
-    /// </summary>
-    /// <returns></returns>
-    int GetSize();
-    /// <summary>
     /// パーツを消す
     /// </summary>
     void DestoryParts();
+    /// <summary>
+    /// パーツデータIDの登録
+    /// </summary>
+    void SetDataID(int id);
     /// <summary>
     /// パーツ固有アニメーション
     /// </summary>

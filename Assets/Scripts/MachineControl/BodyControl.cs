@@ -181,7 +181,7 @@ public class BodyControl : MonoBehaviour
         bool attack = false;
         Vector3 targetDir = targetPos - _bodyControlBase[0].position;
         targetDir.y = 0.0f;
-        if (Vector3.Dot(targetDir.normalized, _bodyControlBase[0].forward) < MachineStatus.BodyLock)
+        if (BodyTurnRange > 0 && Vector3.Dot(targetDir.normalized, _bodyControlBase[0].forward) < BodyTurnRange)
         {
             return true;
         }
@@ -189,7 +189,14 @@ public class BodyControl : MonoBehaviour
         if (!_camera)
         {
             _controlTarget[0].forward = targetDir;
-            _bodyRotaion = ClampRotation(_controlTarget[0].localRotation);
+            if (BodyTurnRange > 0)
+            {
+                _bodyRotaion = ClampRotation(_controlTarget[0].localRotation);
+            }
+            else
+            {
+                _bodyRotaion = _controlTarget[0].localRotation;
+            }
         }
         _targetTwoBeforePos = _targetBeforePos;
         _targetBeforePos = targetPos;

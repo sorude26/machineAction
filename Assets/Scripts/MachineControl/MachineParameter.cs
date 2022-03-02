@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MachineParameter : MonoBehaviour
 {
-
+    [SerializeField]
+    bool _nChangeParameter = false;
     [Tooltip("行動速度")]
     [SerializeField]
     float _actionSpeed = 0.8f;
@@ -73,7 +74,6 @@ public class MachineParameter : MonoBehaviour
     [SerializeField]
     float _jetTime = 30f;
     public float JetTime { get => _jetTime; }
-
     [Tooltip("ジェット移動速度")]
     [SerializeField]
     float _jetImpulsePower = 40f;
@@ -90,4 +90,30 @@ public class MachineParameter : MonoBehaviour
     [SerializeField]
     float _maxFloatSpeed = 500f;
     public float MaxFloatSpeed { get => _maxFloatSpeed; }
+    int _totalWeight = default;
+    int _energy = default;
+    int _balance = default;
+    public void SetParameter(PartsManager machineParts)
+    {
+        if (_nChangeParameter)
+        {
+            return;
+        }
+        SetWeight(machineParts);
+        SetEnergy(machineParts);
+    }
+    void SetWeight(PartsManager machineParts)
+    {
+        _totalWeight = 0;
+        foreach (var parts in machineParts.GetAllParts())
+        {
+            _totalWeight += parts.Weight;
+        }
+    }
+    void SetEnergy(PartsManager machineParts)
+    {
+        _energy = 0;
+        _energy = machineParts.Body.UnitOutput;
+        _energy += machineParts.Booster.Propulsion;
+    }
 }

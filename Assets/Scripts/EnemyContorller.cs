@@ -20,6 +20,8 @@ public class EnemyContorller : MonoBehaviour
     [SerializeField]
     float _fightRange = 5f;
     [SerializeField]
+    bool _jump = true;
+    [SerializeField]
     CameraController _cameraControl = default;
     [SerializeField]
     DamageControl _damageControl = default;
@@ -78,7 +80,10 @@ public class EnemyContorller : MonoBehaviour
         if (timer < 0)
         {
             timer = Random.Range(3, 9);
-            _controller.Jump();
+            if (_jump)
+            {
+                _controller.Jump();
+            }
         }
     }
     void BreakBody()

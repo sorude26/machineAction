@@ -100,7 +100,7 @@ public class BoosterControl : MonoBehaviour
     }
     public void Boost()
     {
-        foreach (var parts in _machine.MachineParts.GetAllParts())
+        foreach (var parts in _machine.MachineParts.GetAllMachineParts())
         {
             if (parts != null)
             {
@@ -111,7 +111,7 @@ public class BoosterControl : MonoBehaviour
     }
     public void BoostF()
     {
-        foreach (var parts in _machine.MachineParts.GetAllParts())
+        foreach (var parts in _machine.MachineParts.GetAllMachineParts())
         {
             if (parts != null)
             {
@@ -122,7 +122,7 @@ public class BoosterControl : MonoBehaviour
     }
     public void BoostB()
     {
-        foreach (var parts in _machine.MachineParts.GetAllParts())
+        foreach (var parts in _machine.MachineParts.GetAllMachineParts())
         {
             if (parts != null)
             {
@@ -133,7 +133,7 @@ public class BoosterControl : MonoBehaviour
     }
     public void BoostL()
     {
-        foreach (var parts in _machine.MachineParts.GetAllParts())
+        foreach (var parts in _machine.MachineParts.GetAllMachineParts())
         {
             if (parts != null)
             {
@@ -144,7 +144,7 @@ public class BoosterControl : MonoBehaviour
     }
     public void BoostR()
     {
-        foreach (var parts in _machine.MachineParts.GetAllParts())
+        foreach (var parts in _machine.MachineParts.GetAllMachineParts())
         {
             if (parts != null)
             {
@@ -155,7 +155,7 @@ public class BoosterControl : MonoBehaviour
     }
     public void BoostEnd()
     {
-        foreach (var parts in _machine.MachineParts.GetAllParts())
+        foreach (var parts in _machine.MachineParts.GetAllMachineParts())
         {
             if (parts != null)
             {

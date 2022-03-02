@@ -246,7 +246,7 @@ Transform:
   m_GameObject: {fileID: 8488338353875487361}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 1, y: 1, z: 1.1}
   m_Children:
   - {fileID: 8488338352337204758}
   - {fileID: 8488338352657712489}
@@ -271,7 +271,7 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 8488338353875487486}
-  _bullet: 3
+  _bullet: 4
   _muzzle: {fileID: 8488338352356674504}
   _particle:
   - {fileID: 1612242948182690838}
@@ -281,6 +281,9 @@ MonoBehaviour:
   _triggerInterval: 0.3
   _shotInterval: 0.8
   _diffusivity: 0.05
+  _diffusionShot: 0
+  _parabola: 0
+  _angle: 0
 --- !u!95 &8488338353875487486
 Animator:
   serializedVersion: 3

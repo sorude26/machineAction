@@ -1678,16 +1678,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56059ea6a334e94ea82b40b03262e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _partsID: 14
+  _partsID: 54
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ad2cfe481fba7ba49aea7fc5954d31ac, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  m_hitPos:
-  - {fileID: 4468994704017113202}
-  - {fileID: 4468994703074901574}
-  - {fileID: 4468994702936864839}
-  - {fileID: 4468994702579152310}
-  m_damageSmoke: {fileID: 6290504092536245108}
+  _hitPos: []
+  _damageSmoke: {fileID: 0}
   m_amors:
   - {fileID: 4468994702583822625}
   - {fileID: 4468994703009979978}
@@ -1696,12 +1693,20 @@ MonoBehaviour:
   - {fileID: 4468994703058125837}
   - {fileID: 4468994703718667526}
   - {fileID: 4468994702465417970}
-  m_headParts: {fileID: 4468994703292549306}
-  m_lArmParts: {fileID: 4468994702936864839}
-  m_rArmParts: {fileID: 4468994703074901574}
-  m_weapon: {fileID: 0}
-  m_weaponShoulder: {fileID: 0}
-  m_bodyPos: {fileID: 4468994702992595701}
+  _mainBoosterParticles: []
+  _subBoosterParticles: []
+  _frontBoosterParticles: []
+  _backBoosterParticles: []
+  _leftBoosterParticles: []
+  _rightBoosterParticles: []
+  _gauge: {fileID: 0}
+  _headParts: {fileID: 0}
+  _lArmParts: {fileID: 0}
+  _rArmParts: {fileID: 0}
+  _backPartsPos: {fileID: 0}
+  _weapon: {fileID: 0}
+  _weaponShoulder: {fileID: 0}
+  _breakSpark: {fileID: 0}
 --- !u!1 &4468994703540624885
 GameObject:
   m_ObjectHideFlags: 0

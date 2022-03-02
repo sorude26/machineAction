@@ -7,19 +7,19 @@ using UnityEngine;
 public class PartsData : ScriptableObject
 {
     [Tooltip("パーツID")]
-    [SerializeField] int m_partsID;
+    [SerializeField] int[] _partsID;
     [Tooltip("パーツ名")]
-    [SerializeField] string[] m_partsName;
+    [SerializeField] string[] _partsName;
     [Tooltip("重量")]
-    [SerializeField] protected int[] m_weight;
+    [SerializeField] protected int[] _weight;
     [Tooltip("パーツサイズ")]
-    [SerializeField] int[] m_partsSize;
+    [SerializeField] int[] _partsSize;
     /// <summary> パーツID </summary>
-    public int PartsID { get => m_partsID; }
+    public int[] PartsID { get => _partsID; }
     /// <summary> パーツ名 </summary>
-    public string[] PartsName { get => m_partsName; }
+    public string[] PartsName { get => _partsName; }
     /// <summary> 重量 </summary>
-    public int[] Weight { get => m_weight; }
+    public int[] Weight { get => _weight; }
     /// <summary> パーツサイズ </summary>
-    public int[] PartsSize { get => m_partsSize; }
+    public int[] PartsSize { get => _partsSize; }
 }

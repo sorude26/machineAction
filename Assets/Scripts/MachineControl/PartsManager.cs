@@ -14,9 +14,14 @@ public class PartsManager
     public WeaponMaster LAWeapon { get; set; }
     public WeaponMaster BodyWeapon { get; set; }
     public ShoulderWeapon ShoulderWeapon { get; set; }
-    public IUnitParts[] GetAllParts()
+    public IUnitParts[] GetAllMachineParts()
     {
         IUnitParts[] allParts = { Head, Body, RArm, LArm, Leg, Booster };
+        return allParts;
+    }
+    public IParts[] GetAllParts()
+    {
+        IParts[] allParts = { Head, Body, RArm, LArm, Leg, Booster, RAWeapon, LAWeapon, BodyWeapon, ShoulderWeapon };
         return allParts;
     }
     public void ChangeColor(Color color)
@@ -29,8 +34,7 @@ public class PartsManager
     }
     public void ResetAllParts()
     {
-        IParts[] allParts = { RAWeapon, LAWeapon, BodyWeapon, ShoulderWeapon, Booster, Head, Body, RArm, LArm, Leg };
-        foreach (var parts in allParts)
+        foreach (var parts in GetAllParts())
         {
             if (parts != null)
             {

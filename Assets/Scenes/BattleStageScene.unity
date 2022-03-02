@@ -6480,6 +6480,36 @@ PrefabInstance:
       propertyPath: _buildData.WeaponLArmID
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: _buildData.BodyID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: _buildData.RArmID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: _buildData.LArmID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: _buildData.LegID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: _buildData.ShoulderWeaponID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: _buildData.BodyWeaponID
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 226e579a6c7e16a4b9cfc289310e0ed8, type: 3}
 --- !u!1 &776808965
@@ -15387,6 +15417,36 @@ PrefabInstance:
         type: 3}
       propertyPath: _buildData.WeaponLArmID
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: _buildData.BodyID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: _buildData.RArmID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: _buildData.LArmID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: _buildData.LegID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: _buildData.ShoulderWeaponID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: _buildData.BodyWeaponID
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 226e579a6c7e16a4b9cfc289310e0ed8, type: 3}

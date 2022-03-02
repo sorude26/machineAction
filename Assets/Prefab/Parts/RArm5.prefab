@@ -119,6 +119,11 @@ PrefabInstance:
       propertyPath: _partsObject.Array.data[3]
       value: 
       objectReference: {fileID: 7084273559483549367}
+    - target: {fileID: 5152981284463851589, guid: b922da7bea5c9bf44906710ba49ad88d,
+        type: 3}
+      propertyPath: _armType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9122329685805175058, guid: b922da7bea5c9bf44906710ba49ad88d,
         type: 3}
       propertyPath: m_Name

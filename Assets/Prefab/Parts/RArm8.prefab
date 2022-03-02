@@ -507,6 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 7
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: c0525c6946c113d45b7a5e680e703e40, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
@@ -529,6 +530,7 @@ MonoBehaviour:
   m_shoulder: {fileID: 771713421987216920}
   m_armTop: {fileID: 3358360810943596454}
   m_armBottom: {fileID: 7277036905940540925}
+  _armType: 1
 --- !u!1 &4918859356115883948
 GameObject:
   m_ObjectHideFlags: 0

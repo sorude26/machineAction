@@ -39,6 +39,11 @@ PrefabInstance:
       propertyPath: _rightBoosterParticles.Array.data[1]
       value: 
       objectReference: {fileID: 2794194979822518266}
+    - target: {fileID: 2319704400106925713, guid: 84fe515cc9da3bb4eb0047f3f3aceb32,
+        type: 3}
+      propertyPath: _armType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3375988865834925020, guid: 84fe515cc9da3bb4eb0047f3f3aceb32,
         type: 3}
       propertyPath: m_Name

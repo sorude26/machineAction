@@ -125,23 +125,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56059ea6a334e94ea82b40b03262e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _partsID: 12
+  _partsID: 32
   _partsData: {fileID: 11400000, guid: ad2cfe481fba7ba49aea7fc5954d31ac, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
-  m_hitPos:
-  - {fileID: 5006907147285793411}
-  - {fileID: 5006907147064023395}
-  - {fileID: 5006907148027238494}
-  m_damageSmoke: {fileID: 7874053881100577159}
+  _hitPos: []
+  _damageSmoke: {fileID: 0}
   m_amors:
   - {fileID: 1028784730}
-  m_headParts: {fileID: 5006907147285793411}
-  m_lArmParts: {fileID: 5006907147064023395}
-  m_rArmParts: {fileID: 5006907148027238494}
-  m_weapon: {fileID: 0}
-  m_weaponShoulder: {fileID: 0}
-  m_bodyPos: {fileID: 5006907145934484200}
+  _mainBoosterParticles: []
+  _subBoosterParticles: []
+  _frontBoosterParticles: []
+  _backBoosterParticles: []
+  _leftBoosterParticles: []
+  _rightBoosterParticles: []
+  _gauge: {fileID: 0}
+  _headParts: {fileID: 0}
+  _lArmParts: {fileID: 0}
+  _rArmParts: {fileID: 0}
+  _backPartsPos: {fileID: 0}
+  _weapon: {fileID: 0}
+  _weaponShoulder: {fileID: 0}
+  _breakSpark: {fileID: 0}
 --- !u!1 &635293201151211384
 GameObject:
   m_ObjectHideFlags: 0

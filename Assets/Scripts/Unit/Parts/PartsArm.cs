@@ -14,12 +14,12 @@ public class PartsArm : UnitPartsMaster<ArmData>
     [SerializeField] Transform m_armTop;
     [Tooltip("腕下部")]
     [SerializeField] Transform m_armBottom;
+    [SerializeField]
+    ArmType _armType = default;
     /// <summary> このパーツを装備したBodyパーツ </summary>
     private PartsBody _partsBody = default;
-    /// <summary> 命中精度 </summary>
-    public int HitAccuracy { get => _partsData.HitAccuracy[_partsID]; }
     /// <summary> 手の種類 </summary>
-    public ArmType Arm { get => _partsData.Arm; }
+    public ArmType Arm { get => _armType; }
     /// <summary> 拳の位置 </summary>
     public Transform Grip { get => m_grip; }
     /// <summary> 肩の位置 </summary>
@@ -35,15 +35,6 @@ public class PartsArm : UnitPartsMaster<ArmData>
     public void SetBody(PartsBody partsBody)
     {
         _partsBody = partsBody;
-    }
-    public override int GetSize()
-    {
-        int size = PartsSize;
-        if (GripWeapon)
-        {
-            size += GripWeapon.PartsSize;
-        }
-        return size;
     }
     public override void AddlyDamage(int power)
     {

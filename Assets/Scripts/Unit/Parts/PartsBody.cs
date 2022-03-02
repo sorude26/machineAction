@@ -30,15 +30,7 @@ public class PartsBody : UnitPartsMaster<BodyData>
     /// <summary> 胴体破壊時のイベント </summary>
     public event Action OnBodyBreak;
     /// <summary> 機体出力 </summary>
-    public int UnitOutput { get => _partsData.UnitOutput[_partsID]; }
-    /// <summary> 昇降力 </summary>
-    public float LiftingForce { get => _partsData.LiftingForce[_partsID]; }
-    /// <summary> 移動力 </summary>
-    public int MovePower { get => _partsData.MovePower[_partsID]; }
-    /// <summary> 命中精度 </summary>
-    public int HitAccuracy { get => _partsData.HitAccuracy[_partsID]; }
-    /// <summary> 機体タイプ </summary>
-    public UnitType BodyPartsType { get => _partsData.BodyPartsType[_partsID]; }   
+    public int UnitOutput { get => _partsData.Output[_partsID]; }
     /// <summary> 頭部パーツ接続部 </summary>
     public Transform HeadPos { get => _headParts; }
     /// <summary> 左手パーツ接続部 </summary>
@@ -61,28 +53,6 @@ public class PartsBody : UnitPartsMaster<BodyData>
             _breakSpark.SetActive(true);
         }
     }   
-    /// <summary>
-    /// 機体の回避力と出力の合計値を返す
-    /// </summary>
-    /// <returns></returns>
-    public int GetAvoidance() => _partsData.Avoidance[_partsID] + UnitOutput;
-    /// <summary>
-    /// 武装込みのサイズを返す
-    /// </summary>
-    /// <returns></returns>
-    public override int GetSize()
-    {
-        int size = PartsSize;
-        if (_weapon)
-        {
-            size += _weapon.PartsSize;
-        }
-        if (_weaponShoulder)
-        {
-            size += _weaponShoulder.PartsSize;
-        }
-        return size;
-    }
     void DestroyEnd()
     {
         gameObject.SetActive(false);

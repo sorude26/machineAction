@@ -20,9 +20,9 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
-  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
+  m_AmbientEquatorColor: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
+  m_AmbientGroundColor: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
@@ -730,7 +730,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 860150420}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 14
+  m_MaxValue: 15
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -14885,7 +14885,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1467606709}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 11
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -16437,7 +16437,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1508448933}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 11
+  m_MaxValue: 12
   m_WholeNumbers: 1
   m_Value: 1
   m_OnValueChanged:
@@ -16765,7 +16765,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1005398196}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 11
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
