@@ -12,10 +12,11 @@ public class Shot : MonoBehaviour
     [SerializeField]
     Rigidbody _rb = default;
     [SerializeField]
+    TrailRenderer _trail = default;
+    [SerializeField]
     int _power = 1;
     [SerializeField]
     float _lifeTime = 3f;
-
     bool _hit = false;
     public int Power { get => _power; }
     public void StartShot(Vector3 dir)
@@ -52,6 +53,7 @@ public class Shot : MonoBehaviour
             }
             yield return null;
         }
+        StopTrail();
         _rb.velocity = Vector3.zero;
         gameObject.SetActive(false);
         _hit = false;
@@ -62,6 +64,13 @@ public class Shot : MonoBehaviour
         if (effect)
         {
             effect.Particle.Play();
+        }
+    }
+    void StopTrail()
+    {
+        if (_trail)
+        {
+            _trail.Clear();
         }
     }
     private void OnTriggerEnter(Collider other)
