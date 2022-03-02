@@ -218,16 +218,9 @@ public class LegControl : MonoBehaviour
                 break;
         }
     }
-    public void ChangeMode()
+    public void ChangeMode(bool floatMode)
     {
-        if (_float)
-        {
-            _float = false;
-        }
-        else
-        {
-            _float = true;
-        }
+        _float = floatMode;
         _jump = false;
         _walk = 0;
         _turn = 0;
@@ -452,7 +445,7 @@ public class LegControl : MonoBehaviour
     }
     void Stop()
     {
-        _machine?.Stop();
+        _machine?.ActionStop();
     }
     void Brake()
     {

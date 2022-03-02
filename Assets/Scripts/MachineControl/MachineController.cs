@@ -165,7 +165,7 @@ public class MachineController : MonoBehaviour
             _leg.WalkStop();
             if (_groundCheck.IsGrounded())
             {
-                Stop();
+                ActionStop();
                 Brake();
             }
         }
@@ -203,7 +203,7 @@ public class MachineController : MonoBehaviour
         }
         if (FloatMode)
         {
-            Stop();
+            ActionStop();
             _moveControl.Jet(_rb, Vector3.up, _parameter.JetPower);
             return;
         }
@@ -214,7 +214,7 @@ public class MachineController : MonoBehaviour
                 _booster.Boost();
             }
         }
-        Stop();
+        ActionStop();
         _leg.StartJump();
     }
     public void Boost()
@@ -305,10 +305,8 @@ public class MachineController : MonoBehaviour
     {
         _jump = false;
         _jet = false;
-        _booster.BoostEnd();
-        _booster.BoostRecovery();
         Brake();
-        Stop();
+        ActionStop();
         _body.ResetAngle(MachineStatus.LandingBodyReset);
     }
     public void StartJump(Vector3 dir)
@@ -362,7 +360,7 @@ public class MachineController : MonoBehaviour
         angle.y = 0;
         _legRotaion = Quaternion.Euler(angle);
     }
-    public void Stop()
+    public void ActionStop()
     {
         _rb.angularVelocity = Vector3.zero;
         _inputAxis = Vector3.zero;
@@ -372,7 +370,11 @@ public class MachineController : MonoBehaviour
     public void Brake()
     {
         var v = _rb.velocity;
-        _rb.velocity = v * MachineStatus.BrakePower;
+        _rb.velocity = v * MachineStatus.BrakePower; 
+        if (FloatMode)
+        {
+            return;
+        }
         if (_groundCheck.IsGrounded())
         {
             _booster.BoostEnd();
@@ -397,19 +399,19 @@ public class MachineController : MonoBehaviour
     }
     public void ChangeFloat()
     {
-        _booster.Boost();
         if (FloatMode)
         {
             FloatMode = false;
             _booster.BoostEnd();
-            _leg.ChangeMode();
+            _leg.ChangeMode(false);
         }
         else
         {
             if (_booster.BoostCheckFly())
             {
                 FloatMode = true;
-                _leg.ChangeMode();
+                _booster.Boost();
+                _leg.ChangeMode(true);
             }
             else
             {
