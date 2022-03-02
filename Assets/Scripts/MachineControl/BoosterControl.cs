@@ -61,8 +61,7 @@ public class BoosterControl : MonoBehaviour
         {
             if (CurrentBoostPower > 0)
             {
-                CurrentBoostPower -= _needPower * Time.deltaTime;
-                
+                CurrentBoostPower -= _needPower * Time.deltaTime;                
             }
             return;
         }

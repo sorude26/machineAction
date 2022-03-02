@@ -8,11 +8,11 @@ using UnityEngine;
 public class HeadData : UnitPartsData
 {
     [Tooltip("命中精度")]
-    [SerializeField] int[] _lockRange;
+    [SerializeField] float[] _lockRange;
     [Tooltip("情報処理能力")]
     [SerializeField] int[] _processingPerformance;
-    /// <summary> 命中精度 </summary>
-    public int[] LockRange { get => _lockRange; }
+    /// <summary> 索敵範囲 </summary>
+    public float[] LockRange { get => _lockRange; }
     /// <summary> 情報処理能力 </summary>
     public int[] Performance { get => _processingPerformance; }
 }

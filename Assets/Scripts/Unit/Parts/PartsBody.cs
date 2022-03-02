@@ -30,7 +30,8 @@ public class PartsBody : UnitPartsMaster<BodyData>
     /// <summary> 胴体破壊時のイベント </summary>
     public event Action OnBodyBreak;
     /// <summary> 機体出力 </summary>
-    public int UnitOutput { get => _partsData.Output[_partsID]; }
+    public int Output { get => _partsData.Output[_dataID]; }
+    public float TurnRange { get => _partsData.TurnRange[_dataID]; }
     /// <summary> 頭部パーツ接続部 </summary>
     public Transform HeadPos { get => _headParts; }
     /// <summary> 左手パーツ接続部 </summary>

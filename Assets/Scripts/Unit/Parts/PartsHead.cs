@@ -6,5 +6,6 @@ using UnityEngine;
 /// </summary>
 public class PartsHead : UnitPartsMaster<HeadData>
 {
-   
+    public float LockOnRange { get => _partsData.LockRange[_dataID]; }
+    public float Performance { get => _partsData.Performance[_dataID]; }
 }
