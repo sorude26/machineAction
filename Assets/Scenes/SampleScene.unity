@@ -5624,9 +5624,9 @@ MonoBehaviour:
     LArmID: 0
     LegID: 0
     WeaponRArmID: 3
-    WeaponLArmID: 4
-    ShoulderWeaponID: 0
-    BodyWeaponID: 0
+    WeaponLArmID: 7
+    ShoulderWeaponID: 4
+    BodyWeaponID: 11
     BoosterID: 1
     CoreID: 0
   _color: {r: 0.33891064, g: 0.6037736, b: 0.39010265, a: 0}
@@ -12440,6 +12440,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 613586503664749975, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 613586504346514104, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}
       propertyPath: _maxWalkSpeed
@@ -12453,7 +12458,7 @@ PrefabInstance:
     - target: {fileID: 613586504346514104, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}
       propertyPath: _walkPower
-      value: 5
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 613586504346514104, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}
@@ -12463,7 +12468,7 @@ PrefabInstance:
     - target: {fileID: 613586504346514104, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}
       propertyPath: _bodyTurnSpeed
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 613586504346514104, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}
@@ -12563,12 +12568,12 @@ PrefabInstance:
     - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}
       propertyPath: _buildData.WeaponRArmID
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}
       propertyPath: _buildData.WeaponLArmID
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}
