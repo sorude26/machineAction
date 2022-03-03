@@ -5280,6 +5280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 6
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
@@ -5288,14 +5289,14 @@ MonoBehaviour:
   _particle:
   - {fileID: 8745550216878239360}
   - {fileID: 2528874580036650384}
-  _power: 120
+  _power: 220
   _triggerShotCount: 3
   _triggerInterval: 3
   _shotInterval: 0.5
   _diffusivity: 0
   _diffusionShot: 0
   _parabola: 0
-  _angle: 1
+  _angle: 0
 --- !u!1 &1948072427423826653
 GameObject:
   m_ObjectHideFlags: 0
@@ -6176,6 +6177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 9
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
@@ -11256,6 +11258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 6
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
@@ -11264,14 +11267,14 @@ MonoBehaviour:
   _particle:
   - {fileID: 70472271774415422}
   - {fileID: 4490532391873543538}
-  _power: 120
+  _power: 220
   _triggerShotCount: 3
   _triggerInterval: 3
   _shotInterval: 0.5
   _diffusivity: 0
   _diffusionShot: 0
   _parabola: 0
-  _angle: 1
+  _angle: 0
 --- !u!1 &8394229294478449724
 GameObject:
   m_ObjectHideFlags: 0

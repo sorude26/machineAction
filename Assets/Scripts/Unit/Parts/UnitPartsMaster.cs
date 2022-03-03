@@ -147,10 +147,10 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
     /// </summary>
     protected virtual void PartsBreak()
     {
-        foreach (var item in _partsObject)
-        {
-            item.SetActive(false);
-        }
+        //foreach (var item in _partsObject)
+        //{
+        //    item.SetActive(false);
+        //}
     }
     /// <summary>
     /// 被ダメージ時の色変化

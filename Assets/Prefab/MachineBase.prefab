@@ -5930,6 +5930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 0
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
@@ -11643,9 +11644,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42d632c01c86bf40875b4ff9cf4c4ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nChangeParameter: 0
   _actionSpeed: 1
   _walkPower: 2.4
-  _maxWalkSpeed: 20
+  _maxWalkSpeed: 24
   _runPower: 2
   _maxRunSpeed: 90
   _turnPower: 5
@@ -11661,9 +11663,13 @@ MonoBehaviour:
   _jetMovePower: 0.8
   _jetTime: 20
   _jetImpulsePower: 40
+  _needPowerJet: 1
   _floatSpeed: 20
   _floatTurnSpeed: 0.01
   _maxFloatSpeed: 500
+  _needPowerFly: 1
+  _flyConsumption: 0.1
+  _powerRecoverySpeed: 5
 --- !u!1 &3052807617117929045
 GameObject:
   m_ObjectHideFlags: 0
