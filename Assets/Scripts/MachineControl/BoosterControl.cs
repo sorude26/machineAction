@@ -25,10 +25,6 @@ public class BoosterControl : MonoBehaviour
     }
     float _currentPower = default;
     float _maxBoostPower = 100f;
-    protected float NeedPowerJet { get=>_maxBoostPower * 0.2f; }
-    float _needPowerFly = 1f;
-    float _needPower = 0.1f;
-    float _powerRecoverySpeed = 5f;
     bool _boost = false;
     bool _set = false;
     public void Set(MachineController controller)
@@ -50,7 +46,7 @@ public class BoosterControl : MonoBehaviour
         }
         if (CurrentBoostPower > 0 && _machine.FloatMode)
         {
-            CurrentBoostPower -= _needPowerFly * Time.deltaTime;
+            CurrentBoostPower -= _machine.Parameter.NeedPowerFly * Time.deltaTime;
         }
         if (CurrentBoostPower <= 0 && _machine.FloatMode)
         {
@@ -61,7 +57,7 @@ public class BoosterControl : MonoBehaviour
         {
             if (CurrentBoostPower > 0)
             {
-                CurrentBoostPower -= _needPower * Time.deltaTime;                
+                CurrentBoostPower -= _machine.Parameter.FlyConsumption * Time.deltaTime;            
             }
             return;
         }
@@ -69,7 +65,7 @@ public class BoosterControl : MonoBehaviour
     }
     public bool BoostCheckJet()
     {
-        CurrentBoostPower -= NeedPowerJet;
+        CurrentBoostPower -= _machine.Parameter.NeedPowerJet;
         if (CurrentBoostPower > 0)
         {
             return true;
@@ -82,7 +78,7 @@ public class BoosterControl : MonoBehaviour
     }
     public bool BoostCheckFly()
     {
-        CurrentBoostPower -= _needPowerFly * Time.deltaTime;
+        CurrentBoostPower -= _machine.Parameter.NeedPowerFly * Time.deltaTime;
         if (CurrentBoostPower > 0)
         {
             return true;
@@ -91,7 +87,7 @@ public class BoosterControl : MonoBehaviour
     }
     void PowerRecovery()
     {
-        CurrentBoostPower += _powerRecoverySpeed * Time.deltaTime;
+        CurrentBoostPower += _machine.Parameter.PowerRecoverySpeed * Time.deltaTime;
         if (CurrentBoostPower > _maxBoostPower)
         {
             CurrentBoostPower = _maxBoostPower;

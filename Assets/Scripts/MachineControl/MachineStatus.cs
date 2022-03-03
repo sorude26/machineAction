@@ -8,6 +8,7 @@ public class MachineStatus
     public const float Turn = 1f;
     public const float TurnPower = 0.2f;
     public const float TurnMovePower = 0.05f;
+    public const float FloatTurnSpeed = 0.01f;
     public const float FlyTurnDelay = 0.05f;
     public const float FlyBodyReset = 0.8f;
     public const float LandingBodyReset = 0.1f;

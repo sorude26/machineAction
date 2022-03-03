@@ -44,6 +44,10 @@ public class MachineBuildControl : MonoBehaviour
         EquipmentBWeapon(manager, data.BodyWeaponID);
         EquipmentSWeapon(manager, data.ShoulderWeaponID);
     }
+    public void PartsDataBuild()
+    {
+
+    }
     void BuildBody(PartsManager manager, int partsID)
     {
         manager.Body = Instantiate(GameManager.Instance.PartsList.GetBody(partsID));

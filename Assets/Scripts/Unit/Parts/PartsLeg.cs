@@ -7,12 +7,16 @@ using UnityEngine.Serialization;
 /// </summary>
 public class PartsLeg : UnitPartsMaster<LegData>
 {
-    /// <summary> 現在の移動力 </summary>
-    public int CurrentMovePower { get; private set; }
-    /// <summary> 現在の昇降力 </summary>
-    public float CurrentLiftingForce { get; private set; }
-    /// <summary> 現在の回避力 </summary>
-    public int CurrentAvoidance { get; private set; }
+    /// <summary> 移動力 </summary>
+    public float MovePower { get => _partsData.MovePower[_dataID]; }
+    /// <summary> 対荷重量 </summary>
+    public int LoadCapacity { get => _partsData.LoadCapacity[_dataID]; }
+    /// <summary> バランス性能 </summary>
+    public int Balancer { get => _partsData.Balancer[_dataID]; }
+    /// <summary> 運動性能 </summary>
+    public int Exercise { get => _partsData.Exercise[_dataID]; }
+    /// <summary> 空中移動力 </summary>
+    public float FloatPower { get => _partsData.FloatPower[_dataID]; }
     /// <summary> 脚部の種類 </summary>
     public LegType Type { get => _legType; }
 
@@ -48,14 +52,6 @@ public class PartsLeg : UnitPartsMaster<LegData>
     public Transform RLeg3 { get => m_rLeg3; }
     public MoveAnimation MoveAnimation { get => _moveAnimation; }
 
-    protected override void PartsBreak()
-    {
-        if (Break) { return; }
-        CurrentAvoidance = 0;
-        CurrentLiftingForce /= 5;
-        CurrentMovePower /= 5;
-        Break = true;
-    }
     public override void DestoryParts()
     {
         Transform[] allParts = { m_lLeg3, m_lLeg2, m_lLeg1, m_rLeg3, m_rLeg2, m_rLeg1 };

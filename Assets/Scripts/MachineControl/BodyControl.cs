@@ -474,7 +474,8 @@ public class BodyControl : MonoBehaviour
         _camera = true;
         if (_machine.FloatMode)
         {
-            angle.y *= _machine.Parameter.FloatTurnSpeed;
+            //angle.y *= MachineStatus.FloatTurnSpeed;
+            angle.y *= Time.deltaTime;
             _machine.Turn(angle);
             return;
         }

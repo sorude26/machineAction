@@ -11,6 +11,7 @@ public class LegControl : MonoBehaviour
     ParticleSystem _walkEffect = default;
     [SerializeField]
     ParticleSystem _landingEffect = default;
+    public bool IsLanding { get => _landing; }
     int _walk = default;
     int _turn = default;
     bool _jump = false;
@@ -83,7 +84,7 @@ public class LegControl : MonoBehaviour
             switch (_legType)
             {
                 case LegType.Normal:
-                    if (_machine.Parameter.ActionSpeed > 1)
+                    if (_machine.Parameter.ActionSpeed > 2)
                     {
                         ChangeAnimation("Run");
                     }
@@ -221,11 +222,11 @@ public class LegControl : MonoBehaviour
     public void ChangeMode(bool floatMode)
     {
         _float = floatMode;
-        _jump = false;
-        _walk = 0;
-        _turn = 0;
-        _landing = false;
         _animator.SetBool("Float", _float);
+        if (_jump)
+        {
+            ChangeAnimation("Junp");
+        }
     }
     public void StartJump()
     {
@@ -407,10 +408,17 @@ public class LegControl : MonoBehaviour
     }
     void Shake()
     {
-        CameraEffectManager.LightShake(transform.position);
+        CameraEffectManager.LightShake(transform.position);       
         if (_walkEffect)
         {
             _walkEffect.Play();
+        }
+    }
+    void SmokeEffect()
+    {
+        if (_landingEffect && _machine.IsGrounded())
+        {
+            _landingEffect.Play();
         }
     }
     void TurnLeft()
@@ -423,10 +431,7 @@ public class LegControl : MonoBehaviour
     }
     void Jump()
     {
-        if (_landingEffect)
-        {
-            _landingEffect.Play();
-        }
+        SmokeEffect();
         Vector3 dir = transform.forward * _walk + transform.right * _turn;
         _machine?.StartJump((Vector3.up + dir).normalized);
     }
@@ -463,10 +468,7 @@ public class LegControl : MonoBehaviour
             _jumpEnd = true;
             _machine?.Landing();
             CameraEffectManager.Shake(transform.position);
-            if (_landingEffect)
-            {
-                _landingEffect.Play();
-            }
+            SmokeEffect();
             ChangeAnimation("JunpEnd");
         }
     }

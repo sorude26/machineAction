@@ -12,14 +12,10 @@ public class PartsData : ScriptableObject
     [SerializeField] string[] _partsName;
     [Tooltip("重量")]
     [SerializeField] protected int[] _weight;
-    [Tooltip("パーツサイズ")]
-    [SerializeField] int[] _partsSize;
     /// <summary> パーツID </summary>
     public int[] PartsID { get => _partsID; }
     /// <summary> パーツ名 </summary>
     public string[] PartsName { get => _partsName; }
     /// <summary> 重量 </summary>
     public int[] Weight { get => _weight; }
-    /// <summary> パーツサイズ </summary>
-    public int[] PartsSize { get => _partsSize; }
 }

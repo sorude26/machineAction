@@ -18,11 +18,15 @@ public class EnemyContorller : MonoBehaviour
     [SerializeField]
     float _attackRange = 100f;
     [SerializeField]
+    float _longAttackRange = 200f;
+    [SerializeField]
     float _fightRange = 5f;
+    [SerializeField]
+    float _noneAttackRange = 0f;
     [SerializeField]
     bool _jump = true;
     [SerializeField]
-    CameraController _cameraControl = default;
+    Vector2 _jumpRange = new Vector2(3, 9);
     [SerializeField]
     DamageControl _damageControl = default;
     bool _set = false;
@@ -60,8 +64,27 @@ public class EnemyContorller : MonoBehaviour
         }
         Vector3 dir = _controller.MachineParts.Body.transform.forward - BattleManager.Instance.PlayerPos.position;
         _controller.Move(-dir.normalized);
-        if (Vector3.Distance(_controller.MachineParts.Body.transform.position, BattleManager.Instance.PlayerPos.position) < _attackRange)
+        timer -= Time.deltaTime;
+        if (timer < 0)
         {
+            timer = Random.Range(_jumpRange.x, _jumpRange.y);
+            if (_jump)
+            {
+                _controller.Jump();
+            }
+        }
+        float range = Vector3.Distance(_controller.MachineParts.Body.transform.position, BattleManager.Instance.PlayerPos.position);
+        if (range < _noneAttackRange)
+        {
+            _controller.BodyControl.BodyResetAngle();
+            return;
+        }
+        if (range < _attackRange)
+        {
+            if (range > _longAttackRange)
+            {
+                _controller.BodyControl.ShoulderShot();
+            }
             if (_controller.LAWeapon.Type == WeaponType.Rifle)
             {
                 _controller.BodyControl.HandAttackLeft();
@@ -71,18 +94,9 @@ public class EnemyContorller : MonoBehaviour
                 _controller.BodyControl.HandAttackRight();
             }
             _controller.BodyControl.BodyWeaponShot();
-            if (Vector3.Distance(_controller.MachineParts.Body.transform.position, BattleManager.Instance.PlayerPos.position) < _fightRange)
+            if (range < _fightRange)
             {
                 _controller.BodyControl.FightingAttack();
-            }
-        }
-        timer -= Time.deltaTime;
-        if (timer < 0)
-        {
-            timer = Random.Range(3, 9);
-            if (_jump)
-            {
-                _controller.Jump();
             }
         }
     }

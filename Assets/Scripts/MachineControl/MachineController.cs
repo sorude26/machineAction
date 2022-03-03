@@ -54,6 +54,7 @@ public class MachineController : MonoBehaviour
         _parts = new PartsManager();
         _buildControl.StartSet(_parts);
         _legTransform = _buildControl.LegBase;
+        _parameter.SetParameter(_parts);
         _rb = GetComponent<Rigidbody>();
         _leg.Set(this);
         _leg.SetLandingTime(_parameter.LandingTime);
@@ -399,6 +400,10 @@ public class MachineController : MonoBehaviour
     }
     public void ChangeFloat()
     {
+        if (_leg.IsLanding)
+        {
+            return;
+        }
         if (FloatMode)
         {
             FloatMode = false;
