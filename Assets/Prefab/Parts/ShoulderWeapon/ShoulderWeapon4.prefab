@@ -113,10 +113,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 4
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject:
   - {fileID: 8282371166820169900}
   _anime: {fileID: 0}
+  _weight: 1300
   _weapons:
   - {fileID: 3269284593732444173}
   - {fileID: 5716319949223225658}

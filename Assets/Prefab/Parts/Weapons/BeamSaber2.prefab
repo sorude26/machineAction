@@ -5197,9 +5197,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 19
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 5
   _blade: {fileID: 6451750817708476396}
   _triger: {fileID: 0}
   _trigers:
@@ -5212,6 +5214,7 @@ MonoBehaviour:
   - {fileID: 5728037979522631043}
   - {fileID: 7520026432203498107}
   _knockBackPower: 1
+  _speedPower: 1
 --- !u!1 &2791911755004925580
 GameObject:
   m_ObjectHideFlags: 0

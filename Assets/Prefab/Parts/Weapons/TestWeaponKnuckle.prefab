@@ -261,9 +261,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 17
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 7138829881203503540}
+  _weight: 10
   _bullet: 8
   _muzzle: {fileID: 5791102399307933776}
   _particle: []
@@ -273,6 +275,8 @@ MonoBehaviour:
   _shotInterval: 1
   _diffusivity: 0
   _diffusionShot: 0
+  _parabola: 0
+  _angle: 0
 --- !u!95 &7138829881203503540
 Animator:
   serializedVersion: 3
@@ -353,9 +357,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 17
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _blade: {fileID: 4200061515455970926}
   _triger: {fileID: 5579225746446273219}
   _trigers:
@@ -368,6 +374,7 @@ MonoBehaviour:
   - {fileID: 8366482364972818333}
   - {fileID: 807237150542646256}
   _knockBackPower: 6
+  _speedPower: 1
 --- !u!1 &4200061515455970926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,9 +1385,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 17
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 20
   _weapons:
   - {fileID: 7883727024764395495}
   - {fileID: 960498551308165129}

@@ -159,9 +159,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 8
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 20
   _bullet: 6
   _muzzle: {fileID: 4204350377148118324}
   _particle:
@@ -172,6 +174,8 @@ MonoBehaviour:
   _shotInterval: 0.005
   _diffusivity: 0.15
   _diffusionShot: 0
+  _parabola: 0
+  _angle: 0
 --- !u!1 &6124075452706807118
 GameObject:
   m_ObjectHideFlags: 0

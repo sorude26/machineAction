@@ -28,7 +28,7 @@ public abstract class PartsMaster<T> : MonoBehaviour, IParts where T : PartsData
     /// <summary> パーツ名 </summary>
     public string PartsName { get => _partsData.PartsName[_dataID]; }
     /// <summary> 重量 </summary>
-    public int Weight { get => _partsData.Weight[_dataID]; }
+    public virtual int Weight { get => _partsData.Weight[_dataID]; }
     /// <summary> 破壊フラグ </summary>
     public bool Break { get; protected set; }
     /// <summary> パーツの固有アニメーション </summary>

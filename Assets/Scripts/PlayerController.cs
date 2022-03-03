@@ -12,11 +12,13 @@ public class PlayerController : MonoBehaviour
     GaugeControl _gauge = default;
     [SerializeField]
     CameraController _cameraControl = default;
+    [SerializeField]
+    PartsDataList _dataList = default;
 
     void Start()
     {
         _buildControl.SetData(GameManager.Instance.CurrentBuildData);
-        _controller.StartSet();
+        _controller.StartSet(_dataList);
         _controller.MachineParts.ChangeColor(GameManager.Instance.PlayerColor);        
         _controller.OnBreak += BattleManager.Instance.GameEnd;
         _controller.MachineParts.Body.SetGauge(_gauge);

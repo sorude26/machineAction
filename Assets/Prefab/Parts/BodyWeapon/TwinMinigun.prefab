@@ -77,9 +77,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 1
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 150
   _weapons:
   - {fileID: 4894601865334549472}
   - {fileID: 4894601865224303308}

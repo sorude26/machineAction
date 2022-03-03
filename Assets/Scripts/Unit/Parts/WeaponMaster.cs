@@ -8,22 +8,13 @@ using UnityEngine;
 /// </summary>
 public abstract class WeaponMaster : PartsMaster<WeaponData>
 {
-    /// <summary> 武器攻撃力 </summary>
-    public int Power { get => _partsData.Power[_partsID]; }
-    /// <summary> 総攻撃回数 </summary>
-    public int MaxAttackNumber { get => _partsData.MaxAttackNumber[_partsID]; }
-    /// <summary> 最大攻撃力 </summary>
-    public int MaxPower { get => _partsData.Power[_partsID] * _partsData.Power[_partsID] + _partsData.Power[_partsID] * _partsData.MaxAttackNumber[_partsID]; }
-    /// <summary> 命中精度 </summary>
-    public int HitAccuracy { get => _partsData.HitAccuracy[_partsID]; }
-    /// <summary> 最大射程 </summary>
-    public int Range { get => _partsData.Range[_partsID]; }
-    /// <summary> 最低射程 </summary>
-    public int MinRange { get => _partsData.MinRange[_partsID]; }
+    [SerializeField]
+    int _weight = 10;
     /// <summary> 武器種 </summary>
     public WeaponType Type { get => _partsData.Type[_partsID]; }
     /// <summary> 所有者の物理 </summary>
     public virtual Rigidbody OwnerRb { get; set; }
+    public override int Weight => _weight;
     /// <summary>
     /// 武装の破壊
     /// </summary>

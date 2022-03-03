@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6210444592220708598}
   - component: {fileID: 6599757925143423717}
   m_Layer: 0
-  m_Name: SparkBallX
+  m_Name: NoneWeapon
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 29
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 0
   _weapons:
   - {fileID: 5633457016247177661}
 --- !u!1 &4368877168036332080
@@ -95,9 +97,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 24
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _blade: {fileID: 7672436122326812833}
   _triger: {fileID: 689210037907842876}
   _trigers:

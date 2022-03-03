@@ -5934,6 +5934,7 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _blade: {fileID: 0}
   _triger: {fileID: 3052807616462851509}
   _trigers:
@@ -11644,7 +11645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42d632c01c86bf40875b4ff9cf4c4ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nChangeParameter: 0
+  _nChangeParameter: 1
   _actionSpeed: 1
   _walkPower: 2.4
   _maxWalkSpeed: 24
@@ -11665,7 +11666,6 @@ MonoBehaviour:
   _jetImpulsePower: 40
   _needPowerJet: 1
   _floatSpeed: 20
-  _floatTurnSpeed: 0.01
   _maxFloatSpeed: 500
   _needPowerFly: 1
   _flyConsumption: 0.1

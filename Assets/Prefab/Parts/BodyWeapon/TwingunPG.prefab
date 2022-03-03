@@ -390,9 +390,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 0
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 1
   _muzzle: {fileID: 3959375571273582884}
   _particle:
@@ -517,9 +519,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 0
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 1
   _muzzle: {fileID: 6244076157535631927}
   _particle:
@@ -584,9 +588,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 0
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 1
   _muzzle: {fileID: 3695073337727769000}
   _particle:
@@ -648,9 +654,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 8
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 120
   _weapons:
   - {fileID: 7310880905739883381}
   - {fileID: 4003996799041723979}
@@ -10713,9 +10721,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 0
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 1
   _muzzle: {fileID: 6819756632593883302}
   _particle:
@@ -30209,9 +30219,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 0
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 1
   _muzzle: {fileID: 5971287525471539942}
   _particle:
@@ -30276,9 +30288,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 0
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 1
   _muzzle: {fileID: 8547733154067391202}
   _particle:

@@ -14713,9 +14713,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 7
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 2195225611766570422}
+  _weight: 2000
   _bullet: 7
   _muzzle: {fileID: 6986388016474661475}
   _particle:

@@ -107,9 +107,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 8
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _weapons:
   - {fileID: 7429457346869948070}
   - {fileID: 6842887367841101431}
@@ -711,9 +713,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 0
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 1
   _muzzle: {fileID: 1630335336671686005}
   _particle:
@@ -5783,11 +5787,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 12
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject:
   - {fileID: 4806092488303993847}
   - {fileID: 4806092489735351950}
   _anime: {fileID: 0}
+  _weight: 180
   _weapons:
   - {fileID: 9101856128185019174}
   - {fileID: 6913305809737652134}
@@ -5872,9 +5878,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 0
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 1
   _muzzle: {fileID: 3986101874312375450}
   _particle:
@@ -6048,9 +6056,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 6
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 6
   _muzzle: {fileID: 5765340392249833003}
   _particle:
@@ -11020,9 +11030,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 0
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 1
   _muzzle: {fileID: 1991264130091768645}
   _particle:

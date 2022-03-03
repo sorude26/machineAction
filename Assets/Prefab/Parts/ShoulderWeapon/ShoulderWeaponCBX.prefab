@@ -593,9 +593,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 0
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 141165908086839064}
+  _weight: 10
   _bullet: 8
   _muzzle: {fileID: 6059142153693106270}
   _particle: []
@@ -1137,9 +1139,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 0
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 7951577152625404426}
+  _weight: 10
   _bullet: 8
   _muzzle: {fileID: 2543195852919467769}
   _particle: []
@@ -1714,9 +1718,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 0
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 7578362147314217124}
+  _weight: 10
   _bullet: 8
   _muzzle: {fileID: 2221490996112385751}
   _particle: []
@@ -1793,9 +1799,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 0
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 2723514782988000809}
+  _weight: 10
   _bullet: 8
   _muzzle: {fileID: 7285533377276223741}
   _particle: []
@@ -2869,9 +2877,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 0
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 3640229930309171087}
+  _weight: 10
   _bullet: 8
   _muzzle: {fileID: 7545169115116578980}
   _particle: []
@@ -4237,9 +4247,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 0
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 5975981145398925730}
+  _weight: 10
   _bullet: 8
   _muzzle: {fileID: 2769415591040929377}
   _particle: []
@@ -4297,11 +4309,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 10
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject:
   - {fileID: 748827307398263232}
   - {fileID: 7884272602711325080}
   _anime: {fileID: 0}
+  _weight: 610
   _weapons:
   - {fileID: 4590353192330824253}
   - {fileID: 8935453839552167556}

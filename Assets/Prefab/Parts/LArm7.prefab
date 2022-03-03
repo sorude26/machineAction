@@ -621,7 +621,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 6
-  _partsData: {fileID: 11400000, guid: 90925bcaf2cb3444193d3c3a6b40a2f1, type: 2}
+  _dataID: 0
+  _partsData: {fileID: 11400000, guid: 1a7344bfcace19545be4f705af966b92, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
   _hitPos: []
@@ -646,6 +647,7 @@ MonoBehaviour:
   m_shoulder: {fileID: 875353701488922406}
   m_armTop: {fileID: 3100178302378816102}
   m_armBottom: {fileID: 7016742781267028029}
+  _armType: 0
 --- !u!1 &5191602149046357794
 GameObject:
   m_ObjectHideFlags: 0

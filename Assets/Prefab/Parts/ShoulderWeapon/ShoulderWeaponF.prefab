@@ -128,9 +128,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 8
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 6
   _muzzle: {fileID: 1685248316150283265}
   _particle:
@@ -141,6 +143,8 @@ MonoBehaviour:
   _shotInterval: 0.02
   _diffusivity: 0.3
   _diffusionShot: 2
+  _parabola: 0
+  _angle: 0
 --- !u!1 &198483752224702984
 GameObject:
   m_ObjectHideFlags: 0
@@ -9894,9 +9898,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 8
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 6
   _muzzle: {fileID: 806825659424175224}
   _particle:
@@ -9907,6 +9913,8 @@ MonoBehaviour:
   _shotInterval: 0.02
   _diffusivity: 0.5
   _diffusionShot: 2
+  _parabola: 0
+  _angle: 0
 --- !u!1 &549947896333531258
 GameObject:
   m_ObjectHideFlags: 0
@@ -9955,9 +9963,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 8
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 6
   _muzzle: {fileID: 6606650982992999518}
   _particle:
@@ -9968,6 +9978,8 @@ MonoBehaviour:
   _shotInterval: 0.02
   _diffusivity: 0.3
   _diffusionShot: 2
+  _parabola: 0
+  _angle: 0
 --- !u!1 &1064782045581661730
 GameObject:
   m_ObjectHideFlags: 0
@@ -10048,9 +10060,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 8
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 6
   _muzzle: {fileID: 4207779041149119414}
   _particle:
@@ -10061,6 +10075,8 @@ MonoBehaviour:
   _shotInterval: 0.02
   _diffusivity: 0.3
   _diffusionShot: 2
+  _parabola: 0
+  _angle: 0
 --- !u!1 &1399735810509830515
 GameObject:
   m_ObjectHideFlags: 0
@@ -10599,9 +10615,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 8
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 6
   _muzzle: {fileID: 4368922015417929498}
   _particle:
@@ -10612,6 +10630,8 @@ MonoBehaviour:
   _shotInterval: 0.02
   _diffusivity: 0.5
   _diffusionShot: 2
+  _parabola: 0
+  _angle: 0
 --- !u!1 &3737700519754529756
 GameObject:
   m_ObjectHideFlags: 0
@@ -25463,9 +25483,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 8
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 6
   _muzzle: {fileID: 8022970822459035768}
   _particle:
@@ -25476,6 +25498,8 @@ MonoBehaviour:
   _shotInterval: 0.02
   _diffusivity: 0.3
   _diffusionShot: 2
+  _parabola: 0
+  _angle: 0
 --- !u!1 &7053676984719722098
 GameObject:
   m_ObjectHideFlags: 0
@@ -30704,11 +30728,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 5
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject:
   - {fileID: 8713737506553336229}
   - {fileID: 8713737505667374300}
   _anime: {fileID: 0}
+  _weight: 120
   _weapons:
   - {fileID: 1365527515026919959}
   - {fileID: 3275511784654459669}

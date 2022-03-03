@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class HeadData : UnitPartsData
 {
-    [Tooltip("命中精度")]
+    [Tooltip("索敵範囲")]
     [SerializeField] float[] _lockRange;
     [Tooltip("情報処理能力")]
     [SerializeField] int[] _processingPerformance;

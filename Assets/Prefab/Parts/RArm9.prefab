@@ -21,14 +21,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_partsData
       value: 
-      objectReference: {fileID: 11400000, guid: c0525c6946c113d45b7a5e680e703e40,
-        type: 2}
-    - target: {fileID: 2319704400106925713, guid: 84fe515cc9da3bb4eb0047f3f3aceb32,
-        type: 3}
-      propertyPath: _partsData
-      value: 
-      objectReference: {fileID: 11400000, guid: c0525c6946c113d45b7a5e680e703e40,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2319704400106925713, guid: 84fe515cc9da3bb4eb0047f3f3aceb32,
         type: 3}
       propertyPath: _rightBoosterParticles.Array.data[0]

@@ -80,11 +80,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 3
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject:
   - {fileID: 4236055717465063911}
   - {fileID: 4236055716841245854}
   _anime: {fileID: 0}
+  _weight: 500
   _weapons:
   - {fileID: 5579755596801750433}
   - {fileID: 8232822195018540272}

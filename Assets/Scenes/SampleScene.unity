@@ -12488,7 +12488,7 @@ PrefabInstance:
     - target: {fileID: 613586504346514104, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}
       propertyPath: _landingTime
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 613586504346514104, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}
@@ -12673,7 +12673,12 @@ PrefabInstance:
     - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}
       propertyPath: _jumpRange.x
-      value: 5
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305056271650971456, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
+        type: 3}
+      propertyPath: _jumpRange.y
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 226e579a6c7e16a4b9cfc289310e0ed8, type: 3}
@@ -49345,6 +49350,12 @@ PrefabInstance:
       propertyPath: _gauge
       value: 
       objectReference: {fileID: 1553064035}
+    - target: {fileID: 3052807615624350388, guid: 2911127b07e5ee343a9f2e691f005a6b,
+        type: 3}
+      propertyPath: _dataList
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b91c5b66e420d04f8072bb722df6945,
+        type: 2}
     - target: {fileID: 3052807616724791133, guid: 2911127b07e5ee343a9f2e691f005a6b,
         type: 3}
       propertyPath: _mark

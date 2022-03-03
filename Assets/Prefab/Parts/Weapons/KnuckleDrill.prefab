@@ -1210,9 +1210,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 11
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 30
   _blade: {fileID: 1558250030176815376}
   _triger: {fileID: 2754034825310543256}
   _trigers:
@@ -1225,6 +1227,7 @@ MonoBehaviour:
   - {fileID: 3364065935548965551}
   - {fileID: 6729702288619907137}
   _knockBackPower: 1
+  _speedPower: 1
 --- !u!95 &6841880418767533710
 Animator:
   serializedVersion: 3

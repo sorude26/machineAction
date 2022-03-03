@@ -9705,9 +9705,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 20
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 7
   _blade: {fileID: 4010925161154889338}
   _triger: {fileID: 0}
   _trigers:

@@ -272,6 +272,7 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 8488338353875487486}
+  _weight: 100
   _bullet: 4
   _muzzle: {fileID: 8488338352356674504}
   _particle:

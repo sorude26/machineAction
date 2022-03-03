@@ -5284,6 +5284,7 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 9
   _muzzle: {fileID: 1935289279494681670}
   _particle:
@@ -6181,6 +6182,7 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: e1e6737706e46b54fb5dc6fc66daf00d, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 110
   _weapons:
   - {fileID: 5561212716551847413}
   - {fileID: 3785649587944679755}
@@ -11262,6 +11264,7 @@ MonoBehaviour:
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _bullet: 9
   _muzzle: {fileID: 7169650234616193272}
   _particle:

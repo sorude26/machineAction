@@ -49,10 +49,17 @@ public class MachineController : MonoBehaviour
     public ShoulderWeapon SWeapon { get => _parts.ShoulderWeapon; }
     public Transform LookTarget { get; protected set; }
     public MachineParameter Parameter { get => _parameter; }
-    public void StartSet()
+    public void StartSet(PartsDataList partsData = null)
     {
         _parts = new PartsManager();
-        _buildControl.StartSet(_parts);
+        if (partsData != null)
+        {
+            _buildControl.StartSet(partsData, _parts);
+        }
+        else
+        {
+            _buildControl.StartSet(_parts);
+        }
         _legTransform = _buildControl.LegBase;
         _parameter.SetParameter(_parts);
         _rb = GetComponent<Rigidbody>();

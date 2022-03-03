@@ -19290,9 +19290,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 21
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 7
   _blade: {fileID: 3741594546335943801}
   _triger: {fileID: 0}
   _trigers:

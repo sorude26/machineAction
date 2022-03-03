@@ -27,6 +27,10 @@ public class MachineBuildControl : MonoBehaviour
     {
         Build(_buildData, manager);
     }
+    public void StartSet(PartsDataList dataList,PartsManager manager)
+    {
+        PartsDataBuild(_buildData, manager, dataList);
+    }
     public void SetData(UnitBuildData data)
     {
         _buildData = data;
@@ -44,9 +48,13 @@ public class MachineBuildControl : MonoBehaviour
         EquipmentBWeapon(manager, data.BodyWeaponID);
         EquipmentSWeapon(manager, data.ShoulderWeaponID);
     }
-    public void PartsDataBuild()
+    public void PartsDataBuild(UnitBuildData data, PartsManager manager, PartsDataList list)
     {
-
+        UnitBuildData buildData = new UnitBuildData(list.Head.PartsID[data.HeadID],list.Body.PartsID[data.BodyID], 
+            list.Arm.PartsID[data.RArmID], list.Arm.PartsID[data.LArmID],list.Leg.PartsID[data.LegID],
+            data.WeaponRArmID, data.WeaponLArmID, data.ShoulderWeaponID, data.BodyWeaponID,
+            list.Booster.PartsID[data.BoosterID], data.CoreID);
+        Build(buildData, manager);
     }
     void BuildBody(PartsManager manager, int partsID)
     {
