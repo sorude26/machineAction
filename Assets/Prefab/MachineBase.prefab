@@ -489,6 +489,7 @@ MonoBehaviour:
   _buildControl: {fileID: 3052807616724791134}
   _gauge: {fileID: 0}
   _cameraControl: {fileID: 3052807616519754341}
+  _dataList: {fileID: 11400000, guid: 8b91c5b66e420d04f8072bb722df6945, type: 2}
 --- !u!1 &3052807615633187313
 GameObject:
   m_ObjectHideFlags: 0

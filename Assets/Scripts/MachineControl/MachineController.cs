@@ -237,6 +237,10 @@ public class MachineController : MonoBehaviour
         }
         if (_jump && _booster.BoostCheckFly())
         {
+            if (!_booster.IsBoost)
+            {
+                return;
+            }
             Vector3 vector = _bodyAngle.forward * _inputAxis.z + _bodyAngle.right * _inputAxis.x;
             _moveControl.Jet(_rb, Vector3.up + vector * _parameter.JetMovePower, _parameter.JetPower);
             if (_booster.CurrentBoostPower <= 0)

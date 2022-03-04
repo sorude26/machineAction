@@ -34,5 +34,5 @@ public abstract class PartsMaster<T> : MonoBehaviour, IParts where T : PartsData
     /// <summary> パーツの固有アニメーション </summary>
     public Animator PartsAnime { get => _anime; }
     public virtual void DestoryParts() => Destroy(this.gameObject);
-    public void SetDataID(int id) => _dataID = id;
+    public virtual void SetDataID(int id) => _dataID = id;
  }

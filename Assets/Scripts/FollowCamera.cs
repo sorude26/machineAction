@@ -13,10 +13,6 @@ public class FollowCamera : MonoBehaviour
     [SerializeField]
     float _rotationSpeed = 1f;
     [SerializeField]
-    float _followMaxSpeed = 5f;
-    [SerializeField]
-    float _rotationMaxSpeed = 5f;
-    [SerializeField]
     bool _noneLerp = false;
     [SerializeField]
     Transform _lookTarget = default;

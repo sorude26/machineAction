@@ -6787,8 +6787,6 @@ MonoBehaviour:
   _rotationTarget: {fileID: 1455237711}
   _followSpeed: 1
   _rotationSpeed: 5
-  _followMaxSpeed: 500
-  _rotationMaxSpeed: 500
   _noneLerp: 0
   _lookTarget: {fileID: 1455237710}
   _lookRotationTarget: {fileID: 1455237710}
@@ -8863,6 +8861,11 @@ PrefabInstance:
       propertyPath: _mark
       value: 
       objectReference: {fileID: 2036243191}
+    - target: {fileID: 3052807617104154749, guid: 2911127b07e5ee343a9f2e691f005a6b,
+        type: 3}
+      propertyPath: _nChangeParameter
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2911127b07e5ee343a9f2e691f005a6b, type: 3}
 --- !u!4 &1455237710 stripped

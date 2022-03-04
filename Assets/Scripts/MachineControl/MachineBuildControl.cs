@@ -55,6 +55,12 @@ public class MachineBuildControl : MonoBehaviour
             data.WeaponRArmID, data.WeaponLArmID, data.ShoulderWeaponID, data.BodyWeaponID,
             list.Booster.PartsID[data.BoosterID], data.CoreID);
         Build(buildData, manager);
+        manager.Body.SetDataID(data.BodyID);
+        manager.Head.SetDataID(data.HeadID);
+        manager.RArm.SetDataID(data.RArmID);
+        manager.LArm.SetDataID(data.LArmID);
+        manager.Leg.SetDataID(data.LegID);
+        manager.Booster.SetDataID(data.BoosterID);
     }
     void BuildBody(PartsManager manager, int partsID)
     {

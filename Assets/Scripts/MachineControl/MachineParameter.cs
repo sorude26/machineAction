@@ -165,6 +165,10 @@ public class MachineParameter : MonoBehaviour
         rWeight += machineParts.RAWeapon.Weight;
         int balance = Mathf.Abs(lWeight - rWeight);
         int actionCapacity = machineParts.Leg.LoadCapacity - (_totalWeight + balance);
+        if (_energy - _totalWeight < 0)
+        {
+            actionCapacity -= machineParts.Leg.LoadCapacity;
+        }
         if (actionCapacity >= 0)
         {
             if (actionCapacity > _totalWeight)
@@ -204,7 +208,7 @@ public class MachineParameter : MonoBehaviour
             if (balance > machineParts.Leg.Balancer)
             {
                 _actionSpeed -= 0.2f;
-                _landingTime += 0.5f;
+                _landingTime += 0.2f;
                 _bodyTurnSpeed -= 1f;
             }
         }
@@ -220,7 +224,11 @@ public class MachineParameter : MonoBehaviour
     void SetBoostPower(PartsManager machineParts)
     {
         int boostPower = machineParts.Booster.Propulsion - _totalWeight;
-        _jetTime = _energy * machineParts.Booster.Duration;
+        if (_energy < _totalWeight)
+        {
+            boostPower = 0;
+        }
+        _jetTime = machineParts.Booster.Duration - (_totalWeight / _energy);
         if (boostPower > 0)
         {
             if (boostPower > _totalWeight)
@@ -247,7 +255,7 @@ public class MachineParameter : MonoBehaviour
         }
         else
         {
-            _jetPower = 0;
+            _jetPower = 0.1f;
             _needPowerJet = _jetTime;
             _jetImpulsePower = 10;
             _needPowerFly = 10f;
@@ -261,7 +269,7 @@ public class MachineParameter : MonoBehaviour
         _maxRunSpeed = _runPower * 45f;
         _turnPower = _walkPower * 2f;
         _turnSpeed = _turnPower * 2f;
-        _jumpPower = machineParts.Leg.Exercise * _actionSpeed;
+        _jumpPower = machineParts.Leg.Exercise;
         _floatSpeed = machineParts.Leg.FloatPower * _actionSpeed;
     }
 }

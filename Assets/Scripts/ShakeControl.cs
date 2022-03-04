@@ -11,7 +11,6 @@ public class ShakeControl : MonoBehaviour
     float _timer = 0;
     bool _shake = default;
     Vector3 _startPos = default;
-    Vector3 _current = default;
     private void Start()
     {
         _startPos = transform.localPosition;

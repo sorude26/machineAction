@@ -46,13 +46,18 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
     protected int _currentPartsHp;
 
     /// <summary> パーツ耐久値 </summary>
-    public int MaxPartsHP { get => 1600; }
+    public int MaxPartsHP { get => _partsData.MaxPartsHp[_dataID]; }
     /// <summary> パーツ装甲値 </summary>
-    public int Defense { get => _partsData.Defense[_partsID]; }
+    public int Defense { get => _partsData.Defense[_dataID]; }
     /// <summary> 現在のパーツ耐久値 </summary>
     public int CurrentPartsHp { get => _currentPartsHp; }
     void Start()
     {
+        StartSet();
+    }
+    public override void SetDataID(int id)
+    {
+        base.SetDataID(id);
         StartSet();
     }
     /// <summary>
@@ -170,6 +175,7 @@ public abstract class UnitPartsMaster<T> : PartsMaster<T>, IUnitParts where T : 
     public void SetGauge(GaugeControl gauge)
     {
         _gauge = gauge;
+        StartSet();
     }
     public void StartBooster()
     {

@@ -25,6 +25,14 @@ public class CustomizeControl : MonoBehaviour
     float _followSpeed = 5f;
     [SerializeField]
     float _lockSpeed = 20f;
+    [SerializeField]
+    MachineParameter _parameter = default;
+    [SerializeField]
+    PartsDataList _dataList = default;
+    [SerializeField]
+    ParameterView _parameterUI = default;
+    [SerializeField]
+    Text _weight = default;
     PartsManager _partsManager = default;
     UnitBuildData _buildData = default;
     Quaternion _cameraRot = default;
@@ -101,13 +109,21 @@ public class CustomizeControl : MonoBehaviour
         _buildControl.Purge(transform);
         _partsManager.ResetAllParts();
         _buildControl.SetData(_currentBuildData);
-        _buildControl.StartSet(_partsManager);
+        _buildControl.StartSet(_dataList,_partsManager);
+        _parameter.SetParameter(_partsManager);
         _modelTransform[0].localRotation = Quaternion.Euler(0, 0, -6);
         _modelTransform[1].localRotation = Quaternion.Euler(0, 0, 6);
         _modelTransform[2].localRotation = Quaternion.Euler(-70, 0, -1);
         _modelTransform[3].localRotation = Quaternion.Euler(-70, 0, 1);
         SetColor();
         transform.localRotation = rot;
+        _parameterUI.SetParameter(_parameter);
+        int weight = 0;
+        foreach (var parts in _partsManager.GetAllParts())
+        {
+            weight += parts.Weight;
+        }
+        _weight.text = weight.ToString();
     }
     void SetColor()
     {

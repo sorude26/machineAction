@@ -49366,6 +49366,11 @@ PrefabInstance:
       propertyPath: _floatTurnSpeed
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 3052807617104154749, guid: 2911127b07e5ee343a9f2e691f005a6b,
+        type: 3}
+      propertyPath: _nChangeParameter
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2911127b07e5ee343a9f2e691f005a6b, type: 3}
 --- !u!4 &3163367175494430642 stripped

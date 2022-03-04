@@ -23,9 +23,9 @@ public class BoosterControl : MonoBehaviour
             }
         }
     }
+    public bool IsBoost { get; private set; }
     float _currentPower = default;
     float _maxBoostPower = 100f;
-    bool _boost = false;
     bool _set = false;
     public void Set(MachineController controller)
     {
@@ -53,7 +53,7 @@ public class BoosterControl : MonoBehaviour
             _machine.ChangeFloat();
             return;
         }
-        if (_boost)
+        if (IsBoost)
         {
             if (CurrentBoostPower > 0)
             {
@@ -102,7 +102,7 @@ public class BoosterControl : MonoBehaviour
                 parts.StartBooster();
             }
         }
-        _boost = true;
+        IsBoost = true;
     }
     public void BoostF()
     {
@@ -113,7 +113,7 @@ public class BoosterControl : MonoBehaviour
                 parts.StartBoosterF();
             }
         }
-        _boost = true;
+        IsBoost = true;
     }
     public void BoostB()
     {
@@ -124,7 +124,7 @@ public class BoosterControl : MonoBehaviour
                 parts.StartBoosterB();
             }
         }
-        _boost = true;
+        IsBoost = true;
     }
     public void BoostL()
     {
@@ -135,7 +135,7 @@ public class BoosterControl : MonoBehaviour
                 parts.StartBoosterL();
             }
         }
-        _boost = true;
+        IsBoost = true;
     }
     public void BoostR()
     {
@@ -146,7 +146,7 @@ public class BoosterControl : MonoBehaviour
                 parts.StartBoosterR();
             }
         }
-        _boost = true;
+        IsBoost = true;
     }
     public void BoostEnd()
     {
@@ -160,6 +160,6 @@ public class BoosterControl : MonoBehaviour
     }
     public void BoostRecovery()
     {
-        _boost = false;
+        IsBoost = false;
     }
 }
