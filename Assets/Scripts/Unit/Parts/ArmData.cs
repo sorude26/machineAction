@@ -8,4 +8,10 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ArmData : UnitPartsData
 {
+    [Tooltip("推進力")]
+    [SerializeField]
+    int[] _propulsion = default;
+
+    /// <summary> 推進力 </summary>
+    public int[] Propulsion { get => _propulsion; }
 }

@@ -10,9 +10,9 @@ public class HeadData : UnitPartsData
     [Tooltip("索敵範囲")]
     [SerializeField] float[] _lockRange;
     [Tooltip("情報処理能力")]
-    [SerializeField] int[] _processingPerformance;
+    [SerializeField] float[] _processingPerformance;
     /// <summary> 索敵範囲 </summary>
     public float[] LockRange { get => _lockRange; }
     /// <summary> 情報処理能力 </summary>
-    public int[] Performance { get => _processingPerformance; }
+    public float[] Performance { get => _processingPerformance; }
 }

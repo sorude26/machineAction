@@ -135,12 +135,12 @@ public class MachineParameter : MonoBehaviour
             if (_energy > _totalWeight * 2)
             {
                 _flyConsumption = -0.1f;
-                _powerRecoverySpeed = 8f;
+                _powerRecoverySpeed = 5f;
             }
             else
             {
                 _flyConsumption = 0.1f;
-                _powerRecoverySpeed = 5f;
+                _powerRecoverySpeed = 3f;
             }
         }
         else
@@ -148,7 +148,7 @@ public class MachineParameter : MonoBehaviour
             if (_energy > _totalWeight / 2)
             {
                 _flyConsumption = 0.5f;
-                _powerRecoverySpeed = 2f;
+                _powerRecoverySpeed = 1f;
             }
             else
             {
@@ -219,7 +219,7 @@ public class MachineParameter : MonoBehaviour
             _bodyTurnSpeed -= 1f;
         }
         _landingTime *= machineParts.Head.Performance;
-        _bodyTurnSpeed += 1 / machineParts.Head.Performance;
+        _bodyTurnSpeed += 1 - machineParts.Head.Performance;
     }
     void SetBoostPower(PartsManager machineParts)
     {
@@ -271,5 +271,6 @@ public class MachineParameter : MonoBehaviour
         _turnSpeed = _turnPower * 2f;
         _jumpPower = machineParts.Leg.Exercise;
         _floatSpeed = machineParts.Leg.FloatPower * _actionSpeed;
+        _maxFloatSpeed = _floatSpeed * 25;
     }
 }

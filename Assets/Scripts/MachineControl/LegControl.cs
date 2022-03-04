@@ -3,20 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MoveType
+{
+    Back = -1,
+    Stop = 0,
+    Forward = 1,
+}
+public enum LegDirection
+{
+    Left = -1,
+    Flont = 0,
+    Right = 1,
+}
 public class LegControl : MonoBehaviour
 {
+
     [SerializeField]
     Animator _animator = default;
     [SerializeField]
     ParticleSystem _walkEffect = default;
     [SerializeField]
     ParticleSystem _landingEffect = default;
-    public bool IsLanding { get => _landing; }
-    int _walk = default;
-    int _turn = default;
+    MoveType _move = default;
+    LegDirection _direction = default;
     bool _jump = false;
     bool _jumpEnd = false;
-    bool _isGround = false;
     bool _landing = false;
     bool _float = false;
     bool _knockDown = false;
@@ -25,6 +36,8 @@ public class LegControl : MonoBehaviour
     MachineController _machine = default;
     MoveAnimation _moveAnimation = default;
     LegType _legType = default;
+    public bool IsLanding { get => _landing; }
+    bool IsGround { get => _machine.IsGrounded(); }
     public void Set(MachineController controller)
     {
         _machine = controller;
@@ -68,61 +81,63 @@ public class LegControl : MonoBehaviour
                 break;
         }
     }
-    public void WalkStart(int angle)
+    public void WalkStart(MoveType angle)
     {
         if (_jump || _knockDown)
         {
             return;
         }
-        if (_walk == angle)
+        if (_move == angle)
         {
             return;
         }
-        _walk = angle;
-        if (angle > 0)
+        _move = angle;
+        switch (angle)
         {
-            switch (_legType)
-            {
-                case LegType.Normal:
-                    if (_machine.Parameter.ActionSpeed > 2)
-                    {
-                        ChangeAnimation("Run");
-                    }
-                    else
-                    {
-                        ChangeAnimation("Walk", 0.5f);
-                    }
-                    break;
-                case LegType.Crawler:
-                    ChangeAnimation("MoveFront", 0.1f);
-                    break;
-                case LegType.Animation:
-                    _moveAnimation.WalkStart(angle);
-                    break;
-                default:
-                    break;
-            }
-        }
-        else if (angle < 0)
-        {
-            switch (_legType)
-            {
-                case LegType.Normal:
-                    ChangeAnimation("WalkBack", 0.5f);
-                    break;
-                case LegType.Crawler:
-                    ChangeAnimation("MoveFront", 0.1f);
-                    break;
-                case LegType.Animation:
-                    _moveAnimation.WalkStart(angle);
-                    break;
-                default:
-                    break;
-            }
-        }
-        else
-        {
-            WalkStop();
+            case MoveType.Stop:
+                WalkStop();
+                break;
+            case MoveType.Forward:
+                switch (_legType)
+                {
+                    case LegType.Normal:
+                        if (_machine.Parameter.ActionSpeed > 2)
+                        {
+                            ChangeAnimation("Run");
+                        }
+                        else
+                        {
+                            ChangeAnimation("Walk", 0.5f);
+                        }
+                        break;
+                    case LegType.Crawler:
+                        ChangeAnimation("MoveFront", 0.1f);
+                        break;
+                    case LegType.Animation:
+                        _moveAnimation.WalkStart(1);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case MoveType.Back:
+                switch (_legType)
+                {
+                    case LegType.Normal:
+                        ChangeAnimation("WalkBack", 0.5f);
+                        break;
+                    case LegType.Crawler:
+                        ChangeAnimation("MoveFront", 0.1f);
+                        break;
+                    case LegType.Animation:
+                        _moveAnimation.WalkStart(-1);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
         }
     }
     public void WalkStop()
@@ -131,12 +146,12 @@ public class LegControl : MonoBehaviour
         {
             return;
         }
-        if (_walk == 0 && _turn == 0)
+        if (_move == 0 && _direction == 0)
         {
             return;
         }
-        _walk = 0;
-        _turn = 0;
+        _move = MoveType.Stop;
+        _direction = 0;
         ChangeAnimation("Idle", 0.5f);
         switch (_legType)
         {
@@ -157,16 +172,16 @@ public class LegControl : MonoBehaviour
         {
             return;
         }       
-        if (_turn < 0)
+        if (_direction == LegDirection.Left)
         {
             if (_legType == LegType.Animation)
             {
-                _moveAnimation.SetTurn(_turn);
+                _moveAnimation.SetTurn((int)_direction);
             }
             return;
         }
-        _turn = -1;        
-        if (_walk != 0)
+        _direction = LegDirection.Left;        
+        if (_move != MoveType.Stop)
         {
             return;
         }       
@@ -191,16 +206,16 @@ public class LegControl : MonoBehaviour
         {
             return;
         } 
-        if (_turn > 0)
+        if (_direction == LegDirection.Right)
         {
             if (_legType == LegType.Animation)
             {
-                _moveAnimation.SetTurn(_turn);
+                _moveAnimation.SetTurn((int)_direction);
             }
             return;
         }
-        _turn = 1;
-        if (_walk != 0)
+        _direction = LegDirection.Right;
+        if (_move != MoveType.Stop)
         {
             return;
         }
@@ -239,22 +254,21 @@ public class LegControl : MonoBehaviour
             return;
         }
         _jump = true;
-        _isGround = false;
         if (_legType == LegType.Animation)
         {
             _moveAnimation.StartJump();
             return;
         }
-        if (_walk != 0)
+        if (_move != MoveType.Stop)
         {
             ChangeAnimation("JunpStart");
             return;
         }
-        if (_turn > 0)
+        if (_direction == LegDirection.Right)
         {
             ChangeAnimation("JunpStartR");
         }
-        else if (_turn < 0)
+        else if (_direction == LegDirection.Left)
         {
 
             ChangeAnimation("JunpStartL");
@@ -280,7 +294,7 @@ public class LegControl : MonoBehaviour
         }
         if (_jump)
         {
-            if (_isGround)
+            if (IsGround)
             {
                 return;
             }
@@ -351,50 +365,38 @@ public class LegControl : MonoBehaviour
             _animator.Play("LandingEnd");
         }
         _jump = false;
-        _walk = 0;
-        _turn = 0;
+        _move = MoveType.Stop;
+        _direction = LegDirection.Flont;
         _landing = false;
         _jumpEnd = false;
     }
 
     void Walk()
     {
-        _machine?.Walk(_walk);
-        if (_turn > 0)
-        {
-            _machine.Turn(MachineStatus.TurnPower);
-        }
-        else if (_turn < 0)
-        {
-            _machine?.Turn(-MachineStatus.TurnPower);
-        }
-        _turn = 0;
+        _machine?.Walk((int)_move);
+        TurnCheck(MachineStatus.TurnPower);
     }
     void Run()
     {
-        _machine.Run(_walk);
-        if (_turn > 0)
-        {
-            _machine.Turn(MachineStatus.TurnPower);
-        }
-        else if (_turn < 0)
-        {
-            _machine.Turn(-MachineStatus.TurnPower);
-        }
-        _turn = 0;
+        _machine.Run((int)_move);
+        TurnCheck(MachineStatus.TurnPower);
     }
     void Move()
     {
-        _machine.Move(_walk);
-        if (_turn > 0)
+        _machine.Move((int)_move);
+        TurnCheck(MachineStatus.TurnMovePower);
+    }
+    void TurnCheck(float power)
+    {
+        if (_direction == LegDirection.Right)
         {
-            _machine.Turn(MachineStatus.TurnMovePower);
+            _machine.Turn(power);
         }
-        else if (_turn < 0)
+        else if (_direction == LegDirection.Left)
         {
-            _machine.Turn(-MachineStatus.TurnMovePower);
+            _machine.Turn(-power);
         }
-        _turn = 0;
+        _direction = LegDirection.Flont;
     }
     void AttackMove()
     {
@@ -432,7 +434,7 @@ public class LegControl : MonoBehaviour
     void Jump()
     {
         SmokeEffect();
-        Vector3 dir = transform.forward * _walk + transform.right * _turn;
+        Vector3 dir = transform.forward * (int)_move + transform.right * (int)_direction;
         _machine?.StartJump((Vector3.up + dir).normalized);
     }
     void Landing()
@@ -462,8 +464,7 @@ public class LegControl : MonoBehaviour
         {
             return;
         }
-        _isGround = _machine.IsGrounded();
-        if (_isGround && _jump && !_jumpEnd)
+        if (IsGround && _jump && !_jumpEnd)
         {
             _jumpEnd = true;
             _machine?.Landing();

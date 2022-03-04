@@ -161,14 +161,14 @@ MonoBehaviour:
   _partsObject: []
   _anime: {fileID: 0}
   _weight: 25
-  _bullet: 3
+  _bullet: 4
   _muzzle: {fileID: 7702402724419765732}
   _particle:
   - {fileID: 4460545455775835252}
   _power: 200
-  _triggerShotCount: 1
-  _triggerInterval: 0.1
-  _shotInterval: 0.1
+  _triggerShotCount: 5
+  _triggerInterval: 1
+  _shotInterval: 0.08
   _diffusivity: 0.01
   _diffusionShot: 0
   _parabola: 0

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 6
-  _power: 15
+  _power: 35
 --- !u!135 &953382187539582680
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 6
-  _power: 15
+  _power: 35
 --- !u!135 &4269394693796320826
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -324,9 +324,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partsID: 13
+  _dataID: 0
   _partsData: {fileID: 11400000, guid: ab04ed6cc99dc08429de7df507739098, type: 2}
   _partsObject: []
   _anime: {fileID: 0}
+  _weight: 10
   _blade: {fileID: 6761720717473668798}
   _triger: {fileID: 5167115512566968016}
   _trigers:
@@ -339,6 +341,7 @@ MonoBehaviour:
   - {fileID: 1686641912562287410}
   - {fileID: 7882173291980987624}
   _knockBackPower: 3
+  _speedPower: 1
 --- !u!1 &2425741060227213222
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 6
-  _power: 15
+  _power: 35
 --- !u!135 &4460136235162725797
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -671,7 +674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 6
-  _power: 15
+  _power: 35
 --- !u!135 &2308621165746120178
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -730,7 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 6
-  _power: 15
+  _power: 35
 --- !u!135 &6624323379748303444
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -789,7 +792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 6
-  _power: 15
+  _power: 35
 --- !u!135 &2882446297471051333
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -848,7 +851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 6
-  _power: 15
+  _power: 35
 --- !u!135 &8712420841155212610
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -907,7 +910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 6
-  _power: 15
+  _power: 35
 --- !u!135 &355507825479622336
 SphereCollider:
   m_ObjectHideFlags: 0

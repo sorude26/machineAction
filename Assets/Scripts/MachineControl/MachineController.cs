@@ -136,11 +136,11 @@ public class MachineController : MonoBehaviour
             {
                 if (dir.z > InputStatus.MoveLimit)
                 {
-                    _leg.WalkStart(1);
+                    _leg.WalkStart(MoveType.Forward);
                 }
                 else if (dir.z < -InputStatus.MoveLimit)
                 {
-                    _leg.WalkStart(-1);
+                    _leg.WalkStart(MoveType.Back);
                 }
                 if (dir.x > InputStatus.MoveLimit)
                 {
