@@ -29,8 +29,10 @@ public class EnemyContorller : MonoBehaviour
     Vector2 _jumpRange = new Vector2(3, 9);
     [SerializeField]
     DamageControl _damageControl = default;
+    [SerializeField]
+    float _startWaitTime = 2f;
     bool _set = false;
-    float timer = 0;
+    float _timer = 0;
     private async void Start()
     {
         await Task.Delay(1);
@@ -51,11 +53,20 @@ public class EnemyContorller : MonoBehaviour
         _controller.OnBreak += BreakBody;
         transform.rotation = start;
         _damageControl.SetTarget();
-        timer = Random.Range(1, 7);
+        _timer = Random.Range(1, 7);
         _controller.SetTarget(BattleManager.Instance.PlayerPos);
+        StartCoroutine(StartContorlWait());
+    }
+    IEnumerator StartContorlWait()
+    {
+        float timer = 0;
+        while (timer < _startWaitTime)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
         _set = true;
     }
-
     void Update()
     {       
         if (!_set)
@@ -64,10 +75,10 @@ public class EnemyContorller : MonoBehaviour
         }
         Vector3 dir = _controller.MachineParts.Body.transform.forward - BattleManager.Instance.PlayerPos.position;
         _controller.Move(-dir.normalized);
-        timer -= Time.deltaTime;
-        if (timer < 0)
+        _timer -= Time.deltaTime;
+        if (_timer < 0)
         {
-            timer = Random.Range(_jumpRange.x, _jumpRange.y);
+            _timer = Random.Range(_jumpRange.x, _jumpRange.y);
             if (_jump)
             {
                 _controller.Jump();

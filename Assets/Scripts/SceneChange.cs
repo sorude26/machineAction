@@ -22,14 +22,14 @@ public class SceneChange
     /// <summary>
     /// Gameシーンに移行する
     /// </summary>
-    public static void LoadGame()
+    public static void LoadGame(string name = "BattleStageScene")
     {
         if (roadNow)
         {
             return;
         }
         roadNow = true;
-        FadeController.StartFadeOut(Game);
+        FadeController.StartFadeOut(() => Game(name));
     }
     /// <summary>
     /// Customizeシーンに移行する
@@ -48,10 +48,10 @@ public class SceneChange
         roadNow = false;
         SceneManager.LoadScene("TitleScene");
     }
-    private static void Game()
+    private static void Game(string name)
     {
         roadNow = false;
-        SceneManager.LoadScene("BattleStageScene");
+        SceneManager.LoadScene(name);
     }
     private static void Customize()
     {

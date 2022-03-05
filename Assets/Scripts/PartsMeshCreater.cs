@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
+#if UNITY_EDITOR
 /// <summary>
 /// メッシュを生成する
 /// </summary>
@@ -29,3 +30,4 @@ public class PartsMeshCreater : MonoBehaviour
         AssetDatabase.SaveAssets();
     }
 }
+#endif

@@ -6,6 +6,7 @@ using UnityEngine;
 /// </summary>
 public class MoveControl : MonoBehaviour
 {
+    const float FloatDelay = 0.999f;
     public void MoveWalk(Rigidbody rb,Vector3 dir,float power,float maxSpeed)
     {
         if (rb.velocity.sqrMagnitude < maxSpeed)
@@ -15,7 +16,8 @@ public class MoveControl : MonoBehaviour
     }
     public void MoveFloat(Rigidbody rb, Vector3 dir, float speed, float maxSpeed)
     {
-        rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        Vector3 current = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        rb.velocity = current * FloatDelay;
         if (rb.velocity.sqrMagnitude < maxSpeed)
         {
             rb.velocity = dir * speed;

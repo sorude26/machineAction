@@ -9,8 +9,15 @@ public class DamageTarget : MonoBehaviour, IDamageApplicable
     IUnitParts _unitParts = default;
     private void Start()
     {
-        _parent.TryGetComponent<IUnitParts>(out _unitParts);
-        if (_unitParts == null)
+        if (_parent)
+        {
+            _parent.TryGetComponent<IUnitParts>(out _unitParts);
+            if (_unitParts == null)
+            {
+                Destroy(this);
+            }
+        }
+        else
         {
             Destroy(this);
         }

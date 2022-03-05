@@ -29,7 +29,7 @@ public class MachineParameter : MonoBehaviour
     [Tooltip("旋回力")]
     [SerializeField]
     float _turnPower = 21f;
-    public float TurnPower { get => _turnPower; }
+    public float TurnPower { get => _turnPower * MachineStatus.TurnSpeed * Time.deltaTime; }
     [Tooltip("旋回速度")]
     [SerializeField]
     float _turnSpeed = 3f;

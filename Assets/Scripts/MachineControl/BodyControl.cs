@@ -48,12 +48,22 @@ public class BodyControl : MonoBehaviour
     public Quaternion BodyAngle { get => _bodyControlBase[0].localRotation; }
     public Transform BodyTransform { get => _bodyControlBase[0]; }
     public FightingType Fighting { get; set; }
-    
+    private void Awake()
+    {
+        if (_animator)
+        {
+            _animator.enabled = false;
+        }
+    }
     public void Set(MachineController controller)
     {
         _machine = controller;
         attackControl = new AttackControl();
-        Fighting = attackControl.GetType(controller);
+        Fighting = attackControl.GetType(controller); 
+        if (_animator)
+        {
+            _animator.enabled = true;
+        }
     }
     public void ChangeSpeed(float speed)
     {

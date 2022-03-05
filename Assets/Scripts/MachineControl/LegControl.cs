@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MoveType
+public enum MoveState
 {
     Back = -1,
     Stop = 0,
@@ -17,14 +17,13 @@ public enum LegDirection
 }
 public class LegControl : MonoBehaviour
 {
-
     [SerializeField]
     Animator _animator = default;
     [SerializeField]
     ParticleSystem _walkEffect = default;
     [SerializeField]
     ParticleSystem _landingEffect = default;
-    MoveType _move = default;
+    MoveState _move = default;
     LegDirection _direction = default;
     bool _jump = false;
     bool _jumpEnd = false;
@@ -38,6 +37,13 @@ public class LegControl : MonoBehaviour
     LegType _legType = default;
     public bool IsLanding { get => _landing; }
     bool IsGround { get => _machine.IsGrounded(); }
+    private void Awake()
+    {
+        if (_animator)
+        {
+            _animator.enabled = false;
+        }
+    }
     public void Set(MachineController controller)
     {
         _machine = controller;
@@ -46,6 +52,10 @@ public class LegControl : MonoBehaviour
         {
             _moveAnimation = controller.MachineParts.Leg.MoveAnimation;
             _moveAnimation.Set(controller);
+        }
+        if (_animator)
+        {
+            _animator.enabled = true;
         }
     }
     public void SetLandingTime(float time)
@@ -81,7 +91,7 @@ public class LegControl : MonoBehaviour
                 break;
         }
     }
-    public void WalkStart(MoveType angle)
+    public void WalkStart(MoveState angle)
     {
         if (_jump || _knockDown)
         {
@@ -94,14 +104,14 @@ public class LegControl : MonoBehaviour
         _move = angle;
         switch (angle)
         {
-            case MoveType.Stop:
+            case MoveState.Stop:
                 WalkStop();
                 break;
-            case MoveType.Forward:
+            case MoveState.Forward:
                 switch (_legType)
                 {
                     case LegType.Normal:
-                        if (_machine.Parameter.ActionSpeed > 2)
+                        if (_machine.Parameter.ActionSpeed > 1)
                         {
                             ChangeAnimation("Run");
                         }
@@ -114,13 +124,13 @@ public class LegControl : MonoBehaviour
                         ChangeAnimation("MoveFront", 0.1f);
                         break;
                     case LegType.Animation:
-                        _moveAnimation.WalkStart(1);
+                        _moveAnimation.WalkStart((int)angle);
                         break;
                     default:
                         break;
                 }
                 break;
-            case MoveType.Back:
+            case MoveState.Back:
                 switch (_legType)
                 {
                     case LegType.Normal:
@@ -130,7 +140,7 @@ public class LegControl : MonoBehaviour
                         ChangeAnimation("MoveFront", 0.1f);
                         break;
                     case LegType.Animation:
-                        _moveAnimation.WalkStart(-1);
+                        _moveAnimation.WalkStart((int)angle);
                         break;
                     default:
                         break;
@@ -150,7 +160,7 @@ public class LegControl : MonoBehaviour
         {
             return;
         }
-        _move = MoveType.Stop;
+        _move = MoveState.Stop;
         _direction = 0;
         ChangeAnimation("Idle", 0.5f);
         switch (_legType)
@@ -181,7 +191,7 @@ public class LegControl : MonoBehaviour
             return;
         }
         _direction = LegDirection.Left;        
-        if (_move != MoveType.Stop)
+        if (_move != MoveState.Stop)
         {
             return;
         }       
@@ -215,7 +225,7 @@ public class LegControl : MonoBehaviour
             return;
         }
         _direction = LegDirection.Right;
-        if (_move != MoveType.Stop)
+        if (_move != MoveState.Stop)
         {
             return;
         }
@@ -259,7 +269,7 @@ public class LegControl : MonoBehaviour
             _moveAnimation.StartJump();
             return;
         }
-        if (_move != MoveType.Stop)
+        if (_move != MoveState.Stop)
         {
             ChangeAnimation("JunpStart");
             return;
@@ -365,7 +375,7 @@ public class LegControl : MonoBehaviour
             _animator.Play("LandingEnd");
         }
         _jump = false;
-        _move = MoveType.Stop;
+        _move = MoveState.Stop;
         _direction = LegDirection.Flont;
         _landing = false;
         _jumpEnd = false;

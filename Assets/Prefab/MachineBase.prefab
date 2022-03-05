@@ -11646,7 +11646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42d632c01c86bf40875b4ff9cf4c4ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nChangeParameter: 1
+  _nChangeParameter: 0
   _actionSpeed: 1
   _walkPower: 2.4
   _maxWalkSpeed: 24

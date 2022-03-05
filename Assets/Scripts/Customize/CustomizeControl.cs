@@ -33,6 +33,8 @@ public class CustomizeControl : MonoBehaviour
     ParameterView _parameterUI = default;
     [SerializeField]
     Text _weight = default;
+    [SerializeField]
+    bool _sample = false;
     PartsManager _partsManager = default;
     UnitBuildData _buildData = default;
     Quaternion _cameraRot = default;
@@ -281,7 +283,25 @@ public class CustomizeControl : MonoBehaviour
     public void SetDataBattlleStart()
     {
         GameManager.Instance.SetData(_currentBuildData, _color);
-        SceneChange.LoadGame();
+        if (_sample)
+        {
+            SceneChange.LoadGame("SampleScene");
+        }
+        else
+        {
+            SceneChange.LoadGame();
+        }
+    }
+    public void ChangeBoss()
+    {
+        if (_sample)
+        {
+            _sample = false;
+        }
+        else
+        {
+            _sample = true;
+        }
     }
     public void ChangeHead(int number)
     {

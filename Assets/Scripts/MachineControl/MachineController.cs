@@ -136,11 +136,11 @@ public class MachineController : MonoBehaviour
             {
                 if (dir.z > InputStatus.MoveLimit)
                 {
-                    _leg.WalkStart(MoveType.Forward);
+                    _leg.WalkStart(MoveState.Forward);
                 }
                 else if (dir.z < -InputStatus.MoveLimit)
                 {
-                    _leg.WalkStart(MoveType.Back);
+                    _leg.WalkStart(MoveState.Back);
                 }
                 if (dir.x > InputStatus.MoveLimit)
                 {
@@ -417,6 +417,7 @@ public class MachineController : MonoBehaviour
         }
         if (FloatMode)
         {
+            _body.ResetAngle(MachineStatus.FloatBodyReset);
             FloatMode = false;
             _booster.BoostEnd();
             _leg.ChangeMode(false);
@@ -425,6 +426,7 @@ public class MachineController : MonoBehaviour
         {
             if (_booster.BoostCheckFly())
             {
+                _body.ResetAngle(MachineStatus.FloatBodyReset);
                 FloatMode = true;
                 _booster.Boost();
                 _leg.ChangeMode(true);
