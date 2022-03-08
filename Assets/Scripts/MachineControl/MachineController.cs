@@ -267,6 +267,10 @@ public class MachineController : MonoBehaviour
         {
             return;
         }
+        if (!_leg.StartJet())
+        {
+            return;
+        }
         _jet = true;
         if (_inputAxis.x > InputStatus.InputLimit)
         {
@@ -289,7 +293,6 @@ public class MachineController : MonoBehaviour
         {
             _booster.BoostB();
         }
-        _leg.StartJet();
         _booster.Boost();
     }
     public void Jet()

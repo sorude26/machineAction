@@ -73,6 +73,10 @@ public class Shot : MonoBehaviour
             _trail.Clear();
         }
     }
+    private void OnDisable()
+    {
+        StopTrail();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (_hit)

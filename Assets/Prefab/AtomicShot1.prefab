@@ -97,7 +97,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2756723513998015953
 MonoBehaviour:
@@ -115,7 +115,7 @@ MonoBehaviour:
   _endEffect: 9
   _rb: {fileID: 2756723513998015958}
   _trail: {fileID: 2625765172150455377}
-  _power: 100
+  _power: 9000
   _lifeTime: 20
 --- !u!54 &2756723513998015958
 Rigidbody:

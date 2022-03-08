@@ -174,19 +174,19 @@ public class MachineParameter : MonoBehaviour
             if (actionCapacity > _totalWeight)
             {
                 _actionSpeed = 1.2f;
-                _landingTime = 0.1f;
+                _landingTime = 0.2f;
                 _bodyTurnSpeed = 8f;
             }
             else if (actionCapacity > _totalWeight / 2)
             {
                 _actionSpeed = 1.1f;
-                _landingTime = 0.2f;
+                _landingTime = 0.4f;
                 _bodyTurnSpeed = 6f;
             }
             else
             {
                 _actionSpeed = 1.0f;
-                _landingTime = 0.3f;
+                _landingTime = 0.5f;
                 _bodyTurnSpeed = 4f;
             }
             if (balance > machineParts.Leg.Balancer)
@@ -203,7 +203,7 @@ public class MachineParameter : MonoBehaviour
                 balance += _totalWeight;
             }
             _actionSpeed = 0.8f;
-            _landingTime = 0.5f; 
+            _landingTime = 0.6f; 
             _bodyTurnSpeed = 3f;
             if (balance > machineParts.Leg.Balancer)
             {

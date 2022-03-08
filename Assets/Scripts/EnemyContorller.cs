@@ -31,6 +31,8 @@ public class EnemyContorller : MonoBehaviour
     DamageControl _damageControl = default;
     [SerializeField]
     float _startWaitTime = 2f;
+    [SerializeField]
+    Transform _target = default;
     bool _set = false;
     float _timer = 0;
     private async void Start()
@@ -54,7 +56,11 @@ public class EnemyContorller : MonoBehaviour
         transform.rotation = start;
         _damageControl.SetTarget();
         _timer = Random.Range(1, 7);
-        _controller.SetTarget(BattleManager.Instance.PlayerPos);
+        if (_target == null)
+        {
+            _target = BattleManager.Instance.PlayerPos;
+        }
+        _controller.SetTarget(_target);
         StartCoroutine(StartContorlWait());
     }
     IEnumerator StartContorlWait()
@@ -73,7 +79,7 @@ public class EnemyContorller : MonoBehaviour
         {
             return;
         }
-        Vector3 dir = _controller.MachineParts.Body.transform.forward - BattleManager.Instance.PlayerPos.position;
+        Vector3 dir = _controller.MachineParts.Body.transform.forward - _target.position;
         _controller.Move(-dir.normalized);
         _timer -= Time.deltaTime;
         if (_timer < 0)
@@ -84,7 +90,7 @@ public class EnemyContorller : MonoBehaviour
                 _controller.Jump();
             }
         }
-        float range = Vector3.Distance(_controller.MachineParts.Body.transform.position, BattleManager.Instance.PlayerPos.position);
+        float range = Vector3.Distance(_controller.MachineParts.Body.transform.position, _target.position);
         if (range < _noneAttackRange)
         {
             _controller.BodyControl.BodyResetAngle();

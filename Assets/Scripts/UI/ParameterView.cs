@@ -33,7 +33,7 @@ public class ParameterView : MonoBehaviour
         _gauges[6].SetGauge("跳躍性能", 30f, parameter.JumpPower);
         _gauges[7].SetGauge("反応速度", 9f, parameter.BodyTurnSpeed);
         _gauges[8].SetGauge("推進力", 8f, parameter.JetPower);
-        _gauges[9].SetGauge("持続時間", 30f, parameter.JetTime);
+        _gauges[9].SetGauge("持続時間", 30f, parameter.JetTime - (parameter.JetTime * parameter.NeedPowerFly * 0.5f));
         _gauges[10].SetGauge("高速移動速度", 80f, parameter.JetImpulsePower);
         _gauges[11].SetGauge("ジェネレータ回復性能", 10f, parameter.PowerRecoverySpeed);
     }

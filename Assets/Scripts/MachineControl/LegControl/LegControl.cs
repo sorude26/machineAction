@@ -9,14 +9,28 @@ public enum MoveState
     Stop = 0,
     Forward = 1,
 }
-public enum LegDirection
+public enum LegState
 {
-    Left = -1,
-    Flont = 0,
-    Right = 1,
+    Idle,
+    WalkForward,
+    WalkBack,
+    Ran,
+    Float,
+    JumpStart,
+    Fly,
+    FlyEnd,
+    Landing,
+    FlyJet,
+    GroundJet,
 }
-public class LegControl : MonoBehaviour
+public partial class LegControl : MonoBehaviour
 {
+    public enum LegDirection
+    {
+        Left = -1,
+        Flont = 0,
+        Right = 1,
+    }
     [SerializeField]
     Animator _animator = default;
     [SerializeField]
@@ -25,6 +39,7 @@ public class LegControl : MonoBehaviour
     ParticleSystem _landingEffect = default;
     MoveState _move = default;
     LegDirection _direction = default;
+    bool _set = false;
     bool _jump = false;
     bool _jumpEnd = false;
     bool _landing = false;
@@ -34,6 +49,11 @@ public class LegControl : MonoBehaviour
     float _landingTimer = 0;
     MachineController _machine = default;
     MoveAnimation _moveAnimation = default;
+    LegActionControl _actionControl = default;
+    Idle _stateIdle = new Idle();
+    JumpState _stateJump = new JumpState();
+    GroundMoveState _stateMove = new GroundMoveState();
+    ActionWaitState _stateWait = new ActionWaitState();
     LegType _legType = default;
     public bool IsLanding { get => _landing; }
     bool IsGround { get => _machine.IsGrounded(); }
@@ -43,6 +63,12 @@ public class LegControl : MonoBehaviour
         {
             _animator.enabled = false;
         }
+        _actionControl = new LegActionControl(this, _stateIdle);
+    }
+    private void Update()
+    {
+        if (!_set) { return; }
+        _actionControl?.Update();
     }
     public void Set(MachineController controller)
     {
@@ -57,6 +83,7 @@ public class LegControl : MonoBehaviour
         {
             _animator.enabled = true;
         }
+        _set = true;
     }
     public void SetLandingTime(float time)
     {
@@ -102,6 +129,7 @@ public class LegControl : MonoBehaviour
             return;
         }
         _move = angle;
+        _actionControl.ChengeState(_stateMove);
         switch (angle)
         {
             case MoveState.Stop:
@@ -111,7 +139,7 @@ public class LegControl : MonoBehaviour
                 switch (_legType)
                 {
                     case LegType.Normal:
-                        if (_machine.Parameter.ActionSpeed > 1)
+                        if (_machine.Parameter.ActionSpeed > 1.1f)
                         {
                             ChangeAnimation("Run");
                         }
@@ -156,12 +184,13 @@ public class LegControl : MonoBehaviour
         {
             return;
         }
-        if (_move == 0 && _direction == 0)
+        if (_move == MoveState.Stop && _direction == LegDirection.Flont)
         {
             return;
         }
         _move = MoveState.Stop;
-        _direction = 0;
+        _direction = LegDirection.Flont;
+        _actionControl.ChengeState(_stateIdle);
         ChangeAnimation("Idle", 0.5f);
         switch (_legType)
         {
@@ -250,6 +279,7 @@ public class LegControl : MonoBehaviour
         _animator.SetBool("Float", _float);
         if (_jump)
         {
+            _jumpEnd = false;
             ChangeAnimation("Junp");
         }
     }
@@ -264,6 +294,7 @@ public class LegControl : MonoBehaviour
             return;
         }
         _jump = true;
+        _jumpEnd = false;
         if (_legType == LegType.Animation)
         {
             _moveAnimation.StartJump();
@@ -288,25 +319,25 @@ public class LegControl : MonoBehaviour
             ChangeAnimation("JunpStart");
         }
     }
-    public void StartJet()
+    public bool StartJet()
     {
         if (_legType == LegType.Crawler)
         {
-            return;
+            return false;
         }
-        if (_landing || _jumpEnd || _knockDown)
+        if (_landing || _knockDown)
         {
-            return;
+            return false;
         }
         if (_machine.InputAxis == Vector3.zero)
         {
-            return;
+            return false;
         }
         if (_jump)
         {
             if (IsGround)
             {
-                return;
+                return false;
             }
             if (_machine.InputAxis.z > 0)
             {
@@ -361,6 +392,7 @@ public class LegControl : MonoBehaviour
                 }
             }
         }
+        return true;
     }
     IEnumerator LandingWait()
     {
@@ -454,7 +486,7 @@ public class LegControl : MonoBehaviour
             return;
         }
         _landing = true;
-        StartCoroutine(LandingWait());
+        //StartCoroutine(LandingWait());
     }
     void Jet()
     {
@@ -474,13 +506,9 @@ public class LegControl : MonoBehaviour
         {
             return;
         }
-        if (IsGround && _jump && !_jumpEnd)
+        if (!_jumpEnd)
         {
             _jumpEnd = true;
-            _machine?.Landing();
-            CameraEffectManager.Shake(transform.position);
-            SmokeEffect();
-            ChangeAnimation("JunpEnd");
         }
     }
     void ChangeAnimation(string changeTarget, float changeTime = 0.2f)
