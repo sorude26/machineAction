@@ -6736,7 +6736,7 @@ MonoBehaviour:
     WeaponRArmID: 3
     WeaponLArmID: 1
     ShoulderWeaponID: 0
-    BodyWeaponID: 0
+    BodyWeaponID: 12
     BoosterID: 1
     CoreID: 0
   _color: {r: 0.14397113, g: 0.11222855, b: 0.24528301, a: 0}
@@ -14155,7 +14155,7 @@ PrefabInstance:
     - target: {fileID: 613586504764106863, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5849467127468413154, guid: 226e579a6c7e16a4b9cfc289310e0ed8,
         type: 3}
@@ -30757,7 +30757,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1389378866
 Transform:
   m_ObjectHideFlags: 0

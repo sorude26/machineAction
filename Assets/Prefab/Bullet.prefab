@@ -5026,7 +5026,7 @@ MonoBehaviour:
   _endEffect: 9
   _rb: {fileID: 5615883408008679376}
   _trail: {fileID: 2728750937669746474}
-  _power: 5
+  _power: 10
   _lifeTime: 3
 --- !u!54 &5615883408008679376
 Rigidbody:
