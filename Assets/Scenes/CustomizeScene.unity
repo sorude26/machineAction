@@ -1061,7 +1061,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16312
+  m_Name: pb_Mesh144530
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13399,7 +13399,7 @@ MonoBehaviour:
   _dataList: {fileID: 11400000, guid: 8b91c5b66e420d04f8072bb722df6945, type: 2}
   _parameterUI: {fileID: 2087938929}
   _weight: {fileID: 1387632754}
-  _sample: 1
+  _sample: 0
 --- !u!4 &1316264990
 Transform:
   m_ObjectHideFlags: 0
